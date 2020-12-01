@@ -40,7 +40,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="css/style.css?vr=21">
+    <link rel="stylesheet" href="{{ asset("css/style.css?vr=21") }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
@@ -119,7 +119,7 @@
             </div>
             <div class="adcdsc">
                 <div class="header-logo" id="logos">
-                    <a href="index.html">
+                    <a href="/">
                         <picture>
                             <source srcset="{{ asset("images/logo.svg") }}">
                             <img src="{{ asset("images/logo.svg") }}" alt="Акваклуб Nemo" width="135" height="72">
@@ -1071,21 +1071,21 @@
             <div class="tabs2" data-aos="fade-up">
 			                    <span class="tab2">
 			                        <picture>
-			                            <source srcset="img/security-icon1-active.svg" type="image/svg+xml">
+			                            <source srcset="{{ asset("images/security-icon1-active.svg") }}" type="image/svg+xml">
 			                            <img src="{{ asset("images/security-icon1-active.png") }}" alt="Бассейн" width="78" height="61">
 			                        </picture>
 			                        <p>Бассейн</p>
 			                    </span>
                 <span class="tab2">
 			                        <picture>
-			                            <source srcset="img/security-icon2.svg" type="image/svg+xml">
+			                            <source srcset="{{ asset("images/security-icon2.svg") }}" type="image/svg+xml">
 			                            <img src="{{ asset("images/security-icon2.png") }}" alt="Бассейн" width="59" height="61">
 			                        </picture>
 			                        <p>Водоподготовка</p>
 			                    </span>
                 <span class="tab2">
 			                        <picture>
-			                            <source srcset="img/security-icon3.svg" type="image/svg+xml">
+			                            <source srcset="{{ asset("images/security-icon3.svg") }}" type="image/svg+xml">
 			                            <img src="{{ asset("images/security-icon3.png") }}" alt="Бассейн" width="51" height="63">
 			                        </picture>
 			                        <p>Удобства</p>
@@ -1280,10 +1280,10 @@
     <div class="container">
         <div class="footer-top">
             <div class="left">
-                <a href="index.html" data-aos="fade-up">
+                <a href="/" data-aos="fade-up">
                     <img src="{{ asset("images/logo-footer.png") }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
-                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
+                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="/" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
             </div>
             <div class="center1" data-aos="fade-up">
                 <h3 data-aos="fade-up">Контакты</h3>
@@ -1313,19 +1313,19 @@
                 <div class="social-link">
                     <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
                         <picture>
-                            <source srcset="img/instagramm.svg">
+                            <source srcset="{{ asset("images/instagramm.svg") }}">
                             <img src="{{ asset("images/instagramm.png") }}" alt="инстаграмм">
                         </picture>
                     </a>
                     <a href="https://vk.com/aquaclubnemo" target="_blank">
                         <picture>
-                            <source srcset="img/vk.svg">
+                            <source srcset="{{ asset("images/vk.svg") }}">
                             <img src="{{ asset("images/vk.png") }}" alt="вконтакте">
                         </picture>
                     </a>
                     <a href="https://www.facebook.com/aquaclubnemo" target="_blank">
                         <picture>
-                            <source srcset="img/fb.svg">
+                            <source srcset="{{ asset("img/fb.svg") }}">
                             <img src="{{ asset("images/fb.png") }}" alt="фейсбук">
                         </picture>
                     </a>
@@ -1397,19 +1397,19 @@
                     <div class="social-link">
                         <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
                             <picture>
-                                <source srcset="img/instagramm.svg">
+                                <source srcset="{{ asset("images/instagramm.svg") }}">
                                 <img src="{{ asset("images/instagramm.png") }}" alt="инстаграмм">
                             </picture>
                         </a>
                         <a href="https://vk.com/aquaclubnemo" target="_blank">
                             <picture>
-                                <source srcset="img/vk.svg">
+                                <source srcset="{{ asset("images/vk.svg") }}">
                                 <img src="{{ asset("images/vk.png") }}" alt="вконтакте">
                             </picture>
                         </a>
                         <a href="https://www.facebook.com/aquaclubnemo" target="_blank">
                             <picture>
-                                <source srcset="img/fb.svg">
+                                <source srcset="{{ asset("images/fb.svg") }}">
                                 <img src="{{ asset("images/fb.png") }}" alt="фейсбук">
                             </picture>
                         </a>
@@ -1418,10 +1418,10 @@
             </div>
 
             <div class="footer-hidden-logo">
-                <a class="footer-logo" href="index.html">
+                <a class="footer-logo" href="/">
                     <img src="{{ asset("images/logo-footer.png") }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
-                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
+                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="/">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
                 <div class="footer-hidden-bottom">
                     <p>
@@ -1731,14 +1731,14 @@
 
 <!-- scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="libs/slick/slick.min.js"></script>
-<script src="js/jquery.toshowhide.js?vr=21"></script>
-<script src="libs/jquery.custom-scroll.js"></script>
+<script src="{{ asset("libs/slick/slick.min.js") }}"></script>
+<script src="{{ asset("js/jquery.toshowhide.js?vr=21") }}"></script>
+<script src="{{ asset("libs/jquery.custom-scroll.js") }}"></script>
 
 
-<script src="js/index-page.js?vr=21"></script>
-<script src="js/script.js?vr=21"></script>
-<script src="js/snow.js?vr=21"></script>
+<script src="{{ asset("js/index-page.js?vr=21") }}"></script>
+<script src="{{ asset("js/script.js?vr=21") }}"></script>
+<script src="{{ asset("js/snow.js?vr=21") }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
 
 <!-- Yclients -->
@@ -1782,7 +1782,7 @@
 <!-- /Yandex.Metrika counter -->
 <!-- Animation. -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="js/app.js"></script>
+<script src="{{ asset("js/app.js") }}"></script>
 <!-- Animation. -->
 <script>
     Payment.hide_items_checked();
