@@ -19,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 Route::get('/', IndexController::class);
+
+Route::get('admin', function () {
+    return dd(123);
+});
