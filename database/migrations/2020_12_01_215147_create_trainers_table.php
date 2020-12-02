@@ -18,7 +18,7 @@ class CreateTrainersTable extends Migration
             $table->string('name');
             $table->string('image');
             $table->text('description');
-            $table->string('video');
+            $table->string('video')->nullable();
             $table->timestamps();
         });
     }
