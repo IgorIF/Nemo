@@ -23,3 +23,7 @@ Route::get('/', IndexController::class);
 Route::get('admin', function () {
     return view('admin');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
