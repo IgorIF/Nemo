@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\IndexController as PageController;
+use App\Http\Controllers\Admin\IndexController as AdminController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +20,10 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/', IndexController::class);
+Route::get('/', PageController::class);
 
-Route::get('admin', function () {
-    return view('admin');
+Route::middleware(['auth:sanctum', 'verified'])->get('admin', [AdminController::class, 'index']);
+
+Route::match(['get', 'post'], 'register', function(){
+    abort('404');
 });
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
