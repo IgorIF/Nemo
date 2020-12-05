@@ -13,7 +13,13 @@
             <td>{{ $trainer->image }}</td>
             <td>{{ mb_substr($trainer->description, 0, 50) . '...' }}</td>
             <td>{{ $trainer->video }}</td>
-            <td><a href="#">удалить</a> </td>
+            <td>
+                <form id="logout-form" action="{{ route('admin.trainers.destroy', ['trainer' => $trainer->id]) }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field("DELETE") }}
+                    <button>удалить</button>
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>

@@ -15,4 +15,10 @@ class TrainersRepository extends Repository
     public function getAll() {
         return Trainer::all();
     }
+
+    public function destroyTrainer($id)
+    {
+        $trainer = Trainer::find($id);
+        $trainer->delete();
+    }
 }

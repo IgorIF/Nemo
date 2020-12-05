@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\IndexController as PageController;
-use App\Http\Controllers\Admin\IndexController as AdminController;
+use App\Http\Controllers\Admin\TrainerController;
+
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,10 +21,21 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::get('/', PageController::class);
+Route::get('/', IndexController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('admin', [AdminController::class, 'index']);
+//Route::middleware(['auth:sanctum', 'verified'])->get('admin', [TrainerController::class, 'index']);
 
-Route::match(['get', 'post'], 'register', function(){
+
+Route::middleware(['auth:sanctum', 'verified'])->name('admin.')->prefix('admin')->group(function() {
+    Route::redirect('/', '/admin/trainers');
+
+    Route::resource('trainers', TrainerController::class)->only(['index', 'destroy']);
+
+});
+
+
+
+
+Route::any('register', function(){
     abort('404');
 });

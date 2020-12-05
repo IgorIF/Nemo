@@ -10,6 +10,8 @@
 
 @yield('header')
 
+<br />
+
 @yield('content')
 
 </body>
