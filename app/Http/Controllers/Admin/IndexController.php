@@ -15,18 +15,20 @@ class IndexController extends AdminController
      */
     public function __construct(TrainersRepository $trainersRepository)
     {
+        $this->template = 'admin.index';
         $this->trainersRepository = $trainersRepository;
     }
 
     public function index() {
         $trainers = $this->getTrainers();
 
+        $this->content = view('admin.content')->with('trainers', $trainers)->render();
+
         return $this->renderOutput();
     }
 
     private function getTrainers() {
         $trainers = $this->trainersRepository->getAll();
-
-        dd($trainers);
+        return $trainers;
     }
 }
