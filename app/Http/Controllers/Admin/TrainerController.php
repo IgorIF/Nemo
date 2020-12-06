@@ -40,7 +40,9 @@ class TrainerController extends AdminController
      */
     public function create()
     {
-        //
+        $this->content = view('admin.trainers_create_content')->render();
+
+        return $this->renderOutput();
     }
 
     /**

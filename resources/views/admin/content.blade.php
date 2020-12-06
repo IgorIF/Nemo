@@ -24,4 +24,10 @@
     @endforeach
 </table>
 
+<br />
+
+<form action="{{ route('admin.trainers.create') }}" method="GET">
+    <button>добавить тренера</button>
+</form>
+
 
