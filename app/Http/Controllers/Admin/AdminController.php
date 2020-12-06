@@ -22,10 +22,12 @@ class AdminController extends Controller
 
     protected function renderOutput() {
 
-        $header = view(env('THEME') . 'admin.header')->render();
+        $header = view( 'admin.header')->render();
+        $footer = view('admin.footer')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $header);
         $this->vars = Arr::add($this->vars, 'content', $this->content);
+        $this->vars = Arr::add($this->vars, 'footer', $footer);
 
         return view($this->template)->with($this->vars);
     }

@@ -21,6 +21,16 @@
                 </form>
             </td>
         </tr>
+
+        <div class="testimonial two-fourth ">
+            <div class="thumbnail">
+                <img src="{{ asset('images/trainers/' . $trainer->image) }}" alt="Fotolia_20568380_Subscription_XXL" title="Fotolia_20568380_Subscription_XXL" />
+            </div>
+            <div class="testimonial-text">
+                <p>I purchased this theme and I really like it. The theme authors have been very helpful in the support area of their website. Would definitely recommend to anyone needing a corporate wordpress theme. What to say about the[...]</p>
+            </div>
+            <div class="testimonial-name"><a href="testimonial.html" class="name">Erica Evans</a><a class="website" href="http://www.unisoftware.com">unisoftware.com</a></div>
+        </div>
     @endforeach
 </table>
 
