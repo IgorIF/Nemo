@@ -110,44 +110,9 @@
                 <div id="content-home" class="content group">
                     <div class="hentry group">
 
-
-
                         @yield('content')
 
-
-                        <div class="testimonial two-fourth ">
-                            <div class="thumbnail">
-                                <img src="images/avatar/Fotolia_20568380_Subscription_XXL-94x94.jpg" alt="Fotolia_20568380_Subscription_XXL" title="Fotolia_20568380_Subscription_XXL" />
-                            </div>
-                            <div class="testimonial-text">
-                                <p>I purchased this theme and I really like it. The theme authors have been very helpful in the support area of their website. Would definitely recommend to anyone needing a corporate wordpress theme. What to say about the[...]</p>
-                            </div>
-                            <div class="testimonial-name"><a href="testimonial.html" class="name">Erica Evans</a><a class="website" href="http://www.unisoftware.com">unisoftware.com</a></div>
-                        </div>
-
-                        <div class="testimonial two-fourth last">
-                            <div class="thumbnail">
-                                <img src="images/avatar/ricardo-94x94.jpg" alt="ricardo" title="ricardo" />
-                            </div>
-                            <div class="testimonial-text">
-                                <p>Bookmark this theme as one of your “Must Haves for 2012” This theme is without a doubt one of our Top 5 Purchases. Once you get used to how the content is organised in Admin, the applications are[...]</p>
-                            </div>
-                            <div class="testimonial-name"><a href="testimonial.html" class="name">Ricardo Mori</a><a class="website" href="http://www.net.ons.com">Netsons Inc</a></div>
-                        </div>
-
-
-
-                        <div style="clear:both"></div>
-                        <div class="clear space"></div>
-
-
-                        <p>&nbsp;</p>
-                        <p>&nbsp;</p>
                     </div>
-                    <!-- START COMMENTS -->
-                    <div id="comments">
-                    </div>
-                    <!-- END COMMENTS -->
                 </div>
                 <!-- END CONTENT -->
                 <!-- START EXTRA CONTENT -->
