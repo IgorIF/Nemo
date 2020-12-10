@@ -51,4 +51,13 @@ class TrainersRepository extends Repository
         return ['status' => 'Тренер добавлен'];
 
     }
+
+    public function updateTrainer(\App\Http\Requests\TrainerRequest $request, int $id)
+    {
+        $data = $request->except('_token', '_method');
+
+        $trainer = Trainer::find($id);
+
+        $trainer->fill($data)->update();
+    }
 }

@@ -57,8 +57,16 @@ class TrainerController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TrainerRequest $request)
+    public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'video' => '',
+        ]);
+
         $result = $this->trainersRepository->createTrainer($request);
 
         return redirect()->route('admin.trainers.index')->with($result);
@@ -83,7 +91,7 @@ class TrainerController extends AdminController
      */
     public function edit($id)
     {
-        $trainer = Trainer::where('id', $id)->first();
+        $trainer = Trainer::find($id);
 
         $this->title =  $trainer->name . ' - редактирование';
 
@@ -101,7 +109,9 @@ class TrainerController extends AdminController
      */
     public function update(TrainerRequest $request, $id)
     {
-        dd($id);
+        $result = $this->trainersRepository->updateTrainer($request, $id);
+
+        return redirect()->route('admin.trainers.index')->with($result);
     }
 
     /**
