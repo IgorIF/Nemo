@@ -28,28 +28,19 @@ class TrainersRepository extends Repository
     {
         $data = $request->except('_token');
 
-
-        //$filenameToStore = "trainers/1234214" . time() . "." . $extention;
-
-       // $path = $request->file('image')->store('public/', $filenameToStore);
-
-        $file = $request->file('image');
+        $file = $data['image'];
         $extension = $file->getClientOriginalExtension();
-        $fileName = '1233123123123' . $extension;
-        $destinationPath = 'public/trainers/' . time() . '.' . $extension;
+        $fileName = time() . '.' . $extension;
+        $destinationPath = 'public/trainers/' . $fileName;
         Storage::put($destinationPath, file_get_contents($file->getRealPath()));
 
-        //$request->file('image')->move(public_path(). '/images', '1111111111'.$extention);
 
-       // dd($filename);
-
-        /*$trainer = Trainer::create([
+        $trainer = Trainer::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'video' => $data['video'],
-            'image' => 'fsdf'
-        ]);*/
-
+            'image' => $fileName
+        ]);
 
     }
 }

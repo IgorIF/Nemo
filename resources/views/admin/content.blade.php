@@ -1,7 +1,7 @@
 @foreach($trainers as $trainer)
         <div class="testimonial two-fourth @if($loop->index % 2 != 0) last @endif">
             <div class="thumbnail">
-                <img src="{{ asset('images/trainers/' . $trainer->image) }}" alt="Fotolia_20568380_Subscription_XXL" title="Fotolia_20568380_Subscription_XXL" />
+                <img src="{{ asset('storage/trainers/' . $trainer->image) }}" alt="{{ $trainer->name }}" title="{{ $trainer->name }}" />
             </div>
             <div class="testimonial-text">
                 <p>{{ mb_substr($trainer->description, 0, 270) . '...' }}</p>
