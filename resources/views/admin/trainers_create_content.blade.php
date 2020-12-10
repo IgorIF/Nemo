@@ -1,21 +1,34 @@
+
+@if($errors->any())
+    <div class="box error-box">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<div class="clear space"></div>
+
 <form action="{{ route('admin.trainers.store') }}" enctype="multipart/form-data" method="POST">
     {{ csrf_field() }}
 
     Имя:
     <br />
-    <input type="text" name="name">
+    <input type="text" name="name" value="{{ old('name') }}">
     <br/><br/>
     Описание:
     <br />
-    <textarea type="text" name="description" rows="6" cols="100"></textarea>
+    <textarea type="text" name="description" rows="6" cols="100">{{ old('description') }}</textarea>
     <br /><br />
     Фото:
-    <input type="file" name="image" placeholder="фото">
+    <input type="file" name="image">
     <br /><br />
 
     Ссылка на видео:
     <br />
-    <input type="text" name="video">
+    <input type="text" name="video" value="{{ old('video') }}">
     <br /><br />
 
     <button>сохранить</button>

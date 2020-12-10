@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\TrainerRequest;
 use App\Models\Trainer;
 use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
@@ -56,19 +57,9 @@ class TrainerController extends AdminController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrainerRequest $request)
     {
-        /*$validateData = $request->validate([
-            'name' => '',
-            'description' => '',
-            'image' => '',
-            'video' => '',
-        ]);*/
-
         $result = $this->trainersRepository->createTrainer($request);
-
-
-
     }
 
     /**
