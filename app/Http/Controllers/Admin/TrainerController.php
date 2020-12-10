@@ -46,7 +46,7 @@ class TrainerController extends AdminController
 
         $this->title = 'Добавить тренера';
 
-        $this->content = view('admin.trainers_create_content')->render();
+        $this->content = view('admin.trainers_create_edit_content')->render();
 
         return $this->renderOutput();
     }
@@ -83,7 +83,13 @@ class TrainerController extends AdminController
      */
     public function edit($id)
     {
-        dd(1123);
+        $trainer = Trainer::where('id', $id)->first();
+
+        $this->title =  $trainer->name . ' - редактирование';
+
+        $this->content = view('admin.trainers_create_edit_content')->with('trainer', $trainer)->render();
+
+        return $this->renderOutput();
     }
 
     /**
@@ -93,9 +99,9 @@ class TrainerController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TrainerRequest $request, $id)
     {
-        //
+        dd($id);
     }
 
     /**
