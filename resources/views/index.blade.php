@@ -34,7 +34,7 @@
     <![endif]-->
     <!--[if lte IE 8]><script src="http://phpbbex.com/oldies/oldies.js" charset="utf-8"></script><![endif]-->
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
@@ -202,7 +202,7 @@
                 <span>Cкидка -30% на первое занятие</span>
             </p>
             <p>
-                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
+                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="/" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
         </div>
     </div>
 </header>
@@ -487,7 +487,7 @@
             <div class="slides">
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/1.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/1.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Яна Кокошникова</h4>
 
@@ -499,7 +499,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/2.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/2.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Светлана Гладилина</h4>
 
@@ -511,7 +511,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/3.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/3.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Светлана Борисова</h4>
 
@@ -522,7 +522,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/4.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/4.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Наталья Севрюкова</h4>
 
@@ -537,7 +537,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/5.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/5.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Снежана Саргунас</h4>
 
@@ -548,7 +548,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/6.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/6.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Наталья Высоцкая</h4>
 
@@ -561,7 +561,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/7.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/7.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Дамир Юмачиков</h4>
 
@@ -574,7 +574,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/8.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/8.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Валерия Денисова</h4>
 
@@ -588,7 +588,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/9.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/9.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Светлана Босова</h4>
 
@@ -601,7 +601,7 @@
 
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/10.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/10.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Аксенов Михаил</h4>
 
@@ -611,7 +611,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("images/trainers/11.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/11.jpg") }}" /></div>
                         <div class="trainer_caption">
                             <h4>Павел Мишаков</h4>
 
@@ -627,37 +627,37 @@
         <div class="flexslider" id="f2">
             <div class="slides_pagination">
                 <div>
-                    <img src="{{ asset("images/trainers/1.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/1.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/2.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/2.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/3.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/3.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/4.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/4.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/5.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/5.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/6.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/6.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/7.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/7.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/8.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/8.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/9.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/9.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/10.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/10.jpg") }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("images/trainers/11.jpg") }}" />
+                    <img src="{{ asset("storage/trainers/11.jpg") }}" />
                 </div>
 
 
@@ -865,8 +865,6 @@
                                             <p class="note"></p>
                                         </div>
                                     </div>
-
-
 
                                 </div>
                             </div>
@@ -1322,7 +1320,7 @@
                     </a>
                     <a href="https://www.facebook.com/aquaclubnemo" target="_blank">
                         <picture>
-                            <source srcset="{{ asset("img/fb.svg") }}">
+                            <source srcset="{{ asset("images/fb.svg") }}">
                             <img src="{{ asset("images/fb.png") }}" alt="фейсбук">
                         </picture>
                     </a>
@@ -1729,7 +1727,7 @@
 <!-- scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{ asset("libs/slick/slick.min.js") }}"></script>
-<script src="{{ asset("js/jquery.toshowhide.js?vr=21") }}"></script>
+<script src="{{ asset('js/jquery.toshowhide.js?vr=21') }}"></script>
 <script src="{{ asset("libs/jquery.custom-scroll.js") }}"></script>
 
 

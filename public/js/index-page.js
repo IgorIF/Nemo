@@ -135,9 +135,9 @@ $(function() {
 
         // console.log( $(this).find('source').attr('srcset').slice(0, -1).slice(0, -1).slice(0, -1).slice(0, -1) );
 
-        source.eq(0).attr('srcset', 'img/age-of-child-icon1.svg');
-        source.eq(1).attr('srcset', 'img/age-of-child-icon2.svg');
-        source.eq(2).attr('srcset', 'img/age-of-child-icon3.svg');
+        source.eq(0).attr('srcset', '../../images/age-of-child-icon1.svg');
+        source.eq(1).attr('srcset', '../images/age-of-child-icon2.svg');
+        source.eq(2).attr('srcset', '../images/age-of-child-icon3.svg');
 
         $(this).find('source').attr('srcset', $(this).find('source').attr('srcset').slice(0, -1).slice(0, -1).slice(0, -1).slice(0, -1)+'-active.svg');
 
@@ -167,9 +167,9 @@ $(function() {
             indexTab = 0;
         }
 
-        source.eq(0).attr('srcset', 'img/age-of-child-icon1.svg');
-        source.eq(1).attr('srcset', 'img/age-of-child-icon2.svg');
-        source.eq(2).attr('srcset', 'img/age-of-child-icon3.svg');
+        source.eq(0).attr('srcset', '../images/age-of-child-icon1.svg');
+        source.eq(1).attr('srcset', '../images/age-of-child-icon2.svg');
+        source.eq(2).attr('srcset', '../images/age-of-child-icon3.svg');
 
         $(activeTab).removeClass("active")
 
@@ -186,9 +186,9 @@ $(function() {
     $(".tab_item2").not(":first").hide();
     $(".container .tab2").click(function() {
 
-        source2.eq(0).attr('srcset', 'img/security-icon1.svg');
-        source2.eq(1).attr('srcset', 'img/security-icon2.svg');
-        source2.eq(2).attr('srcset', 'img/security-icon3.svg');
+        source2.eq(0).attr('srcset', '../images/security-icon1.svg');
+        source2.eq(1).attr('srcset', '../images/security-icon2.svg');
+        source2.eq(2).attr('srcset', '../images/security-icon3.svg');
 
         $(this).find('source').attr('srcset', $(this).find('source').attr('srcset').slice(0, -1).slice(0, -1).slice(0, -1).slice(0, -1)+'-active.svg');
 
@@ -217,9 +217,9 @@ $(function() {
             indexTab = 0;
         }
 
-        source2.eq(0).attr('srcset', 'img/security-icon1.svg');
-        source2.eq(1).attr('srcset', 'img/security-icon2.svg');
-        source2.eq(2).attr('srcset', 'img/security-icon3.svg');
+        source2.eq(0).attr('srcset', '../images/security-icon1.svg');
+        source2.eq(1).attr('srcset', '../images/security-icon2.svg');
+        source2.eq(2).attr('srcset', '../images/security-icon3.svg');
 
         $(activeTab).removeClass("active")
 
@@ -474,7 +474,7 @@ $(document).ready(function (){
 
 
 
-	// When the user scrolls the page, execute myFunction 
+	// When the user scrolls the page, execute myFunction
 	window.onscroll = function() {myFunction()};
 
 	function myFunction() {
