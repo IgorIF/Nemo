@@ -21,7 +21,13 @@ class TrainersRepository extends Repository
     public function destroyTrainer($id)
     {
         $trainer = Trainer::find($id);
+
+        $destinationPath = 'public/trainers/' . $trainer->image;
+        Storage::delete($destinationPath);
+
         $trainer->delete();
+
+        return ['status' => 'Тренер ' . $trainer->name . ' удален'];
     }
 
     public function createTrainer(Request $request)

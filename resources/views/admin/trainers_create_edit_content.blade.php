@@ -24,6 +24,10 @@
     <button>сохранить</button>
 </form>
 
-<form>
-    <button>удалить тренера</button>
-</form>
+@if(isset($trainer))
+    <form action="{{ route('admin.trainers.destroy', $trainer->id) }}" method="POST">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <button>удалить тренера</button>
+    </form>
+@endif
