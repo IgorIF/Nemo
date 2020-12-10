@@ -1,16 +1,3 @@
-
-@if($errors->any())
-    <div class="box error-box">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-<div class="clear space"></div>
-
 <form action="{{ route('admin.trainers.store') }}" enctype="multipart/form-data" method="POST">
     {{ csrf_field() }}
 

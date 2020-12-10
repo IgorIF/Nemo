@@ -60,6 +60,8 @@ class TrainerController extends AdminController
     public function store(TrainerRequest $request)
     {
         $result = $this->trainersRepository->createTrainer($request);
+
+        return redirect()->route('admin.trainers.index')->with($result);
     }
 
     /**

@@ -35,12 +35,14 @@ class TrainersRepository extends Repository
         Storage::put($destinationPath, file_get_contents($file->getRealPath()));
 
 
-        $trainer = Trainer::create([
+        Trainer::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'video' => $data['video'],
             'image' => $fileName
         ]);
+
+        return ['status' => 'Тренер добавлен'];
 
     }
 }

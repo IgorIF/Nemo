@@ -106,6 +106,23 @@
         <!-- START PRIMARY -->
         <div id="primary" class="sidebar-no">
             <div class="inner group">
+
+                @if(session('status'))
+                    <div class="box success-box">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="box error-box">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <!-- START CONTENT -->
                 <div id="content-home" class="content group">
                     <div class="hentry group">
