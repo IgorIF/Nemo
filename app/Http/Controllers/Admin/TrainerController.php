@@ -26,6 +26,8 @@ class TrainerController extends AdminController
      */
     public function index()
     {
+        $this->title = 'Тренеры';
+
         $trainers = $this->getTrainers();
 
         $this->content = view('admin.content')->with('trainers', $trainers)->render();
@@ -40,6 +42,9 @@ class TrainerController extends AdminController
      */
     public function create()
     {
+
+        $this->title = 'Добавить тренера';
+
         $this->content = view('admin.trainers_create_content')->render();
 
         return $this->renderOutput();
@@ -53,7 +58,17 @@ class TrainerController extends AdminController
      */
     public function store(Request $request)
     {
-        //
+        /*$validateData = $request->validate([
+            'name' => '',
+            'description' => '',
+            'image' => '',
+            'video' => '',
+        ]);*/
+
+        $result = $this->trainersRepository->createTrainer($request);
+
+
+
     }
 
     /**

@@ -441,7 +441,7 @@
                 </div>
                 <div class="tab right">
                     <picture>
-                        <source srcset="img/age-of-child-icon3.svg" type="image/svg+xml">
+                        <source srcset="{{ asset('images/age-of-child-icon3.svg') }}" type="image/svg+xml">
                         <img src="{{ asset("images/age-of-child-icon3.png") }}" alt="Детки от 5 до 7 лет" width="42" height="49">
                     </picture>
                     <p>от 5 до 7 лет</p>

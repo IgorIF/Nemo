@@ -305,14 +305,14 @@ var Payment = {
                 switch (id) {
                      case 'type_of_occupation':
                         $(element).delay(100).fadeIn(1000);     //Вид занятий
-                        break;    
+                        break;
                     case 'swimming_pool':
                         $(element).delay(150).fadeIn(1000);     //Бассейн
-                        break;   
+                        break;
                     case 'type_of_subscription':
                         $(element).delay(200).fadeIn(1000);     //Вид абонемента
                         break;
-                   
+
                 }
             }
 
@@ -418,7 +418,7 @@ var Payment = {
                                 $(type_of_subscription_case).find("span").each(function (index, element) {
                                     $(element).removeClass('width-two');
                                 });
-                                
+
                                 break;
                         }
 
@@ -874,6 +874,7 @@ var Payment = {
                     }
                     if(type_of_occupation_case.length > 0){
                         add = $(type_of_occupation_case).find("input:radio:checked").next("span:first").text().toLowerCase();
+                        add = add.trim();
                         service_name = service_name + ', Вид занятий: ' + add;
                     }
                     if(type_of_subscription_case.length > 0){
@@ -916,6 +917,7 @@ var Payment = {
                 var to_pay_link = $(street_case).find("div[class='buttons-row']").find("a[class='bt-2']");
 
                 $(to_pay_link).click(function (eventObject) {
+                    return false;
                         fill_link(eventObject.target, street_case);
                     console.log(street_case);
                 })

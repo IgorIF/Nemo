@@ -25,7 +25,7 @@
     <!-- this line will appear only if the website is visited with an iPad -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes" />
 
-    <title>Pink Rio | A strong, powerful and multiporpose WordPress Theme</title>
+    <title>{{ $title }}</title>
 
     <!-- [favicon] begin -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.ico') }}" />

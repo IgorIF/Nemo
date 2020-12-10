@@ -10,6 +10,7 @@ class AdminController extends Controller
 {
     protected $trainersRepository;
 
+    protected $title;
     protected $content;
 
     protected $template;        //шаблон
@@ -25,6 +26,7 @@ class AdminController extends Controller
         $header = view( 'admin.header')->render();
         $footer = view('admin.footer')->render();
 
+        $this->vars = Arr::add($this->vars, 'title', $this->title);
         $this->vars = Arr::add($this->vars, 'header', $header);
         $this->vars = Arr::add($this->vars, 'content', $this->content);
         $this->vars = Arr::add($this->vars, 'footer', $footer);

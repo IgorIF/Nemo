@@ -11,5 +11,15 @@
         </div>
 @endforeach
 
+<div class="clear space"></div>
+
+<center>
+    <div class="call-btn">
+        <a href="{{ route('admin.trainers.create') }}" class="btn btn-large btn-mfast-3">Добавить тренера</a>
+    </div>
+</center>
+
+<div class="clear space"></div>
+
 
 
