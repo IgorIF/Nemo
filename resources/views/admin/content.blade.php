@@ -7,7 +7,9 @@
                 <p>{{ mb_substr($trainer->description, 0, 270) . '...' }}</p>
             </div>
 
-            <div class="testimonial-name"><a href="#" class="name">{{ $trainer->name }}</a></div>
+            <div class="testimonial-name">
+                    <a href="{{ route('admin.trainers.edit', $trainer->id) }}" class="name">{{ $trainer->name }}</a>
+            </div>
         </div>
 @endforeach
 

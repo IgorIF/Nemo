@@ -83,7 +83,7 @@ class TrainerController extends AdminController
      */
     public function edit($id)
     {
-        //
+        dd(1123);
     }
 
     /**

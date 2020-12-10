@@ -23,7 +23,7 @@ Route::get('/', IndexController::class);
 Route::middleware(['auth:sanctum', 'verified'])->name('admin.')->prefix('admin')->group(function() {
     Route::redirect('/', '/admin/trainers');
 
-    Route::resource('trainers', TrainerController::class)->only(['index', 'create', 'store', 'destroy']);
+    Route::resource('trainers', TrainerController::class)->only(['index', 'create', 'store', 'edit', 'destroy']);
 
 });
 
