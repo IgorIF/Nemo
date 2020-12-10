@@ -822,9 +822,7 @@
                                         <div class="flex-row">
 
                                             <div class="item-radio" style="margin-left: auto;  margin-right: auto; width: 100%;">
-                                                <input type="radio" name="type_of_occupation" value="individual" checked="checked" disabled><span>
-			                                                        <!--class="width-two"--> Инидвидуальное
-			                                                    </span>
+                                                <input type="radio" name="type_of_occupation" value="individual" checked="checked" disabled><span><!--class="width-two"-->Инидвидуальное</span>
                                             </div>
                                             <!--
                                     <div class="item-radio">

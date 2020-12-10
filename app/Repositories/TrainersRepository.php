@@ -52,7 +52,7 @@ class TrainersRepository extends Repository
 
     }
 
-    public function updateTrainer(\App\Http\Requests\TrainerRequest $request, int $id)
+    public function updateTrainer(Request $request, int $id)
     {
         $data = $request->except('_token', '_method');
 

@@ -60,7 +60,7 @@ class TrainerController extends AdminController
     public function store(Request $request)
     {
 
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'description' => 'required',
             'image' => 'required',
@@ -107,8 +107,15 @@ class TrainerController extends AdminController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TrainerRequest $request, $id)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'image' => '',
+            'video' => '',
+        ]);
+
         $result = $this->trainersRepository->updateTrainer($request, $id);
 
         return redirect()->route('admin.trainers.index')->with($result);
