@@ -29,7 +29,7 @@ class TrainerController extends AdminController
     {
         $this->title = 'Тренеры';
 
-        $trainers = $this->getTrainers();
+        $trainers = $this->trainersRepository->getTrainers();
 
         $this->content = view('admin.content')->with('trainers', $trainers)->render();
 
@@ -135,10 +135,5 @@ class TrainerController extends AdminController
             return back()->with($result);
 
         return redirect()->route('admin.trainers.index')->with($result);
-    }
-
-    private function getTrainers() {
-        $trainers = $this->trainersRepository->getAll();
-        return $trainers;
     }
 }

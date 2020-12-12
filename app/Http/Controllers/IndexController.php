@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
+    /**
+     * IndexController constructor.
+     */
+    public function __construct(TrainersRepository $trainersRepository)
+    {
+        $this->template = 'site.index';
+        $this->trainersRepository = $trainersRepository;
+    }
+
+
     /**
      * Handle the incoming request.
      *
@@ -14,6 +25,11 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('index');
+
+        $trainers = $this->trainersRepository->getTrainers();
+
+        $this->trainers = view('site.trainers')->with('trainers', $trainers)->render();
+
+        return $this->renderOutput();
     }
 }

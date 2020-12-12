@@ -14,7 +14,7 @@ class TrainersRepository extends Repository
         $this->model = $trainer;
     }
 
-    public function getAll() {
+    public function getTrainers() {
         return Trainer::all();
     }
 
