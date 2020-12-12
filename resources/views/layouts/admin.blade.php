@@ -28,54 +28,54 @@
     <title>{{ $title }}</title>
 
     <!-- [favicon] begin -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.ico') }}" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('admin/images/favicon.ico') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('administrator/images/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('administrator/images/favicon.ico') }}" />
     <!-- Touch icons more info: http://mathiasbynens.be/notes/touch-icons -->
     <!-- For iPad3 with retina display: -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('admin/images/apple-touch-icon-144x.png') }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('administrator/images/apple-touch-icon-144x.png') }}" />
     <!-- For first- and second-generation iPad: -->
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('admin/images/apple-touch-icon-114x.png') }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('administrator/images/apple-touch-icon-114x.png') }}" />
     <!-- For first- and second-generation iPad: -->
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('admin/images/apple-touch-icon-72x.png') }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('administrator/images/apple-touch-icon-72x.png') }}" />
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('admin/images/apple-touch-icon-57x.png') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('administrator/images/apple-touch-icon-57x.png') }}" />
     <!-- [favicon] end -->
 
     <!-- CSSs -->
-    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('admin/css/reset.css') }}" /> <!-- RESET STYLESHEET -->
-    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('admin/css/style.css') }}" /> <!-- MAIN THEME STYLESHEET -->
-    <link rel="stylesheet" id="max-width-1024-css" href="{{ asset('admin/css/max-width-1024.css') }}" type="text/css" media="screen and (max-width: 1240px)" />
-    <link rel="stylesheet" id="max-width-768-css" href="{{ asset('admin/css/max-width-768.css') }}" type="text/css" media="screen and (max-width: 987px)" />
-    <link rel="stylesheet" id="max-width-480-css" href="{{ asset('admin/css/max-width-480.css') }}" type="text/css" media="screen and (max-width: 480px)" />
-    <link rel="stylesheet" id="max-width-320-css" href="{{ asset('admin/css/max-width-320.css') }}" type="text/css" media="screen and (max-width: 320px)" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('administrator/css/reset.css') }}" /> <!-- RESET STYLESHEET -->
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('administrator/css/style.css') }}" /> <!-- MAIN THEME STYLESHEET -->
+    <link rel="stylesheet" id="max-width-1024-css" href="{{ asset('administrator/css/max-width-1024.css') }}" type="text/css" media="screen and (max-width: 1240px)" />
+    <link rel="stylesheet" id="max-width-768-css" href="{{ asset('administrator/css/max-width-768.css') }}" type="text/css" media="screen and (max-width: 987px)" />
+    <link rel="stylesheet" id="max-width-480-css" href="{{ asset('administrator/css/max-width-480.css') }}" type="text/css" media="screen and (max-width: 480px)" />
+    <link rel="stylesheet" id="max-width-320-css" href="{{ asset('administrator/css/max-width-320.css') }}" type="text/css" media="screen and (max-width: 320px)" />
 
     <!-- CSSs Plugin -->
-    <link rel="stylesheet" id="thickbox-css" href="{{ asset('admin/css/thickbox.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" id="styles-minified-css" href="{{ asset('admin/css/style-minifield.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" id="buttons" href="{{ asset('admin/css/buttons.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" id="cache-custom-css" href="{{ asset('admin/css/cache-custom.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" id="custom-css" href="{{ asset('admin/css/custom.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" id="thickbox-css" href="{{ asset('administrator/css/thickbox.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" id="styles-minified-css" href="{{ asset('administrator/css/style-minifield.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" id="buttons" href="{{ asset('administrator/css/buttons.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" id="cache-custom-css" href="{{ asset('administrator/css/cache-custom.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" id="custom-css" href="{{ asset('administrator/css/custom.css') }}" type="text/css" media="all" />
 
     <!-- FONTs -->
     <link rel="stylesheet" id="google-fonts-css" href="http://fonts.googleapis.com/css?family=Oswald%7CDroid+Sans%7CPlayfair+Display%7COpen+Sans+Condensed%3A300%7CRokkitt%7CShadows+Into+Light%7CAbel%7CDamion%7CMontez&amp;ver=3.4.2" type="text/css" media="all" />
-    <link rel='stylesheet' href="{{ asset('admin/css/font-awesome.css') }}" type='text/css' media='all' />
+    <link rel='stylesheet' href="{{ asset('administrator/css/font-awesome.css') }}" type='text/css' media='all' />
 
     <!-- JAVASCRIPTs -->
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/comment-reply.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.quicksand.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.tipsy.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.prettyPhoto.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.cycle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.anythingslider.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.eislideshow.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.easing.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.flexslider-min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.aw-showcase.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/layerslider.kreaturamedia.jquery-min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/shortcodes.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.colorbox-min.js') }}"></script> <!-- nav -->
-    <script type="text/javascript" src="{{ asset('admin/js/jquery.tweetable.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/comment-reply.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.quicksand.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.tipsy.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.prettyPhoto.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.cycle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.anythingslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.eislideshow.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.easing.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.flexslider-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.aw-showcase.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/layerslider.kreaturamedia.jquery-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/shortcodes.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.colorbox-min.js') }}"></script> <!-- nav -->
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.tweetable.js') }}"></script>
 
 </head>
 <!-- END HEAD -->
@@ -152,9 +152,9 @@
 </div>
 <!-- END BG SHADOW -->
 
-<script type="text/javascript" src="{{ asset('admin/js/jquery.custom.js') }}"></script>
-<script type="text/javascript" src="{{ asset('admin/js/contact.js') }}"></script>
-<script type="text/javascript" src="{{ asset('admin/js/jquery.mobilemenu.js') }}"></script>
+<script type="text/javascript" src="{{ asset('administrator/js/jquery.custom.js') }}"></script>
+<script type="text/javascript" src="{{ asset('administrator/js/contact.js') }}"></script>
+<script type="text/javascript" src="{{ asset('administrator/js/jquery.mobilemenu.js') }}"></script>
 
 </body>
 <!-- END BODY -->

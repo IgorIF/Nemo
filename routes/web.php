@@ -20,8 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', IndexController::class);
 
 
-Route::middleware(['auth:sanctum', 'verified'])->name('admin.')->prefix('admin')->group(function() {
-    Route::redirect('/', '/admin/trainers');
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
+
+    Route::redirect('/', 'admin/trainers');
 
     Route::resource('trainers', TrainerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 

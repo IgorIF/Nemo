@@ -476,8 +476,13 @@
     </div>
 </section>
 
+<section class="our-trainers" id="trainer">
+    <div class="container">
 
-@yield('trainers')
+        @yield('trainers')
+
+    </div>
+</section>
 
 
 <section class="subscribers-for-visits" id="price">

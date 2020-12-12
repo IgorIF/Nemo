@@ -1,5 +1,3 @@
-
-
 <div id="sidebar-header" class="group">
     <div class="widget-first widget yit_text_quote">
 
