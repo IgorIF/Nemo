@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="ru">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="title" content="Акваклуб Nemo">
@@ -12,7 +13,7 @@
     <meta name="msapplication-TileColor" content="#06c5b2">
     <meta name="theme-color" content="#06c5b2">
     <!-- Animation. -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <!-- Animation. -->
 
     <title>Акваклуб Nemo</title>
@@ -34,13 +35,13 @@
     <![endif]-->
     <!--[if lte IE 8]><script src="http://phpbbex.com/oldies/oldies.js" charset="utf-8"></script><![endif]-->
 
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset("css/style.css?vr=21") }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=21') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
@@ -119,10 +120,10 @@
             </div>
             <div class="adcdsc">
                 <div class="header-logo" id="logos">
-                    <a href="/">
+                    <a href="index.html">
                         <picture>
-                            <source srcset="{{ asset("images/logo.svg") }}">
-                            <img src="{{ asset("images/logo.svg") }}" alt="Акваклуб Nemo" width="135" height="72">
+                            <source srcset="{{ asset('images/logo.svg') }}">
+                            <img src="{{ asset('images/logo.png') }}" alt="Акваклуб Nemo" width="135" height="72">
                         </picture>
                     </a>
                 </div>
@@ -176,9 +177,9 @@
                     </ul>
                 </div>
                 <div class="soc flex jcsb aic">
-                    <a href="https://vk.com/aquaclubnemo" target="_blank"><img src="{{ asset("images/vk_red_copy.png") }}"></a>
-                    <a href="https://www.facebook.com/aquaclubnemo" target="_blank"><img src="{{ asset("images/fb_red copy.svg") }}"></a>
-                    <a href="https://www.instagram.com/aquaclubnemo/" target="_blank"><img src="{{ asset("images/insta_red copy.png") }}"></a>
+                    <a href="https://vk.com/aquaclubnemo" target="_blank"><img src="{{ asset('images/vk_red_copy.png') }}"></a>
+                    <a href="https://www.facebook.com/aquaclubnemo" target="_blank"><img src="{{ asset('images/fb_red copy.svg') }}"></a>
+                    <a href="https://www.instagram.com/aquaclubnemo/" target="_blank"><img src="{{ asset('images/insta_red copy.png') }}"></a>
                     <a href="" data-type="ПРОБНОЕ ЗАНЯТИЕ" class="js-popup button--border">Пробное занятие</a>
                 </div>
             </div>
@@ -202,7 +203,7 @@
                 <span>Cкидка -30% на первое занятие</span>
             </p>
             <p>
-                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="/" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
+                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
         </div>
     </div>
 </header>
@@ -210,7 +211,7 @@
 <section class="about" id="about">
     <div class="container clearfix">
         <div class="about-image left" data-aos="fade-up">
-            <img src="{{ asset("images/about.jpg") }}" alt="Детский акваклуб «Немо»" width="507" height="475">
+            <img src="{{ asset('images/about.jpg') }}" alt="Детский акваклуб «Немо»" width="507" height="475">
             <a id="play-video" class="video-play-button" href="#"> <span></span></a>
 
             <div id="video-overlay" class="video-overlay">
@@ -261,7 +262,7 @@
             </div>
         </div>
         <div class="early-development-center">
-            <img src="{{ asset("images/baby2.png") }}">
+            <img src="{{ asset('images/baby2.png') }}">
         </div>
         <div class="early-development-right">
             <div class="top" data-aos="fade-up">
@@ -427,22 +428,22 @@
             <div class="tabs" data-aos="fade-up">
                 <div class="tab left">
                     <picture>
-                        <source srcset="{{ asset("images/age-of-child-icon1-active.svg") }}" type="image/svg+xml">
-                        <img src="{{ asset("images/age-of-child-icon1-active.png") }}" alt="от 1.5 месяцев" width="53" height="49">
+                        <source srcset="{{ asset('images/age-of-child-icon1-active.svg') }}" type="image/svg+xml">
+                        <img src="{{ asset('images/age-of-child-icon1-active.png') }}" alt="от 1.5 месяцев" width="53" height="49">
                     </picture>
                     <p>от 1,5 месяцев</p>
                 </div>
                 <div class="tab center">
                     <picture>
-                        <source srcset="{{ asset("images/age-of-child-icon2.svg") }}" type="image/svg+xml">
-                        <img src="{{ asset("images/age-of-child-icon2.png") }}" alt="Малыши от 2 до 4 лет" width="59" height="50">
+                        <source srcset="{{ asset('images/age-of-child-icon2.svg') }}" type="image/svg+xml">
+                        <img src="{{ asset('images/age-of-child-icon2.png') }}" alt="Малыши от 2 до 4 лет" width="59" height="50">
                     </picture>
                     <p>от 2 до 4 лет</p>
                 </div>
                 <div class="tab right">
                     <picture>
                         <source srcset="{{ asset('images/age-of-child-icon3.svg') }}" type="image/svg+xml">
-                        <img src="{{ asset("images/age-of-child-icon3.png") }}" alt="Детки от 5 до 7 лет" width="42" height="49">
+                        <img src="{{ asset('images/age-of-child-icon3.png') }}" alt="Детки от 5 до 7 лет" width="42" height="49">
                     </picture>
                     <p>от 5 до 7 лет</p>
                 </div>
@@ -487,11 +488,12 @@
             <div class="slides">
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/1.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/1.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Яна Кокошникова</h4>
 
                             <p>51 год, 2 сына. Всю жизнь занимаюсь спортом. Летом люблю кататься на велосипеде. Зимой осваиваю горные лыжи. Имею I взрослый по плаванию и по гандболу. Имею: 20-ти летний опыт работы по обучению плавания детей в возрасте от 2-х лет и 3- х летний опыт работы с грудничками. Высшее образование. В 2012 году в институте восстановительной медицины прошла курс обучения грудничкового плавания и основы детского массажа. В 2018 году прошла курсы по: Watsu for newborns at home bath Watsu Sensory Introduction. Участвовала в Международной конференции в Санкт- Петербурге. Кратко о своей работе: Люблю наблюдать и участвовать в процессе, как детки получают удовольствие от занятий в воде. Приоритет-мягкий подход.
+
                             </p>
                             <div><a data-fancybox href="https://www.youtube.com/watch?v=V4Vha9mA1oY">Смотреть занятие с Яной</a></div>
                         </div>
@@ -499,7 +501,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/2.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/2.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Светлана Гладилина</h4>
 
@@ -511,7 +513,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/3.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/3.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Светлана Борисова</h4>
 
@@ -522,7 +524,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/4.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/4.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Наталья Севрюкова</h4>
 
@@ -537,7 +539,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/5.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/5.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Снежана Саргунас</h4>
 
@@ -548,7 +550,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/6.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/6.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Наталья Высоцкая</h4>
 
@@ -561,7 +563,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/7.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/7.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Дамир Юмачиков</h4>
 
@@ -574,7 +576,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/8.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/8.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Валерия Денисова</h4>
 
@@ -588,7 +590,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/9.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/9.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Светлана Босова</h4>
 
@@ -601,7 +603,7 @@
 
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/10.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/10.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Аксенов Михаил</h4>
 
@@ -611,7 +613,7 @@
                 </div>
                 <div>
                     <div class="flex jcsb">
-                        <div class="trainer_foto"><img src="{{ asset("storage/trainers/11.jpg") }}" /></div>
+                        <div class="trainer_foto"><img src="{{ asset('storage/trainers/11.jpg') }}" /></div>
                         <div class="trainer_caption">
                             <h4>Павел Мишаков</h4>
 
@@ -627,37 +629,37 @@
         <div class="flexslider" id="f2">
             <div class="slides_pagination">
                 <div>
-                    <img src="{{ asset("storage/trainers/1.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/1.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/2.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/2.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/3.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/3.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/4.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/4.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/5.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/5.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/6.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/6.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/7.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/7.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/8.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/8.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/9.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/9.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/10.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/10.jpg') }}" />
                 </div>
                 <div>
-                    <img src="{{ asset("storage/trainers/11.jpg") }}" />
+                    <img src="{{ asset('storage/trainers/11.jpg') }}" />
                 </div>
 
 
@@ -825,10 +827,10 @@
                                                 <input type="radio" name="type_of_occupation" value="individual" checked="checked" disabled><span><!--class="width-two"-->Инидвидуальное</span>
                                             </div>
                                             <!--
-                                    <div class="item-radio">
-                                        <input type="radio" name="type_of_occupation" value="group"><span class="width-two">Групповое</span>
-                                    </div>
-                                    -->
+                                                <div class="item-radio">
+                                                    <input type="radio" name="type_of_occupation" value="group"><span class="width-two">Групповое</span>
+                                                </div>
+                                            -->
                                         </div>
                                         <div class="description">
                                             <p class="note"></p>
@@ -865,6 +867,8 @@
                                             <p class="note"></p>
                                         </div>
                                     </div>
+
+
 
                                 </div>
                             </div>
@@ -1040,7 +1044,7 @@
 <section class="submit-your-application">
     <div class="container clearfix">
         <div class="right" data-aos="fade-up">
-            <img src="{{ asset("images/submit-your-application-bg.png") }}" alt="Детский акваклуб «Немо»" width="632" height="411">
+            <img src="{{ asset('images/submit-your-application-bg.png') }}" alt="Детский акваклуб «Немо»" width="632" height="411">
         </div>
 
         <div class="left">
@@ -1066,22 +1070,22 @@
             <div class="tabs2" data-aos="fade-up">
 			                    <span class="tab2">
 			                        <picture>
-			                            <source srcset="{{ asset("images/security-icon1-active.svg") }}" type="image/svg+xml">
-			                            <img src="{{ asset("images/security-icon1-active.png") }}" alt="Бассейн" width="78" height="61">
+			                            <source srcset="{{ asset('images/security-icon1-active.svg') }}" type="image/svg+xml">
+			                            <img src="{{ asset('images/security-icon1-active.png') }}" alt="Бассейн" width="78" height="61">
 			                        </picture>
 			                        <p>Бассейн</p>
 			                    </span>
                 <span class="tab2">
 			                        <picture>
-			                            <source srcset="{{ asset("images/security-icon2.svg") }}" type="image/svg+xml">
-			                            <img src="{{ asset("images/security-icon2.png") }}" alt="Бассейн" width="59" height="61">
+			                            <source srcset="{{ asset('images/security-icon2.svg') }}" type="image/svg+xml">
+			                            <img src="{{ asset('images/security-icon2.png') }}" alt="Бассейн" width="59" height="61">
 			                        </picture>
 			                        <p>Водоподготовка</p>
 			                    </span>
                 <span class="tab2">
 			                        <picture>
-			                            <source srcset="{{ asset("images/security-icon3.svg") }}" type="image/svg+xml">
-			                            <img src="{{ asset("images/security-icon3.png") }}" alt="Бассейн" width="51" height="63">
+			                            <source srcset="{{ asset('images/security-icon3.svg') }}" type="image/svg+xml">
+			                            <img src="{{ asset('images/security-icon3.png') }}" alt="Бассейн" width="51" height="63">
 			                        </picture>
 			                        <p>Удобства</p>
 			                    </span>
@@ -1136,7 +1140,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review1.jpg") }}">
+                            <img src="{{ asset('images/review1.jpg') }}">
                             <a id="play-video1" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1145,7 +1149,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review2.jpg") }}">
+                            <img src="{{ asset('images/review2.jpg') }}">
                             <a id="play-video2" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1154,7 +1158,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review3.jpg") }}">
+                            <img src="{{ asset('images/review3.jpg') }}">
                             <a id="play-video3" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1162,7 +1166,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review4.jpg") }}">
+                            <img src="{{ asset('images/review4.jpg') }}">
                             <a id="play-video4" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1171,7 +1175,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review5.jpg") }}">
+                            <img src="{{ asset('images/review5.jpg') }}">
                             <a id="play-video5" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1180,7 +1184,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review6.jpg") }}">
+                            <img src="{{ asset('images/review6.jpg') }}">
                             <a id="play-video6" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1188,7 +1192,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review7.jpg") }}">
+                            <img src="{{ asset('images/review7.jpg') }}">
                             <a id="play-video7" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1197,7 +1201,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review8.jpg") }}">
+                            <img src="{{ asset('images/review8.jpg') }}">
                             <a id="play-video8" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1206,7 +1210,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review9.jpg") }}">
+                            <img src="{{ asset('images/review9.jpg') }}">
                             <a id="play-video9" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1214,7 +1218,7 @@
                 <div class="slider">
                     <div class="review_block">
                         <div class="play_block">
-                            <img src="{{ asset("images/review10.jpg") }}">
+                            <img src="{{ asset('images/review10.jpg') }}">
                             <a id="play-video10" class="video-play-button" href="#"> <span></span></a>
                         </div>
                     </div>
@@ -1275,10 +1279,10 @@
     <div class="container">
         <div class="footer-top">
             <div class="left">
-                <a href="/" data-aos="fade-up">
-                    <img src="{{ asset("images/logo-footer.png") }}" alt="Акваклуб Nemo" width="222" height="117">
+                <a href="index.html" data-aos="fade-up">
+                    <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
-                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="/" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
+                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
             </div>
             <div class="center1" data-aos="fade-up">
                 <h3 data-aos="fade-up">Контакты</h3>
@@ -1308,20 +1312,20 @@
                 <div class="social-link">
                     <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
                         <picture>
-                            <source srcset="{{ asset("images/instagramm.svg") }}">
-                            <img src="{{ asset("images/instagramm.png") }}" alt="инстаграмм">
+                            <source srcset="{{ asset('images/instagramm.svg') }}">
+                            <img src="{{ asset('images/instagramm.png') }}" alt="инстаграмм">
                         </picture>
                     </a>
                     <a href="https://vk.com/aquaclubnemo" target="_blank">
                         <picture>
-                            <source srcset="{{ asset("images/vk.svg") }}">
-                            <img src="{{ asset("images/vk.png") }}" alt="вконтакте">
+                            <source srcset="{{ asset('images/vk.svg') }}">
+                            <img src="{{ asset('images/vk.png') }}" alt="вконтакте">
                         </picture>
                     </a>
                     <a href="https://www.facebook.com/aquaclubnemo" target="_blank">
                         <picture>
-                            <source srcset="{{ asset("images/fb.svg") }}">
-                            <img src="{{ asset("images/fb.png") }}" alt="фейсбук">
+                            <source srcset="{{ asset('images/fb.svg') }}">
+                            <img src="{{ asset('images/fb.png') }}" alt="фейсбук">
                         </picture>
                     </a>
                 </div>
@@ -1392,20 +1396,20 @@
                     <div class="social-link">
                         <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
                             <picture>
-                                <source srcset="{{ asset("images/instagramm.svg") }}">
-                                <img src="{{ asset("images/instagramm.png") }}" alt="инстаграмм">
+                                <source srcset="{{ asset('images/instagramm.svg') }}">
+                                <img src="{{ asset('images/instagramm.png') }}" alt="инстаграмм">
                             </picture>
                         </a>
                         <a href="https://vk.com/aquaclubnemo" target="_blank">
                             <picture>
-                                <source srcset="{{ asset("images/vk.svg") }}">
-                                <img src="{{ asset("images/vk.png") }}" alt="вконтакте">
+                                <source srcset="{{ asset('images/vk.svg') }}">
+                                <img src="{{ asset('images/vk.png') }}" alt="вконтакте">
                             </picture>
                         </a>
                         <a href="https://www.facebook.com/aquaclubnemo" target="_blank">
                             <picture>
-                                <source srcset="{{ asset("images/fb.svg") }}">
-                                <img src="{{ asset("images/fb.png") }}" alt="фейсбук">
+                                <source srcset="{{ asset('images/fb.svg') }}">
+                                <img src="{{ asset('images/fb.png') }}" alt="фейсбук">
                             </picture>
                         </a>
                     </div>
@@ -1413,10 +1417,10 @@
             </div>
 
             <div class="footer-hidden-logo">
-                <a class="footer-logo" href="/">
-                    <img src="{{ asset("images/logo-footer.png") }}" alt="Акваклуб Nemo" width="222" height="117">
+                <a class="footer-logo" href="index.html">
+                    <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
-                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="/">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
+                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
                 <div class="footer-hidden-bottom">
                     <p>
@@ -1618,7 +1622,7 @@
     <div id="payment">
         <div class="container">
             <div id="close">
-                <img src="{{ asset("images/close.svg") }}">
+                <img src="{{ asset('images/close.svg') }}">
             </div>
 
             <span class="title">ОНЛАЙН ОПЛАТА</span>
@@ -1681,7 +1685,7 @@
                         <div class="with_abcolute">
                             <p>Вид абонемента:</p>
                             <div id="information">
-                                <img src="{{ asset("images/information.svg") }}">
+                                <img src="{{ asset('images/information.svg') }}">
                                 <div class="union">
                                     <p>Абонемент «Лояльный»:</p>
                                     <span>+Отмена занятия день в день без потери занятия<br>+Заранее информируем о замене тренера</span>
@@ -1726,14 +1730,14 @@
 
 <!-- scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{{ asset("libs/slick/slick.min.js") }}"></script>
+<script src="{{ asset('libs/slick/slick.min.js') }}"></script>
 <script src="{{ asset('js/jquery.toshowhide.js?vr=21') }}"></script>
-<script src="{{ asset("libs/jquery.custom-scroll.js") }}"></script>
+<script src="{{ asset('libs/jquery.custom-scroll.js') }}"></script>
 
 
-<script src="{{ asset("js/index-page.js?vr=21") }}"></script>
-<script src="{{ asset("js/script.js?vr=21") }}"></script>
-<script src="{{ asset("js/snow.js?vr=21") }}"></script>
+<script src="{{ asset('js/index-page.js?vr=21') }}"></script>
+<script src="{{ asset('js/script.js?vr=21') }}"></script>
+<script src="{{ asset('js/snow.js?vr=21') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
 
 <!-- Yclients -->
@@ -1776,8 +1780,8 @@
 </noscript>
 <!-- /Yandex.Metrika counter -->
 <!-- Animation. -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="{{ asset("js/app.js") }}"></script>
+<script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="{{ asset('js/app-aos.js') }}"></script>
 <!-- Animation. -->
 <script>
     Payment.hide_items_checked();
