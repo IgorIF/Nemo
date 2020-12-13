@@ -58,6 +58,19 @@ class TrainersRepository extends Repository
 
         $trainer = Trainer::find($id);
 
+        if(isset($data['image'])) {
+            $file = $data['image'];
+            $extension = $file->getClientOriginalExtension();
+            $fileName = time() . '.' . $extension;
+            $destinationPathAdd = 'public/trainers/' . $fileName;
+            Storage::put($destinationPathAdd, file_get_contents($file->getRealPath()));
+
+            $destinationPathDelete = 'public/trainers/' . $trainer->image;
+            Storage::delete($destinationPathDelete);
+
+            $data['image'] = $fileName;
+        }
+
         $trainer->fill($data)->update();
     }
 }
