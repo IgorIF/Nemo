@@ -29,6 +29,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
 
 });
 
+Route::post('/sendmail', [IndexController::class, 'sendMail'])->name('sendmail');
+
 
 Route::any('register', function(){
     abort('404');

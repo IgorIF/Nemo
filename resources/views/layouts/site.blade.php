@@ -208,7 +208,8 @@
 <div class="popup">
     <h3>Запись на занятие</h3>
 
-    <form class="main-form" action="mailer/smart.php" method="POST">
+    <form {{--class="main-form"--}} action="{{ route('sendmail') }}" method="POST">
+        {{ csrf_field() }}
         <select name="select_pool" id="agency" required>
             <option value="0" disabled>Выберите бассейн</option>
             <option value="1" selected>ул. Кировоградская 36 (метро Пражская)</option>
