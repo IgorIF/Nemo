@@ -22,6 +22,3 @@
 </center>
 
 <div class="clear space"></div>
-
-
-
