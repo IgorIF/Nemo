@@ -41,14 +41,14 @@ class TrainersRepository extends Repository
         Storage::put($destinationPath, file_get_contents($file->getRealPath()));
 
 
-        Trainer::create([
+        $trainer = Trainer::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'video' => $data['video'],
             'image' => $fileName
         ]);
 
-        return ['status' => 'Тренер добавлен'];
+        return ['status' => 'Тренер ' . $trainer->name . ' добавлен'];
 
     }
 
@@ -72,5 +72,7 @@ class TrainersRepository extends Repository
         }
 
         $trainer->fill($data)->update();
+
+        return ['status' => 'Тренер ' . $trainer->name . ' обновлен'];
     }
 }
