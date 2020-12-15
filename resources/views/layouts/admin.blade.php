@@ -72,10 +72,9 @@
     <script type="text/javascript" src="{{ asset('administrator/js/jquery.easing.js') }}"></script>
     <script type="text/javascript" src="{{ asset('administrator/js/jquery.flexslider-min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('administrator/js/jquery.aw-showcase.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/layerslider.kreaturamedia.jquery-min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('administrator/js/shortcodes.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.colorbox-min.js') }}"></script> <!-- nav -->
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.tweetable.js') }}"></script>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
