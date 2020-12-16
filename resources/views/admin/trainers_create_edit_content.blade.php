@@ -30,10 +30,9 @@
         <br /><br />
 
         <label class="label" data-toggle="tooltip" title="Выберите фото">
-            <img class="rounded" id="preview" src="{{ isset($trainer) ? asset('storage/trainers/' . $trainer->image) : 'https://svgsilh.com/svg/159236-9e9e9e.svg' }}" alt="preview">
+            <img class="rounded" id="preview" src="{{ isset($trainer) ? asset('storage/trainers/' . $trainer->image) : 'https://svgsilh.com/svg/159236-9e9e9e.svg' }}" alt="preview" style="width: 100px; height: 100px">
             <input type="file" class="sr-only" id="input" name="image" accept="image/*">
         </label>
-
         <br />
 
         Ссылка на видео:
@@ -76,8 +75,6 @@
     @endif
 
 </div>
-
-
 
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
