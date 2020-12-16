@@ -50,7 +50,6 @@
     <link rel="stylesheet" id="max-width-320-css" href="{{ asset('administrator/css/max-width-320.css') }}" type="text/css" media="screen and (max-width: 320px)" />
 
     <!-- CSSs Plugin -->
-    <link rel="stylesheet" id="thickbox-css" href="{{ asset('administrator/css/thickbox.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" id="styles-minified-css" href="{{ asset('administrator/css/style-minifield.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" id="buttons" href="{{ asset('administrator/css/buttons.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" id="cache-custom-css" href="{{ asset('administrator/css/cache-custom.css') }}" type="text/css" media="all" />
@@ -63,6 +62,9 @@
     <!-- JAVASCRIPTs -->
     <script type="text/javascript" src="{{ asset('administrator/js/jquery.js') }}"></script>
     <script type="text/javascript" src="{{ asset('administrator/js/shortcodes.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.custom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/contact.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('administrator/js/jquery.mobilemenu.js') }}"></script>
 
 
 
@@ -142,10 +144,6 @@
     <!-- END WRAPPER -->
 </div>
 <!-- END BG SHADOW -->
-
-<script type="text/javascript" src="{{ asset('administrator/js/jquery.custom.js') }}"></script>
-<script type="text/javascript" src="{{ asset('administrator/js/contact.js') }}"></script>
-<script type="text/javascript" src="{{ asset('administrator/js/jquery.mobilemenu.js') }}"></script>
 
 </body>
 <!-- END BODY -->
