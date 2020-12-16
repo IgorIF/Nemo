@@ -62,16 +62,6 @@
 
     <!-- JAVASCRIPTs -->
     <script type="text/javascript" src="{{ asset('administrator/js/jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/comment-reply.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.quicksand.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.tipsy.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.prettyPhoto.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.cycle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.anythingslider.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.eislideshow.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.easing.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.flexslider-min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('administrator/js/jquery.aw-showcase.js') }}"></script>
     <script type="text/javascript" src="{{ asset('administrator/js/shortcodes.js') }}"></script>
 
 
