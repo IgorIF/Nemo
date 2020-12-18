@@ -10,7 +10,7 @@ $(document).ready(function () {
     $(input).on('change', function (e) {
         let files = e.target.files;
         let done = function (url) {
-            input.value = '';
+            //input.value = '';
             image.src = url;
             $modal.modal('show');
         };
@@ -59,6 +59,10 @@ $(document).ready(function () {
             initialPreviewURL = preview.src;
             preview.src = canvas.toDataURL();
 
+            let cropData = cropper.getData();
+            cropData = JSON.stringify(cropData);
+
+            $('#image-data').attr('value', cropData);
         }
 
 

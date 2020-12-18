@@ -20,6 +20,8 @@
         @endif
         {{ csrf_field() }}
 
+            <input type="hidden" id="image-data" name="image-data">
+
         Имя:
         <br />
         <input type="text" name="name" value="{{ isset($trainer->name) ? $trainer->name : old('name') }}" size="50">
