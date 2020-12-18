@@ -59,9 +59,6 @@ class TrainerController extends AdminController
      */
     public function store(Request $request)
     {
-
-        dd($request->get('image-data'));
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
