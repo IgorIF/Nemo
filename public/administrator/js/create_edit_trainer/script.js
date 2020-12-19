@@ -38,7 +38,6 @@ $(document).ready(function () {
     $modal.on('shown.bs.modal', function () {
         cropper = new Cropper(image, {
             aspectRatio: 1,
-           // viewMode: 1,
             autoCropArea: 1,
         });
     }).on('hidden.bs.modal', function () {
@@ -47,17 +46,12 @@ $(document).ready(function () {
     });
 
     $('#crop').on('click', function () {
-        let initialPreviewURL;
         var canvas;
 
         $modal.modal('hide');
 
-        ///////
-
-
         if (cropper) {
             canvas = cropper.getCroppedCanvas();
-            initialPreviewURL = preview.src;
             preview.src = canvas.toDataURL();
 
             let cropData = cropper.getData();
@@ -65,8 +59,6 @@ $(document).ready(function () {
 
             $('#image-data').attr('value', cropData);
         }
-
-
     })
 })
 
