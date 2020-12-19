@@ -6,6 +6,7 @@ namespace App\Repositories;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class TrainersRepository extends Repository
 {
@@ -33,13 +34,31 @@ class TrainersRepository extends Repository
     public function createTrainer(Request $request)
     {
         $data = $request->except('_token');
+        $data['image-data'] = json_decode($data['image-data'], true);
 
-        $file = $data['image'];
-        $extension = $file->getClientOriginalExtension();
+        $extension = $data['image']->getClientOriginalExtension();
         $fileName = time() . '.' . $extension;
-        $destinationPath = 'public/trainers/' . $fileName;
-        Storage::put($destinationPath, file_get_contents($file->getRealPath()));
 
+        $img = Image::make($data['image']);
+
+        if ($data['image-data']['x'] < 0) {
+            $data['image-data']['x'] = 0;
+        }
+        if ($data['image-data']['y'] < 0) {
+            $data['image-data']['y'] = 0;
+        }
+
+        $data['image-data']['x'] = round($data['image-data']['x'], 0);
+        $data['image-data']['y'] = round($data['image-data']['y'], 0);
+        if ($data['image-data']['width'] == $data['image-data']['height'])
+            $data['image-data']['width'] = $data['image-data']['height'] = round($data['image-data']['width'], 0);
+        else {
+            $data['image-data']['width'] = round($data['image-data']['width'], 0);
+            $data['image-data']['height'] = round($data['image-data']['height'], 0);
+        }
+
+        $img->crop($data['image-data']['width'], $data['image-data']['height'], $data['image-data']['x'], $data['image-data']['y']);
+        $img->save('storage/trainers/' . $fileName);
 
         $trainer = Trainer::create([
             'name' => $data['name'],
