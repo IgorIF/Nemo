@@ -1,6 +1,7 @@
 <div id="sidebar-header" class="group">
-    <div class="widget-first widget yit_text_quote">
 
+    <a href="{{ route('admin.editsite') }}">Редактировать сайт</a>
+    <div class="widget-first widget yit_text_quote">
         <blockquote class="text-quote-quote">{{ Auth::user()->name }}</blockquote>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
