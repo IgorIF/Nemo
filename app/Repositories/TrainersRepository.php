@@ -36,29 +36,9 @@ class TrainersRepository extends Repository
         $data = $request->except('_token');
         $data['image-data'] = json_decode($data['image-data'], true);
 
-        $extension = $data['image']->getClientOriginalExtension();
-        $fileName = time() . '.' . $extension;
+        $data['image-data'] = $this->roundImageData($data['image-data']);
 
-        $img = Image::make($data['image']);
-
-        if ($data['image-data']['x'] < 0) {
-            $data['image-data']['x'] = 0;
-        }
-        if ($data['image-data']['y'] < 0) {
-            $data['image-data']['y'] = 0;
-        }
-
-        $data['image-data']['x'] = round($data['image-data']['x'], 0);
-        $data['image-data']['y'] = round($data['image-data']['y'], 0);
-        if ($data['image-data']['width'] == $data['image-data']['height'])
-            $data['image-data']['width'] = $data['image-data']['height'] = round($data['image-data']['width'], 0);
-        else {
-            $data['image-data']['width'] = round($data['image-data']['width'], 0);
-            $data['image-data']['height'] = round($data['image-data']['height'], 0);
-        }
-
-        $img->crop($data['image-data']['width'], $data['image-data']['height'], $data['image-data']['x'], $data['image-data']['y']);
-        $img->save('storage/trainers/' . $fileName);
+        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data']);
 
         $trainer = Trainer::create([
             'name' => $data['name'],
@@ -93,5 +73,32 @@ class TrainersRepository extends Repository
         $trainer->fill($data)->update();
 
         return ['status' => 'Тренер ' . $trainer->name . ' обновлен'];
+    }
+
+    private function roundImageData($imageData) {
+        if ($imageData['x'] < 0) {
+            $imageData['x'] = 0;
+        }
+        if ($imageData['y'] < 0) {
+            $imageData['y'] = 0;
+        }
+        $imageData['x'] = round($imageData['x'], 0);
+        $imageData['y'] = round($imageData['y'], 0);
+        if ($imageData['width'] == $imageData['height'])
+            $imageData['width'] = $imageData['height'] = round($imageData['width'], 0);
+        else {
+            $imageData['width'] = round($imageData['width'], 0);
+            $imageData['height'] = round($imageData['height'], 0);
+        }
+        return $imageData;
+    }
+
+    private function cropAndSaveImage($image, $imageData) {
+        $extension = $image->getClientOriginalExtension();
+        $fileName = time() . '.' . $extension;
+        $img = Image::make($image);
+        $img->crop($imageData['width'], $imageData['height'], $imageData['x'], $imageData['y']);
+        $img->save('storage/trainers/' . $fileName);
+        return $fileName;
     }
 }
