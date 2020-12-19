@@ -14,12 +14,12 @@ class HeaderDataSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trainers')->insert([
+        DB::table('header_data')->insert([
             'name' => 'text_1',
             'text' => 'Плавать раньше, чем ходить!'
         ]);
 
-        DB::table('trainers')->insert([
+        DB::table('header_data')->insert([
             'name' => 'text_2',
             'text' => 'Индивидуальные занятия плаванием для детей от 1,5 месяцев до 7 лет в Люберцах, Чертаново, Марьино и Академическом районах'
         ]);
