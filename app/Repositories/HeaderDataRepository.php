@@ -1,0 +1,98 @@
+<?php
+
+
+namespace App\Repositories;
+
+use App\Models\HeaderData;
+use App\Models\Trainer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
+class HeaderDataRepository extends Repository
+{
+    public function __construct(HeaderData $headerData)
+    {
+        $this->model = $headerData;
+    }
+
+    public function getTrainers() {
+        return Trainer::all();
+    }
+
+    public function destroyTrainer($id)
+    {
+        $trainer = Trainer::find($id);
+
+        $this->deleteImage($trainer->image);
+        $trainer->delete();
+
+        return ['status' => 'Тренер ' . $trainer->name . ' удален'];
+    }
+
+    public function createTrainer(Request $request)
+    {
+        $data = $request->except('_token');
+        $data['image-data'] = json_decode($data['image-data'], true);
+
+        $data['image-data'] = $this->roundImageData($data['image-data']);
+
+        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data']);
+
+        $trainer = Trainer::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'video' => $data['video'],
+            'image' => $fileName
+        ]);
+
+        return ['status' => 'Тренер ' . $trainer->name . ' добавлен'];
+
+    }
+
+    public function updateTrainer(Request $request, int $id)
+    {
+        $data = $request->except('_token', '_method');
+
+        $trainer = Trainer::find($id);
+
+        if(isset($data['image'])) {
+            $data['image-data'] = json_decode($data['image-data'], true);
+
+            $data['image-data'] = $this->roundImageData($data['image-data']);
+            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
+
+            $this->deleteImage($trainer->image);
+        }
+
+        $trainer->fill($data)->update();
+
+        return ['status' => 'Тренер ' . $trainer->name . ' обновлен'];
+    }
+
+    private function roundImageData($imageData) {
+        $imageData['x'] = round($imageData['x'], 0);
+        $imageData['y'] = round($imageData['y'], 0);
+        if ($imageData['width'] == $imageData['height'])
+            $imageData['width'] = $imageData['height'] = round($imageData['width'], 0);
+        else {
+            $imageData['width'] = round($imageData['width'], 0);
+            $imageData['height'] = round($imageData['height'], 0);
+        }
+        return $imageData;
+    }
+
+    private function cropAndSaveImage($image, $imageData) {
+        $extension = $image->getClientOriginalExtension();
+        $fileName = time() . '.' . $extension;
+        $img = Image::make($image);
+        $img->crop($imageData['width'], $imageData['height'], $imageData['x'], $imageData['y']);
+        $img->save('storage/trainers/' . $fileName);
+        return $fileName;
+    }
+
+    private function deleteImage($imageName) {
+        $destinationPath = 'public/trainers/' . $imageName;
+        Storage::delete($destinationPath);
+    }
+}

@@ -89,12 +89,8 @@
 </nav>
 <div class="container">
     <div class="header-bottom">
-        <h1 data-aos="fade-up" contenteditable="true">Плавать раньше, чем ходить!</h1>
-        <p data-aos="fade-up">
-            Индивидуальные занятия плаванием для детей
-            от 1,5 месяцев до 7 лет в Люберцах, Чертаново, Марьино
-            и Академическом районах
-        </p>
+        <h1 data-aos="fade-up" contenteditable="true">{{ $headerText[1] }}</h1>
+        <p data-aos="fade-up" contenteditable="true">{{ $headerText[2] }}</p>
         <p data-aos="fade-up">
 
             <span>Cкидка -30% на первое занятие</span>
