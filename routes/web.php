@@ -26,7 +26,12 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
 
     Route::redirect('/', 'admin/trainers');
     Route::resource('trainers', TrainerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
-    Route::get('editsite', EditSite::class)->name('editsite');
+
+    Route::prefix('editsite')->name('editsite.')->group(function () {
+        Route::get('/', EditSite::class);
+        Route::put('/edittext', [EditSite::class, 'editText']);
+    });
+
 
 });
 
@@ -36,3 +41,5 @@ Route::post('/sendmail', [IndexController::class, 'sendMail'])->name('sendmail')
 Route::any('register', function(){
     abort('404');
 });
+
+

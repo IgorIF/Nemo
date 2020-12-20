@@ -89,8 +89,8 @@
 </nav>
 <div class="container">
     <div class="header-bottom">
-        <h1 data-aos="fade-up" contenteditable="true">{{ $headerText[1] }}</h1>
-        <p data-aos="fade-up" contenteditable="true">{{ $headerText[2] }}</p>
+        <h1 data-aos="fade-up" id="header_text_1" contenteditable="true">{{ $headerText[1] }}</h1>
+        <p data-aos="fade-up" id="header_text_2" contenteditable="true">{{ $headerText[2] }}</p>
         <p data-aos="fade-up">
 
             <span>Cкидка -30% на первое занятие</span>

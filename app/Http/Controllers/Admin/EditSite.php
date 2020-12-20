@@ -30,7 +30,7 @@ class EditSite extends Controller
     {
         $this->headerDataRepository = $headerDataRepository;
         $this->trainersRepository = $trainersRepository;
-        $this->template = 'site.index';
+        $this->template = 'admin.editsite.index';
     }
 
 
@@ -51,7 +51,7 @@ class EditSite extends Controller
         return $this->renderOutput();
     }
 
-    protected function renderOutput() {
+    private function renderOutput() {
 
         $aboutUs = view( 'admin.editsite.about_us')->render();
         $theBenefitsOfEarlySwimming = view('admin.editsite. the_benefits_of_early_swimming')->render();
@@ -80,10 +80,14 @@ class EditSite extends Controller
         return view($this->template)->with($this->vars);
     }
 
-    protected function renderHeader() {
+    private function renderHeader() {
         $headerText[1] = $this->headerDataRepository->getOneTextByName('text_1');
         $headerText[2] = $this->headerDataRepository->getOneTextByName('text_2');
 
         $this->header = view( 'admin.editsite.header')->with('headerText', $headerText)->render();
+    }
+
+    protected function editText(Request $request) {
+        return $request->get('text');
     }
 }

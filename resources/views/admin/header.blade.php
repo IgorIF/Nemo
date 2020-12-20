@@ -1,6 +1,6 @@
 <div id="sidebar-header" class="group">
 
-    <a href="{{ route('admin.editsite') }}">Редактировать сайт</a>
+    <a href="{{ route('admin.editsite.') }}">Редактировать сайт</a>
     <div class="widget-first widget yit_text_quote">
         <blockquote class="text-quote-quote">{{ Auth::user()->name }}</blockquote>
 

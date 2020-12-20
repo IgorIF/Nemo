@@ -3,7 +3,7 @@
 
 namespace App\Repositories;
 
-use App\Models\HeaderData;
+use App\Models\Text;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +11,7 @@ use Intervention\Image\Facades\Image;
 
 class HeaderDataRepository extends Repository
 {
-    public function __construct(HeaderData $headerData)
+    public function __construct(Text $headerData)
     {
         $this->model = $headerData;
     }

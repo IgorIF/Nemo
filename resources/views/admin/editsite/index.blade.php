@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.editsite')
 
 @section('header')
     {!! $header !!}
