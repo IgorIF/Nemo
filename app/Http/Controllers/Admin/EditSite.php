@@ -18,6 +18,7 @@ class EditSite extends Controller
     private $header;
     private $aboutUs;
     private $theBenefitsOfEarlySwimming;
+    private $whoSwimsWithUs;
     private $trainers;
 
     protected $template;        //шаблон
@@ -48,15 +49,13 @@ class EditSite extends Controller
         $this->renderHeader();
         $this->renderAboutUs();
         $this->renderTheBenefitsOfEarlySwimming();
-
-        $trainers = $this->trainersRepository->getTrainers();
-        $this->trainers = view('admin.editsite.trainers')->with('trainers', $trainers)->render();
+        $this->renderWhoSwimsWithUs();
+        $this->renderTrainers();
 
         return $this->renderOutput();
     }
 
     private function renderOutput() {
-        $whoSwimsWithUs = view('admin.editsite.who_swims_with_us')->render();
         $prices = view('admin.editsite.prices')->render();
         $swimNeverNotEarly = view('admin.editsite.swim_never_not_early')->render();
         $howWeSwim = view('admin.editsite.how_we_swim')->render();
@@ -68,7 +67,7 @@ class EditSite extends Controller
         $this->vars = Arr::add($this->vars, 'header', $this->header);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
-        $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $whoSwimsWithUs);
+        $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
         $this->vars = Arr::add($this->vars, 'prices', $prices);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $swimNeverNotEarly);
@@ -122,6 +121,32 @@ class EditSite extends Controller
         $text[22] = $this->textsRepository->getOneTextById(22);
 
         $this->theBenefitsOfEarlySwimming = view('admin.editsite.the_benefits_of_early_swimming')->with('text', $text)->render();
+    }
+
+    private function renderWhoSwimsWithUs() {
+        $text = [];
+
+        $text[23] = $this->textsRepository->getOneTextById(23);
+        $text[24] = $this->textsRepository->getOneTextById(24);
+        $text[25] = $this->textsRepository->getOneTextById(25);
+        $text[26] = $this->textsRepository->getOneTextById(26);
+        $text[27] = $this->textsRepository->getOneTextById(27);
+        $text[28] = $this->textsRepository->getOneTextById(28);
+        $text[29] = $this->textsRepository->getOneTextById(29);
+        $text[30] = $this->textsRepository->getOneTextById(30);
+        $text[31] = $this->textsRepository->getOneTextById(31);
+
+        $this->whoSwimsWithUs = view('admin.editsite.who_swims_with_us')->with('text', $text)->render();
+    }
+
+    private function renderTrainers() {
+        $text = [];
+
+        $text[32] = $this->textsRepository->getOneTextById(32);
+        $text[33] = $this->textsRepository->getOneTextById(33);
+
+        $trainers = $this->trainersRepository->getTrainers();
+        $this->trainers = view('admin.editsite.trainers')->with(['trainers' => $trainers, 'text' => $text ])->render();
     }
 
     protected function editText(Request $request) {

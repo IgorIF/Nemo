@@ -1,7 +1,5 @@
-<h2 data-aos="fade-up">Наши тренеры</h2>
-<p data-aos="fade-up">
-    Мы понимаем и уважаем индивидуальность личности малыша,
-    создаем для него атмосферу доверия и уверенности</p>
+<h2 data-aos="fade-up" id="text_32" contenteditable="true">{!! $text[32] !!}</h2>
+<p data-aos="fade-up" id="text_33" contenteditable="true">{!! $text[33] !!}</p>
 
 <div class="flexslider" id="f1" data-aos="fade-up">
     <div class="slides">
