@@ -15,9 +15,10 @@ class EditSite extends Controller
     protected $textsRepository;
     protected $trainersRepository;
 
-    protected $header;
+    private $header;
     private $aboutUs;
-    protected $trainers;
+    private $theBenefitsOfEarlySwimming;
+    private $trainers;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -46,6 +47,7 @@ class EditSite extends Controller
 
         $this->renderHeader();
         $this->renderAboutUs();
+        $this->renderTheBenefitsOfEarlySwimming();
 
         $trainers = $this->trainersRepository->getTrainers();
         $this->trainers = view('admin.editsite.trainers')->with('trainers', $trainers)->render();
@@ -54,7 +56,6 @@ class EditSite extends Controller
     }
 
     private function renderOutput() {
-        $theBenefitsOfEarlySwimming = view('admin.editsite. the_benefits_of_early_swimming')->render();
         $whoSwimsWithUs = view('admin.editsite.who_swims_with_us')->render();
         $prices = view('admin.editsite.prices')->render();
         $swimNeverNotEarly = view('admin.editsite.swim_never_not_early')->render();
@@ -66,7 +67,7 @@ class EditSite extends Controller
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
-        $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $theBenefitsOfEarlySwimming);
+        $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
         $this->vars = Arr::add($this->vars, 'prices', $prices);
@@ -101,6 +102,26 @@ class EditSite extends Controller
         $text[9] = $this->textsRepository->getOneTextById(9);
 
         $this->aboutUs = view( 'admin.editsite.about_us')->with('text', $text)->render();
+    }
+
+    private function renderTheBenefitsOfEarlySwimming() {
+        $text = [];
+
+        $text[10] = $this->textsRepository->getOneTextById(10);
+        $text[11] = $this->textsRepository->getOneTextById(11);
+        $text[12] = $this->textsRepository->getOneTextById(12);
+        $text[13] = $this->textsRepository->getOneTextById(13);
+        $text[14] = $this->textsRepository->getOneTextById(14);
+        $text[15] = $this->textsRepository->getOneTextById(15);
+        $text[16] = $this->textsRepository->getOneTextById(16);
+        $text[17] = $this->textsRepository->getOneTextById(17);
+        $text[18] = $this->textsRepository->getOneTextById(18);
+        $text[19] = $this->textsRepository->getOneTextById(19);
+        $text[20] = $this->textsRepository->getOneTextById(20);
+        $text[21] = $this->textsRepository->getOneTextById(21);
+        $text[22] = $this->textsRepository->getOneTextById(22);
+
+        $this->theBenefitsOfEarlySwimming = view('admin.editsite.the_benefits_of_early_swimming')->with('text', $text)->render();
     }
 
     protected function editText(Request $request) {
