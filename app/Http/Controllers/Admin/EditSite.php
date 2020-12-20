@@ -20,6 +20,7 @@ class EditSite extends Controller
     private $theBenefitsOfEarlySwimming;
     private $whoSwimsWithUs;
     private $trainers;
+    private $swimNeverNotEarly;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -51,13 +52,13 @@ class EditSite extends Controller
         $this->renderTheBenefitsOfEarlySwimming();
         $this->renderWhoSwimsWithUs();
         $this->renderTrainers();
+        $this->renderSwimNeverNotEarly();
 
         return $this->renderOutput();
     }
 
     private function renderOutput() {
         $prices = view('admin.editsite.prices')->render();
-        $swimNeverNotEarly = view('admin.editsite.swim_never_not_early')->render();
         $howWeSwim = view('admin.editsite.how_we_swim')->render();
         $security = view('admin.editsite.security')->render();
         $reviews = view('admin.editsite.reviews')->render();
@@ -70,7 +71,7 @@ class EditSite extends Controller
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
         $this->vars = Arr::add($this->vars, 'prices', $prices);
-        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $swimNeverNotEarly);
+        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
         $this->vars = Arr::add($this->vars, 'security', $security);
         $this->vars = Arr::add($this->vars, 'reviews', $reviews);
@@ -147,6 +148,15 @@ class EditSite extends Controller
 
         $trainers = $this->trainersRepository->getTrainers();
         $this->trainers = view('admin.editsite.trainers')->with(['trainers' => $trainers, 'text' => $text ])->render();
+    }
+
+    private function renderSwimNeverNotEarly() {
+        $text = [];
+
+        $text[34] = $this->textsRepository->getOneTextById(34);
+        $text[35] = $this->textsRepository->getOneTextById(35);
+
+        $this->swimNeverNotEarly = view('admin.editsite.swim_never_not_early')->with('text', $text)->render();
     }
 
     protected function editText(Request $request) {

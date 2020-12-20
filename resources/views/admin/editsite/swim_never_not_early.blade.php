@@ -3,8 +3,8 @@
 </div>
 
 <div class="left">
-    <h2 data-aos="fade-up">Плавать никогда<br>не рано</h2>
-    <p data-aos="fade-up">Получите скидку <span class="discount">-30%</span>&nbsp на первое занятие. Стоимость пробного занятия составит 980 рублей<span class="discount-sum"></span>
+    <h2 data-aos="fade-up" id="text_34" contenteditable="true">{!! $text[34] !!}</h2>
+    <p data-aos="fade-up" id="text_35" contenteditable="true">{!! $text[35] !!}<span class="discount-sum"></span>
     </p>
     <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="#" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
 </div>
