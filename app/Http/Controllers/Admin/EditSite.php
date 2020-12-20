@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
-use App\Repositories\HeaderDataRepository;
+use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -12,25 +12,24 @@ use Illuminate\Support\Arr;
 class EditSite extends Controller
 {
 
-    protected $headerDataRepository;
+    protected $textsRepository;
     protected $trainersRepository;
 
     protected $header;
+    private $aboutUs;
     protected $trainers;
-
-    private $text = [];
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
 
     /**
      * EditSite constructor.
-     * @param HeaderDataRepository $headerDataRepository
+     * @param TextsRepository $textsRepository
      * @param TrainersRepository $trainersRepository
      */
-    public function __construct(HeaderDataRepository $headerDataRepository, TrainersRepository $trainersRepository)
+    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository)
     {
-        $this->headerDataRepository = $headerDataRepository;
+        $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->template = 'admin.editsite.index';
     }
@@ -46,6 +45,7 @@ class EditSite extends Controller
     {
 
         $this->renderHeader();
+        $this->renderAboutUs();
 
         $trainers = $this->trainersRepository->getTrainers();
         $this->trainers = view('admin.editsite.trainers')->with('trainers', $trainers)->render();
@@ -54,8 +54,6 @@ class EditSite extends Controller
     }
 
     private function renderOutput() {
-
-        $aboutUs = view( 'admin.editsite.about_us')->render();
         $theBenefitsOfEarlySwimming = view('admin.editsite. the_benefits_of_early_swimming')->render();
         $whoSwimsWithUs = view('admin.editsite.who_swims_with_us')->render();
         $prices = view('admin.editsite.prices')->render();
@@ -67,7 +65,7 @@ class EditSite extends Controller
         $footer = view('admin.editsite.footer')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
-        $this->vars = Arr::add($this->vars, 'aboutUs', $aboutUs);
+        $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
@@ -83,13 +81,29 @@ class EditSite extends Controller
     }
 
     private function renderHeader() {
-        $this->text[1] = $this->headerDataRepository->getOneTextById(1);
-        $this->text[2] = $this->headerDataRepository->getOneTextById(2);
+        $text = [];
 
-        $this->header = view( 'admin.editsite.header')->with('headerText', $this->text)->render();
+        $text[1] = $this->textsRepository->getOneTextById(1);
+        $text[2] = $this->textsRepository->getOneTextById(2);
+        $text[3] = $this->textsRepository->getOneTextById(3);
+        $text[4] = $this->textsRepository->getOneTextById(4);
+        $text[5] = $this->textsRepository->getOneTextById(5);
+        $text[6] = $this->textsRepository->getOneTextById(6);
+        $text[7] = $this->textsRepository->getOneTextById(7);
+
+        $this->header = view( 'admin.editsite.header')->with('text', $text)->render();
+    }
+
+    private function renderAboutUs() {
+        $text = [];
+
+        $text[8] = $this->textsRepository->getOneTextById(8);
+        $text[9] = $this->textsRepository->getOneTextById(9);
+
+        $this->aboutUs = view( 'admin.editsite.about_us')->with('text', $text)->render();
     }
 
     protected function editText(Request $request) {
-        return $request->get('text');
+       $this->textsRepository->updateText($request);
     }
 }
