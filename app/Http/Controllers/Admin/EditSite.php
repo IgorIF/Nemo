@@ -18,6 +18,8 @@ class EditSite extends Controller
     protected $header;
     protected $trainers;
 
+    private $text = [];
+
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
 
@@ -81,10 +83,10 @@ class EditSite extends Controller
     }
 
     private function renderHeader() {
-        $headerText[1] = $this->headerDataRepository->getOneTextByName('text_1');
-        $headerText[2] = $this->headerDataRepository->getOneTextByName('text_2');
+        $this->text[1] = $this->headerDataRepository->getOneTextById(1);
+        $this->text[2] = $this->headerDataRepository->getOneTextById(2);
 
-        $this->header = view( 'admin.editsite.header')->with('headerText', $headerText)->render();
+        $this->header = view( 'admin.editsite.header')->with('headerText', $this->text)->render();
     }
 
     protected function editText(Request $request) {

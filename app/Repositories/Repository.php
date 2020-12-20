@@ -8,7 +8,7 @@ class Repository
 {
     protected $model = false;
 
-    public function getOneTextByName($name) {
-        return $this->model->where('name', $name)->first()->text;
+    public function getOneTextById($id) {
+        return $this->model->where('id', $id)->first()->text;
     }
 }

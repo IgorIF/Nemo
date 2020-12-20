@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
 
     Route::prefix('editsite')->name('editsite.')->group(function () {
         Route::get('/', EditSite::class);
-        Route::put('/edittext', [EditSite::class, 'editText']);
+        Route::put('/edittext', [EditSite::class, 'editText'])->name('edittext');
     });
 
 
