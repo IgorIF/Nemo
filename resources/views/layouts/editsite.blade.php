@@ -570,7 +570,7 @@
 </script>
 <!-- Модальное окно закрытие клуба -->
 
-<script type="text/javascript" src="{{ asset('administrator/js/editsite/script.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
 </body>
 
 </html>
