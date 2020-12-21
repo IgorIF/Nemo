@@ -34,22 +34,22 @@
             <address>
                 <div class="flex jcsb">
                     <div class="first-phone">
-                        <a href="tel:+79776800261" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" id="text_4" contenteditable="true">{{ $text[4] }}</a>
+                        <a href="tel:+79776800261" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" id="text_4" contenteditable="true">{!! $text[4] !!}</a>
                         <p>ул. Кировоградская 36 </p>
                         <span>Пражская<i>800м</i></span>
                     </div>
                     <div class="second-phone">
-                        <a href="tel:+79776800262" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" id="text_5" contenteditable="true">{{ $text[5] }}</a>
+                        <a href="tel:+79776800262" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" id="text_5" contenteditable="true">{!! $text[5] !!}</a>
                         <p>ул. Винокурова 24, к4</p>
                         <span>Академическая<i>1,7км</i></span>
                     </div>
                     <div class="third-phone">
-                        <a href="tel:+79776800263" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" id="text_6" contenteditable="true">{{ $text[6] }}</a>
+                        <a href="tel:+79776800263" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" id="text_6" contenteditable="true">{!! $text[6] !!}</a>
                         <p>Мячковский бульвар 16, к1</p>
                         <span>Марьино<i>1,1км</i></span>
                     </div>
                     <div class="fourth-phone">
-                        <a href="tel:+79776800266" onclick="yaCounter45529422.reachGoal('kamova'); return true;" id="text_7" contenteditable="true">{{ $text[7] }}</a>
+                        <a href="tel:+79776800266" onclick="yaCounter45529422.reachGoal('kamova'); return true;" id="text_7" contenteditable="true">{!! $text[7] !!}</a>
                         <p>г.Люберцы, ул. Камова 11/5 </p>
                         <span>Некрасовка<i>2,5 км</i></span>
                     </div>
@@ -89,11 +89,11 @@
 </nav>
 <div class="container">
     <div class="header-bottom">
-        <h1 data-aos="fade-up" id="text_1" contenteditable="true">{{ $text[1] }}</h1>
-        <p data-aos="fade-up" id="text_2" contenteditable="true">{{ $text[2] }}</p>
+        <h1 data-aos="fade-up" id="text_1" contenteditable="true">{!! $text[1] !!}</h1>
+        <p data-aos="fade-up" id="text_2" contenteditable="true">{!! $text[2] !!}</p>
         <p data-aos="fade-up">
 
-            <span id="text_3" contenteditable="true">{{ $text[3] }}</span>
+            <span id="text_3" contenteditable="true">{!! $text[3] !!}</span>
         </p>
         <p>
             <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>

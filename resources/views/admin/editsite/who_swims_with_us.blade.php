@@ -1,4 +1,4 @@
-<h2 data-aos="fade-up">Кто у нас плавает</h2>
+<h2 data-aos="fade-up" id="text_39" contenteditable="true">{!! $text[39] !!}</h2>
 
 <div class="age-of-child-items">
     <div class="tabs" data-aos="fade-up">

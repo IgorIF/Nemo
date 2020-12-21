@@ -108,16 +108,7 @@ class TrainerController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'image' => '',
-            'video' => '',
-        ]);
-
-        $result = $this->trainersRepository->updateTrainer($request, $id);
-
-        return redirect()->route('admin.trainers.index')->with($result);
+        $this->trainersRepository->updateTrainer($request, $id);
     }
 
     /**

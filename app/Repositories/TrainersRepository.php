@@ -51,22 +51,20 @@ class TrainersRepository extends Repository
 
     public function updateTrainer(Request $request, int $id)
     {
-        $data = $request->except('_token', '_method');
+        //$data = $request->except('_token', '_method');
 
         $trainer = Trainer::find($id);
 
-        if(isset($data['image'])) {
+        /*if(isset($data['image'])) {
             $data['image-data'] = json_decode($data['image-data'], true);
 
             $data['image-data'] = $this->roundImageData($data['image-data']);
             $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
 
             $this->deleteImage($trainer->image);
-        }
+        }*/
 
-        $trainer->fill($data)->update();
-
-        return ['status' => 'Тренер ' . $trainer->name . ' обновлен'];
+        $trainer->fill([$request->get('field') => $request->get('text')])->update();
     }
 
     private function roundImageData($imageData) {

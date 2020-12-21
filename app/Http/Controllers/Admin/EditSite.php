@@ -137,6 +137,7 @@ class EditSite extends Controller
         $text[29] = $this->textsRepository->getOneTextById(29);
         $text[30] = $this->textsRepository->getOneTextById(30);
         $text[31] = $this->textsRepository->getOneTextById(31);
+        $text[39] = $this->textsRepository->getOneTextById(39);
 
         $this->whoSwimsWithUs = view('admin.editsite.who_swims_with_us')->with('text', $text)->render();
     }

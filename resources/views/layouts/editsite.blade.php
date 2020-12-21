@@ -19,6 +19,8 @@
     <link type="text/css" rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <!-- Animation. -->
 
+    <link rel='stylesheet' href="{{ asset('administrator/css/mycss.css') }}" type='text/css'/>
+
     <title>Акваклуб Nemo</title>
 
     <!--[if lt IE 8]>
@@ -44,7 +46,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=21') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css?vr=21') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />

@@ -49,6 +49,9 @@
     <link rel="stylesheet" id="max-width-480-css" href="{{ asset('administrator/css/max-width-480.css') }}" type="text/css" media="screen and (max-width: 480px)" />
     <link rel="stylesheet" id="max-width-320-css" href="{{ asset('administrator/css/max-width-320.css') }}" type="text/css" media="screen and (max-width: 320px)" />
 
+    <!-- CSSs -->
+
+
     <!-- CSSs Plugin -->
     <link rel="stylesheet" id="styles-minified-css" href="{{ asset('administrator/css/style-minifield.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" id="buttons" href="{{ asset('administrator/css/buttons.css') }}" type="text/css" media="all" />

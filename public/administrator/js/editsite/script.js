@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     /// update text
-    $('[contenteditable="true"][id^="text_"]').on('keyup', function () {
+    $('[contenteditable="true"][id^="text_"]').on('focusout', function () {
+        backlightFrameOff(this);
+
         let id = $(this).attr('id').split('_')[1];
         let text = $(this).html();
 
@@ -20,7 +22,9 @@ $(document).ready(function () {
 
 
     /// update trainer
-    $('[id^= "trainer_"]').find('[contenteditable="true"]').on('keyup', function () {
+    $('[id^= "trainer_"]').find('[contenteditable="true"]').on('focusout', function () {
+        backlightFrameOff(this);
+
         let id = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let field = $(this).attr('id').split('_')[1];
         let text = $(this).html();
@@ -28,16 +32,27 @@ $(document).ready(function () {
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'PUT',
-            url: '',
+            url: './trainers/' + id,
             data: {
-                'id': id,
                 'field': field,
                 'text': text
             },
-            success: function () {},
+            success: function (r) {
+                console.log(r);
+            },
             error: function () {}
         });
     });
 
 
-})
+    /// backlight frame
+    $('[contenteditable="true"]').on('focus', function () {
+        $(this).addClass('backLightFrame');
+    })
+
+    function backlightFrameOff(e) {
+        $(e).removeClass('backLightFrame');
+    }
+
+
+});
