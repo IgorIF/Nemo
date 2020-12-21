@@ -6,12 +6,12 @@
 
         @foreach($trainers as $trainer)
 
-            <div>
+            <div id="trainer_{{ $trainer->id }}">
                 <div class="flex jcsb">
                     <div class="trainer_foto"><img src="{{ asset('storage/trainers/' . $trainer->image) }}" /></div>
                     <div class="trainer_caption">
-                        <h4>{{ $trainer->name }}</h4>
-                        <p>{{ $trainer->description }}</p>
+                        <h4 id="trainer_name" contenteditable="true">{{ $trainer->name }}</h4>
+                        <p id="trainer_description" contenteditable="true">{{ $trainer->description }}</p>
 
                         @if(!empty($trainer->video))
                             <div><a data-fancybox href="{{ $trainer->video }}">Смотреть занятие</a></div>
@@ -29,7 +29,7 @@
     <div class="slides_pagination">
 
         @foreach($trainers as $trainer)
-            <div>
+            <div id="trainer_{{ $trainer->id }}">
                 <img src="{{ asset('storage/trainers/' . $trainer->image) }}" />
             </div>
         @endforeach

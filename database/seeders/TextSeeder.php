@@ -191,17 +191,17 @@ class TextSeeder extends Seeder
 
         DB::table('texts')->insert([
             'id' => '36',
-            'text' => ''
+            'text' => 'Бассейн'
         ]);
 
         DB::table('texts')->insert([
             'id' => '37',
-            'text' => ''
+            'text' => 'Водоподготовка'
         ]);
 
         DB::table('texts')->insert([
             'id' => '38',
-            'text' => ''
+            'text' => 'Удобства'
         ]);
 
         DB::table('texts')->insert([

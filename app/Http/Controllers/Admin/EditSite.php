@@ -21,6 +21,7 @@ class EditSite extends Controller
     private $whoSwimsWithUs;
     private $trainers;
     private $swimNeverNotEarly;
+    private $security;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -53,6 +54,7 @@ class EditSite extends Controller
         $this->renderWhoSwimsWithUs();
         $this->renderTrainers();
         $this->renderSwimNeverNotEarly();
+        $this->renderSecurity();
 
         return $this->renderOutput();
     }
@@ -60,7 +62,6 @@ class EditSite extends Controller
     private function renderOutput() {
         $prices = view('admin.editsite.prices')->render();
         $howWeSwim = view('admin.editsite.how_we_swim')->render();
-        $security = view('admin.editsite.security')->render();
         $reviews = view('admin.editsite.reviews')->render();
         $swimmingPool = view('admin.editsite.swimming_pool')->render();
         $footer = view('admin.editsite.footer')->render();
@@ -73,7 +74,7 @@ class EditSite extends Controller
         $this->vars = Arr::add($this->vars, 'prices', $prices);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
-        $this->vars = Arr::add($this->vars, 'security', $security);
+        $this->vars = Arr::add($this->vars, 'security', $this->security);
         $this->vars = Arr::add($this->vars, 'reviews', $reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $swimmingPool);
         $this->vars = Arr::add($this->vars, 'footer', $footer);
@@ -157,6 +158,16 @@ class EditSite extends Controller
         $text[35] = $this->textsRepository->getOneTextById(35);
 
         $this->swimNeverNotEarly = view('admin.editsite.swim_never_not_early')->with('text', $text)->render();
+    }
+
+    private function renderSecurity() {
+        $text = [];
+
+        $text[36] = $this->textsRepository->getOneTextById(36);
+        $text[37] = $this->textsRepository->getOneTextById(37);
+        $text[38] = $this->textsRepository->getOneTextById(38);
+
+        $this->security = view('admin.editsite.security')->with('text', $text)->render();
     }
 
     protected function editText(Request $request) {
