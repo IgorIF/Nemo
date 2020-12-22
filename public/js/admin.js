@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    let startText;
+
     /// update text
     $('[contenteditable="true"][id^="text_"]').on('focusout', function () {
         backlightFrameOff(this);
@@ -7,25 +9,30 @@ $(document).ready(function () {
         let id = $(this).attr('id').split('_')[1];
         let text = $(this).html();
 
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'PUT',
-            url: './editsite/edittext',
-            data: {
-                'id': id,
-                'text': text
-            },
-            success: function (response) {
-                if (response == 1) {
-                    toast('Сохранено', {type: 'success'});
-                } else {
+        if (text !== startText) {
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'PUT',
+                url: './editsite/edittext',
+                data: {
+                    'id': id,
+                    'text': text
+                },
+                success: function (response) {
+                    if (response == 1) {
+                        toast('Сохранено', {type: 'success'});
+                    } else {
+                        toast('Ошибка сохранения', {type: 'danger'})
+                    }
+                },
+                error: function () {
                     toast('Ошибка сохранения', {type: 'danger'})
                 }
-            },
-            error: function () {
-                toast('Ошибка сохранения', {type: 'danger'})
-            }
-        });
+            });
+            startText = null;
+        }
+    }).on('focusin', function () {
+        startText = $(this).html();
     });
 
 
@@ -37,25 +44,30 @@ $(document).ready(function () {
         let field = $(this).attr('id').split('_')[1];
         let text = $(this).html();
 
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'PUT',
-            url: './trainers/' + id,
-            data: {
-                'field': field,
-                'text': text
-            },
-            success: function (response) {
-                if (response == 1) {
-                    toast('Сохранено', {type: 'success'});
-                } else {
+        if (text !== startText) {
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'PUT',
+                url: './trainers/' + id,
+                data: {
+                    'field': field,
+                    'text': text
+                },
+                success: function (response) {
+                    if (response == 1) {
+                        toast('Сохранено', {type: 'success'});
+                    } else {
+                        toast('Ошибка сохранения', {type: 'danger'})
+                    }
+                },
+                error: function () {
                     toast('Ошибка сохранения', {type: 'danger'})
                 }
-            },
-            error: function () {
-                toast('Ошибка сохранения', {type: 'danger'})
-            }
-        });
+            });
+            startText = null;
+        }
+    }).on('focusin', function () {
+        startText = $(this).html();
     });
 
 
