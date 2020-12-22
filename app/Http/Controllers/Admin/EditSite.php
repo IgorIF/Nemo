@@ -172,6 +172,6 @@ class EditSite extends Controller
     }
 
     protected function editText(Request $request) {
-       $this->textsRepository->updateText($request);
+        return $this->textsRepository->updateText($request);
     }
 }

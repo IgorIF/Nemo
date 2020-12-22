@@ -15,8 +15,16 @@ $(document).ready(function () {
                 'id': id,
                 'text': text
             },
-            success: function () {},
-            error: function () {}
+            success: function (response) {
+                if (response == 1) {
+                    toast('Сохранено', {type: 'success'});
+                } else {
+                    toast('Ошибка сохранения', {type: 'danger'})
+                }
+            },
+            error: function () {
+                toast('Ошибка сохранения', {type: 'danger'})
+            }
         });
     });
 
@@ -37,10 +45,16 @@ $(document).ready(function () {
                 'field': field,
                 'text': text
             },
-            success: function (r) {
-                console.log(r);
+            success: function (response) {
+                if (response == 1) {
+                    toast('Сохранено', {type: 'success'});
+                } else {
+                    toast('Ошибка сохранения', {type: 'danger'})
+                }
             },
-            error: function () {}
+            error: function () {
+                toast('Ошибка сохранения', {type: 'danger'})
+            }
         });
     });
 
@@ -55,8 +69,64 @@ $(document).ready(function () {
         $(e).removeClass('backLightFrame');
     }
 
+    $('#toast').toast('show');
+
 
 });
+
+
+/// toast
+
+function toast(content, opts){
+
+    opts = $.extend( true, {
+
+        type: 'primary', //primary, secondary, success, danger, warning, info, light, dark
+        position: 'bottomleft', //topleft, topcenter, topright, bottomleft, bottomcenter, bottonright, center,
+        appendType: 'prepend', //append, prepend
+        closeBtn: false,
+        autoClose: 4000,
+        className: '',
+
+    }, opts);
+
+    // 得到容器 $container
+    let $container = $('#alert-container-'+ opts.position);
+    if(!$container.length){
+        $container = $('<div id="alert-container-' + opts.position + '" class="alert-container"></div>');
+        $('body').append($container);
+    }
+
+    // alert $el
+    let $el = $(`<div class="alert fade alert-${opts.type}" role="alert">${content}</div>`);
+
+    // 关闭按钮
+   /* if(opts.autoClose){
+        $el.append(`
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				`)
+            .addClass('alert-dismissible');
+    }*/
+
+    //定时关闭
+    if(opts.autoClose){
+        let t = setTimeout(() => {
+            $el.alert('close');
+        }, opts.autoClose);
+    }
+
+    opts.appendType === 'append' ? $container.append($el) : $container.prepend($el);
+
+    setTimeout(() => {
+        $el.addClass('show');
+    }, 50);
+
+    return;
+}
+
+
 
 
 

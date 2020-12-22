@@ -19,6 +19,6 @@ class TextsRepository extends Repository
     public function updateText(Request $request)
     {
         $text = Text::find($request->get('id'));
-        $text->fill(['text' => $request->get('text')])->update();
+        return $text->fill(['text' => $request->get('text')])->update();
     }
 }

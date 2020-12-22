@@ -64,7 +64,7 @@ class TrainersRepository extends Repository
             $this->deleteImage($trainer->image);
         }*/
 
-        $trainer->fill([$request->get('field') => $request->get('text')])->update();
+        return $trainer->fill([$request->get('field') => $request->get('text')])->update();
     }
 
     private function roundImageData($imageData) {
