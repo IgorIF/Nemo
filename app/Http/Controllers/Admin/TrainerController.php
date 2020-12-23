@@ -108,6 +108,7 @@ class TrainerController extends AdminController
      */
     public function update(Request $request, $id)
     {
+        return $request;
         return $this->trainersRepository->updateTrainer($request, $id);
     }
 

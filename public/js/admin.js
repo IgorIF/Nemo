@@ -79,11 +79,13 @@ $(document).ready(function () {
     let input = document.getElementById('input')
     let $modal = $('#modal');
     let cropper;
+    let id;
 
     $(trainer).find('[name="image"]').on('change', function (e) {
+        id = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let files = e.target.files;
         let done = function (url) {
-            input.value = '';
+            //input.value = '';
             image.src = url;
             $modal.modal('show');
         };
@@ -119,15 +121,32 @@ $(document).ready(function () {
     });
 
     $('#crop').on('click', function () {
-        let canvas;
         $modal.modal('hide');
+        let img = input.files[0];
 
-        ///////
-        if (cropper) {
-            canvas = cropper.getCroppedCanvas();
-            /*initialPreviewURL = preview.src;
-            preview.src = canvas.toDataURL();*/
-        }
+        let data = new FormData($('[name="formdata1"]')[0]);
+        console.log(data)
+
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'PUT',
+            url: './trainers/' + id,
+            data: {
+                'image': img,
+            },
+            success: function (response) {
+                console.log(response)
+                /*if (response == 1) {
+                    toast('Сохранено', {type: 'success'});
+                } else {
+                    toast('Ошибка сохранения', {type: 'danger'})
+                }*/
+            },
+            error: function () {
+                /*toast('Ошибка сохранения', {type: 'danger'})*/
+            }
+        });
+
     });
 
 

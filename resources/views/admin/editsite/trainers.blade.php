@@ -14,7 +14,9 @@
                     <div class="trainer_foto">
                         <label class="label" data-toggle="tooltip" title="Загрузить фото">
                             <img src="{{ asset('storage/trainers/' . $trainer->image) }}" />
-                            <input style="display: none" type="file" class="sr-only" id="input" name="image" accept="image/*">
+                            <form enctype="multipart/form-data" name="formdata1">
+                                <input style="display: none" type="file" class="sr-only" id="input" name="image" accept="image/*">
+                            </form>
                         </label>
                     </div>
 

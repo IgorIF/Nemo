@@ -55,6 +55,17 @@ class TrainersRepository extends Repository
 
         $trainer = Trainer::find($id);
 
+        return $request->all();
+            $data = $request->all();
+            $data['image-data'] = json_decode($data['image-data'], true);
+
+            $data['image-data'] = $this->roundImageData($data['image-data']);
+            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
+
+            $this->deleteImage($trainer->image);
+
+
+
         /*if(isset($data['image'])) {
             $data['image-data'] = json_decode($data['image-data'], true);
 
@@ -63,8 +74,8 @@ class TrainersRepository extends Repository
 
             $this->deleteImage($trainer->image);
         }*/
+            //return $trainer->fill([$request->get('field') => $request->get('text')])->update();
 
-        return $trainer->fill([$request->get('field') => $request->get('text')])->update();
     }
 
     private function roundImageData($imageData) {
