@@ -45,6 +45,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/toast.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.0.0-rc.1/cropper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.0.0-rc.1/cropper.min.js"></script>
+
 
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
@@ -104,6 +107,26 @@
 </head>
 
 <body>
+
+<!-- Modal -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Обрезать фото</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal').modal('hide')"></button>
+            </div>
+            <div class="modal-body">
+                <div class="img-container">
+                    <img id="image" src="#" alt="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="btn aos-init aos-animate" data-aos="zoom-in" id="crop">Сохранить</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <header class="header">
 

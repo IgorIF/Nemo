@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    $('[data-toggle="tooltip"]').tooltip();
+
     let startText;
 
     /// update text
@@ -36,8 +38,10 @@ $(document).ready(function () {
     });
 
 
-    /// update trainer
-    $('[id^= "trainer_"]').find('[contenteditable="true"]').on('focusout', function () {
+    /// update trainer text
+    let trainer = $('[id^= "trainer_"]')
+
+    $(trainer).find('[contenteditable="true"]').on('focusout', function () {
         backlightFrameOff(this);
 
         let id = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
@@ -68,6 +72,62 @@ $(document).ready(function () {
         }
     }).on('focusin', function () {
         startText = $(this).html();
+    });
+
+    ///update trainer image
+    let image = document.getElementById('image')
+    let input = document.getElementById('input')
+    let $modal = $('#modal');
+    let cropper;
+
+    $(trainer).find('[name="image"]').on('change', function (e) {
+        let files = e.target.files;
+        let done = function (url) {
+            input.value = '';
+            image.src = url;
+            $modal.modal('show');
+        };
+
+        let reader;
+        let file;
+        let url;
+
+        if (files && files.length > 0) {
+            file = files[0];
+
+            if (URL) {
+                done(URL.createObjectURL(file));
+            } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function (e) {
+                    done(reader.result);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+
+    $modal.on('shown.bs.modal', function () {
+        cropper = new Cropper(image, {
+            aspectRatio: 1,
+            // viewMode: 1,
+        });
+    }).on('hidden.bs.modal', function () {
+        cropper.destroy();
+        cropper = null;
+    });
+
+    $('#crop').on('click', function () {
+        let canvas;
+        $modal.modal('hide');
+
+        ///////
+        if (cropper) {
+            canvas = cropper.getCroppedCanvas();
+            /*initialPreviewURL = preview.src;
+            preview.src = canvas.toDataURL();*/
+        }
     });
 
 

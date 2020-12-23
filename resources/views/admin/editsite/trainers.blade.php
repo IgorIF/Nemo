@@ -8,7 +8,16 @@
 
             <div id="trainer_{{ $trainer->id }}">
                 <div class="flex jcsb">
-                    <div class="trainer_foto"><img src="{{ asset('storage/trainers/' . $trainer->image) }}" /></div>
+
+
+
+                    <div class="trainer_foto">
+                        <label class="label" data-toggle="tooltip" title="Загрузить фото">
+                            <img src="{{ asset('storage/trainers/' . $trainer->image) }}" />
+                            <input style="display: none" type="file" class="sr-only" id="input" name="image" accept="image/*">
+                        </label>
+                    </div>
+
                     <div class="trainer_caption">
                         <h4 id="trainer_name" contenteditable="true">{{ $trainer->name }}</h4>
                         <p id="trainer_description" contenteditable="true">{{ $trainer->description }}</p>
