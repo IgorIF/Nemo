@@ -118,7 +118,7 @@
             </div>
             <div class="modal-body">
                 <div class="img-container">
-                    <img id="image" src="#" alt="">
+                    <img id="cropper_image" src="#" alt="">
                 </div>
             </div>
             <div class="modal-footer">

@@ -8,9 +8,9 @@ $(document).ready(function () {
 
     updateTrainerText();
 
-    backLightFrameOn();
-
     updateTrainerImage();
+
+    backLightFrameOn();
 });
 
 //***************** Update text *****************//
@@ -56,9 +56,8 @@ function updateText() {
 
 function updateTrainerText() {
     let startText;
-    let trainerEl = $('[id^= "trainer_"]')
 
-    $(trainerEl).find('[contenteditable="true"]').on('focusin', function () {
+    $('[id^= "trainer_"][contenteditable="true"]').on('focusin', function () {
         startText = $(this).html();
     }).on('focusout', function () {
         backlightFrameOff(this);
@@ -95,25 +94,23 @@ function updateTrainerText() {
 //***************** Update trainer image *****************//
 
 function updateTrainerImage() {
-    let input;
     let $modal = $('#modal');
+    let cropperImage = document.getElementById('cropper_image');
+    let trainerId;
     let cropper;
-    let id;
-    let form;
+    let file;
 
-    $(trainerEl).find('[name="image"]').on('change', function (e) {
-        id = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
-        form = $(this).parent();
+    $('[id^= "trainer_image"]').on('change', function (e) {
+        trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+
         let files = e.target.files;
         let done = function (url) {
-            //input.value = '';
-            image.src = url;
+            e.target.value = '';
+            cropperImage.src = url;
             $modal.modal('show');
         };
 
         let reader;
-        let file;
-        let url;
 
         if (files && files.length > 0) {
             file = files[0];
@@ -132,7 +129,7 @@ function updateTrainerImage() {
     });
 
     $modal.on('shown.bs.modal', function () {
-        cropper = new Cropper(image, {
+        cropper = new Cropper(cropperImage, {
             aspectRatio: 1,
             // viewMode: 1,
         });
@@ -143,34 +140,21 @@ function updateTrainerImage() {
 
     $('#crop').on('click', function () {
         $modal.modal('hide');
-        //let img = input.files[0];
 
-
-        let data = new FormData(form[0]);
-
-        console.log(data);
-
+        let formData = new FormData();
+        formData.append('image', file);
+        formData.append('image-data', 'fdsg');
 
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'PUT',
-            url: './trainers/' + id,
-            /*contentType: false,
-            cache: false,
-            enctype: 'multipart/form-data',
-            processData: false,*/
+            url: './trainers/' + trainerId,
+            contentType: 'multipart/form-data',
             data: data,
             success: function (response) {
                 console.log(response)
-                /*if (response == 1) {
-                    toast('Сохранено', {type: 'success'});
-                } else {
-                    toast('Ошибка сохранения', {type: 'danger'})
-                }*/
             },
-            error: function () {
-                /*toast('Ошибка сохранения', {type: 'danger'})*/
-            }
+            error: function () {}
         });
 
     });
