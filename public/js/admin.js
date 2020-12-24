@@ -1,14 +1,29 @@
+
+
 $(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
+    updateText();
+
+    updateTrainerText();
+
+    backLightFrameOn();
+
+    updateTrainerImage();
+});
+
+//***************** Update text *****************//
+
+function updateText() {
     let startText;
 
-    /// update text
-    $('[contenteditable="true"][id^="text_"]').on('focusout', function () {
+    $('[contenteditable="true"][id^="text_"]').on('focusin', function () {
+        startText = $(this).html();
+    }).on('focusout', function () {
         backlightFrameOff(this);
 
-        let id = $(this).attr('id').split('_')[1];
+        let textId = $(this).attr('id').split('_')[1];
         let text = $(this).html();
 
         if (text !== startText) {
@@ -17,7 +32,7 @@ $(document).ready(function () {
                 type: 'PUT',
                 url: './editsite/edittext',
                 data: {
-                    'id': id,
+                    'id': textId,
                     'text': text
                 },
                 success: function (response) {
@@ -33,28 +48,32 @@ $(document).ready(function () {
             });
             startText = null;
         }
-    }).on('focusin', function () {
-        startText = $(this).html();
     });
+}
 
 
-    /// update trainer text
-    let trainer = $('[id^= "trainer_"]')
+//***************** Update trainer text *****************//
 
-    $(trainer).find('[contenteditable="true"]').on('focusout', function () {
+function updateTrainerText() {
+    let startText;
+    let trainerEl = $('[id^= "trainer_"]')
+
+    $(trainerEl).find('[contenteditable="true"]').on('focusin', function () {
+        startText = $(this).html();
+    }).on('focusout', function () {
         backlightFrameOff(this);
 
-        let id = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
-        let field = $(this).attr('id').split('_')[1];
+        let trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        let fieldName = $(this).attr('id').split('_')[1];
         let text = $(this).html();
 
         if (text !== startText) {
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'PUT',
-                url: './trainers/' + id,
+                url: './trainers/' + trainerId,
                 data: {
-                    'field': field,
+                    'field': fieldName,
                     'text': text
                 },
                 success: function (response) {
@@ -70,19 +89,21 @@ $(document).ready(function () {
             });
             startText = null;
         }
-    }).on('focusin', function () {
-        startText = $(this).html();
     });
+}
 
-    ///update trainer image
-    let image = document.getElementById('image')
-    let input = document.getElementById('input')
+//***************** Update trainer image *****************//
+
+function updateTrainerImage() {
+    let input;
     let $modal = $('#modal');
     let cropper;
     let id;
+    let form;
 
-    $(trainer).find('[name="image"]').on('change', function (e) {
+    $(trainerEl).find('[name="image"]').on('change', function (e) {
         id = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        form = $(this).parent();
         let files = e.target.files;
         let done = function (url) {
             //input.value = '';
@@ -122,18 +143,23 @@ $(document).ready(function () {
 
     $('#crop').on('click', function () {
         $modal.modal('hide');
-        let img = input.files[0];
+        //let img = input.files[0];
 
-        let data = new FormData($('[name="formdata1"]')[0]);
-        console.log(data)
+
+        let data = new FormData(form[0]);
+
+        console.log(data);
+
 
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'PUT',
             url: './trainers/' + id,
-            data: {
-                'image': img,
-            },
+            /*contentType: false,
+            cache: false,
+            enctype: 'multipart/form-data',
+            processData: false,*/
+            data: data,
             success: function (response) {
                 console.log(response)
                 /*if (response == 1) {
@@ -148,25 +174,23 @@ $(document).ready(function () {
         });
 
     });
+}
 
 
-    /// backlight frame
+//***************** Backlight frame *****************//
+
+function backLightFrameOn() {
     $('[contenteditable="true"]').on('focusin', function () {
         $(this).addClass('backLightFrame');
     })
+}
+
+function backlightFrameOff(e) {
+    $(e).removeClass('backLightFrame');
+}
 
 
-    function backlightFrameOff(e) {
-        $(e).removeClass('backLightFrame');
-    }
-
-    $('#toast').toast('show');
-
-
-});
-
-
-/// toast
+//***************** Toast *****************//
 
 function toast(content, opts){
 
@@ -216,75 +240,4 @@ function toast(content, opts){
 
     return;
 }
-
-
-
-
-
-
-////cropper
-
-/*$(document).ready(function () {
-    let preview = document.getElementById('preview')
-    let image = document.getElementById('image')
-    let input = document.getElementById('input')
-    let $modal = $('#modal');
-    let cropper;
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-    $(input).on('change', function (e) {
-        let files = e.target.files;
-        let done = function (url) {
-            //input.value = '';
-            image.src = url;
-            $modal.modal('show');
-        };
-
-        let reader;
-        let file;
-        let url;
-
-        if (files && files.length > 0) {
-            file = files[0];
-
-            if (URL) {
-                done(URL.createObjectURL(file));
-            } else if (FileReader) {
-                reader = new FileReader();
-                reader.onload = function (e) {
-                    done(reader.result);
-                };
-
-                reader.readAsDataURL(file);
-            }
-        }
-    })
-
-    $modal.on('shown.bs.modal', function () {
-        cropper = new Cropper(image, {
-            aspectRatio: 1,
-            autoCropArea: 1,
-        });
-    }).on('hidden.bs.modal', function () {
-        cropper.destroy();
-        cropper = null;
-    });
-
-    $('#crop').on('click', function () {
-        var canvas;
-
-        $modal.modal('hide');
-
-        if (cropper) {
-            canvas = cropper.getCroppedCanvas();
-            preview.src = canvas.toDataURL();
-
-            let cropData = cropper.getData();
-            cropData = JSON.stringify(cropData);
-
-            $('#image-data').attr('value', cropData);
-        }
-    })
-})*/
 

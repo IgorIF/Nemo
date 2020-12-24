@@ -9,14 +9,10 @@
             <div id="trainer_{{ $trainer->id }}">
                 <div class="flex jcsb">
 
-
-
                     <div class="trainer_foto">
                         <label class="label" data-toggle="tooltip" title="Загрузить фото">
                             <img src="{{ asset('storage/trainers/' . $trainer->image) }}" />
-                            <form enctype="multipart/form-data" name="formdata1">
-                                <input style="display: none" type="file" class="sr-only" id="input" name="image" accept="image/*">
-                            </form>
+                            <input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">
                         </label>
                     </div>
 
