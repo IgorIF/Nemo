@@ -4,13 +4,13 @@ $(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    //updateText();
+    updateText();
 
-    //updateTrainerText();
+    updateTrainerText();
 
     updateTrainerImage();
 
-    //backLightFrameOn();
+    backLightFrameOn();
 });
 
 //***************** Update text *****************//
@@ -76,8 +76,9 @@ function updateTrainerText() {
                     'text': text
                 },
                 success: function (response) {
-                    if (response == 1) {
-                        toast('Сохранено', {type: 'success'});
+                    if (response.status) {
+                        if (response.status === true)
+                            toast('Сохранено', {type: 'success'});
                     } else {
                         toast('Ошибка сохранения', {type: 'danger'})
                     }
@@ -99,6 +100,8 @@ function updateTrainerImage() {
     let trainerId;
     let cropper;
     let file;
+
+
 
     $('[id^= "trainer_image"]').on('change', function (e) {
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
@@ -130,8 +133,17 @@ function updateTrainerImage() {
 
     $modal.on('shown.bs.modal', function () {
         cropper = new Cropper(cropperImage, {
+            //viewMode: 1,
+            //dragMode: 'none',
             aspectRatio: 1,
-            // viewMode: 1,
+            autoCropArea: 1,
+            movable: false,
+            rotatable: false,
+            scalable: false,
+            zoomable: false,
+            zoomOnTouch: false,
+            zoomOnWheel: false,
+
         });
     }).on('hidden.bs.modal', function () {
         cropper.destroy();
@@ -142,9 +154,10 @@ function updateTrainerImage() {
         $modal.modal('hide');
 
         let data = new FormData();
+        let imageData = JSON.stringify(cropper.getData())
         data.append('_method', 'PUT');
         data.append('image', file);
-        data.append('image-data', cropper.getData());
+        data.append('image-data', imageData);
 
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -155,9 +168,18 @@ function updateTrainerImage() {
             contentType: false,
             processData: false,
             success: function (response) {
-                console.log(response)
+                if (response.status) {
+                    if (response.status === true) {
+                        $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
+                        toast('Сохранено', {type: 'success'});
+                    }
+                } else {
+                    toast('Ошибка сохранения', {type: 'danger'})
+                }
             },
-            error: function () {}
+            error: function () {
+                toast('Ошибка сохранения', {type: 'danger'})
+            }
         });
     });
 }

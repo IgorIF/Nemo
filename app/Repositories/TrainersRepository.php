@@ -51,33 +51,30 @@ class TrainersRepository extends Repository
 
     public function updateTrainer(Request $request, int $id)
     {
+        $result = [];
 
         $trainer = Trainer::find($id);
 
         if ($request->file('image')) {
             $data = $request->except('_method');
             $data['image-data'] = json_decode($data['image-data'], true);
-            return $data;
+
+            $data['image-data'] = $this->roundImageData($data['image-data']);
+            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
+
+            $this->deleteImage($trainer->image);
+            $trainer->fill(['image' => $data['image']]);
+
+            $result['image'] = $data['image'];
+        } else {
+            $trainer->fill([$request->get('field') => $request->get('text')]);
         }
 
+        $trainer->update();
 
-            $data['image-data'] = $this->roundImageData($data['image-data']);
-            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
+        $result['status'] = true;
 
-            $this->deleteImage($trainer->image);
-
-
-
-        /*if(isset($data['image'])) {
-            $data['image-data'] = json_decode($data['image-data'], true);
-
-            $data['image-data'] = $this->roundImageData($data['image-data']);
-            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
-
-            $this->deleteImage($trainer->image);
-        }*/
-            //return $trainer->fill([$request->get('field') => $request->get('text')])->update();
-
+        return $result;
     }
 
     private function roundImageData($imageData) {
