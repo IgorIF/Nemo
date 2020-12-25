@@ -11,6 +11,10 @@ $(document).ready(function () {
     updateTrainerImage();
 
     backLightFrameOn();
+
+    addTrainer();
+
+    deleteTrainer();
 });
 
 //***************** Update text *****************//
@@ -30,7 +34,7 @@ function updateText() {
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'PUT',
-                url: './editsite/edittext',
+                url: 'admin/edittext',
                 data: {
                     'id': textId,
                     'text': text
@@ -70,7 +74,7 @@ function updateTrainerText() {
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'PUT',
-                url: './trainers/' + trainerId,
+                url: 'admin/trainers/' + trainerId,
                 data: {
                     'field': fieldName,
                     'text': text
@@ -100,8 +104,6 @@ function updateTrainerImage() {
     let trainerId;
     let cropper;
     let file;
-
-
 
     $('[id^= "trainer_image"]').on('change', function (e) {
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
@@ -162,7 +164,7 @@ function updateTrainerImage() {
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'POST',
-            url: './trainers/' + trainerId,
+            url: 'admin/trainers/' + trainerId,
             data: data,
             cache: false,
             contentType: false,
@@ -171,9 +173,7 @@ function updateTrainerImage() {
                 if (response.status) {
                     if (response.status === true) {
                         $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
-                        // TODO current slide refresh
-                        $('.slides_pagination').slick('refresh');
-                        $('.slides').slick('refresh');
+                        trainersSlickRefresh();
                         toast('Сохранено', {type: 'success'});
                     }
                 } else {
@@ -184,6 +184,40 @@ function updateTrainerImage() {
                 toast('Ошибка сохранения', {type: 'danger'})
             }
         });
+    });
+}
+
+
+//***************** Update trainer image *****************//
+
+function deleteTrainer() {
+    $('[id="trainer_delete_btn"]').on('click', function () {
+        let trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+
+        /*$.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'PUT',
+            url: './editsite/edittext',
+            data: {
+                'id': textId,
+                'text': text
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function () {
+
+            }
+        });*/
+    });
+}
+
+
+//***************** Add trainer *****************//
+
+function addTrainer() {
+    $('#trainer_add_btn').on('click', function (e) {
+        console.log('123');
     });
 }
 
@@ -250,5 +284,10 @@ function toast(content, opts){
     }, 50);
 
     return;
+}
+
+function trainersSlickRefresh() {
+    $('.slides_pagination').slick('refresh');
+    $('.slides').slick('refresh');
 }
 

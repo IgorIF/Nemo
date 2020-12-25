@@ -24,6 +24,10 @@
                             <div><a data-fancybox href="{{ $trainer->video }}">Смотреть занятие</a></div>
                         @endif
 
+
+                    </div>
+                    <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
+                        <a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>
                     </div>
                 </div>
             </div>
@@ -43,3 +47,9 @@
 
     </div>
 </div>
+
+<div style="align-content: center; height: 100px">
+    <a id="trainer_add_btn" class="btn" style="display: inline-block; padding: 20px 30px">Добавить тренера</a>
+</div>
+
+

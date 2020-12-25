@@ -23,14 +23,11 @@ Route::get('/', IndexController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
-    Route::redirect('/', 'admin/trainers');
+    Route::get('/', EditSite::class);
+
     Route::resource('trainers', TrainerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
 
-    Route::prefix('editsite')->name('editsite.')->group(function () {
-        Route::get('/', EditSite::class);
-        Route::put('/edittext', [EditSite::class, 'editText'])->name('edittext');
-    });
-
+    Route::put('edittext', [EditSite::class, 'editText'])->name('edittext');
 
 });
 
