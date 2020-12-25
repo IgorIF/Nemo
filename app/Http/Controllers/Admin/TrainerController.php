@@ -97,17 +97,10 @@ class TrainerController extends AdminController
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return array
      */
     public function destroy($id)
     {
-
-        return ($id);
-        $result = $this->trainersRepository->destroyTrainer($id);
-
-        if (is_array($result) && !empty($result['error']))
-            return back()->with($result);
-
-        return redirect()->route('admin.trainers.index')->with($result);
+        return $this->trainersRepository->destroyTrainer($id);
     }
 }

@@ -21,12 +21,16 @@ class TrainersRepository extends Repository
 
     public function destroyTrainer($id)
     {
+        $result = [];
+
         $trainer = Trainer::find($id);
 
         $this->deleteImage($trainer->image);
         $trainer->delete();
 
-        return ['status' => 'Тренер ' . $trainer->name . ' удален'];
+        $result['status'] = true;
+
+        return $result;
     }
 
     public function createTrainer(Request $request)

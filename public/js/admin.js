@@ -193,22 +193,26 @@ function updateTrainerImage() {
 function deleteTrainer() {
     $('[id="trainer_delete_btn"]').on('click', function () {
         let trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        let slickIndex = $(this).parents('div[id^="trainer_"]').attr('data-slick-index');
 
-        /*$.ajax({
+        $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'PUT',
-            url: './editsite/edittext',
-            data: {
-                'id': textId,
-                'text': text
-            },
+            type: 'DELETE',
+            url: 'admin/trainers/' + trainerId,
             success: function (response) {
-                console.log(response);
+                if (response.status) {
+                    if (response.status === true)
+                        trainerSlickRemove(slickIndex);
+                        trainersSlickRefresh();
+                        toast('Сохранено', {type: 'success'});
+                } else {
+                    toast('Ошибка сохранения', {type: 'danger'})
+                }
             },
             error: function () {
-
+                toast('Ошибка сохранения', {type: 'danger'})
             }
-        });*/
+        });
     });
 }
 
@@ -289,5 +293,10 @@ function toast(content, opts){
 function trainersSlickRefresh() {
     $('.slides_pagination').slick('refresh');
     $('.slides').slick('refresh');
+}
+
+function trainerSlickRemove(slickIndex) {
+    $('.slides_pagination').slick('slickRemove', slickIndex);
+    $('.slides').slick('slickRemove', slickIndex);
 }
 
