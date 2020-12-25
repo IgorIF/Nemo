@@ -4,13 +4,13 @@ $(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    updateText();
+    //updateText();
 
-    updateTrainerText();
+    //updateTrainerText();
 
     updateTrainerImage();
 
-    backLightFrameOn();
+    //backLightFrameOn();
 });
 
 //***************** Update text *****************//
@@ -141,22 +141,24 @@ function updateTrainerImage() {
     $('#crop').on('click', function () {
         $modal.modal('hide');
 
-        let formData = new FormData();
-        formData.append('image', file);
-        formData.append('image-data', 'fdsg');
+        let data = new FormData();
+        data.append('_method', 'PUT');
+        data.append('image', file);
+        data.append('image-data', cropper.getData());
 
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'PUT',
+            type: 'POST',
             url: './trainers/' + trainerId,
-            contentType: 'multipart/form-data',
             data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function (response) {
                 console.log(response)
             },
             error: function () {}
         });
-
     });
 }
 

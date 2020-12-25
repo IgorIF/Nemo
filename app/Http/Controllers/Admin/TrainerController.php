@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\TrainerRequest;
 use App\Models\Trainer;
 use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
@@ -108,7 +107,6 @@ class TrainerController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        return $request;
         return $this->trainersRepository->updateTrainer($request, $id);
     }
 

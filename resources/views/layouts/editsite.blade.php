@@ -56,7 +56,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css?vr=21') }}">
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
     <style type="text/css">
         .fancybox-container {
             width: 500px !important;
@@ -526,8 +526,9 @@
 </div>
 
 <!-- scripts -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{{ asset('libs/slick/slick.min.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{{--<script src="{{ asset('libs/slick/slick.min.js') }}"></script>--}}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{{ asset('js/jquery.toshowhide.js?vr=21') }}"></script>
 <script src="{{ asset('libs/jquery.custom-scroll.js') }}"></script>
 
@@ -535,7 +536,7 @@
 <script src="{{ asset('js/index-page.js?vr=21') }}"></script>
 <script src="{{ asset('js/script.js?vr=21') }}"></script>
 <script src="{{ asset('js/snow.js?vr=21') }}"></script>
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 <!-- Yclients -->
 <script type="text/javascript" src="https://w76658.yclients.com/widgetJS" charset="UTF-8"></script>

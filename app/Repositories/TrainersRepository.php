@@ -51,13 +51,15 @@ class TrainersRepository extends Repository
 
     public function updateTrainer(Request $request, int $id)
     {
-        //$data = $request->except('_token', '_method');
 
         $trainer = Trainer::find($id);
 
-        return $request->all();
-            $data = $request->all();
+        if ($request->file('image')) {
+            $data = $request->except('_method');
             $data['image-data'] = json_decode($data['image-data'], true);
+            return $data;
+        }
+
 
             $data['image-data'] = $this->roundImageData($data['image-data']);
             $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
