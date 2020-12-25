@@ -26,13 +26,7 @@ class TrainerController extends AdminController
      */
     public function index()
     {
-        $this->title = 'Тренеры';
 
-        $trainers = $this->trainersRepository->getTrainers();
-
-        $this->content = view('admin.content')->with('trainers', $trainers)->render();
-
-        return $this->renderOutput();
     }
 
     /**
@@ -42,12 +36,7 @@ class TrainerController extends AdminController
      */
     public function create()
     {
-
-        $this->title = 'Добавить тренера';
-
-        $this->content = view('admin.trainers_create_edit_content')->render();
-
-        return $this->renderOutput();
+        //
     }
 
     /**
@@ -89,13 +78,7 @@ class TrainerController extends AdminController
      */
     public function edit($id)
     {
-        $trainer = Trainer::find($id);
-
-        $this->title =  $trainer->name . ' - редактирование';
-
-        $this->content = view('admin.trainers_create_edit_content')->with('trainer', $trainer)->render();
-
-        return $this->renderOutput();
+        //
     }
 
     /**
@@ -103,7 +86,7 @@ class TrainerController extends AdminController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function update(Request $request, $id)
     {
@@ -118,6 +101,8 @@ class TrainerController extends AdminController
      */
     public function destroy($id)
     {
+
+        return ($id);
         $result = $this->trainersRepository->destroyTrainer($id);
 
         if (is_array($result) && !empty($result['error']))

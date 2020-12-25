@@ -25,7 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
 
     Route::get('/', EditSite::class);
 
-    Route::resource('trainers', TrainerController::class)->only(['index', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('trainers', TrainerController::class)->only(['store', 'update', 'destroy']);
 
     Route::put('edittext', [EditSite::class, 'editText'])->name('edittext');
 
