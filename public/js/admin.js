@@ -171,6 +171,9 @@ function updateTrainerImage() {
                 if (response.status) {
                     if (response.status === true) {
                         $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
+                        // TODO current slide refresh
+                        $('.slides_pagination').slick('refresh');
+                        $('.slides').slick('refresh');
                         toast('Сохранено', {type: 'success'});
                     }
                 } else {
