@@ -171,8 +171,6 @@
     </div>
 </div>
 
-
-
 <header class="header">
 
     @yield('header')

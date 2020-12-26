@@ -98,7 +98,7 @@ function updateTrainerText() {
 //***************** Update trainer image *****************//
 
 function updateTrainerImage() {
-    let $modal = $('#modal_cropper');
+    let $modalCropper = $('#modal_cropper');
     let cropperImage = document.getElementById('cropper_image');
     let trainerId;
     let cropper;
@@ -111,7 +111,7 @@ function updateTrainerImage() {
         let done = function (url) {
             e.target.value = '';
             cropperImage.src = url;
-            $modal.modal('show');
+            $modalCropper.modal('show');
         };
 
         let reader;
@@ -132,10 +132,8 @@ function updateTrainerImage() {
         }
     });
 
-    $modal.on('shown.bs.modal', function () {
+    $modalCropper.on('shown.bs.modal', function () {
         cropper = new Cropper(cropperImage, {
-            //viewMode: 1,
-            //dragMode: 'none',
             aspectRatio: 1,
             autoCropArea: 1,
             movable: false,
@@ -152,10 +150,10 @@ function updateTrainerImage() {
     });
 
     $('#crop').on('click', function () {
-        $modal.modal('hide');
+        $modalCropper.modal('hide');
 
         let data = new FormData();
-        let imageData = JSON.stringify(cropper.getData())
+        let imageData = JSON.stringify(cropper.getData());
         data.append('_method', 'PUT');
         data.append('image', file);
         data.append('image-data', imageData);
@@ -220,7 +218,6 @@ function deleteTrainer() {
 
 function addTrainer() {
     let $modalAddTrainer = $('#modal_add_trainer');
-    let $modalCropper = $('#modal_cropper');
 
     $('#trainer_add_btn').on('click', function () {
         $modalAddTrainer.modal('show');
@@ -252,14 +249,72 @@ function addTrainer() {
     })
 
     $modalAddTrainer.on('hidden.bs.modal', function () {
-        console.log(132);
-        console.log(dd);
+        console.log();
     });
 
     function loadTrainerImage() {
+        let preview = document.getElementById('preview');
+        let $modalCropper = $('#modal_cropper');
+        let cropper;
 
-        $modalAddTrainer.find('input[name="image"]').on('change', function () {
-            $modalCropper.modal("show");
+        $modalAddTrainer.find('input[name="image"]').on('change', function (e) {
+            let cropperImage = document.getElementById('cropper_image');
+
+            let files = e.target.files;
+            let done = function (url) {
+                e.target.value = '';
+                cropperImage.src = url;
+                $modalCropper.modal('show');
+            };
+
+            let reader;
+
+            if (files && files.length > 0) {
+                file = files[0];
+
+                if (URL) {
+                    done(URL.createObjectURL(file));
+                } else if (FileReader) {
+                    reader = new FileReader();
+                    reader.onload = function (e) {
+                        done(reader.result);
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+
+            $modalCropper.on('shown.bs.modal', function () {
+                cropper = new Cropper(cropperImage, {
+                    aspectRatio: 1,
+                    autoCropArea: 1,
+                    movable: false,
+                    rotatable: false,
+                    scalable: false,
+                    zoomable: false,
+                    zoomOnTouch: false,
+                    zoomOnWheel: false,
+
+                });
+            }).on('hidden.bs.modal', function () {
+                cropper.destroy();
+                cropper = null;
+            });
+
+            $('#crop').on('click', function () {
+                let canvas;
+
+                $modalCropper.modal('hide');
+
+                ///////
+
+
+                if (cropper) {
+                    canvas = cropper.getCroppedCanvas();
+                    preview.src = canvas.toDataURL();
+
+                }
+            });
         });
 
 
