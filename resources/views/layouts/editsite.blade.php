@@ -165,7 +165,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn aos-init aos-animate" data-aos="zoom-in" id="crop" style="padding: 20px 30px">Сохранить</a>
+                <a class="btn aos-init aos-animate" data-aos="zoom-in" id="crop_btn" style="padding: 20px 30px">Сохранить</a>
             </div>
         </div>
     </div>

@@ -1,18 +1,18 @@
 $(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-
-
-
     let initialText;
+    let $modalCropper = $('#modal_cropper');
+    let $modalAddTrainer = $('#modal_add_trainer');
+    let cropperImage = document.getElementById('cropper_image');
+    let cropperObj;
+    let trainerId;
+    let imageFile;
 
-
-
+    $('[data-toggle="tooltip"]').tooltip();
 
     /// Frame around text
     $('[contenteditable="true"]').on('focusin', function () {
         $(this).addClass('backLightFrame');
     })
-
 
     /// Update text
     $('[contenteditable="true"][id^="text_"]').on('focusin', function () {
@@ -23,7 +23,6 @@ $(document).ready(function () {
         initialText = null;
     });
 
-
     /// Update trainer text
     $('[id^= "trainer_"][contenteditable="true"]').on('focusin', function () {
         initialText = $(this).html();
@@ -33,24 +32,57 @@ $(document).ready(function () {
         initialText = null;
     });
 
-
     /// Delete trainer
     $('[id="trainer_delete_btn"]').on('click', function () {
         deleteTrainer(this);
     });
 
+    /// Cropper
+    $modalCropper.on('shown.bs.modal', function () {
+        cropperObj = new Cropper(cropperImage, {
+            aspectRatio: 1,
+            autoCropArea: 1,
+            movable: false,
+            rotatable: false,
+            scalable: false,
+            zoomable: false,
+            zoomOnTouch: false,
+            zoomOnWheel: false,
+        });
+    }).on('hidden.bs.modal', function () {
+        cropperObj.destroy();
+        cropperObj = null;
+    });
 
+    /// Trainer image edit cropper show
+    $('[id^= "trainer_image"]').on('change', function (e) {
+        trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        showCropperImage(e);
+    });
 
+    /// Save trainer image
+    $('#crop_btn').on('click', function () {
+        $modalCropper.modal('hide');
+        saveTrainerImage();
+    });
 
+    /// Show add trainer modal
+    $('#trainer_add_btn').on('click', function () {
+        $modalAddTrainer.modal('show');
+    });
 
+    /// Save new trainer
+    $('#trainer_save_btn').on('click', function () {
+        saveNewTrainer();
+    })
 
+    $modalAddTrainer.on('hidden.bs.modal', function () {
+        //
+    });
 
-
-
-    updateTrainerImage();
-
-    addTrainer();
-
+    $modalAddTrainer.find('input[id="input"]').on('change', function (e) {
+        showCropperImage(e);
+    })
 
 
     function saveText(element) {
@@ -89,50 +121,31 @@ $(document).ready(function () {
         });
     }
 
-    function ajax(type, url, data, successCallback) {
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: type,
-            url: url,
-            data: data,
-            success: function (response) {
-                if (response.status) {
-                    if (response.status === true) {
-                        successCallback();
-                        toast('Сохранено', {type: 'success'});
-                    }
-                } else {
-                    toast('Ошибка сохранения', {type: 'danger'})
-                }
-            },
-            error: function () {
-                toast('Ошибка сохранения', {type: 'danger'})
-            }
-        });
+    function saveTrainerImage() {
+        let data = new FormData();
+        let imageData = JSON.stringify(cropperObj.getData());
+        data.append('_method', 'PUT');
+        data.append('image', imageFile);
+        data.append('image-data', imageData);
+
+        let url = 'admin/trainers/' + trainerId;
+
+        ajax('POST', url, data, function (response) {
+            $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
+            trainersSlickRefresh();
+        }, true);
     }
 
-    function frameAroundTextOff(e) {
-        $(e).removeClass('backLightFrame');
+    function saveNewTrainer() {
+        let data = new FormData($modalAddTrainer.find('form')[0]);
+        let url = 'admin/trainers';
+        ajax('POST', url, data, null, true);
     }
-});
 
-
-
-//***************** Update trainer image *****************//
-
-function updateTrainerImage() {
-    let $modalCropper = $('#modal_cropper');
-    let cropperImage = document.getElementById('cropper_image');
-    let trainerId;
-    let cropper;
-    let file;
-
-    $('[id^= "trainer_image"]').on('change', function (e) {
-        trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
-
-        let files = e.target.files;
+    function showCropperImage(element) {
+        let files = element.target.files;
         let done = function (url) {
-            e.target.value = '';
+            element.target.value = '';
             cropperImage.src = url;
             $modalCropper.modal('show');
         };
@@ -140,60 +153,33 @@ function updateTrainerImage() {
         let reader;
 
         if (files && files.length > 0) {
-            file = files[0];
+            imageFile = files[0];
 
             if (URL) {
-                done(URL.createObjectURL(file));
+                done(URL.createObjectURL(imageFile));
             } else if (FileReader) {
                 reader = new FileReader();
                 reader.onload = function (e) {
                     done(reader.result);
                 };
 
-                reader.readAsDataURL(file);
+                reader.readAsDataURL(imageFile);
             }
         }
-    });
+    }
 
-    $modalCropper.on('shown.bs.modal', function () {
-        cropper = new Cropper(cropperImage, {
-            aspectRatio: 1,
-            autoCropArea: 1,
-            movable: false,
-            rotatable: false,
-            scalable: false,
-            zoomable: false,
-            zoomOnTouch: false,
-            zoomOnWheel: false,
-
-        });
-    }).on('hidden.bs.modal', function () {
-        cropper.destroy();
-        cropper = null;
-    });
-
-    $('#crop').on('click', function () {
-        $modalCropper.modal('hide');
-
-        let data = new FormData();
-        let imageData = JSON.stringify(cropper.getData());
-        data.append('_method', 'PUT');
-        data.append('image', file);
-        data.append('image-data', imageData);
-
-        $.ajax({
+    function ajax(type, url, data, successCallback, form = false) {
+        let params = {
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'POST',
-            url: 'admin/trainers/' + trainerId,
+            type: type,
+            url: url,
             data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
             success: function (response) {
                 if (response.status) {
                     if (response.status === true) {
-                        $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
-                        trainersSlickRefresh();
+                        if (successCallback) {
+                            successCallback(response);
+                        }
                         toast('Сохранено', {type: 'success'});
                     }
                 } else {
@@ -203,125 +189,21 @@ function updateTrainerImage() {
             error: function () {
                 toast('Ошибка сохранения', {type: 'danger'})
             }
-        });
-    });
-}
+        }
+        if (form === true) {
+            params.cache = false;
+            params.contentType = false;
+            params.processData = false;
+        }
 
-
-
-
-
-//***************** Add trainer *****************//
-
-function addTrainer() {
-    let $modalAddTrainer = $('#modal_add_trainer');
-
-    $('#trainer_add_btn').on('click', function () {
-        $modalAddTrainer.modal('show');
-        loadTrainerImage();
-    });
-
-    $('#trainer_save_btn').on('click', function () {
-
-        let formData = new FormData($modalAddTrainer.find('form')[0]);
-
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'POST',
-            url: 'admin/trainers',
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log(response.errors);
-            },
-            error: function (error) {
-                console.log(error.status);
-                if (error.status === 422) {
-
-                }
-            }
-        })
-    })
-
-    $modalAddTrainer.on('hidden.bs.modal', function () {
-        console.log();
-    });
-
-    function loadTrainerImage() {
-        let preview = document.getElementById('preview');
-        let $modalCropper = $('#modal_cropper');
-        let cropper;
-
-        $modalAddTrainer.find('input[name="image"]').on('change', function (e) {
-            let cropperImage = document.getElementById('cropper_image');
-
-            let files = e.target.files;
-            let done = function (url) {
-                e.target.value = '';
-                cropperImage.src = url;
-                $modalCropper.modal('show');
-            };
-
-            let reader;
-
-            if (files && files.length > 0) {
-                file = files[0];
-
-                if (URL) {
-                    done(URL.createObjectURL(file));
-                } else if (FileReader) {
-                    reader = new FileReader();
-                    reader.onload = function (e) {
-                        done(reader.result);
-                    };
-
-                    reader.readAsDataURL(file);
-                }
-            }
-
-            $modalCropper.on('shown.bs.modal', function () {
-                cropper = new Cropper(cropperImage, {
-                    aspectRatio: 1,
-                    autoCropArea: 1,
-                    movable: false,
-                    rotatable: false,
-                    scalable: false,
-                    zoomable: false,
-                    zoomOnTouch: false,
-                    zoomOnWheel: false,
-
-                });
-            }).on('hidden.bs.modal', function () {
-                cropper.destroy();
-                cropper = null;
-            });
-
-            $('#crop').on('click', function () {
-                let canvas;
-
-                $modalCropper.modal('hide');
-
-                ///////
-
-
-                if (cropper) {
-                    canvas = cropper.getCroppedCanvas();
-                    preview.src = canvas.toDataURL();
-
-                }
-            });
-        });
-
-
+        $.ajax(params);
     }
-}
 
+    function frameAroundTextOff(e) {
+        $(e).removeClass('backLightFrame');
+    }
+});
 
-
-
-//***************** Toast *****************//
 
 function toast(content, opts){
 
