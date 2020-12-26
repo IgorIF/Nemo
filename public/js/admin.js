@@ -2,10 +2,11 @@ $(document).ready(function () {
     let initialText;
     let $modalCropper = $('#modal_cropper');
     let $modalAddTrainer = $('#modal_add_trainer');
-    let cropperImage = document.getElementById('cropper_image');
+    let cropperImage = $('#cropper_image')[0];
     let cropperObj;
     let trainerId;
     let imageFile;
+    let cropBtnMode = true;
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -63,7 +64,11 @@ $(document).ready(function () {
     /// Save trainer image
     $('#crop_btn').on('click', function () {
         $modalCropper.modal('hide');
-        saveTrainerImage();
+        if (cropBtnMode) {
+            saveTrainerImage();
+        } else {
+            updatePreview();
+        }
     });
 
     /// Show add trainer modal
@@ -76,8 +81,10 @@ $(document).ready(function () {
         saveNewTrainer();
     })
 
-    $modalAddTrainer.on('hidden.bs.modal', function () {
-        //
+    $modalAddTrainer.on('shown.bs.modal', function () {
+        cropBtnMode = false;
+    }).on('hidden.bs.modal', function () {
+        cropBtnMode = true;
     });
 
     $modalAddTrainer.find('input[id="input"]').on('change', function (e) {
@@ -140,6 +147,18 @@ $(document).ready(function () {
         let data = new FormData($modalAddTrainer.find('form')[0]);
         let url = 'admin/trainers';
         ajax('POST', url, data, null, true);
+    }
+
+    function updatePreview() {
+        let previewImg = $('#preview')[0];
+
+        console.log(previewImg);
+        let canvas;
+
+        if (cropperObj) {
+            canvas = cropperObj.getCroppedCanvas();
+            previewImg.src = canvas.toDataURL();
+        }
     }
 
     function showCropperImage(element) {
