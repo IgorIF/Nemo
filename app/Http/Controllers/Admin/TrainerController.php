@@ -47,12 +47,17 @@ class TrainerController extends AdminController
      */
     public function store(Request $request)
     {
+
+
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
             'image' => 'required',
             'video' => '',
         ]);
+
+        return $request;
 
         $result = $this->trainersRepository->createTrainer($request);
 

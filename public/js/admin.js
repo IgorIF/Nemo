@@ -1,5 +1,4 @@
 
-
 $(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -99,7 +98,7 @@ function updateTrainerText() {
 //***************** Update trainer image *****************//
 
 function updateTrainerImage() {
-    let $modal = $('#modal');
+    let $modal = $('#modal_cropper');
     let cropperImage = document.getElementById('cropper_image');
     let trainerId;
     let cropper;
@@ -220,9 +219,51 @@ function deleteTrainer() {
 //***************** Add trainer *****************//
 
 function addTrainer() {
-    $('#trainer_add_btn').on('click', function (e) {
-        console.log('123');
+    let $modalAddTrainer = $('#modal_add_trainer');
+    let $modalCropper = $('#modal_cropper');
+
+    $('#trainer_add_btn').on('click', function () {
+        $modalAddTrainer.modal('show');
+        loadTrainerImage();
     });
+
+    $('#trainer_save_btn').on('click', function () {
+
+        let formData = new FormData($modalAddTrainer.find('form')[0]);
+
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'POST',
+            url: 'admin/trainers',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response.errors);
+            },
+            error: function (error) {
+                console.log(error.status);
+                if (error.status === 422) {
+
+                }
+            }
+        })
+    })
+
+    $modalAddTrainer.on('hidden.bs.modal', function () {
+        console.log(132);
+        console.log(dd);
+    });
+
+    function loadTrainerImage() {
+
+        $modalAddTrainer.find('input[name="image"]').on('change', function () {
+            $modalCropper.modal("show");
+        });
+
+
+    }
 }
 
 
@@ -290,6 +331,8 @@ function toast(content, opts){
     return;
 }
 
+
+//***************** | *****************//
 function trainersSlickRefresh() {
     $('.slides_pagination').slick('refresh');
     $('.slides').slick('refresh');
