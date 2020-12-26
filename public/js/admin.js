@@ -1,99 +1,122 @@
-
 $(document).ready(function () {
-
     $('[data-toggle="tooltip"]').tooltip();
 
-    updateText();
 
-    updateTrainerText();
+
+    let initialText;
+
+
+
+
+    /// Frame around text
+    $('[contenteditable="true"]').on('focusin', function () {
+        $(this).addClass('backLightFrame');
+    })
+
+
+    /// Update text
+    $('[contenteditable="true"][id^="text_"]').on('focusin', function () {
+        initialText = $(this).html();
+    }).on('focusout', function () {
+        frameAroundTextOff(this);
+        saveText(this);
+        initialText = null;
+    });
+
+
+    /// Update trainer text
+    $('[id^= "trainer_"][contenteditable="true"]').on('focusin', function () {
+        initialText = $(this).html();
+    }).on('focusout', function () {
+        frameAroundTextOff(this);
+        saveTrainerText(this);
+        initialText = null;
+    });
+
+
+    /// Delete trainer
+    $('[id="trainer_delete_btn"]').on('click', function () {
+        deleteTrainer(this);
+    });
+
+
+
+
+
+
+
+
 
     updateTrainerImage();
 
-    backLightFrameOn();
-
     addTrainer();
 
-    deleteTrainer();
+
+
+    function saveText(element) {
+        let text = $(element).html();
+
+        if (text !== initialText) {
+            let textId = $(element).attr('id').split('_')[1];
+            let url = 'admin/edittext';
+            let data = {'id': textId, 'text': text};
+
+            ajax('PUT', url, data);
+        }
+    }
+
+    function saveTrainerText(element) {
+        let text = $(element).html();
+
+        if (text !== initialText) {
+            let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+            let fieldName = $(element).attr('id').split('_')[1];
+            let url = 'admin/trainers/' + trainerId;
+            let data = {'field': fieldName, 'text': text};
+
+            ajax('PUT', url, data);
+        }
+    }
+
+    function deleteTrainer(element) {
+        let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        let slickIndex = $(element).parents('div[id^="trainer_"]').attr('data-slick-index');
+        let url = 'admin/trainers/' + trainerId;
+
+        ajax('DELETE', url, null, function () {
+            trainerSlickRemove(slickIndex);
+            trainersSlickRefresh();
+        });
+    }
+
+    function ajax(type, url, data, successCallback) {
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: type,
+            url: url,
+            data: data,
+            success: function (response) {
+                if (response.status) {
+                    if (response.status === true) {
+                        successCallback();
+                        toast('Сохранено', {type: 'success'});
+                    }
+                } else {
+                    toast('Ошибка сохранения', {type: 'danger'})
+                }
+            },
+            error: function () {
+                toast('Ошибка сохранения', {type: 'danger'})
+            }
+        });
+    }
+
+    function frameAroundTextOff(e) {
+        $(e).removeClass('backLightFrame');
+    }
 });
 
-//***************** Update text *****************//
 
-function updateText() {
-    let startText;
-
-    $('[contenteditable="true"][id^="text_"]').on('focusin', function () {
-        startText = $(this).html();
-    }).on('focusout', function () {
-        backlightFrameOff(this);
-
-        let textId = $(this).attr('id').split('_')[1];
-        let text = $(this).html();
-
-        if (text !== startText) {
-            $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                type: 'PUT',
-                url: 'admin/edittext',
-                data: {
-                    'id': textId,
-                    'text': text
-                },
-                success: function (response) {
-                    if (response == 1) {
-                        toast('Сохранено', {type: 'success'});
-                    } else {
-                        toast('Ошибка сохранения', {type: 'danger'})
-                    }
-                },
-                error: function () {
-                    toast('Ошибка сохранения', {type: 'danger'})
-                }
-            });
-            startText = null;
-        }
-    });
-}
-
-
-//***************** Update trainer text *****************//
-
-function updateTrainerText() {
-    let startText;
-
-    $('[id^= "trainer_"][contenteditable="true"]').on('focusin', function () {
-        startText = $(this).html();
-    }).on('focusout', function () {
-        backlightFrameOff(this);
-
-        let trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
-        let fieldName = $(this).attr('id').split('_')[1];
-        let text = $(this).html();
-
-        if (text !== startText) {
-            $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                type: 'PUT',
-                url: 'admin/trainers/' + trainerId,
-                data: {
-                    'field': fieldName,
-                    'text': text
-                },
-                success: function (response) {
-                    if (response.status) {
-                        if (response.status === true)
-                            toast('Сохранено', {type: 'success'});
-                    } else {
-                        toast('Ошибка сохранения', {type: 'danger'})
-                    }
-                },
-                error: function () {
-                    toast('Ошибка сохранения', {type: 'danger'})
-                }
-            });
-            startText = null;
-        }
-    });
-}
 
 //***************** Update trainer image *****************//
 
@@ -185,33 +208,7 @@ function updateTrainerImage() {
 }
 
 
-//***************** Update trainer image *****************//
 
-function deleteTrainer() {
-    $('[id="trainer_delete_btn"]').on('click', function () {
-        let trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
-        let slickIndex = $(this).parents('div[id^="trainer_"]').attr('data-slick-index');
-
-        $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type: 'DELETE',
-            url: 'admin/trainers/' + trainerId,
-            success: function (response) {
-                if (response.status) {
-                    if (response.status === true)
-                        trainerSlickRemove(slickIndex);
-                        trainersSlickRefresh();
-                        toast('Сохранено', {type: 'success'});
-                } else {
-                    toast('Ошибка сохранения', {type: 'danger'})
-                }
-            },
-            error: function () {
-                toast('Ошибка сохранения', {type: 'danger'})
-            }
-        });
-    });
-}
 
 
 //***************** Add trainer *****************//
@@ -322,17 +319,6 @@ function addTrainer() {
 }
 
 
-//***************** Backlight frame *****************//
-
-function backLightFrameOn() {
-    $('[contenteditable="true"]').on('focusin', function () {
-        $(this).addClass('backLightFrame');
-    })
-}
-
-function backlightFrameOff(e) {
-    $(e).removeClass('backLightFrame');
-}
 
 
 //***************** Toast *****************//
@@ -386,8 +372,6 @@ function toast(content, opts){
     return;
 }
 
-
-//***************** | *****************//
 function trainersSlickRefresh() {
     $('.slides_pagination').slick('refresh');
     $('.slides').slick('refresh');
