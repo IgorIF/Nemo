@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
     /// Delete trainer
-    $('#trainer_delete_btn').on('click', function () {
+    $(document).on('click', '#trainer_delete_btn', function () {
         deleteTrainer(this);
     });
 
@@ -57,7 +57,7 @@ $(document).ready(function () {
     });
 
     /// Trainer image edit cropper show
-    $(document).on('change', '[id^= "trainer_image"]', function (e) {
+    $(document).on('change', '[id^="trainer_image"]', function (e) {
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         showCropperImage(e);
     });
