@@ -12,7 +12,7 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
     /// Frame around text
-    $('[contenteditable="true"]').on('focusin', function () {
+    $('[contenteditable="true"]').on('focusin', null,function () {
         $(this).addClass('backLightFrame');
     })
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
     /// Delete trainer
-    $('[id="trainer_delete_btn"]').on('click', function () {
+    $('#trainer_delete_btn').on('click', function () {
         deleteTrainer(this);
     });
 
@@ -57,7 +57,7 @@ $(document).ready(function () {
     });
 
     /// Trainer image edit cropper show
-    $('[id^= "trainer_image"]').on('change', function (e) {
+    $(document).on('change', '[id^= "trainer_image"]', function (e) {
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         showCropperImage(e);
     });
@@ -141,7 +141,6 @@ $(document).ready(function () {
 
         ajax('POST', url, data, function (response) {
             $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
-            trainersSlickRefresh();
         }, null, true);
     }
 
