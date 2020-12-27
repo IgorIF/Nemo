@@ -35,21 +35,26 @@ class TrainersRepository extends Repository
 
     public function createTrainer(Request $request)
     {
-        $data = $request->except('_token');
-        $data['image-data'] = json_decode($data['image-data'], true);
 
+        $result = [];
+
+        $data = $request->all();
+
+        $data['image-data'] = json_decode($data['image-data'], true);
         $data['image-data'] = $this->roundImageData($data['image-data']);
 
         $fileName = $this->cropAndSaveImage($data['image'], $data['image-data']);
 
-        $trainer = Trainer::create([
+        $result['trainer'] = Trainer::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'video' => $data['video'],
             'image' => $fileName
         ]);
 
-        return ['status' => 'Тренер ' . $trainer->name . ' добавлен'];
+        $result['status'] = true;
+
+        return $result;
 
     }
 

@@ -47,9 +47,6 @@ class TrainerController extends AdminController
      */
     public function store(Request $request)
     {
-
-
-
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -57,11 +54,8 @@ class TrainerController extends AdminController
             'video' => '',
         ]);
 
-        return $request;
+        return $this->trainersRepository->createTrainer($request);
 
-        $result = $this->trainersRepository->createTrainer($request);
-
-        return redirect()->route('admin.trainers.index')->with($result);
     }
 
     /**

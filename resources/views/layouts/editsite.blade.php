@@ -124,23 +124,27 @@
                     <div class="form-group">
                         <label for="name">Имя</label>
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Введите имя" >
+                        <div class="invalid-feedback"></div>
                     </div>
                     <br />
                     <div class="form-group">
                         <label for="description">Описание</label>
                         <textarea class="form-control" id="description" name="description" placeholder="Описание" rows="12" ></textarea>
+                        <div class="invalid-feedback"></div>
                     </div>
                     <br />
                     <div class="form-group">
                         <label class="label" data-toggle="tooltip" title="Выберите фото">
                             <img class="rounded" id="preview" src="https://svgsilh.com/svg/159236-9e9e9e.svg" alt="preview" width="100px">
-                            <input type="file" class="sr-only" id="input" name="image" accept="image/*" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0" >
+                            <input type="file" class="sr-only" id="input" name="image" accept="image/*" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0">
+                            <div class="invalid-feedback"></div>
                         </label>
                     </div>
                     <br />
                     <div class="form-group">
                         <label for="video">Видео</label>
                         <input type="text" class="form-control" id="video" name="video" aria-describedby="emailHelp" placeholder="Ссылка на видео">
+                        <div class="invalid-feedback"></div>
                     </div>
                 </form>
             </div>

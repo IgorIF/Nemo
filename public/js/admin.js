@@ -4,6 +4,7 @@ $(document).ready(function () {
     let $modalAddTrainer = $('#modal_add_trainer');
     let cropperImage = $('#cropper_image')[0];
     let cropperObj;
+    let cropperData;
     let trainerId;
     let imageFile;
     let cropBtnMode = true;
@@ -63,12 +64,13 @@ $(document).ready(function () {
 
     /// Save trainer image
     $('#crop_btn').on('click', function () {
-        $modalCropper.modal('hide');
-        if (cropBtnMode) {
+        cropperData = cropperObj.getData();
+        if (cropBtnMode) {   /// update image
             saveTrainerImage();
-        } else {
+        } else {            /// add trainer
             updatePreview();
         }
+        $modalCropper.modal('hide');
     });
 
     /// Show add trainer modal
@@ -130,7 +132,7 @@ $(document).ready(function () {
 
     function saveTrainerImage() {
         let data = new FormData();
-        let imageData = JSON.stringify(cropperObj.getData());
+        let imageData = JSON.stringify(cropperData);
         data.append('_method', 'PUT');
         data.append('image', imageFile);
         data.append('image-data', imageData);
@@ -140,23 +142,47 @@ $(document).ready(function () {
         ajax('POST', url, data, function (response) {
             $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
             trainersSlickRefresh();
-        }, true);
+        }, null, true);
     }
 
     function saveNewTrainer() {
         let data = new FormData($modalAddTrainer.find('form')[0]);
+        data.append('image-data', JSON.stringify(cropperData));
         let url = 'admin/trainers';
-        ajax('POST', url, data, null, true);
+        ajax('POST', url, data, function (response) {
+            if (response.status === true) {
+                let trainer = response.trainer;
+                trainerSlickAdd(trainer);
+                trainersSlickRefresh();
+                $modalAddTrainer.modal('hide');
+            }
+        }, function (error) {
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                let inputs = $modalAddTrainer.find('input').add($modalAddTrainer.find('textarea'));
+
+                $(inputs).each(function (i, e) {
+                    let fieldName = $(e).attr('name');
+                    if (Object.keys(errors).includes(fieldName)) {
+                        $(e).addClass('is-invalid');
+                        $(e).parent().find('div[class="invalid-feedback"]').text(errors[fieldName]);
+                    } else {
+                        if ($(e).hasClass('is-invalid')) {
+                            $(e).removeClass('is-invalid');
+                            (e).parent().find('div[class="invalid-feedback"]').text('');
+                        }
+                    }
+                });
+
+            }
+        },true);
     }
 
     function updatePreview() {
         let previewImg = $('#preview')[0];
 
-        console.log(previewImg);
-        let canvas;
-
         if (cropperObj) {
-            canvas = cropperObj.getCroppedCanvas();
+            let canvas = cropperObj.getCroppedCanvas();
             previewImg.src = canvas.toDataURL();
         }
     }
@@ -164,7 +190,7 @@ $(document).ready(function () {
     function showCropperImage(element) {
         let files = element.target.files;
         let done = function (url) {
-            element.target.value = '';
+            //element.target.value = '';
             cropperImage.src = url;
             $modalCropper.modal('show');
         };
@@ -187,7 +213,7 @@ $(document).ready(function () {
         }
     }
 
-    function ajax(type, url, data, successCallback, form = false) {
+    function ajax(type, url, data, onSuccess, onError, form = false) {
         let params = {
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: type,
@@ -196,8 +222,8 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status) {
                     if (response.status === true) {
-                        if (successCallback) {
-                            successCallback(response);
+                        if (onSuccess) {
+                            onSuccess(response);
                         }
                         toast('Сохранено', {type: 'success'});
                     }
@@ -205,7 +231,10 @@ $(document).ready(function () {
                     toast('Ошибка сохранения', {type: 'danger'})
                 }
             },
-            error: function () {
+            error: function (error) {
+                if (onError) {
+                    onError(error);
+                }
                 toast('Ошибка сохранения', {type: 'danger'})
             }
         }
@@ -276,6 +305,36 @@ function toast(content, opts){
 function trainersSlickRefresh() {
     $('.slides_pagination').slick('refresh');
     $('.slides').slick('refresh');
+}
+
+function trainerSlickAdd(trainer) {
+    $('.slides_pagination').slick('slickAdd', '<div id="trainer_' + trainer.id + '"><img src="storage/trainers/' + trainer.image + '" /></div>');
+
+
+    let slide = $('<div id="trainer_' + trainer.id + '">' +
+                    '<div class="flex jcsb">' +
+                        '<div class="trainer_foto">' +
+                            '<label class="label" data-toggle="tooltip" title="Загрузить фото">' +
+                                '<img src="storage/trainers/' + trainer.image + '" />' +
+                                '<input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">' +
+                            '</label>' +
+                        '</div>' +
+                        '<div class="trainer_caption">' +
+                            '<h4 id="trainer_name" contenteditable="true">' + trainer.name + '</h4>' +
+                            '<p id="trainer_description" contenteditable="true">' + trainer.description + '</p>')
+
+    if (trainer.video !== null)
+        slide.append('<div><a data-fancybox href="' + trainer.video + '">Смотреть занятие</a></div>');
+
+    slide.append('</div>' +
+                    '<div style="max-width: 90%; width: 100%; margin: auto; height: 100px">' +
+                        '<a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>' +
+                '</div>' +
+            '</div>' +
+        '</div>');
+
+
+    $('.slides').slick('slickAdd', slide);
 }
 
 function trainerSlickRemove(slickIndex) {
