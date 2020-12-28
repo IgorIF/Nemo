@@ -92,23 +92,8 @@ class AdminController extends Controller
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
-        $text = [];
-
-        $text[10] = $this->textsRepository->getOneTextById(10);
-        $text[11] = $this->textsRepository->getOneTextById(11);
-        $text[12] = $this->textsRepository->getOneTextById(12);
-        $text[13] = $this->textsRepository->getOneTextById(13);
-        $text[14] = $this->textsRepository->getOneTextById(14);
-        $text[15] = $this->textsRepository->getOneTextById(15);
-        $text[16] = $this->textsRepository->getOneTextById(16);
-        $text[17] = $this->textsRepository->getOneTextById(17);
-        $text[18] = $this->textsRepository->getOneTextById(18);
-        $text[19] = $this->textsRepository->getOneTextById(19);
-        $text[20] = $this->textsRepository->getOneTextById(20);
-        $text[21] = $this->textsRepository->getOneTextById(21);
-        $text[22] = $this->textsRepository->getOneTextById(22);
-
-        $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with('text', $text)->render();
+        $texts = $this->textsRepository->getInRangeById(10, 22);
+        $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with('texts', $texts)->render();
     }
 
     private function renderWhoSwimsWithUs() {
