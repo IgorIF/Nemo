@@ -4,23 +4,23 @@
         <span class="tab2">
             <picture>
                 <source srcset="{{ asset('images/security-icon1-active.svg') }}" type="image/svg+xml">
-                <img src="{{ asset('images/security-icon1-active.png') }}" alt="{{ $text[36] }}" width="78" height="61">
+                <img src="{{ asset('images/security-icon1-active.png') }}" alt="{{ $texts->get(37)->text }}" width="78" height="61">
             </picture>
-            <p id="text_36" contenteditable="true">{!! $text[36] !!}</p>
+            <p id="text_{{ $texts->get(37)->id }}" contenteditable="true">{!! $texts->get(37)->text !!}</p>
         </span>
         <span class="tab2">
             <picture>
                 <source srcset="{{ asset('images/security-icon2.svg') }}" type="image/svg+xml">
-                <img src="{{ asset('images/security-icon2.png') }}" alt="{{ $text[37] }}" width="59" height="61">
+                <img src="{{ asset('images/security-icon2.png') }}" alt="{{ $texts->get(38)->text }}" width="59" height="61">
             </picture>
-            <p id="text_37" contenteditable="true">{!! $text[37] !!}</p>
+            <p id="text_{{ $texts->get(38)->id }}" contenteditable="true">{!! $texts->get(38)->text !!}</p>
         </span>
         <span class="tab2">
             <picture>
                 <source srcset="{{ asset('images/security-icon3.svg') }}" type="image/svg+xml">
-                <img src="{{ asset('images/security-icon3.png') }}" alt="{{ $text[38] }}" width="51" height="63">
+                <img src="{{ asset('images/security-icon3.png') }}" alt="{{ $texts->get(39)->text }}" width="51" height="63">
             </picture>
-            <p id="text_38" contenteditable="true">{!! $text[38] !!}</p>
+            <p id="text_{{ $texts->get(39)->id }}" contenteditable="true">{!! $texts->get(39)->text !!}</p>
         </span>
     </div>
     <div class="tab_content2" data-aos="fade-up">

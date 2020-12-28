@@ -113,13 +113,8 @@ class AdminController extends Controller
     }
 
     private function renderSecurity() {
-        $text = [];
-
-        $text[36] = $this->textsRepository->getOneTextById(36);
-        $text[37] = $this->textsRepository->getOneTextById(37);
-        $text[38] = $this->textsRepository->getOneTextById(38);
-
-        $this->security = view('admin.security')->with('text', $text)->render();
+        $texts = $this->textsRepository->getInRangeById(37, 39);
+        $this->security = view('admin.security')->with('texts', $texts)->render();
     }
 
     protected function editText(Request $request) {
