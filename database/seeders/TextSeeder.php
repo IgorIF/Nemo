@@ -171,7 +171,7 @@ class TextSeeder extends Seeder
 
         DB::table('texts')->insert([
             'id' => '32',
-            'text' => 'Наши тренеры'
+            'text' => 'Кто у нас плавает'
         ]);
 
         DB::table('texts')->insert([
@@ -206,7 +206,7 @@ class TextSeeder extends Seeder
 
         DB::table('texts')->insert([
             'id' => '39',
-            'text' => 'Кто у нас плавает'
+            'text' => 'Наши тренеры'
         ]);
 
         DB::table('texts')->insert([

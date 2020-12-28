@@ -97,26 +97,14 @@ class AdminController extends Controller
     }
 
     private function renderWhoSwimsWithUs() {
-        $text = [];
-
-        $text[23] = $this->textsRepository->getOneTextById(23);
-        $text[24] = $this->textsRepository->getOneTextById(24);
-        $text[25] = $this->textsRepository->getOneTextById(25);
-        $text[26] = $this->textsRepository->getOneTextById(26);
-        $text[27] = $this->textsRepository->getOneTextById(27);
-        $text[28] = $this->textsRepository->getOneTextById(28);
-        $text[29] = $this->textsRepository->getOneTextById(29);
-        $text[30] = $this->textsRepository->getOneTextById(30);
-        $text[31] = $this->textsRepository->getOneTextById(31);
-        $text[39] = $this->textsRepository->getOneTextById(39);
-
-        $this->whoSwimsWithUs = view('admin.who_swims_with_us')->with('text', $text)->render();
+        $texts = $this->textsRepository->getInRangeById(23, 32);
+        $this->whoSwimsWithUs = view('admin.who_swims_with_us')->with('texts', $texts)->render();
     }
 
     private function renderTrainers() {
         $text = [];
 
-        $text[32] = $this->textsRepository->getOneTextById(32);
+        $text[32] = $this->textsRepository->getOneTextById(39);
         $text[33] = $this->textsRepository->getOneTextById(33);
 
         $trainers = $this->trainersRepository->getTrainers();
