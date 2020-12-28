@@ -27,4 +27,15 @@ class TextsRepository extends Repository
             $result['status'] = true;
         return $result;
     }
+
+    public function getInRangeById($from, $to)
+    {
+        $texts = parent::getInRangeById($from, $to);
+
+        $texts = $texts->mapWithKeys(function ($item) {
+            return [$item->id => $item];
+        });
+
+        return $texts;
+    }
 }
