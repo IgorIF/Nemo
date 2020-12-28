@@ -254,8 +254,11 @@ $(document).ready(function () {
         let description = $('<p id="trainer_description" contenteditable="true">' + trainer.description + '</p>');
 
 
-        name.click(frameAroundTextHandler);
-        description.click(frameAroundTextHandler);
+        name.focusin(onTextFocusinHandler)
+            .focusout(onTextFocusoutHandler);
+
+        description.focusin(onTextFocusinHandler)
+            .focusout(onTextFocusoutHandler);
 
         let container = slide.find('.trainer_caption');
 
