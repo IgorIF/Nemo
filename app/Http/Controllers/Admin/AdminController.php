@@ -82,7 +82,7 @@ class AdminController extends Controller
     }
 
     private function renderHeader() {
-        $texts = $this->textsRepository->getInRangeById(1, 7);
+        $texts = $this->textsRepository->getInRangeById(1, 15);
         $this->header = view( 'admin.header')->with('texts', $texts)->render();
     }
 

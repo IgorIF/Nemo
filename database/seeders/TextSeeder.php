@@ -16,78 +16,233 @@ class TextSeeder extends Seeder
     {
         DB::table('texts')->insert([
             'id' => '1',
-            'text' => 'Плавать раньше, чем ходить!'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => '2',
-            'text' => 'Индивидуальные занятия плаванием для детей от 1,5 месяцев до 7 лет в Люберцах, Чертаново, Марьино и Академическом районах'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => '3',
-            'text' => 'Cкидка -30% на первое занятие'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => '4',
             'text' => '+7(977)680-02-61'
         ]);
 
         DB::table('texts')->insert([
-            'id' => '5',
+            'id' => '2',
+            'text' => 'ул. Кировоградская 36'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '3',
+            'text' => 'Пражская<i>800м</i>'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '4',
             'text' => '+7(977)680-02-62'
         ]);
 
         DB::table('texts')->insert([
+            'id' => '5',
+            'text' => 'ул. Винокурова 24, к4'
+        ]);
+
+        DB::table('texts')->insert([
             'id' => '6',
-            'text' => '+7(977)680-02-63'
+            'text' => 'Академическая<i>1,7км</i>'
         ]);
 
         DB::table('texts')->insert([
             'id' => '7',
-            'text' => '+7(977)680-02-66'
+            'text' => '+7(977)680-02-63'
         ]);
 
         DB::table('texts')->insert([
             'id' => '8',
-            'text' => 'О нас'
+            'text' => 'Мячковский бульвар 16, к1'
         ]);
 
         DB::table('texts')->insert([
             'id' => '9',
-            'text' => 'Детский акваклуб «Немо» проводит индивидуальные занятия плаванием с детьми&nbsp;<span>от 1.5 месяцев до 7 лет</span>.&nbsp;Занятия проходят в игровой динамике&nbsp;с учетом возраста ребёнка, состояния его здоровья, психологических особенностей и умения держаться на воде.'
+            'text' => 'Марьино<i>1,1км</i>'
         ]);
 
         DB::table('texts')->insert([
             'id' => '10',
-            'text' => 'Польза раннего плавания'
+            'text' => '+7(977)680-02-66'
         ]);
 
         DB::table('texts')->insert([
             'id' => '11',
-            'text' => 'Иммунитет'
+            'text' => 'г.Люберцы, ул. Камова 11/5'
         ]);
 
         DB::table('texts')->insert([
             'id' => '12',
-            'text' => 'Занятия плаванием закаляют организм, повышают иммунитет и устойчивость к простудным заболеваниям'
+            'text' => 'Некрасовка<i>2,5 км</i>'
         ]);
 
         DB::table('texts')->insert([
             'id' => '13',
-            'text' => 'Самоспасение'
+            'text' => 'Плавать раньше, чем ходить!'
         ]);
 
         DB::table('texts')->insert([
             'id' => '14',
-            'text' => 'Адаптация к водной среде и привитие техники самоспасения'
+            'text' => 'Индивидуальные занятия плаванием для детей от 1,5 месяцев до 7 лет в Люберцах, Чертаново, Марьино и Академическом районах'
         ]);
 
         DB::table('texts')->insert([
             'id' => '15',
-            'text' => 'Навыки'
+            'text' => 'Cкидка -30% на первое занятие'
         ]);
+
+        /*DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);*/
+
+
+
+
+
+
+
+
+
+
 
         DB::table('texts')->insert([
             'id' => '16',
