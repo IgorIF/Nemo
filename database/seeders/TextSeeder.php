@@ -176,12 +176,12 @@ class TextSeeder extends Seeder
 
         DB::table('texts')->insert([
             'id' => '33',
-            'text' => 'Мы понимаем и уважаем индивидуальность личности малыша, создаем для него атмосферу доверия и уверенности'
+            'text' => 'Наши тренеры'
         ]);
 
         DB::table('texts')->insert([
             'id' => '34',
-            'text' => 'Плавать никогда<br>не рано'
+            'text' => 'Мы понимаем и уважаем индивидуальность личности малыша, создаем для него атмосферу доверия и уверенности'
         ]);
 
         DB::table('texts')->insert([
@@ -206,7 +206,7 @@ class TextSeeder extends Seeder
 
         DB::table('texts')->insert([
             'id' => '39',
-            'text' => 'Наши тренеры'
+            'text' => 'Плавать никогда<br>не рано'
         ]);
 
         DB::table('texts')->insert([

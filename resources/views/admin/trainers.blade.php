@@ -1,5 +1,5 @@
-<h2 data-aos="fade-up" id="text_32" contenteditable="true">{!! $text[32] !!}</h2>
-<p data-aos="fade-up" id="text_33" contenteditable="true">{!! $text[33] !!}</p>
+<h2 data-aos="fade-up" id="text_{{ $texts->get(33)->id }}" contenteditable="true">{!! $texts->get(33)->text !!}</h2>
+<p data-aos="fade-up" id="text_{{ $texts->get(34)->id }}" contenteditable="true">{!! $texts->get(34)->text !!}</p>
 
 <div class="flexslider" id="f1" data-aos="fade-up">
     <div class="slides">
@@ -17,8 +17,8 @@
                     </div>
 
                     <div class="trainer_caption">
-                        <h4 id="trainer_name" contenteditable="true">{{ $trainer->name }}</h4>
-                        <p id="trainer_description" contenteditable="true">{{ $trainer->description }}</p>
+                        <h4 id="trainer_name" contenteditable="true">{!! $trainer->name !!}</h4>
+                        <p id="trainer_description" contenteditable="true">{!! $trainer->description !!}</p>
 
                         @if(!empty($trainer->video))
                             <div><a data-fancybox href="{{ $trainer->video }}">Смотреть занятие</a></div>

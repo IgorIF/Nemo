@@ -102,13 +102,9 @@ class AdminController extends Controller
     }
 
     private function renderTrainers() {
-        $text = [];
-
-        $text[32] = $this->textsRepository->getOneTextById(39);
-        $text[33] = $this->textsRepository->getOneTextById(33);
-
+        $texts = $this->textsRepository->getInRangeById(33, 34);
         $trainers = $this->trainersRepository->getTrainers();
-        $this->trainers = view('admin.trainers')->with(['trainers' => $trainers, 'text' => $text ])->render();
+        $this->trainers = view('admin.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 
     private function renderSwimNeverNotEarly() {
