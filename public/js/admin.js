@@ -12,13 +12,11 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
     /// Update text
-    $('[contenteditable="true"]').focusin(onTextFocusinHandler)
-        .focusout(onTextFocusoutHandler);
+    $('[contenteditable="true"]').focusin(onTextFocusinListener)
+        .focusout(onTextFocusoutListener);
 
     /// Delete trainer
-    $(document).on('click', '#trainer_delete_btn', function () {
-        deleteTrainer(this);
-    });
+    $(document).on('click', '#trainer_delete_btn', onTrainerDeleteBtnClickListener);
 
     /// Cropper
     $modalCropper.on('shown.bs.modal', function () {
@@ -38,31 +36,16 @@ $(document).ready(function () {
     });
 
     /// Trainer image edit cropper show
-    $(document).on('change', '[id^="trainer_image"]', function (e) {
-        trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
-        showCropperImage(e);
-    });
+    $('[id^="trainer_image"]').change(onTrainerImageChangeListener);
 
     /// Save trainer image
-    $('#crop_btn').on('click', function () {
-        cropperData = cropperObj.getData();
-        if (cropBtnMode) {   /// update image
-            saveTrainerImage();
-        } else {            /// add trainer
-            updatePreview();
-        }
-        $modalCropper.modal('hide');
-    });
+    $('#crop_btn').click(onCropBtnClickListener);
 
     /// Show add trainer modal
-    $('#trainer_add_btn').on('click', function () {
-        $modalAddTrainer.modal('show');
-    });
+    $('#trainer_add_btn').click(onTrainerAddBtnClickListener);
 
     /// Save new trainer
-    $('#trainer_save_btn').on('click', function () {
-        saveNewTrainer();
-    })
+    $('#trainer_save_btn').click(onTrainerSaveBtnClickListener);
 
     $modalAddTrainer.on('shown.bs.modal', function () {
         cropBtnMode = false;
@@ -70,9 +53,7 @@ $(document).ready(function () {
         cropBtnMode = true;
     });
 
-    $modalAddTrainer.find('input[id="input"]').on('change', function (e) {
-        showCropperImage(e);
-    })
+    $modalAddTrainer.find('input[id="input"]').change(onTrainerImageChangeListener);
 
 
     function saveText(element) {
@@ -168,7 +149,7 @@ $(document).ready(function () {
     }
 
     function showCropperImage(element) {
-        let files = element.target.files;
+        let files = element.files;
         let done = function (url) {
             //element.target.value = '';
             cropperImage.src = url;
@@ -240,41 +221,49 @@ $(document).ready(function () {
                             '<div class="trainer_foto">' +
                                 '<label class="label" data-toggle="tooltip" title="Загрузить фото">' +
                                     '<img src="storage/trainers/' + trainer.image + '" />' +
-                                    '<input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">' +
                                 '</label>' +
                             '</div>' +
                             '<div class="trainer_caption"></div>' +
-                            '<div style="max-width: 90%; width: 100%; margin: auto; height: 100px">' +
-                                '<a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>' +
-                            '</div>' +
+                            '<div style="max-width: 90%; width: 100%; margin: auto; height: 100px"></div>' +
                         '</div>' +
                     '</div>');
 
+        let imgInput = $('<input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">');
         let name = $('<h4 id="trainer_name" contenteditable="true">' + trainer.name + '</h4>');
         let description = $('<p id="trainer_description" contenteditable="true">' + trainer.description + '</p>');
+        let deleteBtn = $('<a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>');
 
+        imgInput.change(onTrainerImageChangeListener);
 
-        name.focusin(onTextFocusinHandler)
-            .focusout(onTextFocusoutHandler);
+        name.focusin(onTextFocusinListener)
+            .focusout(onTextFocusoutListener);
 
-        description.focusin(onTextFocusinHandler)
-            .focusout(onTextFocusoutHandler);
+        description.focusin(onTextFocusinListener)
+            .focusout(onTextFocusoutListener);
 
-        let container = slide.find('.trainer_caption');
+        //deleteBtn.click(onTrainerDeleteBtnClickListener);
 
-        container.append(name).append(description);
+        let trainerCaptionContainer = slide.find('.trainer_caption');
+        let trainerDeleteBtnContainer = trainerCaptionContainer.next('div');
+        let trainerInputContainer = slide.find('label[class="label"]');
+
+        trainerInputContainer.append(imgInput);
+        trainerCaptionContainer.append(name).append(description);
+        trainerDeleteBtnContainer.append(deleteBtn);
         if (trainer.video !== null)
-            container.append('<div><a data-fancybox href="' + trainer.video + '">Смотреть занятие</a></div>');
+            trainerCaptionContainer.append('<div><a data-fancybox href="' + trainer.video + '">Смотреть занятие</a></div>');
 
         $('.slides').slick('slickAdd', slide);
     }
 
-    function onTextFocusinHandler() {
+
+    /// Handlers
+    function onTextFocusinListener() {
         $(this).addClass('backLightFrame');
         initialText = $(this).html();
     }
 
-    function onTextFocusoutHandler() {
+    function onTextFocusoutListener() {
         frameAroundTextOff(this);
 
         let id = $(this).attr('id').split('_')[0];
@@ -285,6 +274,34 @@ $(document).ready(function () {
             saveTrainerText(this);
 
         initialText = null;
+    }
+
+    function onTrainerDeleteBtnClickListener() {
+        deleteTrainer(this);
+    }
+
+    function onTrainerImageChangeListener() {
+        if (cropBtnMode)
+            trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        showCropperImage(this);
+    }
+
+    function onCropBtnClickListener() {
+        cropperData = cropperObj.getData();
+        if (cropBtnMode) {   /// update image
+            saveTrainerImage();
+        } else {            /// add trainer
+            updatePreview();
+        }
+        $modalCropper.modal('hide');
+    }
+
+    function onTrainerAddBtnClickListener() {
+        $modalAddTrainer.modal('show');
+    }
+
+    function onTrainerSaveBtnClickListener() {
+        saveNewTrainer();
     }
 });
 
