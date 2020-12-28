@@ -11,26 +11,9 @@ $(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    /// Frame around text
-    $('[contenteditable="true"]').focusin(frameAroundTextHandler);
-
     /// Update text
-    $('[contenteditable="true"][id^="text_"]').on('focusin', function () {
-        initialText = $(this).html();
-    }).on('focusout', function () {
-        frameAroundTextOff(this);
-        saveText(this);
-        initialText = null;
-    });
-
-    /// Update trainer text
-    $('[id^= "trainer_"][contenteditable="true"]').on('focusin', function () {
-        initialText = $(this).html();
-    }).on('focusout', function () {
-        frameAroundTextOff(this);
-        saveTrainerText(this);
-        initialText = null;
-    });
+    $('[contenteditable="true"]').focusin(onTextFocusinHandler)
+        .focusout(onTextFocusoutHandler);
 
     /// Delete trainer
     $(document).on('click', '#trainer_delete_btn', function () {
@@ -248,10 +231,6 @@ $(document).ready(function () {
         $(e).removeClass('backLightFrame');
     }
 
-    function frameAroundTextHandler() {
-        $(this).addClass('backLightFrame');
-    }
-
     function trainerSlickAdd(trainer) {
         $('.slides_pagination').slick('slickAdd', '<div id="trainer_' + trainer.id + '"><img src="storage/trainers/' + trainer.image + '" /></div>');
 
@@ -285,6 +264,24 @@ $(document).ready(function () {
             container.append('<div><a data-fancybox href="' + trainer.video + '">Смотреть занятие</a></div>');
 
         $('.slides').slick('slickAdd', slide);
+    }
+
+    function onTextFocusinHandler() {
+        $(this).addClass('backLightFrame');
+        initialText = $(this).html();
+    }
+
+    function onTextFocusoutHandler() {
+        frameAroundTextOff(this);
+
+        let id = $(this).attr('id').split('_')[0];
+
+        if (id === 'text')
+            saveText(this);
+        else if (id === 'trainer')
+            saveTrainerText(this);
+
+        initialText = null;
     }
 });
 
@@ -342,8 +339,6 @@ function trainersSlickRefresh() {
     $('.slides_pagination').slick('refresh');
     $('.slides').slick('refresh');
 }
-
-
 
 function trainerSlickRemove(slickIndex) {
     $('.slides_pagination').slick('slickRemove', slickIndex);
