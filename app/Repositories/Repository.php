@@ -11,4 +11,8 @@ class Repository
     public function getOneTextById($id) {
         return $this->model->where('id', $id)->first()->text;
     }
+
+    public function getInRangeById($from, $to) {
+        return $this->model->where('id', '>=', $from)->where('id', '<=', $to)->get();
+    }
 }

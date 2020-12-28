@@ -82,7 +82,7 @@ class AdminController extends Controller
     }
 
     private function renderHeader() {
-        $text = [];
+        /*$text = [];
 
         $text[1] = $this->textsRepository->getOneTextById(1);
         $text[2] = $this->textsRepository->getOneTextById(2);
@@ -90,9 +90,15 @@ class AdminController extends Controller
         $text[4] = $this->textsRepository->getOneTextById(4);
         $text[5] = $this->textsRepository->getOneTextById(5);
         $text[6] = $this->textsRepository->getOneTextById(6);
-        $text[7] = $this->textsRepository->getOneTextById(7);
+        $text[7] = $this->textsRepository->getOneTextById(7);*/
 
-        $this->header = view( 'admin.header')->with('text', $text)->render();
+        $texts = $this->textsRepository->getInRangeById(1, 7);
+
+        $texts = $texts->mapWithKeys(function ($item) {
+            return [$item->id => $item];
+        });
+
+        $this->header = view( 'admin.header')->with('texts', $texts)->render();
     }
 
     private function renderAboutUs() {
