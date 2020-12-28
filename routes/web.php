@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\EditSite;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TrainerController;
 
 use App\Http\Controllers\IndexController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,11 +22,11 @@ Route::get('/', IndexController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
-    Route::get('/', EditSite::class);
+    Route::get('/', AdminController::class);
 
     Route::resource('trainers', TrainerController::class)->only(['store', 'update', 'destroy']);
 
-    Route::put('edittext', [EditSite::class, 'editText'])->name('edittext');
+    Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 
 });
 

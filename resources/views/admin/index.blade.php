@@ -4,8 +4,44 @@
     {!! $header !!}
 @endsection
 
-@section('content')
-    {!! $content !!}
+@section('aboutUs')
+    {!! $aboutUs !!}
+@endsection
+
+@section('theBenefitsOfEarlySwimming')
+    {!! $theBenefitsOfEarlySwimming !!}
+@endsection
+
+@section('whoSwimsWithUs')
+    {!! $whoSwimsWithUs !!}
+@endsection
+
+@section('trainers')
+    {!! $trainers !!}
+@endsection
+
+@section('prices')
+    {!! $prices !!}
+@endsection
+
+@section('swimNeverNotEarly')
+    {!! $swimNeverNotEarly !!}
+@endsection
+
+@section('howWeSwim')
+    {!! $howWeSwim !!}
+@endsection
+
+@section('security')
+    {!! $security !!}
+@endsection
+
+@section('reviews')
+    {!! $reviews !!}
+@endsection
+
+@section('swimmingPool')
+    {!! $swimmingPool !!}
 @endsection
 
 @section('footer')
