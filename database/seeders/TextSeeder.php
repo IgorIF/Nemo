@@ -186,11 +186,16 @@ class TextSeeder extends Seeder
 
         DB::table('texts')->insert([
             'id' => '35',
-            'text' => 'Получите скидку <span class="discount">-30%</span>&nbsp на первое занятие. Стоимость пробного занятия составит 980 рублей'
+            'text' => 'Плавать никогда<br>не рано'
         ]);
 
         DB::table('texts')->insert([
             'id' => '36',
+            'text' => 'Получите скидку <span class="discount">-30%</span>&nbsp на первое занятие. Стоимость пробного занятия составит 980 рублей'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '39',
             'text' => 'Бассейн'
         ]);
 
@@ -202,11 +207,6 @@ class TextSeeder extends Seeder
         DB::table('texts')->insert([
             'id' => '38',
             'text' => 'Удобства'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => '39',
-            'text' => 'Плавать никогда<br>не рано'
         ]);
 
         DB::table('texts')->insert([

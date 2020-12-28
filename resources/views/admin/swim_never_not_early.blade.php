@@ -3,8 +3,8 @@
 </div>
 
 <div class="left">
-    <h2 data-aos="fade-up" id="text_34" contenteditable="true">{!! $text[34] !!}</h2>
-    <p data-aos="fade-up" id="text_35" contenteditable="true">{!! $text[35] !!}<span class="discount-sum"></span>
+    <h2 data-aos="fade-up" id="text_{{ $texts->get(35)->id }}" contenteditable="true">{!! $texts->get(35)->text !!}</h2>
+    <p data-aos="fade-up" id="text_{{ $texts->get(36)->id }}" contenteditable="true">{!! $texts->get(36)->text !!}<span class="discount-sum"></span>
     </p>
     <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="#" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
 </div>

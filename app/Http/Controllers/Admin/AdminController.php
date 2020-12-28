@@ -108,12 +108,8 @@ class AdminController extends Controller
     }
 
     private function renderSwimNeverNotEarly() {
-        $text = [];
-
-        $text[34] = $this->textsRepository->getOneTextById(34);
-        $text[35] = $this->textsRepository->getOneTextById(35);
-
-        $this->swimNeverNotEarly = view('admin.swim_never_not_early')->with('text', $text)->render();
+        $texts = $this->textsRepository->getInRangeById(35, 36);
+        $this->swimNeverNotEarly = view('admin.swim_never_not_early')->with('texts', $texts)->render();
     }
 
     private function renderSecurity() {
