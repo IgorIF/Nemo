@@ -12,9 +12,7 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
     /// Frame around text
-    $('[contenteditable="true"]').on('focusin', null,function () {
-        $(this).addClass('backLightFrame');
-    })
+    $('[contenteditable="true"]').focusin(frameAroundTextHandler);
 
     /// Update text
     $('[contenteditable="true"][id^="text_"]').on('focusin', function () {
@@ -249,6 +247,45 @@ $(document).ready(function () {
     function frameAroundTextOff(e) {
         $(e).removeClass('backLightFrame');
     }
+
+    function frameAroundTextHandler() {
+        $(this).addClass('backLightFrame');
+    }
+
+    function trainerSlickAdd(trainer) {
+        $('.slides_pagination').slick('slickAdd', '<div id="trainer_' + trainer.id + '"><img src="storage/trainers/' + trainer.image + '" /></div>');
+
+
+        let slide = $('<div id="trainer_' + trainer.id + '">' +
+                        '<div class="flex jcsb">' +
+                            '<div class="trainer_foto">' +
+                                '<label class="label" data-toggle="tooltip" title="Загрузить фото">' +
+                                    '<img src="storage/trainers/' + trainer.image + '" />' +
+                                    '<input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">' +
+                                '</label>' +
+                            '</div>' +
+                            '<div class="trainer_caption"></div>' +
+                            '<div style="max-width: 90%; width: 100%; margin: auto; height: 100px">' +
+                                '<a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>');
+
+        let name = $('<h4 id="trainer_name" contenteditable="true">' + trainer.name + '</h4>');
+        let description = $('<p id="trainer_description" contenteditable="true">' + trainer.description + '</p>');
+
+
+        name.click(frameAroundTextHandler);
+        description.click(frameAroundTextHandler);
+
+        let container = slide.find('.trainer_caption');
+
+        container.append(name).append(description);
+        if (trainer.video !== null)
+            container.append('<div><a data-fancybox href="' + trainer.video + '">Смотреть занятие</a></div>');
+
+        $('.slides').slick('slickAdd', slide);
+    }
 });
 
 
@@ -306,35 +343,7 @@ function trainersSlickRefresh() {
     $('.slides').slick('refresh');
 }
 
-function trainerSlickAdd(trainer) {
-    $('.slides_pagination').slick('slickAdd', '<div id="trainer_' + trainer.id + '"><img src="storage/trainers/' + trainer.image + '" /></div>');
 
-
-    let slide = $('<div id="trainer_' + trainer.id + '">' +
-                    '<div class="flex jcsb">' +
-                        '<div class="trainer_foto">' +
-                            '<label class="label" data-toggle="tooltip" title="Загрузить фото">' +
-                                '<img src="storage/trainers/' + trainer.image + '" />' +
-                                '<input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">' +
-                            '</label>' +
-                        '</div>' +
-                        '<div class="trainer_caption">' +
-                            '<h4 id="trainer_name" contenteditable="true">' + trainer.name + '</h4>' +
-                            '<p id="trainer_description" contenteditable="true">' + trainer.description + '</p>')
-
-    if (trainer.video !== null)
-        slide.append('<div><a data-fancybox href="' + trainer.video + '">Смотреть занятие</a></div>');
-
-    slide.append('</div>' +
-                    '<div style="max-width: 90%; width: 100%; margin: auto; height: 100px">' +
-                        '<a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>' +
-                '</div>' +
-            '</div>' +
-        '</div>');
-
-
-    $('.slides').slick('slickAdd', slide);
-}
 
 function trainerSlickRemove(slickIndex) {
     $('.slides_pagination').slick('slickRemove', slickIndex);
