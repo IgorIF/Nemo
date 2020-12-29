@@ -102,7 +102,7 @@ class AdminController extends Controller
     }
 
     private function renderTrainers() {
-        $texts = $this->textsRepository->getInRangeById(33, 34);
+        $texts = $this->textsRepository->getInRangeById(41, 42);
         $trainers = $this->trainersRepository->getTrainers();
         $this->trainers = view('admin.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
