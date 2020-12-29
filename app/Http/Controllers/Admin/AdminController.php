@@ -87,12 +87,12 @@ class AdminController extends Controller
     }
 
     private function renderAboutUs() {
-        $texts = $this->textsRepository->getInRangeById(8, 9);
+        $texts = $this->textsRepository->getInRangeById(16, 17);
         $this->aboutUs = view( 'admin.about_us')->with('texts', $texts)->render();
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
-        $texts = $this->textsRepository->getInRangeById(10, 22);
+        $texts = $this->textsRepository->getInRangeById(18, 30);
         $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with('texts', $texts)->render();
     }
 

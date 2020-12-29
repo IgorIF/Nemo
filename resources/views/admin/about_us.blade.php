@@ -8,6 +8,6 @@
 
 </div>
 <div class="about-description right">
-    <h2 data-aos="fade-up" id="text_{{ $texts->get(8)->id }}" contenteditable="true">{!! $texts->get(8)->text !!}</h2>
-    <p data-aos="fade-up" id="text_{{ $texts->get(9)->id }}" contenteditable="true">{!! $texts->get(9)->text !!}</p>
+    <h2 data-aos="fade-up" id="text_{{ $texts->get(16)->id }}" contenteditable="true">{!! $texts->get(16)->text !!}</h2>
+    <p data-aos="fade-up" id="text_{{ $texts->get(17)->id }}" contenteditable="true">{!! $texts->get(17)->text !!}</p>
 </div>
