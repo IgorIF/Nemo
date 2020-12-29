@@ -97,7 +97,7 @@ class AdminController extends Controller
     }
 
     private function renderWhoSwimsWithUs() {
-        $texts = $this->textsRepository->getInRangeById(23, 32);
+        $texts = $this->textsRepository->getInRangeById(31, 40);
         $this->whoSwimsWithUs = view('admin.who_swims_with_us')->with('texts', $texts)->render();
     }
 
