@@ -119,7 +119,7 @@ class AdminController extends Controller
     }
 
     private function renderSecurity() {
-        $texts = $this->textsRepository->getInRangeById(37, 39);
+        $texts = $this->textsRepository->getInRangeById(46, 49);
         $this->security = view('admin.security')->with('texts', $texts)->render();
     }
 

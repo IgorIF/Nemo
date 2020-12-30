@@ -239,27 +239,27 @@ class TextSeeder extends Seeder
             'text' => 'Получите скидку <span class="discount">-30%</span>&nbsp на первое занятие. Стоимость пробного занятия составит 980 рублей<span class="discount-sum"></span>'
         ]);
 
-       /* DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
+        DB::table('texts')->insert([
+            'id' => '46',
+            'text' => 'Мы все предусмотрели'
         ]);
 
         DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
+            'id' => '47',
+            'text' => 'Бассейн'
         ]);
 
         DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
+            'id' => '48',
+            'text' => 'Водоподготовка'
         ]);
 
         DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
+            'id' => '49',
+            'text' => 'Удобства'
         ]);
 
-        DB::table('texts')->insert([
+        /*DB::table('texts')->insert([
             'id' => '',
             'text' => ''
         ]);

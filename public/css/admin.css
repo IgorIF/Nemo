@@ -1432,11 +1432,9 @@ font-weight: 300;
 {
   font-family: 'SummerFontBold';
   font-size: 60px;
-
   color: #06c5b2;
-  margin-bottom: 25px;
+  margin-bottom: 75px;
   letter-spacing: 2px;
-  padding-bottom: 50px;
 }
 
 .security .container>p

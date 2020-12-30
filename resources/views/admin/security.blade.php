@@ -1,26 +1,26 @@
-<h2 data-aos="fade-up">Мы все предусмотрели</h2>
+<h2 data-aos="fade-up" id="text_{{ $texts->get(46)->id }}" contenteditable="true">{!! $texts->get(46)->text !!}</h2>
 <div class="right">
     <div class="tabs2" data-aos="fade-up">
         <span class="tab2">
             <picture>
                 <source srcset="{{ asset('images/security-icon1-active.svg') }}" type="image/svg+xml">
-                <img src="{{ asset('images/security-icon1-active.png') }}" alt="{{ $texts->get(37)->text }}" width="78" height="61">
+                <img src="{{ asset('images/security-icon1-active.png') }}" alt="{{ $texts->get(47)->text }}" width="78" height="61">
             </picture>
-            <p id="text_{{ $texts->get(37)->id }}" contenteditable="true">{!! $texts->get(37)->text !!}</p>
+            <p id="text_{{ $texts->get(47)->id }}" contenteditable="true">{!! $texts->get(47)->text !!}</p>
         </span>
         <span class="tab2">
             <picture>
                 <source srcset="{{ asset('images/security-icon2.svg') }}" type="image/svg+xml">
-                <img src="{{ asset('images/security-icon2.png') }}" alt="{{ $texts->get(38)->text }}" width="59" height="61">
+                <img src="{{ asset('images/security-icon2.png') }}" alt="{{ $texts->get(48)->text }}" width="59" height="61">
             </picture>
-            <p id="text_{{ $texts->get(38)->id }}" contenteditable="true">{!! $texts->get(38)->text !!}</p>
+            <p id="text_{{ $texts->get(48)->id }}" contenteditable="true">{!! $texts->get(48)->text !!}</p>
         </span>
         <span class="tab2">
             <picture>
                 <source srcset="{{ asset('images/security-icon3.svg') }}" type="image/svg+xml">
-                <img src="{{ asset('images/security-icon3.png') }}" alt="{{ $texts->get(39)->text }}" width="51" height="63">
+                <img src="{{ asset('images/security-icon3.png') }}" alt="{{ $texts->get(49)->text }}" width="51" height="63">
             </picture>
-            <p id="text_{{ $texts->get(39)->id }}" contenteditable="true">{!! $texts->get(39)->text !!}</p>
+            <p id="text_{{ $texts->get(49)->id }}" contenteditable="true">{!! $texts->get(49)->text !!}</p>
         </span>
     </div>
     <div class="tab_content2" data-aos="fade-up">
