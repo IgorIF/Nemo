@@ -19,6 +19,7 @@ class AdminController extends Controller
     private $theBenefitsOfEarlySwimming;
     private $whoSwimsWithUs;
     private $trainers;
+    private $prices;
     private $swimNeverNotEarly;
     private $security;
 
@@ -52,6 +53,7 @@ class AdminController extends Controller
         $this->renderTheBenefitsOfEarlySwimming();
         $this->renderWhoSwimsWithUs();
         $this->renderTrainers();
+        $this->renderPrices();
         $this->renderSwimNeverNotEarly();
         $this->renderSecurity();
 
@@ -59,7 +61,6 @@ class AdminController extends Controller
     }
 
     private function renderOutput() {
-        $prices = view('admin.prices')->render();
         $howWeSwim = view('admin.how_we_swim')->render();
         $reviews = view('admin.reviews')->render();
         $swimmingPool = view('admin.swimming_pool')->render();
@@ -70,7 +71,7 @@ class AdminController extends Controller
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
-        $this->vars = Arr::add($this->vars, 'prices', $prices);
+        $this->vars = Arr::add($this->vars, 'prices', $this->prices);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
         $this->vars = Arr::add($this->vars, 'security', $this->security);
@@ -107,8 +108,13 @@ class AdminController extends Controller
         $this->trainers = view('admin.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 
+    private function renderPrices() {
+        $texts = $this->textsRepository->getInRangeById(43, 43);
+        $this->prices = view('admin.prices')->with('texts', $texts)->render();
+    }
+
     private function renderSwimNeverNotEarly() {
-        $texts = $this->textsRepository->getInRangeById(35, 36);
+        $texts = $this->textsRepository->getInRangeById(44, 45);
         $this->swimNeverNotEarly = view('admin.swim_never_not_early')->with('texts', $texts)->render();
     }
 

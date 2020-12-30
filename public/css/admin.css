@@ -1561,12 +1561,10 @@ font-weight: 300;
 {
   font-family: 'SummerFontBold';
   font-size: 60px;
-
   color: #06c5b2;
   text-align: center;
   letter-spacing: 2px;
-  margin-bottom: 10px;
-  padding: 70px 0 30px 0;
+  margin: 70px 0 40px 0;
 }
 
 .subscribers-for-visits .container>p

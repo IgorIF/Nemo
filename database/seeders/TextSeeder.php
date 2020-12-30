@@ -225,6 +225,21 @@ class TextSeeder extends Seeder
         ]);
 
         DB::table('texts')->insert([
+            'id' => '43',
+            'text' => 'Стоимость занятий'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '44',
+            'text' => 'Плавать никогда<br>не рано'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '45',
+            'text' => 'Получите скидку <span class="discount">-30%</span>&nbsp на первое занятие. Стоимость пробного занятия составит 980 рублей<span class="discount-sum"></span>'
+        ]);
+
+       /* DB::table('texts')->insert([
             'id' => '',
             'text' => ''
         ]);
@@ -233,5 +248,40 @@ class TextSeeder extends Seeder
             'id' => '',
             'text' => ''
         ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);*/
     }
 }
