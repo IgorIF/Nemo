@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
+use App\Models\SecurityCategory;
+use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ class AdminController extends Controller
 {
     protected $textsRepository;
     protected $trainersRepository;
+    protected $securityCategoriesRepository;
 
     private $header;
     private $aboutUs;
@@ -31,11 +34,13 @@ class AdminController extends Controller
      * EditSite constructor.
      * @param TextsRepository $textsRepository
      * @param TrainersRepository $trainersRepository
+     * @param SecurityCategoriesRepository $securityCategoriesRepository
      */
-    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository)
+    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
+        $this->securityCategoriesRepository = $securityCategoriesRepository;
         $this->template = 'admin.index';
     }
 
@@ -122,6 +127,8 @@ class AdminController extends Controller
 
     private function renderSecurity() {
         $texts = $this->textsRepository->getInRangeById(46, 49);
+        $securityCategories = $this->securityCategoriesRepository->getAll();
+        dd($securityCategories);
         $this->security = view('admin.security')->with('texts', $texts)->render();
     }
 
