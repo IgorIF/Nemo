@@ -17,19 +17,22 @@ class SecurityCategorySeeder extends Seeder
         DB::table('security_categories')->insert([
             'id' => 1,
             'name' => 'Бассейн',
-            'icon' => 'security-icon1-active'
+            'icon' => 'security-icon1-active',
+            'icon_width' => 78
         ]);
 
         DB::table('security_categories')->insert([
             'id' => 2,
             'name' => 'Водоподготовка',
-            'icon' => 'security-icon2'
+            'icon' => 'security-icon2',
+            'icon_width' => 59
         ]);
 
         DB::table('security_categories')->insert([
             'id' => 3,
             'name' => 'Удобства',
-            'icon' => 'security-icon3'
+            'icon' => 'security-icon3',
+            'icon_width' => 51
         ]);
     }
 }

@@ -126,14 +126,13 @@ class AdminController extends Controller
     }
 
     private function renderSecurity() {
-        $texts = $this->textsRepository->getInRangeById(46, 49);
+        $texts = $this->textsRepository->getInRangeById(46, 47);
         $securityCategories = $this->securityCategoriesRepository->getAll();
-        dd($securityCategories);
-        $this->security = view('admin.security')->with('texts', $texts)->render();
+        $this->security = view('admin.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
     }
 
     private function renderReviews() {
-        $texts = $this->textsRepository->getInRangeById(50, 51);
+        $texts = $this->textsRepository->getInRangeById(48, 48);
         $this->reviews = view('admin.reviews')->with('texts', $texts)->render();
     }
 

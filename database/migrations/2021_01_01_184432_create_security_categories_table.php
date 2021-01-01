@@ -17,6 +17,7 @@ class CreateSecurityCategoriesTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('icon');
+            $table->integer('icon_width');
             $table->timestamps();
         });
     }
