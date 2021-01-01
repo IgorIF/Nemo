@@ -22,6 +22,7 @@ class AdminController extends Controller
     private $prices;
     private $swimNeverNotEarly;
     private $security;
+    private $reviews;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -56,13 +57,14 @@ class AdminController extends Controller
         $this->renderPrices();
         $this->renderSwimNeverNotEarly();
         $this->renderSecurity();
+        $this->renderReviews();
+
 
         return $this->renderOutput();
     }
 
     private function renderOutput() {
         $howWeSwim = view('admin.how_we_swim')->render();
-        $reviews = view('admin.reviews')->render();
         $swimmingPool = view('admin.swimming_pool')->render();
         $footer = view('admin.footer')->render();
 
@@ -75,7 +77,7 @@ class AdminController extends Controller
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
         $this->vars = Arr::add($this->vars, 'security', $this->security);
-        $this->vars = Arr::add($this->vars, 'reviews', $reviews);
+        $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $swimmingPool);
         $this->vars = Arr::add($this->vars, 'footer', $footer);
 
@@ -121,6 +123,11 @@ class AdminController extends Controller
     private function renderSecurity() {
         $texts = $this->textsRepository->getInRangeById(46, 49);
         $this->security = view('admin.security')->with('texts', $texts)->render();
+    }
+
+    private function renderReviews() {
+        $texts = $this->textsRepository->getInRangeById(50, 51);
+        $this->reviews = view('admin.reviews')->with('texts', $texts)->render();
     }
 
     protected function editText(Request $request) {

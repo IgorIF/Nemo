@@ -1,4 +1,4 @@
-<h2 data-aos="fade-up">Отзывы родителей</h2>
+<h2 data-aos="fade-up" id="text_{{ $texts->get(50)->id }}" contenteditable="true">{!! $texts->get(50)->text !!}</h2>
 
 <section class="slider3" data-aos="fade-up">
     <div class="slider-slick">

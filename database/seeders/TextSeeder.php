@@ -259,29 +259,29 @@ class TextSeeder extends Seeder
             'text' => 'Удобства'
         ]);
 
-        /*DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
+        DB::table('texts')->insert([
+            'id' => '50',
+            'text' => 'Отзывы родителей'
         ]);
 
-        DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
-        ]);
+        /* DB::table('texts')->insert([
+             'id' => '',
+             'text' => ''
+         ]);
 
-        DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
-        ]);
+         DB::table('texts')->insert([
+             'id' => '',
+             'text' => ''
+         ]);
 
-        DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
-        ]);
+         DB::table('texts')->insert([
+             'id' => '',
+             'text' => ''
+         ]);
 
-        DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
-        ]);*/
+         DB::table('texts')->insert([
+             'id' => '',
+             'text' => ''
+         ]);*/
     }
 }
