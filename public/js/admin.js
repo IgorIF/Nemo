@@ -18,6 +18,9 @@ $(document).ready(function () {
     /// Delete trainer
     $(document).on('click', '#trainer_delete_btn', onTrainerDeleteBtnClickListener);
 
+    /// Delete security item
+    $(document).on('click', '#securityItem_delete_btn', onSecurityItemDeleteBtnClickListener);
+
     /// Cropper
     $modalCropper.on('shown.bs.modal', function () {
         cropperObj = new Cropper(cropperImage, {
@@ -109,6 +112,15 @@ $(document).ready(function () {
         ajax('DELETE', url, null, function () {
             trainerSlickRemove(slickIndex);
             trainersSlickRefresh();
+        });
+    }
+
+    function deleteSecurityItem(element) {
+        let securityItemId = $(element).parents('[id^="securityItem"]').attr('id').split('_')[1];
+        let url = 'admin/security/items/' + securityItemId;
+
+        ajax('DELETE', url, null, function () {
+            $('#securityItem_' + securityItemId).remove();
         });
     }
 
@@ -304,6 +316,10 @@ $(document).ready(function () {
 
     function onTrainerDeleteBtnClickListener() {
         deleteTrainer(this);
+    }
+
+    function onSecurityItemDeleteBtnClickListener() {
+        deleteSecurityItem(this);
     }
 
     function onTrainerImageChangeListener() {

@@ -76,10 +76,10 @@ class SecurityItemController extends AdminController
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function destroy($id)
     {
-        //
+        return $this->securityItemsRepository->destroySecurityItem($id);
     }
 }

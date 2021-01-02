@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\SecurityItemController;
 use App\Http\Controllers\Admin\TrainerController;
 
 use App\Http\Controllers\IndexController;
-use App\Models\SecurityItem;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
 
     Route::resource('trainers', TrainerController::class)->only(['store', 'update', 'destroy']);
     Route::resource('security/categories', SecurityCategoryController::class)->only('update');
-    Route::resource('security/items', SecurityItemController::class)->only('update');
+    Route::resource('security/items', SecurityItemController::class)->only(['update', 'destroy']);
 
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 

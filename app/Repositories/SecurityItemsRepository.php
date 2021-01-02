@@ -4,6 +4,7 @@
 namespace App\Repositories;
 
 use App\Models\SecurityItem;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 
 class SecurityItemsRepository extends Repository
@@ -21,6 +22,18 @@ class SecurityItemsRepository extends Repository
 
         $securityItem->fill(['text' => $request->get('text')]);
         $securityItem->update();
+
+        $result['status'] = true;
+
+        return $result;
+    }
+
+    public function destroySecurityItem($id)
+    {
+        $result = [];
+
+        $securityItem = SecurityItem::find($id);
+        $securityItem->delete();
 
         $result['status'] = true;
 

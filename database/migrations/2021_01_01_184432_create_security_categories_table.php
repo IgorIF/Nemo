@@ -15,7 +15,7 @@ class CreateSecurityCategoriesTable extends Migration
     {
         Schema::create('security_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->string('text', 100);
             $table->string('icon');
             $table->integer('icon_width');
             $table->timestamps();
