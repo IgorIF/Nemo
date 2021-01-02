@@ -15,7 +15,7 @@
     <div class="tab_content2" data-aos="fade-up">
 
         @foreach($securityCategories as $securityCategory)
-            <div class="tab_item2 item{{ $loop->iteration }}">
+            <div id="securityCategory_{{ $securityCategory->id }}" class="tab_item2 item{{ $loop->iteration }}">
                 <ul>
                     @foreach($securityCategory->securityItems as $securityItem)
                         <div id="securityItem_{{ $securityItem->id }}" >
@@ -32,6 +32,11 @@
                 @if($securityCategory->id == 2)
                     <p id="text_{{ $texts->get(47)->id }}" contenteditable="true">{!! $texts->get(47)->text !!}</p>
                 @endif
+
+                <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
+                    <a id="securityItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+                </div>
+
             </div>
         @endforeach
     </div>

@@ -28,7 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
 
     Route::resource('trainers', TrainerController::class)->only(['store', 'update', 'destroy']);
     Route::resource('security/categories', SecurityCategoryController::class)->only('update');
-    Route::resource('security/items', SecurityItemController::class)->only(['update', 'destroy']);
+    Route::resource('security/items', SecurityItemController::class)->only(['store', 'update', 'destroy']);
 
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 

@@ -1,31 +1,17 @@
-<h3 data-aos="fade-up">Посещение бассейна</h3>
-<p data-aos="fade-up">Для того чтобы начать посещать бассейн с малышом вам необходимо:</p>
+<h3 data-aos="fade-up" id="text_{{ $texts->get(49)->id }}" contenteditable="true">{!! $texts->get(49)->text !!}</h3>
+<p data-aos="fade-up" id="text_{{ $texts->get(50)->id }}" contenteditable="true">{!! $texts->get(50)->text !!}</p>
 
 <div class="swimming-pool-stages" data-aos="fade-up">
     <div class="stage1">
-        <p>
-            Позвонить по телефону
-            или <a class="js-popup enroll" data-type="оставить заявку" href="#">оставить заявку</a>
-            у нас на сайте
-        </p>
+        <p id="text_{{ $texts->get(51)->id }}" contenteditable="true">{!! $texts->get(51)->text !!}</p>
     </div>
     <div class="stage2">
-        <p>
-            Ознакомиться с
-            <a class="visiting-rules js-popup2" href="#">правилами посещения</a> акваклуба
-        </p>
+        <p id="text_{{ $texts->get(52)->id }}" contenteditable="true">{!! $texts->get(52)->text !!}</p>
     </div>
     <div class="stage3">
-        <p>
-            Предоставить действующие
-            <a class="references js-popup3" href="#">справки</a>
-        </p>
+        <p id="text_{{ $texts->get(53)->id }}" contenteditable="true">{!! $texts->get(53)->text !!}</p>
     </div>
     <div class="stage4">
-        <p>
-            Прийти
-            с малышом
-            на занятие
-        </p>
+        <p id="text_{{ $texts->get(54)->id }}" contenteditable="true">{!! $texts->get(54)->text !!}</p>
     </div>
 </div>

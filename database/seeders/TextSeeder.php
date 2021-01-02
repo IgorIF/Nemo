@@ -254,24 +254,54 @@ class TextSeeder extends Seeder
             'text' => 'Отзывы родителей'
         ]);
 
-        /* DB::table('texts')->insert([
-             'id' => '',
-             'text' => ''
+         DB::table('texts')->insert([
+             'id' => '49',
+             'text' => 'Посещение бассейна'
          ]);
 
          DB::table('texts')->insert([
-             'id' => '',
-             'text' => ''
+             'id' => '50',
+             'text' => 'Для того чтобы начать посещать бассейн с малышом вам необходимо:'
          ]);
 
          DB::table('texts')->insert([
-             'id' => '',
-             'text' => ''
+             'id' => '51',
+             'text' => 'Позвонить по телефону или <a class="js-popup enroll" data-type="оставить заявку" href="#">оставить заявку</a> у нас на сайте'
          ]);
 
          DB::table('texts')->insert([
-             'id' => '',
-             'text' => ''
-         ]);*/
+             'id' => '52',
+             'text' => 'Ознакомиться с <a class="visiting-rules js-popup2" href="#">правилами посещения</a> акваклуба'
+         ]);
+
+        DB::table('texts')->insert([
+            'id' => '53',
+            'text' => 'Предоставить действующие <a class="references js-popup3" href="#">справки</a>'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '54',
+            'text' => 'Прийти с малышом на занятие'
+        ]);
+
+        /*DB::table('texts')->insert([
+            'id' => '55',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '',
+            'text' => ''
+        ]);*/
     }
 }

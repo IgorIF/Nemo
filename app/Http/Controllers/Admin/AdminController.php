@@ -26,6 +26,7 @@ class AdminController extends Controller
     private $swimNeverNotEarly;
     private $security;
     private $reviews;
+    private $swimmingPool;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -52,11 +53,10 @@ class AdminController extends Controller
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function __invoke(Request $request)
     {
-
         $this->renderHeader();
         $this->renderAboutUs();
         $this->renderTheBenefitsOfEarlySwimming();
@@ -66,14 +66,13 @@ class AdminController extends Controller
         $this->renderSwimNeverNotEarly();
         $this->renderSecurity();
         $this->renderReviews();
-
+        $this->renderSwimmingPool();
 
         return $this->renderOutput();
     }
 
     private function renderOutput() {
         $howWeSwim = view('admin.how_we_swim')->render();
-        $swimmingPool = view('admin.swimming_pool')->render();
         $footer = view('admin.footer')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
@@ -86,7 +85,7 @@ class AdminController extends Controller
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
         $this->vars = Arr::add($this->vars, 'security', $this->security);
         $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
-        $this->vars = Arr::add($this->vars, 'swimmingPool', $swimmingPool);
+        $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
         $this->vars = Arr::add($this->vars, 'footer', $footer);
 
         return view($this->template)->with($this->vars);
@@ -137,6 +136,11 @@ class AdminController extends Controller
     private function renderReviews() {
         $texts = $this->textsRepository->getInRangeById(48, 48);
         $this->reviews = view('admin.reviews')->with('texts', $texts)->render();
+    }
+
+    private function renderSwimmingPool() {
+        $texts = $this->textsRepository->getInRangeById(49, 54);
+        $this->swimmingPool = view('admin.swimming_pool')->with('texts', $texts)->render();
     }
 
     protected function editText(Request $request) {
