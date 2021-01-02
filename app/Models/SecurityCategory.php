@@ -9,6 +9,10 @@ class SecurityCategory extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'text'
+    ];
+
     public function securityItems() {
         return $this->hasMany(SecurityItem::class);
     }

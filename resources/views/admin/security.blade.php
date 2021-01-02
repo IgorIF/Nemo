@@ -2,12 +2,12 @@
 <div class="right">
     <div class="tabs2" data-aos="fade-up">
         @foreach($securityCategories as $securityCategory)
-            <span class="tab2">
+            <span id="securityCategory_{{ $securityCategory->id }}" class="tab2">
                 <picture>
                     <source srcset="{{ asset('images/' . $securityCategory->icon . '.svg') }}" type="image/svg+xml">
-                    <img src="{{ asset('images/' . $securityCategory->icon . '.png') }}" alt="{{ $securityCategory->name }}" width="{{ $securityCategory->icon_width }}" height="61">
+                    <img src="{{ asset('images/' . $securityCategory->icon . '.png') }}" alt="{{ $securityCategory->text }}" width="{{ $securityCategory->icon_width }}" height="61">
                 </picture>
-                <p contenteditable="true">{!! $securityCategory->name !!}</p>
+                <p id="securityCategory_text" contenteditable="true">{!! $securityCategory->text !!}</p>
             </span>
         @endforeach
     </div>
@@ -18,7 +18,9 @@
             <div class="tab_item2 item{{ $loop->iteration }}">
                 <ul>
                     @foreach($securityCategory->securityItems as $securityItem)
-                        <li>{!! $securityItem->text !!}</li>
+                        <div id="securityItem_{{ $securityItem->id }}" >
+                            <li id="securityItem_text" contenteditable="true">{!! $securityItem->text !!}</li>
+                        </div>
                     @endforeach
                 </ul>
                 @if($securityCategory->id == 2)

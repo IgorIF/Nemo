@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
-use App\Models\SecurityCategory;
 use App\Repositories\SecurityCategoriesRepository;
+use App\Repositories\SecurityItemsRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
@@ -16,6 +15,7 @@ class AdminController extends Controller
     protected $textsRepository;
     protected $trainersRepository;
     protected $securityCategoriesRepository;
+    protected $securityItemsRepository;
 
     private $header;
     private $aboutUs;
@@ -35,12 +35,15 @@ class AdminController extends Controller
      * @param TextsRepository $textsRepository
      * @param TrainersRepository $trainersRepository
      * @param SecurityCategoriesRepository $securityCategoriesRepository
+     * @param SecurityItemsRepository $securityItemsRepository
      */
-    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository)
+    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
+                                SecurityItemsRepository $securityItemsRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
+        $this->securityItemsRepository = $securityItemsRepository;
         $this->template = 'admin.index';
     }
 

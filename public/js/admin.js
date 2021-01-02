@@ -81,6 +81,26 @@ $(document).ready(function () {
         }
     }
 
+    function saveSecurityText(element, model) {
+        let text = $(element).html();
+        let data = {'text': text};
+        let id = $(element).parents('[id^="security"]').attr('id').split('_')[1]
+        let url = 'admin/security/';
+
+        if (text !== initialText) {
+            if (model === 'securityCategory') {
+                url += 'categories/';
+            } else if (model === 'securityItem') {
+                url += 'items/';
+            }
+            url += id;
+
+            ajax('PUT', url, data);
+        }
+
+
+    }
+
     function deleteTrainer(element) {
         let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let slickIndex = $(element).parents('div[id^="trainer_"]').attr('data-slick-index');
@@ -265,13 +285,19 @@ $(document).ready(function () {
 
     function onTextFocusoutListener() {
         frameAroundTextOff(this);
-
         let id = $(this).attr('id').split('_')[0];
 
-        if (id === 'text')
-            saveText(this);
-        else if (id === 'trainer')
-            saveTrainerText(this);
+        switch (id) {
+            case 'text':
+                saveText(this);
+                break
+            case 'trainer':
+                saveTrainerText(this);
+                break
+            case 'securityCategory':
+            case 'securityItem':
+                saveSecurityText(this, id);
+        }
 
         initialText = null;
     }
