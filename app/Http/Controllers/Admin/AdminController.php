@@ -27,6 +27,7 @@ class AdminController extends Controller
     private $security;
     private $reviews;
     private $swimmingPool;
+    private $footer;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -67,13 +68,13 @@ class AdminController extends Controller
         $this->renderSecurity();
         $this->renderReviews();
         $this->renderSwimmingPool();
+        $this->renderFooter();
 
         return $this->renderOutput();
     }
 
     private function renderOutput() {
         $howWeSwim = view('admin.how_we_swim')->render();
-        $footer = view('admin.footer')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
@@ -86,61 +87,66 @@ class AdminController extends Controller
         $this->vars = Arr::add($this->vars, 'security', $this->security);
         $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
-        $this->vars = Arr::add($this->vars, 'footer', $footer);
+        $this->vars = Arr::add($this->vars, 'footer', $this->footer);
 
         return view($this->template)->with($this->vars);
     }
 
     private function renderHeader() {
-        $texts = $this->textsRepository->getInRangeById(1, 15);
+        $texts = $this->textsRepository->getInRangeById([1 => 15]);
         $this->header = view( 'admin.header')->with('texts', $texts)->render();
     }
 
     private function renderAboutUs() {
-        $texts = $this->textsRepository->getInRangeById(16, 17);
+        $texts = $this->textsRepository->getInRangeById([16 => 17]);
         $this->aboutUs = view( 'admin.about_us')->with('texts', $texts)->render();
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
-        $texts = $this->textsRepository->getInRangeById(18, 30);
+        $texts = $this->textsRepository->getInRangeById([18 => 30]);
         $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with('texts', $texts)->render();
     }
 
     private function renderWhoSwimsWithUs() {
-        $texts = $this->textsRepository->getInRangeById(31, 40);
+        $texts = $this->textsRepository->getInRangeById([31 => 40]);
         $this->whoSwimsWithUs = view('admin.who_swims_with_us')->with('texts', $texts)->render();
     }
 
     private function renderTrainers() {
-        $texts = $this->textsRepository->getInRangeById(41, 42);
+        $texts = $this->textsRepository->getInRangeById([41 => 42]);
         $trainers = $this->trainersRepository->getTrainers();
         $this->trainers = view('admin.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 
     private function renderPrices() {
-        $texts = $this->textsRepository->getInRangeById(43, 43);
+        $texts = $this->textsRepository->getInRangeById([43 => 43]);
         $this->prices = view('admin.prices')->with('texts', $texts)->render();
     }
 
     private function renderSwimNeverNotEarly() {
-        $texts = $this->textsRepository->getInRangeById(44, 45);
+        $texts = $this->textsRepository->getInRangeById([44 => 45]);
         $this->swimNeverNotEarly = view('admin.swim_never_not_early')->with('texts', $texts)->render();
     }
 
     private function renderSecurity() {
-        $texts = $this->textsRepository->getInRangeById(46, 47);
+        $texts = $this->textsRepository->getInRangeById([46 => 47]);
         $securityCategories = $this->securityCategoriesRepository->getAll();
         $this->security = view('admin.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
     }
 
     private function renderReviews() {
-        $texts = $this->textsRepository->getInRangeById(48, 48);
+        $texts = $this->textsRepository->getInRangeById([48 => 48]);
         $this->reviews = view('admin.reviews')->with('texts', $texts)->render();
     }
 
     private function renderSwimmingPool() {
-        $texts = $this->textsRepository->getInRangeById(49, 54);
+        $texts = $this->textsRepository->getInRangeById([49 => 54]);
         $this->swimmingPool = view('admin.swimming_pool')->with('texts', $texts)->render();
+    }
+
+    private function renderFooter() {
+        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11]);
+        $this->footer = view('admin.footer')->with('texts', $texts)->render();
     }
 
     protected function editText(Request $request) {

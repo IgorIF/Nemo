@@ -28,9 +28,9 @@ class TextsRepository extends Repository
         return $result;
     }
 
-    public function getInRangeById($from, $to)
+    public function getInRangeById($intervals)
     {
-        $texts = parent::getInRangeById($from, $to);
+        $texts = parent::getInRangeById($intervals);
 
         $texts = $texts->mapWithKeys(function ($item) {
             return [$item->id => $item];

@@ -291,11 +291,7 @@
     </div>
 </section>
 
-<footer class="footer">
-
-    @yield('footer')
-
-</footer>
+@yield('footer')
 
 <div class="block-bottom">
     <div class="container">

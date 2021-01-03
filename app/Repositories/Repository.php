@@ -12,8 +12,15 @@ class Repository
         return $this->model->where('id', $id)->first();
     }
 
-    public function getInRangeById($from, $to) {
-        return $this->model->where('id', '>=', $from)->where('id', '<=', $to)->get();
+    public function getInRangeById($intervals) {
+
+        $result = collect();
+
+        foreach ($intervals as $from => $to) {
+            $query = $this->model->where('id', '>=', $from)->where('id', '<=', $to)->get();
+            $result = $result->merge($query);
+        }
+        return $result;
     }
 
     public function getAll() {

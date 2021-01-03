@@ -284,24 +284,44 @@ class TextSeeder extends Seeder
             'text' => 'Прийти с малышом на занятие'
         ]);
 
-        /*DB::table('texts')->insert([
+        DB::table('texts')->insert([
             'id' => '55',
-            'text' => ''
+            'text' => 'Контакты'
         ]);
 
         DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
+            'id' => '56',
+            'text' => 'Режим работы бассейнов'
         ]);
 
         DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
+            'id' => '57',
+            'text' => '09:00–21:00'
         ]);
 
         DB::table('texts')->insert([
-            'id' => '',
-            'text' => ''
-        ]);*/
+            'id' => '58',
+            'text' => 'без выходных'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '59',
+            'text' => 'Присоединяйтесь'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '60',
+            'text' => 'Есть что написать?'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '61',
+            'text' => 'aquanemo@yandex.ru'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '62',
+            'text' => 'ООО "Акваклуб". ИНН: 7726432268 ОГРН: 118774650808 (ул. Кировоградская 36,ул. Винокурова 24, к4)'
+        ]);
     }
 }

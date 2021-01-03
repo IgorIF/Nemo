@@ -20,10 +20,6 @@ class BaseController extends Controller
     }
 
     protected function renderOutput() {
-
-
-        //$footer = view('admin.footer')->render();
-
         $header = view( 'site.header')->render();
         $aboutUs = view( 'site.about_us')->render();
         $theBenefitsOfEarlySwimming = view('site. the_benefits_of_early_swimming')->render();
