@@ -3,36 +3,89 @@
 namespace App\Http\Controllers;
 
 use App\Mail\TrialLesson;
+use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
 
-class IndexController extends BaseController
+class IndexController extends Controller
 {
+
+    protected $textsRepository;
+    protected $trainersRepository;
+
+    private $header;
+
+    protected $trainers;
+
+    protected $template;        //шаблон
+    protected $vars = [];       //массив с данными которые передаюся в шаблон
+
     /**
      * IndexController constructor.
+     * @param TextsRepository $textsRepository
+     * @param TrainersRepository $trainersRepository
      */
-    public function __construct(TrainersRepository $trainersRepository)
+    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository)
     {
-        $this->template = 'site.index';
+        $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
+        $this->template = 'site.index';
     }
-
 
     /**
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function __invoke(Request $request)
     {
+        $this->renderHeader();
 
-        $trainers = $this->trainersRepository->getTrainers();
-
-        $this->trainers = view('site.trainers')->with('trainers', $trainers)->render();
+        $this->renderTrainers();
 
         return $this->renderOutput();
+    }
+
+    protected function renderOutput() {
+        $aboutUs = view( 'site.about_us')->render();
+        $theBenefitsOfEarlySwimming = view('site. the_benefits_of_early_swimming')->render();
+        $whoSwimsWithUs = view('site.who_swims_with_us')->render();
+        $prices = view('site.prices')->render();
+        $swimNeverNotEarly = view('site.swim_never_not_early')->render();
+        $howWeSwim = view('site.how_we_swim')->render();
+        $security = view('site.security')->render();
+        $reviews = view('site.reviews')->render();
+        $swimmingPool = view('site.swimming_pool')->render();
+        $footer = view('site.footer')->render();
+
+        $this->vars = Arr::add($this->vars, 'header', $this->header);
+        $this->vars = Arr::add($this->vars, 'aboutUs', $aboutUs);
+        $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $theBenefitsOfEarlySwimming);
+        $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $whoSwimsWithUs);
+        $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
+        $this->vars = Arr::add($this->vars, 'prices', $prices);
+        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $swimNeverNotEarly);
+        $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
+        $this->vars = Arr::add($this->vars, 'security', $security);
+        $this->vars = Arr::add($this->vars, 'reviews', $reviews);
+        $this->vars = Arr::add($this->vars, 'swimmingPool', $swimmingPool);
+        $this->vars = Arr::add($this->vars, 'footer', $footer);
+
+        return view($this->template)->with($this->vars);
+    }
+
+    private function renderHeader() {
+        $texts = $this->textsRepository->getInRangeById([1 => 15]);
+        $this->header = view( 'site.header')->with('texts', $texts)->render();
+    }
+
+    private function renderTrainers() {
+        //$texts = $this->textsRepository->getInRangeById([41 => 42]);
+        $trainers = $this->trainersRepository->getTrainers();
+        $this->trainers = view('site.trainers')->with(['trainers' => $trainers])->render();
     }
 
     public function sendMail(Request $request){

@@ -34,30 +34,30 @@
             <address>
                 <div class="flex jcsb">
                     <div class="first-phone">
-                        <a href="tel:+79776800261" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">+7(977)680-02-61</a>
-                        <p>ул. Кировоградская 36 </p>
-                        <span>Пражская<i>800м</i></span>
+                        <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">{!! $texts->get(1)->text !!}</a>
+                        <p>{!! $texts->get(2)->text !!}</p>
+                        <span>{!! $texts->get(3)->text !!}</span>
                     </div>
                     <div class="second-phone">
-                        <a href="tel:+79776800262" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;">+7(977)680-02-62</a>
-                        <p>ул. Винокурова 24, к4</p>
-                        <span>Академическая<i>1,7км</i></span>
+                        <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;">{!! $texts->get(4)->text !!}</a>
+                        <p>{!! $texts->get(5)->text !!}</p>
+                        <span>{!! $texts->get(6)->text !!}</span>
                     </div>
-                    <div class="third-phone" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">
-                        <a href="tel:+79776800263">+7(977)680-02-63</a>
-                        <p>Мячковский бульвар 16, к1</p>
-                        <span>Марьино<i>1,1км</i></span>
+                    <div class="third-phone">
+                        <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">{!! $texts->get(7)->text !!}</a>
+                        <p>{!! $texts->get(8)->text !!}</p>
+                        <span>{!! $texts->get(9)->text !!}</span>
                     </div>
                     <div class="fourth-phone">
-                        <a href="tel:+79776800266" onclick="yaCounter45529422.reachGoal('kamova'); return true;">+7(977)680-02-66</a>
-                        <p>г.Люберцы, ул. Камова 11/5 </p>
-                        <span>Некрасовка<i>2,5 км</i></span>
+                        <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;">{!! $texts->get(10)->text !!}</a>
+                        <p>{!! $texts->get(11)->text !!}</p>
+                        <span>{!! $texts->get(12)->text !!}</span>
                     </div>
 
                 </div>
             </address>
             <div class="header-phone-hidden">
-                <a class="js-popup4" href="tel:+79776800261"></a>
+                <a class="js-popup4" href="tel:{{ $texts->get(1)->text }}"></a>
             </div>
         </div>
     </div>
@@ -89,15 +89,10 @@
 </nav>
 <div class="container">
     <div class="header-bottom">
-        <h1 data-aos="fade-up">Плавать раньше, чем ходить!</h1>
+        <h1 data-aos="fade-up">{!! $texts->get(13)->text !!}</h1>
+        <p data-aos="fade-up">{!! $texts->get(14)->text !!}</p>
         <p data-aos="fade-up">
-            Индивидуальные занятия плаванием для детей
-            от 1,5 месяцев до 7 лет в Люберцах, Чертаново, Марьино
-            и Академическом районах
-        </p>
-        <p data-aos="fade-up">
-
-            <span>Cкидка -30% на первое занятие</span>
+            <span>{!! $texts->get(15)->text !!}</span>
         </p>
         <p>
             <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
