@@ -16,6 +16,7 @@ class IndexController extends Controller
     protected $trainersRepository;
 
     private $header;
+    private $aboutUs;
 
     protected $trainers;
 
@@ -43,6 +44,7 @@ class IndexController extends Controller
     public function __invoke(Request $request)
     {
         $this->renderHeader();
+        $this->renderAboutUs();
 
         $this->renderTrainers();
 
@@ -50,7 +52,6 @@ class IndexController extends Controller
     }
 
     protected function renderOutput() {
-        $aboutUs = view( 'site.about_us')->render();
         $theBenefitsOfEarlySwimming = view('site. the_benefits_of_early_swimming')->render();
         $whoSwimsWithUs = view('site.who_swims_with_us')->render();
         $prices = view('site.prices')->render();
@@ -62,7 +63,7 @@ class IndexController extends Controller
         $footer = view('site.footer')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
-        $this->vars = Arr::add($this->vars, 'aboutUs', $aboutUs);
+        $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
@@ -80,6 +81,11 @@ class IndexController extends Controller
     private function renderHeader() {
         $texts = $this->textsRepository->getInRangeById([1 => 15]);
         $this->header = view( 'site.header')->with('texts', $texts)->render();
+    }
+
+    private function renderAboutUs() {
+        $texts = $this->textsRepository->getInRangeById([16 => 17]);
+        $this->aboutUs = view( 'site.about_us')->with('texts', $texts)->render();
     }
 
     private function renderTrainers() {
