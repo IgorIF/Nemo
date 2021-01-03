@@ -18,8 +18,8 @@ class IndexController extends Controller
     private $header;
     private $aboutUs;
     private $theBenefitsOfEarlySwimming;
-
-    protected $trainers;
+    private $whoSwimsWithUs;
+    private $trainers;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -47,6 +47,7 @@ class IndexController extends Controller
         $this->renderHeader();
         $this->renderAboutUs();
         $this->renderTheBenefitsOfEarlySwimming();
+        $this->renderWhoSwimsWithUs();
 
         $this->renderTrainers();
 
@@ -54,7 +55,6 @@ class IndexController extends Controller
     }
 
     protected function renderOutput() {
-        $whoSwimsWithUs = view('site.who_swims_with_us')->render();
         $prices = view('site.prices')->render();
         $swimNeverNotEarly = view('site.swim_never_not_early')->render();
         $howWeSwim = view('site.how_we_swim')->render();
@@ -66,7 +66,7 @@ class IndexController extends Controller
         $this->vars = Arr::add($this->vars, 'header', $this->header);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
-        $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $whoSwimsWithUs);
+        $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
         $this->vars = Arr::add($this->vars, 'prices', $prices);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $swimNeverNotEarly);
@@ -94,10 +94,15 @@ class IndexController extends Controller
         $this->theBenefitsOfEarlySwimming = view('site. the_benefits_of_early_swimming')->with('texts', $texts)->render();
     }
 
+    private function renderWhoSwimsWithUs() {
+        $texts = $this->textsRepository->getInRangeById([31 => 40]);
+        $this->whoSwimsWithUs = view('site.who_swims_with_us')->with('texts', $texts)->render();
+    }
+
     private function renderTrainers() {
-        //$texts = $this->textsRepository->getInRangeById([41 => 42]);
+        $texts = $this->textsRepository->getInRangeById([41 => 42]);
         $trainers = $this->trainersRepository->getTrainers();
-        $this->trainers = view('site.trainers')->with(['trainers' => $trainers])->render();
+        $this->trainers = view('site.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 
     public function sendMail(Request $request){
