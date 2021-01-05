@@ -515,64 +515,11 @@ $(document).ready(function (){
 		};
 
 	//1st review
-	$('#play-video1').on('click', function(e){
+	$('[id="play-video-review"]').on('click', function(e){
 		  e.preventDefault();
+		  let url = $(this).attr('href');
 		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/16ovQFNQux0?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//2st review
-	$('#play-video2').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/wwQ9YcuhsD8?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//3st review
-	$('#play-video3').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/du1fom_ZwKk?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//4st review
-	$('#play-video4').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/gl7CivN8PeU?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//5st review
-	$('#play-video5').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/AVXmfnJ2mMk?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//6st review
-	$('#play-video6').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/yFSAI2pVQiw?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//7st review
-	$('#play-video7').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/85XpTbpCqBs?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//8st review
-	$('#play-video8').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/8znWlmOxs3Q?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//9st review
-	$('#play-video9').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/lEW0Iz9AAOs?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
-	//9st review
-	$('#play-video10').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="https://www.youtube.com/embed/eFmj2PABG28?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="' + url + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 	});
 
 	$(".review_block .video-play-button").on('click', function(e){

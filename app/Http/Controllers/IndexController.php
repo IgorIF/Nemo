@@ -6,6 +6,7 @@ use App\Mail\TrialLesson;
 use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
+use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
@@ -16,6 +17,7 @@ class IndexController extends Controller
     protected $textsRepository;
     protected $trainersRepository;
     protected $securityCategoriesRepository;
+    protected $videosRepository;
 
     private $header;
     private $aboutUs;
@@ -36,12 +38,16 @@ class IndexController extends Controller
      * IndexController constructor.
      * @param TextsRepository $textsRepository
      * @param TrainersRepository $trainersRepository
+     * @param SecurityCategoriesRepository $securityCategoriesRepository
+     * @param VideosRepository $videosRepository
      */
-    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository)
+    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
+                                VideosRepository $videosRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
+        $this->videosRepository = $videosRepository;
         $this->template = 'site.index';
     }
 
@@ -131,7 +137,8 @@ class IndexController extends Controller
 
     private function renderReviews() {
         $texts = $this->textsRepository->getInRangeById([48 => 48]);
-        $this->reviews = view('site.reviews')->with('texts', $texts)->render();
+        $videos = $this->videosRepository->getAllReviews();
+        $this->reviews = view('site.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
     private function renderSwimmingPool() {
