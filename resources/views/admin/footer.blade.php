@@ -80,7 +80,7 @@
                     {!! $texts->get(8)->text !!}
                     <span class="metro metro3">(метро Марьино)</span>
                 </address>
-                <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+                <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(7)->id }}" contenteditable="true">{!! $texts->get(7)->text !!}</a>
             </div>
             <div class="right">
                 <address id="text_{{ $texts->get(11)->id }}" contenteditable="true">

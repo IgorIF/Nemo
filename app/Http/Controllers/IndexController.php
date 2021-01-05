@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\TrialLesson;
+use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use Illuminate\Http\Request;
@@ -14,12 +15,19 @@ class IndexController extends Controller
 
     protected $textsRepository;
     protected $trainersRepository;
+    protected $securityCategoriesRepository;
 
     private $header;
     private $aboutUs;
     private $theBenefitsOfEarlySwimming;
     private $whoSwimsWithUs;
     private $trainers;
+    private $prices;
+    private $swimNeverNotEarly;
+    private $security;
+    private $reviews;
+    private $swimmingPool;
+    private $footer;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -29,10 +37,11 @@ class IndexController extends Controller
      * @param TextsRepository $textsRepository
      * @param TrainersRepository $trainersRepository
      */
-    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository)
+    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
+        $this->securityCategoriesRepository = $securityCategoriesRepository;
         $this->template = 'site.index';
     }
 
@@ -48,33 +57,32 @@ class IndexController extends Controller
         $this->renderAboutUs();
         $this->renderTheBenefitsOfEarlySwimming();
         $this->renderWhoSwimsWithUs();
-
         $this->renderTrainers();
+        $this->renderPrices();
+        $this->renderSwimNeverNotEarly();
+        $this->renderSecurity();
+        $this->renderReviews();
+        $this->renderSwimmingPool();
+        $this->renderFooter();
 
         return $this->renderOutput();
     }
 
     protected function renderOutput() {
-        $prices = view('site.prices')->render();
-        $swimNeverNotEarly = view('site.swim_never_not_early')->render();
         $howWeSwim = view('site.how_we_swim')->render();
-        $security = view('site.security')->render();
-        $reviews = view('site.reviews')->render();
-        $swimmingPool = view('site.swimming_pool')->render();
-        $footer = view('site.footer')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
-        $this->vars = Arr::add($this->vars, 'prices', $prices);
-        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $swimNeverNotEarly);
+        $this->vars = Arr::add($this->vars, 'prices', $this->prices);
+        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
-        $this->vars = Arr::add($this->vars, 'security', $security);
-        $this->vars = Arr::add($this->vars, 'reviews', $reviews);
-        $this->vars = Arr::add($this->vars, 'swimmingPool', $swimmingPool);
-        $this->vars = Arr::add($this->vars, 'footer', $footer);
+        $this->vars = Arr::add($this->vars, 'security', $this->security);
+        $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
+        $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
+        $this->vars = Arr::add($this->vars, 'footer', $this->footer);
 
         return view($this->template)->with($this->vars);
     }
@@ -104,6 +112,38 @@ class IndexController extends Controller
         $trainers = $this->trainersRepository->getTrainers();
         $this->trainers = view('site.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
+
+    private function renderPrices() {
+        $texts = $this->textsRepository->getInRangeById([43 => 43]);
+        $this->prices = view('site.prices')->with('texts', $texts)->render();
+    }
+
+    private function renderSwimNeverNotEarly() {
+        $texts = $this->textsRepository->getInRangeById([44 => 45]);
+        $this->swimNeverNotEarly = view('site.swim_never_not_early')->with('texts', $texts)->render();
+    }
+
+    private function renderSecurity() {
+        $texts = $this->textsRepository->getInRangeById([46 => 47]);
+        $securityCategories = $this->securityCategoriesRepository->getAll();
+        $this->security = view('site.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
+    }
+
+    private function renderReviews() {
+        $texts = $this->textsRepository->getInRangeById([48 => 48]);
+        $this->reviews = view('site.reviews')->with('texts', $texts)->render();
+    }
+
+    private function renderSwimmingPool() {
+        $texts = $this->textsRepository->getInRangeById([49 => 54]);
+        $this->swimmingPool = view('site.swimming_pool')->with('texts', $texts)->render();
+    }
+
+    private function renderFooter() {
+        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11]);
+        $this->footer = view('site.footer')->with('texts', $texts)->render();
+    }
+
 
     public function sendMail(Request $request){
 

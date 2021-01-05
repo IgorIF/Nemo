@@ -5,7 +5,7 @@
             <span id="securityCategory_{{ $securityCategory->id }}" class="tab2">
                 <picture>
                     <source srcset="{{ asset('images/' . $securityCategory->icon . '.svg') }}" type="image/svg+xml">
-                    <img src="{{ asset('images/' . $securityCategory->icon . '.png') }}" alt="{{ $securityCategory->text }}" width="{{ $securityCategory->icon_width }}" height="61">
+                    <img src="{{ asset('images/' . $securityCategory->icon . '.png') }}" alt="{{ $securityCategory->text }}" width="{{ $securityCategory->icon_width }}" height="{{ $securityCategory->icon_height }}">
                 </picture>
                 <p id="securityCategory_text" contenteditable="true">{!! $securityCategory->text !!}</p>
             </span>
