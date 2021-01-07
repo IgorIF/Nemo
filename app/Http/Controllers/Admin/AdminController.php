@@ -7,6 +7,7 @@ use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\SecurityItemsRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
+use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
@@ -16,6 +17,7 @@ class AdminController extends Controller
     protected $trainersRepository;
     protected $securityCategoriesRepository;
     protected $securityItemsRepository;
+    protected $videosRepository;
 
     private $header;
     private $aboutUs;
@@ -38,14 +40,16 @@ class AdminController extends Controller
      * @param TrainersRepository $trainersRepository
      * @param SecurityCategoriesRepository $securityCategoriesRepository
      * @param SecurityItemsRepository $securityItemsRepository
+     * @param VideosRepository $videosRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                SecurityItemsRepository $securityItemsRepository)
+                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
         $this->securityItemsRepository = $securityItemsRepository;
+        $this->videosRepository = $videosRepository;
         $this->template = 'admin.index';
     }
 
@@ -136,7 +140,8 @@ class AdminController extends Controller
 
     private function renderReviews() {
         $texts = $this->textsRepository->getInRangeById([48 => 48]);
-        $this->reviews = view('admin.reviews')->with('texts', $texts)->render();
+        $videos = $this->videosRepository->getAllReviews();
+        $this->reviews = view('admin.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
     private function renderSwimmingPool() {

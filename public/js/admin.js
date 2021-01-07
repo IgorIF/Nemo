@@ -23,6 +23,9 @@ $(document).ready(function () {
     /// Delete security item
     $(document).on('click', '#securityItem_delete_btn', onSecurityItemDeleteBtnClickListener);
 
+    /// Delete video
+    $(document).on('click', '#video_delete_btn', onVideoDeleteBtnClickListener);
+
     /// Cropper
     $modalCropper.on('shown.bs.modal', function () {
         cropperObj = new Cropper(cropperImage, {
@@ -134,6 +137,29 @@ $(document).ready(function () {
         ajax('DELETE', url, null, function () {
             $('#securityItem_' + securityItemId).remove();
         });
+    }
+
+    function deleteVideo(element) {
+        let videoId = null;
+        let slickIndex = $(element).parents('div[class*="video_"]').attr('data-slick-index');
+        console.log(slickIndex);
+        let classes = $(element).parents('div[class*="video_"]').attr('class');
+        let classes_arr = classes.split(' ');
+
+        classes_arr.some(function (e) {
+            if (e.substr(0, 5) === 'video') {
+                videoId = e.split('_')[1];
+                return true;
+            }
+        })
+
+        if (videoId != null) {
+            let url = 'admin/videos/' + videoId
+
+            ajax('DELETE', url, null, function (response) {
+                console.log(response);
+            })
+        }
     }
 
     function saveTrainerImage() {
@@ -362,6 +388,10 @@ $(document).ready(function () {
 
     function onSecurityItemDeleteBtnClickListener() {
         deleteSecurityItem(this);
+    }
+
+    function onVideoDeleteBtnClickListener() {
+        deleteVideo(this);
     }
 
     function onTrainerImageChangeListener() {

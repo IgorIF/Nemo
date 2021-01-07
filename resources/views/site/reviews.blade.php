@@ -7,7 +7,7 @@
                 <div class="review_block">
                     <div class="play_block">
                         <img src="{{ asset('images/' . $video->image) }}">
-                        <a id="play-video-review" class="video-play-button" href="{{ $video->url }}"> <span></span></a>
+                        <a id="play-video-review" class="video-play-button" href="{{ $video->url }}"><span></span></a>
                     </div>
                 </div>
             </div>

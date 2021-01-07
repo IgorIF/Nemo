@@ -2,91 +2,19 @@
 
 <section class="slider3" data-aos="fade-up">
     <div class="slider-slick">
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review1.jpg') }}">
-                    <a id="play-video1" class="video-play-button" href="#"> <span></span></a>
+        @foreach($videos as $video)
+            <div class="slider video_{{ $video->id }}" style="text-align: center">
+                <div class="review_block">
+                    <div class="play_block">
+                        <img src="{{ asset('images/' . $video->image) }}">
+                        <a id="play-video-review" class="video-play-button" href="{{ $video->url }}"><span></span></a>
+                    </div>
                 </div>
+                <svg id="video_delete_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                </svg>
             </div>
-        </div>
-
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review2.jpg') }}">
-                    <a id="play-video2" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review3.jpg') }}">
-                    <a id="play-video3" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review4.jpg') }}">
-                    <a id="play-video4" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review5.jpg') }}">
-                    <a id="play-video5" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review6.jpg') }}">
-                    <a id="play-video6" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review7.jpg') }}">
-                    <a id="play-video7" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review8.jpg') }}">
-                    <a id="play-video8" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review9.jpg') }}">
-                    <a id="play-video9" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
-        <div class="slider">
-            <div class="review_block">
-                <div class="play_block">
-                    <img src="{{ asset('images/review10.jpg') }}">
-                    <a id="play-video10" class="video-play-button" href="#"> <span></span></a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
