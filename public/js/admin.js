@@ -142,7 +142,6 @@ $(document).ready(function () {
     function deleteVideo(element) {
         let videoId = null;
         let slickIndex = $(element).parents('div[class*="video_"]').attr('data-slick-index');
-        console.log(slickIndex);
         let classes = $(element).parents('div[class*="video_"]').attr('class');
         let classes_arr = classes.split(' ');
 
@@ -158,6 +157,8 @@ $(document).ready(function () {
 
             ajax('DELETE', url, null, function (response) {
                 console.log(response);
+                videoSlickRemove(slickIndex);
+                videosSlickRefresh();
             })
         }
     }
@@ -483,8 +484,16 @@ function trainersSlickRefresh() {
     $('.slides').slick('refresh');
 }
 
+function videosSlickRefresh() {
+    $('.slider-slick').slick('refresh');
+}
+
 function trainerSlickRemove(slickIndex) {
     $('.slides_pagination').slick('slickRemove', slickIndex);
     $('.slides').slick('slickRemove', slickIndex);
+}
+
+function videoSlickRemove(slickIndex) {
+    $('.slider-slick').slick('slickRemove', slickIndex);
 }
 

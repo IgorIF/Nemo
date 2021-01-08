@@ -3,10 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 
-class VideoController extends Controller
+class VideoController extends AdminController
 {
+    /**
+     * VideoController constructor.
+     * @param VideosRepository $videosRepository
+     */
+    public function __construct(VideosRepository $videosRepository)
+    {
+        $this->template = 'admin.index';
+        $this->videosRepository = $videosRepository;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -76,10 +88,10 @@ class VideoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function destroy($id)
     {
-        return ['status' => true, 'id' => $id];
+        return $this->videosRepository->destroyVideo($id);
     }
 }
