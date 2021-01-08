@@ -103,12 +103,12 @@ class TrainersRepository extends Repository
         $fileName = time() . '.' . $extension;
         $img = Image::make($image);
         $img->crop($imageData['width'], $imageData['height'], $imageData['x'], $imageData['y']);
-        $img->save('storage/trainers/' . $fileName);
+        $img->save('storage/images/trainers/' . $fileName);
         return $fileName;
     }
 
     private function deleteImage($imageName) {
-        $destinationPath = 'public/trainers/' . $imageName;
+        $destinationPath = 'public/images/trainers/' . $imageName;
         Storage::delete($destinationPath);
     }
 }

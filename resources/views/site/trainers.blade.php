@@ -8,7 +8,7 @@
 
             <div>
                 <div class="flex jcsb">
-                    <div class="trainer_foto"><img src="{{ asset('storage/trainers/' . $trainer->image) }}" /></div>
+                    <div class="trainer_foto"><img src="{{ asset('storage/images/trainers/' . $trainer->image) }}" /></div>
                     <div class="trainer_caption">
                         <h4>{{ $trainer->name }}</h4>
                         <p>{{ $trainer->description }}</p>
@@ -30,7 +30,7 @@
 
         @foreach($trainers as $trainer)
             <div>
-                <img src="{{ asset('storage/trainers/' . $trainer->image) }}" />
+                <img src="{{ asset('storage/images/trainers/' . $trainer->image) }}" />
             </div>
         @endforeach
 

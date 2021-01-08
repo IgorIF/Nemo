@@ -172,7 +172,7 @@ $(document).ready(function () {
         let url = 'admin/trainers/' + trainerId;
 
         ajax('POST', url, data, function (response) {
-            $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/trainers/' + response.image);
+            $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/images/trainers/' + response.image);
         }, null, true);
     }
 

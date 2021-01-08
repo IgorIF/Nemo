@@ -11,7 +11,7 @@
 
                     <div class="trainer_foto">
                         <label class="label" data-toggle="tooltip" title="Загрузить фото">
-                            <img src="{{ asset('storage/trainers/' . $trainer->image) }}" />
+                            <img src="{{ asset('storage/images/trainers/' . $trainer->image) }}" />
                             <input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">
                         </label>
                     </div>
@@ -41,7 +41,7 @@
 
         @foreach($trainers as $trainer)
             <div id="trainer_{{ $trainer->id }}">
-                <img src="{{ asset('storage/trainers/' . $trainer->image) }}" />
+                <img src="{{ asset('storage/images/trainers/' . $trainer->image) }}" />
             </div>
         @endforeach
 
