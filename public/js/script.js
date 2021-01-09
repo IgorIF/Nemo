@@ -807,7 +807,7 @@ var Payment = {
 
                 if (quantity_active_value === 'trial' || quantity_active_value === 'oneoff') {
 
-                    var company = '';
+                    /*var company = '';
                     var service = '';
 
                     if (quantity_active_value === 'trial') {
@@ -859,7 +859,25 @@ var Payment = {
                     }
 
                     var sign_up_link_href = 'https://n76658.yclients.com/company:' + company + '/idx:0/master?o=s' + service;
-                    target.href = sign_up_link_href;
+                    */
+
+                    let filialCode;
+
+                    switch (street_name) {
+                        case 'kirovograd':
+                            filialCode = '60559';
+                            break;
+                        case 'vinokurova':
+                            filialCode = '124032';
+                            break;
+                        case 'myachkovsky_boulevard':
+                            filialCode = '228760';
+                            break;
+                        case 'lubertci':
+                            //
+                            break;
+                    }
+                    target.href = 'https://n' + filialCode + '.yclients.com/';
 
                 } else {
                     var type_of_occupation_case = $(street_case).find("div[class~='type_of_occupation']:visible");
@@ -874,7 +892,6 @@ var Payment = {
                     }
                     if(type_of_occupation_case.length > 0){
                         add = $(type_of_occupation_case).find("input:radio:checked").next("span:first").text().toLowerCase();
-                        add = add.trim();
                         service_name = service_name + ', Вид занятий: ' + add;
                     }
                     if(type_of_subscription_case.length > 0){
@@ -917,7 +934,6 @@ var Payment = {
                 var to_pay_link = $(street_case).find("div[class='buttons-row']").find("a[class='bt-2']");
 
                 $(to_pay_link).click(function (eventObject) {
-                    return false;
                         fill_link(eventObject.target, street_case);
                     console.log(street_case);
                 })
@@ -944,7 +960,7 @@ var Payment = {
 
                 if ((quantity_active_value === 'trial' || quantity_active_value === 'oneoff') && street_name !== 'lubertci') {
 
-                        var company = '';
+                        /*var company = '';
                         var service = '';
 
                         if (quantity_active_value === 'trial') {
@@ -989,8 +1005,26 @@ var Payment = {
                                 break;
                         }
 
-                        var sign_up_link_href = 'https://n76658.yclients.com/company:' + company + '/idx:0/master?o=s' + service;
-                        target.href = sign_up_link_href;
+                        var sign_up_link_href = 'https://n76658.yclients.com/company:' + company + '/idx:0/master?o=s' + service;*/
+
+
+                    let filialCode;
+
+                    switch (street_name) {
+                        case 'kirovograd':
+                            filialCode = '60559';
+                            break;
+                        case 'vinokurova':
+                            filialCode = '124032';
+                            break;
+                        case 'myachkovsky_boulevard':
+                            filialCode = '228760';
+                            break;
+                        case 'lubertci':
+                            //
+                            break;
+                    }
+                    target.href = 'https://n' + filialCode + '.yclients.com/';
 
                         return true;
 

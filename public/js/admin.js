@@ -156,7 +156,6 @@ $(document).ready(function () {
             let url = 'admin/videos/' + videoId
 
             ajax('DELETE', url, null, function (response) {
-                console.log(response);
                 videoSlickRemove(slickIndex);
                 videosSlickRefresh();
             })
