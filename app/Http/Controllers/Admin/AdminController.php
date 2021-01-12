@@ -78,9 +78,20 @@ class AdminController extends Controller
     }
 
     private function renderOutput() {
+
+        $modalAddTrainer = view('admin.modals.modal_add_trainer');
+        $modalAddSecurityItem = view('admin.modals.modal_add_security_item');
+        $modalAddVideo = view('admin.modals.modal_add_video');
+        $modalCropper = view('admin.modals.modal_cropper');
+
         $howWeSwim = view('admin.how_we_swim')->render();
 
+
         $this->vars = Arr::add($this->vars, 'header', $this->header);
+        $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
+        $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
+        $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
+        $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);

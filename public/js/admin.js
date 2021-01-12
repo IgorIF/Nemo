@@ -307,7 +307,7 @@ $(document).ready(function () {
                         '<div class="flex jcsb">' +
                             '<div class="trainer_foto">' +
                                 '<label class="label" data-toggle="tooltip" title="Загрузить фото">' +
-                                    '<img src="storage/trainers/' + trainer.image + '" />' +
+                                    '<img src="storage/images/trainers/' + trainer.image + '" />' +
                                 '</label>' +
                             '</div>' +
                             '<div class="trainer_caption"></div>' +

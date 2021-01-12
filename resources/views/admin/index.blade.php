@@ -4,6 +4,22 @@
     {!! $header !!}
 @endsection
 
+@section('modalAddTrainer')
+    {!! $modalAddTrainer !!}
+@endsection
+
+@section('modalAddSecurityItem')
+    {!! $modalAddSecurityItem !!}
+@endsection
+
+@section('modalAddVideo')
+    {!! $modalAddVideo !!}
+@endsection
+
+@section('modalCropper')
+    {!! $modalCropper !!}
+@endsection
+
 @section('aboutUs')
     {!! $aboutUs !!}
 @endsection
