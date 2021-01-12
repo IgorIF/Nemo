@@ -3,6 +3,7 @@ $(document).ready(function () {
     let $modalCropper = $('#modal_cropper');
     let $modalAddTrainer = $('#modal_add_trainer');
     let $modalAddSecurityItem = $('#modal_add_securityItem');
+    let $modalAddVideo = $('#modal_add_video');
     let cropperImage = $('#cropper_image')[0];
     let cropperObj;
     let cropperData;
@@ -58,6 +59,9 @@ $(document).ready(function () {
 
     /// Show add securityItem modal
     $('[id="securityItem_add_btn"]').click(onSecurityItemAddBtnClickListener);
+
+    /// Show add video modal
+    $('#video_add_btn').click(onVideoAddBtnClickListener);
 
     /// Save new trainer
     $('#trainer_save_btn').click(onTrainerSaveBtnClickListener);
@@ -296,7 +300,7 @@ $(document).ready(function () {
     }
 
     function trainerSlickAdd(trainer) {
-        $('.slides_pagination').slick('slickAdd', '<div id="trainer_' + trainer.id + '"><img src="storage/trainers/' + trainer.image + '" /></div>');
+        $('.slides_pagination').slick('slickAdd', '<div id="trainer_' + trainer.id + '"><img src="storage/images/trainers/' + trainer.image + '" /></div>');
 
 
         let slide = $('<div id="trainer_' + trainer.id + '">' +
@@ -417,6 +421,10 @@ $(document).ready(function () {
     function onSecurityItemAddBtnClickListener() {
         securityCategoryId = $(this).parents('[id^="securityCategory_"]').attr('id').split('_')[1];
         $modalAddSecurityItem.modal('show');
+    }
+
+    function onVideoAddBtnClickListener() {
+        $modalAddVideo.modal('show');
     }
 
     function onTrainerSaveBtnClickListener() {
