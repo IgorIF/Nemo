@@ -10,7 +10,7 @@
                 <form>
                     <div class="form-group">
                         <label for="name">Ссылка на видео</label>
-                        <input type="text" class="form-control" id="text" name="text" placeholder="Введите текст" >
+                        <input type="text" class="form-control" id="text" name="url" placeholder="Введите ссылку" >
                     </div>
                     <br />
                     <div class="form-group">

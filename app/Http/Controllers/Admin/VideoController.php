@@ -47,7 +47,9 @@ class VideoController extends AdminController
      */
     public function store(Request $request)
     {
-        //
+        return ['status' => true, '1' => $request->all()];
+
+        return $this->videosRepository->createVideo($request);
     }
 
     /**

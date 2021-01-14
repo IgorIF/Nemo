@@ -69,6 +69,9 @@ $(document).ready(function () {
     /// Save new securityItem
     $('#securityItem_save_btn').click(onSecurityItemSaveBtnClickListener);
 
+    /// Save new video
+    $('#video_save_btn').click(onVideoSaveBtnClickListener);
+
     $modalAddTrainer.on('shown.bs.modal', function () {
         cropBtnMode = false;
     }).on('hidden.bs.modal', function () {
@@ -76,6 +79,8 @@ $(document).ready(function () {
     });
 
     $modalAddTrainer.find('input[id="input"]').change(onTrainerImageChangeListener);
+
+    $modalAddVideo.find('input[id="input"]').change(onVideoPreviewChangeListener);
 
 
     function saveText(element) {
@@ -216,7 +221,7 @@ $(document).ready(function () {
     function saveNewSecurityItem() {
         let data = new FormData($modalAddSecurityItem.find('form')[0]);
         data.append('securityCategoryId', securityCategoryId);
-        let url = 'admin/security/items'
+        let url = 'admin/security/items';
         ajax('POST', url, data, function (response) {
             let securityItem = response.securityItem;
             securityItemAdd(securityItem);
@@ -224,6 +229,15 @@ $(document).ready(function () {
         }, function (error) {
             console.log(error);
         }, true);
+    }
+
+    function saveNewVideo() {
+        let data = new FormData($modalAddVideo.find('form')[0]);
+        data.append('image-data', JSON.stringify(cropperData))
+        let url = 'admin/videos';
+        ajax('POST', url, data, function (response) {
+            console.log(response);
+        }, function () {}, true);
     }
 
     function updatePreview() {
@@ -404,6 +418,12 @@ $(document).ready(function () {
         showCropperImage(this);
     }
 
+    function onVideoPreviewChangeListener() {
+        console.log(1);
+
+        /// TODO
+    }
+
     function onCropBtnClickListener() {
         cropperData = cropperObj.getData();
         if (cropBtnMode) {   /// update image
@@ -433,6 +453,10 @@ $(document).ready(function () {
 
     function onSecurityItemSaveBtnClickListener() {
         saveNewSecurityItem();
+    }
+
+    function onVideoSaveBtnClickListener() {
+        saveNewVideo();
     }
 });
 
