@@ -43,7 +43,7 @@ class TrainersRepository extends Repository
         $data['image-data'] = json_decode($data['image-data'], true);
         $data['image-data'] = $this->roundImageData($data['image-data']);
 
-        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data']);
+        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/trainers/');
 
         $result['trainer'] = Trainer::create([
             'name' => $data['name'],
@@ -71,7 +71,7 @@ class TrainersRepository extends Repository
             $data['image-data'] = $this->roundImageData($data['image-data']);
             $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
 
-            $this->deleteImage($trainer->image);
+            $this->deleteImage('public/images/trainers/' . $trainer->image);
             $trainer->fill(['image' => $data['image']]);
 
             $result['image'] = $data['image'];
@@ -84,31 +84,5 @@ class TrainersRepository extends Repository
         $result['status'] = true;
 
         return $result;
-    }
-
-    private function roundImageData($imageData) {
-        $imageData['x'] = round($imageData['x'], 0);
-        $imageData['y'] = round($imageData['y'], 0);
-        if ($imageData['width'] == $imageData['height'])
-            $imageData['width'] = $imageData['height'] = round($imageData['width'], 0);
-        else {
-            $imageData['width'] = round($imageData['width'], 0);
-            $imageData['height'] = round($imageData['height'], 0);
-        }
-        return $imageData;
-    }
-
-    private function cropAndSaveImage($image, $imageData) {
-        $extension = $image->getClientOriginalExtension();
-        $fileName = time() . '.' . $extension;
-        $img = Image::make($image);
-        $img->crop($imageData['width'], $imageData['height'], $imageData['x'], $imageData['y']);
-        $img->save('storage/images/trainers/' . $fileName);
-        return $fileName;
-    }
-
-    private function deleteImage($imageName) {
-        $destinationPath = 'public/images/trainers/' . $imageName;
-        Storage::delete($destinationPath);
     }
 }

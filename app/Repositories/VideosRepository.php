@@ -19,16 +19,16 @@ class VideosRepository extends Repository
         return $this->model->where('id', '>', 1)->get();
     }
 
-    public function createVideo(Request $request)
+    public function createVideo(Request $request): array
     {
         $result = [];
 
         $data = $request->all();
 
-        //$data['image-data'] = json_decode($data['image-data'], true);
-        //$data['image-data'] = $this->roundImageData($data['image-data']);
+        $data['image-data'] = json_decode($data['image-data'], true);
+        $data['image-data'] = $this->roundImageData($data['image-data']);
 
-        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data']);
+        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/videos/');
 
         $result['trainer'] = Video::create([
             'url' => $data['url'],
@@ -40,31 +40,17 @@ class VideosRepository extends Repository
         return $result;
     }
 
-    public function destroyVideo($id)
+    public function destroyVideo($id): array
     {
         $result = [];
 
         $video = Video::find($id);
 
-        $this->deleteImage($video->image);
+        $this->deleteImage('public/images/videos/' . $video->image);
         $video->delete();
 
         $result['status'] = true;
 
         return $result;
-    }
-
-    private function cropAndSaveImage($image, $imageData) {
-        $extension = $image->getClientOriginalExtension();
-        $fileName = time() . '.' . $extension;
-        $img = Image::make($image);
-        $img->crop($imageData['width'], $imageData['height'], $imageData['x'], $imageData['y']);
-        $img->save('storage/images/videos/' . $fileName);
-        return $fileName;
-    }
-
-    private function deleteImage($imageName) {
-        $destinationPath = 'public/images/videos/' . $imageName;
-        Storage::delete($destinationPath);
     }
 }
