@@ -88,6 +88,7 @@ $(document).ready(function () {
     $modalAddVideo.find('input[id="input"]').change(onVideoPreviewChangeListener);
 
 
+    /// Functions
     function saveText(element) {
         let text = $(element).html();
 
@@ -387,7 +388,7 @@ $(document).ready(function () {
 
         slide.append(deleteBtn);
 
-        slide.find('#play-video-review').click(onPlayVideoReviewIdClickListener());
+        slide.find('#play-video-review').click(onPlayVideoReviewIdClickListener);
         slide.find('.review_block .video-play-button').click(onVideoPlayButtonClassClickListener);
 
         $('.slider-slick').slick('slickAdd', slide);
