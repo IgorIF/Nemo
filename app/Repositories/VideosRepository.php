@@ -30,7 +30,7 @@ class VideosRepository extends Repository
 
         $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/videos/');
 
-        $result['trainer'] = Video::create([
+        $result['video'] = Video::create([
             'url' => $data['url'],
             'image' => $fileName
         ]);

@@ -515,19 +515,23 @@ $(document).ready(function (){
 		};
 
 	//1st review
-	$('[id="play-video-review"]').on('click', function(e){
-		  e.preventDefault();
-		  let url = $(this).attr('href');
-		  $('.video-play-button').css("z-index","0");
-		  $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="' + url + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
-	});
+	$('[id="play-video-review"]').on('click', onPlayVideoReviewIdClickListener);
 
-	$(".review_block .video-play-button").on('click', function(e){
-		e.preventDefault();
-		$(this).parent(".play_block").hide(150).siblings("iframe").show(150);
-	});
-
-
+	$(".review_block .video-play-button").on('click', onVideoPlayButtonClassClickListener);
 }); //конец ready
 
+
+// Handlers
+function onPlayVideoReviewIdClickListener(e) {
+    e.preventDefault();
+    let url = $(this).attr('href');
+    $('.video-play-button').css("z-index","0");
+    console.log(this);
+    $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="' + url + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
+}
+
+function onVideoPlayButtonClassClickListener(e) {
+    e.preventDefault();
+    $(this).parent(".play_block").hide(150).siblings("iframe").show(150);
+}
 
