@@ -18,6 +18,6 @@
         @endforeach
     </div>
     <div style="max-width: 90%; width: 100%; margin: auto; height: 100px; text-align: center; display: block">
-        <a id="video_add_btn" class="btn" style="padding: 20px 30px; box-shadow: none">Добавить видео</a>
+        <a id="review_video_add_btn" class="btn" style="padding: 20px 30px; box-shadow: none">Добавить видео</a>
     </div>
 </section>

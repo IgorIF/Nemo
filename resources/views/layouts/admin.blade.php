@@ -116,6 +116,7 @@
 
 </header>
 
+@yield('modalAboutUsEditVideo')
 @yield('modalAddTrainer')
 @yield('modalAddSecurityItem')
 @yield('modalAddVideo')

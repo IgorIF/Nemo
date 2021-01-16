@@ -4,6 +4,10 @@
     {!! $header !!}
 @endsection
 
+@section('modalAboutUsEditVideo')
+    {!! $modalAboutUsEditVideo !!}
+@endsection
+
 @section('modalAddTrainer')
     {!! $modalAddTrainer !!}
 @endsection

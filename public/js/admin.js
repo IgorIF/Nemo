@@ -4,6 +4,7 @@ $(document).ready(function () {
     let $modalAddTrainer = $('#modal_add_trainer');
     let $modalAddSecurityItem = $('#modal_add_securityItem');
     let $modalAddVideo = $('#modal_add_video');
+    let $modalAboutUsEditVideo = $('#modal_about_us_edit_video');
     let cropperImage = $('#cropper_image')[0];
     let cropperObj;
     let cropperData;
@@ -71,8 +72,11 @@ $(document).ready(function () {
     /// Show add securityItem modal
     $('[id="securityItem_add_btn"]').click(onSecurityItemAddBtnClickListener);
 
-    /// Show add video modal
-    $('#video_add_btn').click(onVideoAddBtnClickListener);
+    /// Show add review video modal
+    $('#review_video_add_btn').click(onVideoAddBtnClickListener);
+
+    /// Show edit about us video modal
+    $('#about_us_video_edit_btn').click(onAboutUsVideoEditBtnClickListener);
 
     /// Save new trainer
     $('#trainer_save_btn').click(onTrainerSaveBtnClickListener);
@@ -495,6 +499,10 @@ $(document).ready(function () {
 
     function onVideoAddBtnClickListener() {
         $modalAddVideo.modal('show');
+    }
+
+    function onAboutUsVideoEditBtnClickListener() {
+        $modalAboutUsEditVideo.modal('show');
     }
 
     function onTrainerSaveBtnClickListener() {
