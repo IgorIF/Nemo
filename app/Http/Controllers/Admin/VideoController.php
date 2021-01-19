@@ -77,11 +77,11 @@ class VideoController extends AdminController
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->videosRepository->updateVideo($request, $id);
     }
 
     /**

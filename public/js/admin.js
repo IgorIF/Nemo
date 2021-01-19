@@ -39,6 +39,7 @@ $(document).ready(function () {
                 params.aspectRatio = 1;
                 break;
             case 'video_create':
+            case 'about_us_video_update':
                 params.aspectRatio = 1.454;
                 break;
         }
@@ -87,9 +88,14 @@ $(document).ready(function () {
     /// Save new video
     $('#video_save_btn').click(onVideoSaveBtnClickListener);
 
+    /// Update about us video
+    $('#about_us_video_update_btn').click(onAboutUsVideoUpdateBtnClickListener);
+
     $modalAddTrainer.find('input[id="input"]').change(onCreateTrainerImageChangeListener);
 
     $modalAddVideo.find('input[id="input"]').change(onVideoPreviewChangeListener);
+
+    $modalAboutUsEditVideo.find('input[id="input"]').change(onAboutUsEditVideoPreviewChangeListener);
 
 
     /// Functions
@@ -255,6 +261,20 @@ $(document).ready(function () {
         }, function () {}, true);
     }
 
+    function updateAboutUsVideo() {
+        let data = new FormData($modalAboutUsEditVideo.find('form')[0]);
+        data.append('_method', 'PUT');
+        data.append('image-data', JSON.stringify(cropperData))
+        let url ='admin/videos/1'
+        ajax('POST', url, data, function (response) {
+            if (response.status === true) {
+                let video = response.video;
+                aboutUsVideoUpdate(video);
+                $modalAboutUsEditVideo.modal('hide');
+            }
+        }, function (error){}, true);
+    }
+
     function updatePreview(modal) {
 
         let previewImg = modal.find('#preview')[0];
@@ -415,6 +435,12 @@ $(document).ready(function () {
         container.append(content);
     }
 
+    function aboutUsVideoUpdate(video) {
+        let container = $('div[class*="about-image"]');
+        container.find('img').attr('src', 'storage/images/videos/' + video.image);
+        container.find('a[id="play-video"]').attr('href', video.url);
+    }
+
 
     /// Handlers
     function onTextFocusinListener() {
@@ -469,6 +495,11 @@ $(document).ready(function () {
         showCropperImage(this);
     }
 
+    function onAboutUsEditVideoPreviewChangeListener() {
+        cropBtnMode = 'about_us_video_update';
+        showCropperImage(this);
+    }
+
     function onCropBtnClickListener() {
         cropperData = cropperObj.getData();
 
@@ -482,6 +513,9 @@ $(document).ready(function () {
             case 'video_create':
                 updatePreview($modalAddVideo);
                 break;
+            case 'about_us_video_update':
+                updatePreview($modalAboutUsEditVideo);
+                break
         }
 
         $modalCropper.modal('hide');
@@ -515,6 +549,10 @@ $(document).ready(function () {
 
     function onVideoSaveBtnClickListener() {
         saveNewVideo();
+    }
+
+    function onAboutUsVideoUpdateBtnClickListener() {
+        updateAboutUsVideo();
     }
 });
 

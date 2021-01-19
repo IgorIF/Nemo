@@ -1,6 +1,6 @@
 <div class="about-image left" data-aos="fade-up">
-    <img src="{{ asset('images/about.jpg') }}" alt="Детский акваклуб «Немо»" width="507" height="475">
-    <a id="play-video" class="video-play-button" href="#"> <span></span></a>
+    <img src="{{ asset('storage/images/videos/' . $video->image) }}" alt="Детский акваклуб «Немо»" width="507" height="475">
+    <a id="play-video" class="video-play-button" href="{{ $video->url }}"> <span></span></a>
     <div id="video-overlay" class="video-overlay">
         <a class="video-overlay-close">&times;</a>
     </div>

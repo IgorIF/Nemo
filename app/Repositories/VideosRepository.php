@@ -15,8 +15,13 @@ class VideosRepository extends Repository
         $this->model = $video;
     }
 
-    public function getAllReviews() {
+    public function getAllReviewsVideos() {
         return $this->model->where('id', '>', 1)->get();
+    }
+
+    public function getAboutUsVideo()
+    {
+        return $this->model->where('id', 1)->first();
     }
 
     public function createVideo(Request $request): array
@@ -49,6 +54,36 @@ class VideosRepository extends Repository
         $this->deleteImage('public/images/videos/' . $video->image);
         $video->delete();
 
+        $result['status'] = true;
+
+        return $result;
+    }
+
+    public function updateVideo(Request $request, int $id)
+    {
+        $result = [];
+        $fill = [];
+
+        $video = Video::find($id);
+
+        if ($request->file('image')) {
+            $data = $request->except('_method');
+            $data['image-data'] = json_decode($data['image-data'], true);
+
+            $data['image-data'] = $this->roundImageData($data['image-data']);
+            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/videos/');
+
+            $this->deleteImage('public/images/videos/' . $video->image);
+
+            $fill['image'] = $data['image'];
+        }
+
+        $fill['url'] = $request['url'];
+        $video->fill($fill);
+
+        $video->update();
+
+        $result['video'] = $video;
         $result['status'] = true;
 
         return $result;

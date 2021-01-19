@@ -137,7 +137,7 @@ class IndexController extends Controller
 
     private function renderReviews() {
         $texts = $this->textsRepository->getInRangeById([48 => 48]);
-        $videos = $this->videosRepository->getAllReviews();
+        $videos = $this->videosRepository->getAllReviewsVideos();
         $this->reviews = view('site.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 

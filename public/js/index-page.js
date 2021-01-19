@@ -493,12 +493,7 @@ $(document).ready(function (){
 		}
 	});
 
-		$('#play-video').on('click', function(e){
-		  e.preventDefault();
-		  $('.video-play-button').css("z-index","0");
-		  $('#video-overlay').addClass('open');
-		  $("#video-overlay").append('<iframe width="100%" height="345" src="https://www.youtube.com/embed/ode_TmoV848?autoplay=1" frameborder="0" allow="accelerometer; encrypted-media; autoplay;gyroscope; picture-in-picture" allowfullscreen></iframe>');
-		});
+		$('#play-video').on('click', onPlayVideoIdClickListener);
 
 		$('.video-overlay, .video-overlay-close').on('click', function(e){
 		  e.preventDefault();
@@ -522,11 +517,19 @@ $(document).ready(function (){
 
 
 // Handlers
+
+function onPlayVideoIdClickListener(e) {
+    e.preventDefault();
+    let url = $(this).attr('href');
+    $('.video-play-button').css("z-index","0");
+    $('#video-overlay').addClass('open');
+    $("#video-overlay").append('<iframe width="100%" height="345" src="' + url + '" frameborder="0" allow="accelerometer; encrypted-media; autoplay;gyroscope; picture-in-picture" allowfullscreen></iframe>');
+}
+
 function onPlayVideoReviewIdClickListener(e) {
     e.preventDefault();
     let url = $(this).attr('href');
     $('.video-play-button').css("z-index","0");
-    console.log(this);
     $(this).parents(".review_block").append('<iframe width="100%" height="100%" src="' + url + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 }
 

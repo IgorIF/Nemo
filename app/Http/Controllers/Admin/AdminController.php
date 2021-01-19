@@ -19,6 +19,8 @@ class AdminController extends Controller
     protected $securityItemsRepository;
     protected $videosRepository;
 
+    private $modalAboutUsEditVideo;
+
     private $header;
     private $aboutUs;
     private $theBenefitsOfEarlySwimming;
@@ -62,6 +64,8 @@ class AdminController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $this->renderModalAboutUsEditVideo();
+
         $this->renderHeader();
         $this->renderAboutUs();
         $this->renderTheBenefitsOfEarlySwimming();
@@ -79,17 +83,17 @@ class AdminController extends Controller
 
     private function renderOutput() {
 
-        $modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video');
-        $modalAddTrainer = view('admin.modals.modal_add_trainer');
-        $modalAddSecurityItem = view('admin.modals.modal_add_security_item');
-        $modalAddVideo = view('admin.modals.modal_add_video');
-        $modalCropper = view('admin.modals.modal_cropper');
+
+        $modalAddTrainer = view('admin.modals.modal_add_trainer')->render();
+        $modalAddSecurityItem = view('admin.modals.modal_add_security_item')->render();
+        $modalAddVideo = view('admin.modals.modal_add_video')->render();
+        $modalCropper = view('admin.modals.modal_cropper')->render();
 
         $howWeSwim = view('admin.how_we_swim')->render();
 
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
-        $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $modalAboutUsEditVideo);
+        $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideo);
         $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
         $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
         $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
@@ -116,7 +120,8 @@ class AdminController extends Controller
 
     private function renderAboutUs() {
         $texts = $this->textsRepository->getInRangeById([16 => 17]);
-        $this->aboutUs = view( 'admin.about_us')->with('texts', $texts)->render();
+        $video = $this->videosRepository->getAboutUsVideo();
+        $this->aboutUs = view( 'admin.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
@@ -153,7 +158,7 @@ class AdminController extends Controller
 
     private function renderReviews() {
         $texts = $this->textsRepository->getInRangeById([48 => 48]);
-        $videos = $this->videosRepository->getAllReviews();
+        $videos = $this->videosRepository->getAllReviewsVideos();
         $this->reviews = view('admin.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
@@ -165,6 +170,11 @@ class AdminController extends Controller
     private function renderFooter() {
         $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11]);
         $this->footer = view('admin.footer')->with('texts', $texts)->render();
+    }
+
+    private function renderModalAboutUsEditVideo() {
+        $video = $this->videosRepository->getAboutUsVideo();
+        $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
     }
 
     protected function editText(Request $request) {
