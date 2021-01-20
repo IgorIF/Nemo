@@ -216,19 +216,7 @@ $(document).ready(function () {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
                 let inputs = $modalAddTrainer.find('input').add($modalAddTrainer.find('textarea'));
-
-                $(inputs).each(function (i, e) {
-                    let fieldName = $(e).attr('name');
-                    if (Object.keys(errors).includes(fieldName)) {
-                        $(e).addClass('is-invalid');
-                        $(e).parent().find('div[class="invalid-feedback"]').text(errors[fieldName]);
-                    } else {
-                        if ($(e).hasClass('is-invalid')) {
-                            $(e).removeClass('is-invalid');
-                            (e).parent().find('div[class="invalid-feedback"]').text('');
-                        }
-                    }
-                });
+                addInvalidFeedback(inputs, errors);
 
             }
         },true);
@@ -242,9 +230,7 @@ $(document).ready(function () {
             let securityItem = response.securityItem;
             securityItemAdd(securityItem);
             $modalAddSecurityItem.modal('hide');
-        }, function (error) {
-            console.log(error);
-        }, true);
+        }, function (error) {}, true);
     }
 
     function saveNewVideo() {
@@ -272,7 +258,13 @@ $(document).ready(function () {
                 aboutUsVideoUpdate(video);
                 $modalAboutUsEditVideo.modal('hide');
             }
-        }, function (error){}, true);
+        }, function (error){
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                let inputs = $modalAboutUsEditVideo.find('input');
+                addInvalidFeedback(inputs, errors);
+            }
+        }, true);
     }
 
     function updatePreview(modal) {
@@ -624,3 +616,17 @@ function videoSlickRemove(slickIndex) {
     $('.slider-slick').slick('slickRemove', slickIndex);
 }
 
+function addInvalidFeedback (inputs, errors) {
+    $(inputs).each(function (i, e) {
+        let fieldName = $(e).attr('name');
+        if (Object.keys(errors).includes(fieldName)) {
+            $(e).addClass('is-invalid');
+            $(e).parent().find('div[class="invalid-feedback"]').text(errors[fieldName]);
+        } else {
+            if ($(e).hasClass('is-invalid')) {
+                $(e).removeClass('is-invalid');
+                (e).parent().find('div[class="invalid-feedback"]').text('');
+            }
+        }
+    })
+}

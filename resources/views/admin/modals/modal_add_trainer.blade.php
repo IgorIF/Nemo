@@ -7,7 +7,6 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal_add_trainer').modal('hide')"></button>
             </div>
             <div class="modal-body">
-
                 <form>
                     <div class="form-group">
                         <label for="name">Имя</label>

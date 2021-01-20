@@ -11,6 +11,4 @@
     <p data-aos="fade-up" id="text_{{ $texts->get(17)->id }}" contenteditable="true">{!! $texts->get(17)->text !!}</p>
 </div>
 
-<div style="max-width: 90%; width: 100%; margin: auto; height: 100px; text-align: center; display: block">
-    <a id="about_us_video_edit_btn" class="btn" style="padding: 20px 30px; box-shadow: none">Изменить видео</a>
-</div>
+<a data-aos="fade-up" id="about_us_video_edit_btn" class="btn" style="padding: 20px 30px; box-shadow: none; display: inline-block; float: left">Изменить видео</a>

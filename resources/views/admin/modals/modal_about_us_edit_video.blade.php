@@ -11,6 +11,7 @@
                     <div class="form-group">
                         <label for="name">Ссылка на видео</label>
                         <input type="text" class="form-control" id="text" name="url" placeholder="Введите ссылку" value="{{ $video->url }}" >
+                        <div class="invalid-feedback"></div>
                     </div>
                     <br />
                     <div class="form-group">
