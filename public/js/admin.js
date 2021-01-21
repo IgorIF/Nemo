@@ -202,6 +202,7 @@ $(document).ready(function () {
     }
 
     function saveNewTrainer() {
+        let fields = $modalAddTrainer.find('input').add($modalAddTrainer.find('textarea'));
         let data = new FormData($modalAddTrainer.find('form')[0]);
         data.append('image-data', JSON.stringify(cropperData));
         let url = 'admin/trainers';
@@ -211,13 +212,12 @@ $(document).ready(function () {
                 trainerSlickAdd(trainer);
                 trainersSlickRefresh();
                 $modalAddTrainer.modal('hide');
+                clearFields(fields);
             }
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
-                let inputs = $modalAddTrainer.find('input').add($modalAddTrainer.find('textarea'));
-                addInvalidFeedback(inputs, errors);
-
+                addInvalidFeedback(fields, errors);
             }
         },true);
     }
@@ -616,8 +616,8 @@ function videoSlickRemove(slickIndex) {
     $('.slider-slick').slick('slickRemove', slickIndex);
 }
 
-function addInvalidFeedback (inputs, errors) {
-    $(inputs).each(function (i, e) {
+function addInvalidFeedback (fields, errors) {
+    $(fields).each(function (i, e) {
         let fieldName = $(e).attr('name');
         if (Object.keys(errors).includes(fieldName)) {
             $(e).addClass('is-invalid');
@@ -628,5 +628,20 @@ function addInvalidFeedback (inputs, errors) {
                 (e).parent().find('div[class="invalid-feedback"]').text('');
             }
         }
-    })
+    });
+}
+
+function clearFields(fields) {
+    $(fields).each(function (i, e) {
+        if ($(e).hasClass('is-invalid')) {
+            $(e).removeClass('is-invalid');
+            (e).parent().find('div[class="invalid-feedback"]').text('');
+        }
+
+        $(e).val('');
+
+        if ($(e).attr('type') === 'file') {
+            $(e).prev('img').attr('src', 'https://svgsilh.com/svg/159236-9e9e9e.svg');
+        }
+    });
 }
