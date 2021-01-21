@@ -202,7 +202,6 @@ $(document).ready(function () {
     }
 
     function saveNewTrainer() {
-        let fields = $modalAddTrainer.find('input').add($modalAddTrainer.find('textarea'));
         let data = new FormData($modalAddTrainer.find('form')[0]);
         data.append('image-data', JSON.stringify(cropperData));
         let url = 'admin/trainers';
@@ -212,12 +211,12 @@ $(document).ready(function () {
                 trainerSlickAdd(trainer);
                 trainersSlickRefresh();
                 $modalAddTrainer.modal('hide');
-                clearFields(fields);
+                clearFields($modalAddTrainer);
             }
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
-                addInvalidFeedback(fields, errors);
+                addInvalidFeedback($modalAddTrainer, errors);
             }
         },true);
     }
@@ -257,12 +256,12 @@ $(document).ready(function () {
                 let video = response.video;
                 aboutUsVideoUpdate(video);
                 $modalAboutUsEditVideo.modal('hide');
+                clearFields($modalAboutUsEditVideo);
             }
         }, function (error){
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
-                let inputs = $modalAboutUsEditVideo.find('input');
-                addInvalidFeedback(inputs, errors);
+                addInvalidFeedback($modalAboutUsEditVideo, errors);
             }
         }, true);
     }
@@ -616,7 +615,16 @@ function videoSlickRemove(slickIndex) {
     $('.slider-slick').slick('slickRemove', slickIndex);
 }
 
-function addInvalidFeedback (fields, errors) {
+function addInvalidFeedback (modal, errors) {
+    let modalId = modal.attr('id');
+    let fields = modal.find('input')
+
+    switch (modalId) {
+        case 'modal_add_trainer':
+            fields = fields.add(modal.find('textarea'));
+            break;
+    }
+
     $(fields).each(function (i, e) {
         let fieldName = $(e).attr('name');
         if (Object.keys(errors).includes(fieldName)) {
@@ -631,16 +639,26 @@ function addInvalidFeedback (fields, errors) {
     });
 }
 
-function clearFields(fields) {
+function clearFields(modal) {
+    let modalId = modal.attr('id');
+    let fields = modal.find('input')
+
+    switch (modalId) {
+        case 'modal_add_trainer':
+            fields = fields.add(modal.find('textarea'));
+            break;
+    }
+
     $(fields).each(function (i, e) {
         if ($(e).hasClass('is-invalid')) {
             $(e).removeClass('is-invalid');
             $(e).parent().find('div[class="invalid-feedback"]').text('');
         }
 
-        $(e).val('');
+        if (modalId === 'modal_add_trainer')
+            $(e).val('');
 
-        if ($(e).attr('type') === 'file') {
+        if ($(e).attr('type') === 'file' && $(modal).attr('id') === 'modal_add_trainer') {
             $(e).prev('img').attr('src', 'https://svgsilh.com/svg/159236-9e9e9e.svg');
         }
     });

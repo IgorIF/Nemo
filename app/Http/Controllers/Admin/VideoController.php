@@ -83,7 +83,7 @@ class VideoController extends AdminController
     {
 
         $request->validate([
-            'url' => 'required',
+            'url' => 'required|url',
         ]);
 
         return $this->videosRepository->updateVideo($request, $id);
