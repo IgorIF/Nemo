@@ -250,8 +250,12 @@ $(document).ready(function () {
                 videoSlickAdd(video);
                 videosSlickRefresh()
                 $modalAddVideo.modal('hide');
+                clearFields($modalAddVideo);
             }
-        }, function () {}, true);
+        }, function (error) {
+            let errors = error.responseJSON.errors;
+            addInvalidFeedback($modalAddVideo, errors);
+        }, true);
     }
 
     function updateAboutUsVideo() {
@@ -663,11 +667,18 @@ function clearFields(modal) {
             $(e).parent().find('div[class="invalid-feedback"]').text('');
         }
 
-        if (modalId === 'modal_add_trainer' || modalId === 'modal_add_securityItem')
+        if (modalId === 'modal_add_trainer' || modalId === 'modal_add_securityItem' || modalId === 'modal_add_video')
             $(e).val('');
 
-        if ($(e).attr('type') === 'file' && $(modal).attr('id') === 'modal_add_trainer') {
-            $(e).prev('img').attr('src', 'https://svgsilh.com/svg/159236-9e9e9e.svg');
+        if ($(e).attr('type') === 'file') {
+            switch (modalId) {
+                case 'modal_add_trainer':
+                    $(e).prev('img').attr('src', 'https://svgsilh.com/svg/159236-9e9e9e.svg');
+                    break;
+                case 'modal_add_video':
+                    $(e).prev('img').attr('src', 'https://svgsilh.com/svg/159236-9e9e9e.svg');
+                    break;
+            }
         }
     });
 }
