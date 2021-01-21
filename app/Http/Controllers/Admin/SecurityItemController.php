@@ -35,6 +35,10 @@ class SecurityItemController extends AdminController
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'text' => 'required'
+        ]);
+
         return $this->securityItemsRepository->createSecurityItem($request);
     }
 

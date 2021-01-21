@@ -226,10 +226,18 @@ $(document).ready(function () {
         data.append('securityCategoryId', securityCategoryId);
         let url = 'admin/security/items';
         ajax('POST', url, data, function (response) {
-            let securityItem = response.securityItem;
-            securityItemAdd(securityItem);
-            $modalAddSecurityItem.modal('hide');
-        }, function (error) {}, true);
+            if (response.status === true) {
+                let securityItem = response.securityItem;
+                securityItemAdd(securityItem);
+                $modalAddSecurityItem.modal('hide');
+                clearFields($modalAddSecurityItem);
+            }
+        }, function (error) {
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalAddSecurityItem, errors);
+            }
+        }, true);
     }
 
     function saveNewVideo() {
@@ -655,7 +663,7 @@ function clearFields(modal) {
             $(e).parent().find('div[class="invalid-feedback"]').text('');
         }
 
-        if (modalId === 'modal_add_trainer')
+        if (modalId === 'modal_add_trainer' || modalId === 'modal_add_securityItem')
             $(e).val('');
 
         if ($(e).attr('type') === 'file' && $(modal).attr('id') === 'modal_add_trainer') {

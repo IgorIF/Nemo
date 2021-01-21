@@ -47,6 +47,11 @@ class VideoController extends AdminController
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'url' => 'required|url',
+            'image' => 'required'
+        ]);
+
         return $this->videosRepository->createVideo($request);
     }
 
@@ -81,7 +86,6 @@ class VideoController extends AdminController
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'url' => 'required|url',
         ]);

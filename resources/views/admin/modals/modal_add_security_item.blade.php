@@ -11,6 +11,7 @@
                     <div class="form-group">
                         <label for="name">Текст</label>
                         <input type="text" class="form-control" id="text" name="text" placeholder="Введите текст" >
+                        <div class="invalid-feedback"></div>
                     </div>
                 </form>
             </div>
