@@ -625,7 +625,7 @@ function addInvalidFeedback (fields, errors) {
         } else {
             if ($(e).hasClass('is-invalid')) {
                 $(e).removeClass('is-invalid');
-                (e).parent().find('div[class="invalid-feedback"]').text('');
+                $(e).parent().find('div[class="invalid-feedback"]').text('');
             }
         }
     });
@@ -635,7 +635,7 @@ function clearFields(fields) {
     $(fields).each(function (i, e) {
         if ($(e).hasClass('is-invalid')) {
             $(e).removeClass('is-invalid');
-            (e).parent().find('div[class="invalid-feedback"]').text('');
+            $(e).parent().find('div[class="invalid-feedback"]').text('');
         }
 
         $(e).val('');
