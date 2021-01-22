@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\ImagesRepository;
 use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\SecurityItemsRepository;
 use App\Repositories\TextsRepository;
@@ -18,6 +19,7 @@ class AdminController extends Controller
     protected $securityCategoriesRepository;
     protected $securityItemsRepository;
     protected $videosRepository;
+    protected $imagesRepository;
 
     private $modalAboutUsEditVideo;
 
@@ -43,15 +45,17 @@ class AdminController extends Controller
      * @param SecurityCategoriesRepository $securityCategoriesRepository
      * @param SecurityItemsRepository $securityItemsRepository
      * @param VideosRepository $videosRepository
+     * @param ImagesRepository $imagesRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository)
+                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, ImagesRepository $imagesRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
         $this->securityItemsRepository = $securityItemsRepository;
         $this->videosRepository = $videosRepository;
+        $this->imagesRepository = $imagesRepository;
         $this->template = 'admin.index';
     }
 
@@ -126,7 +130,8 @@ class AdminController extends Controller
 
     private function renderTheBenefitsOfEarlySwimming() {
         $texts = $this->textsRepository->getInRangeById([18 => 30]);
-        $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with('texts', $texts)->render();
+        $images = $this->imagesRepository->getInRangeById([1 => 1]);
+        $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderWhoSwimsWithUs() {

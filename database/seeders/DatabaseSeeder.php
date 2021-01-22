@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             TextSeeder::class,
             SecurityCategorySeeder::class,
             SecurityItemSeeder::class,
-            VideoSeeder::class
+            VideoSeeder::class,
+            ImageSeeder::class
         ]);
     }
 }

@@ -27,15 +27,4 @@ class TextsRepository extends Repository
             $result['status'] = true;
         return $result;
     }
-
-    public function getInRangeById($intervals)
-    {
-        $texts = parent::getInRangeById($intervals);
-
-        $texts = $texts->mapWithKeys(function ($item) {
-            return [$item->id => $item];
-        });
-
-        return $texts;
-    }
 }

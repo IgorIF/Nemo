@@ -10,8 +10,7 @@ use Intervention\Image\Facades\Image;
 
 class VideosRepository extends Repository
 {
-    public function __construct(Video $video)
-    {
+    public function __construct(Video $video) {
         $this->model = $video;
     }
 

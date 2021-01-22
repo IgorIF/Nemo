@@ -23,6 +23,11 @@ class Repository
             $query = $this->model->where('id', '>=', $from)->where('id', '<=', $to)->get();
             $result = $result->merge($query);
         }
+
+        $result = $result->mapWithKeys(function ($item) {
+            return [$item->id => $item];
+        });
+
         return $result;
     }
 

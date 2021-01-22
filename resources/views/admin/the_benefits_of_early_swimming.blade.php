@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="early-development-center">
-    <img src="{{ asset('images/baby2.png') }}">
+    <img src="{{ asset( env('IMAGES_PATH') . 'images/' . $images->get(1)->image) }}">
 </div>
 <div class="early-development-right">
     <div class="top" data-aos="fade-up">
