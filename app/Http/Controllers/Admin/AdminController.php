@@ -47,17 +47,15 @@ class AdminController extends Controller
      * @param SecurityCategoriesRepository $securityCategoriesRepository
      * @param SecurityItemsRepository $securityItemsRepository
      * @param VideosRepository $videosRepository
-     * @param ImagesRepository $imagesRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, ImagesRepository $imagesRepository)
+                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
         $this->securityItemsRepository = $securityItemsRepository;
         $this->videosRepository = $videosRepository;
-        $this->imagesRepository = $imagesRepository;
         $this->template = 'admin.index';
     }
 
@@ -135,8 +133,7 @@ class AdminController extends Controller
 
     private function renderTheBenefitsOfEarlySwimming() {
         $texts = $this->textsRepository->getInRangeById([18 => 30]);
-        $images = $this->imagesRepository->getInRangeById([1 => 1]);
-        $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
+        $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with('texts', $texts)->render();
     }
 
     private function renderWhoSwimsWithUs() {
