@@ -191,7 +191,8 @@ class AdminController extends Controller
     }
 
     private function renderRules() {
-        $this->rules = view('admin.rules')->render();
+        $texts = $this->textsRepository->getInRangeById([63 => 63]);
+        $this->rules = view('admin.rules')->with('texts', $texts)->render();
     }
 
     private function renderMedicalCertificates() {
