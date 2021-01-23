@@ -196,7 +196,6 @@ class AdminController extends Controller
     private function renderRules() {
         $texts = $this->textsRepository->getInRangeById([63 => 63]);
         $ruleCategories = $this->ruleCategoriesRepository->getAll();
-        dd($ruleCategories);
         $this->rules = view('admin.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
     }
 
