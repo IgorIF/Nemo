@@ -67,3 +67,7 @@
 @section('footer')
     {!! $footer !!}
 @endsection
+
+@section('rules')
+    {!! $rules !!}
+@endsection

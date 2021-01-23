@@ -35,6 +35,8 @@ class AdminController extends Controller
     private $swimmingPool;
     private $footer;
 
+    private $rules;
+
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
 
@@ -82,6 +84,8 @@ class AdminController extends Controller
         $this->renderSwimmingPool();
         $this->renderFooter();
 
+        $this->renderRules();
+
         return $this->renderOutput();
     }
 
@@ -113,6 +117,7 @@ class AdminController extends Controller
         $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
         $this->vars = Arr::add($this->vars, 'footer', $this->footer);
+        $this->vars = Arr::add($this->vars, 'rules', $this->rules);
 
         return view($this->template)->with($this->vars);
     }
@@ -180,6 +185,10 @@ class AdminController extends Controller
     private function renderModalAboutUsEditVideo() {
         $video = $this->videosRepository->getAboutUsVideo();
         $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
+    }
+
+    private function renderRules() {
+        $this->rules = view('admin.rules')->render();
     }
 
     protected function editText(Request $request) {
