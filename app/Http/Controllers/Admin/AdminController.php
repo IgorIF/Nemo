@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\ImagesRepository;
+use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\SecurityItemsRepository;
 use App\Repositories\TextsRepository;
@@ -19,7 +20,7 @@ class AdminController extends Controller
     protected $securityCategoriesRepository;
     protected $securityItemsRepository;
     protected $videosRepository;
-    protected $imagesRepository;
+    protected $ruleCategoriesRepository;
 
     private $modalAboutUsEditVideo;
 
@@ -49,15 +50,17 @@ class AdminController extends Controller
      * @param SecurityCategoriesRepository $securityCategoriesRepository
      * @param SecurityItemsRepository $securityItemsRepository
      * @param VideosRepository $videosRepository
+     * @param RuleCategoriesRepository $ruleCategoriesRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository)
+                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
         $this->securityItemsRepository = $securityItemsRepository;
         $this->videosRepository = $videosRepository;
+        $this->ruleCategoriesRepository = $ruleCategoriesRepository;
         $this->template = 'admin.index';
     }
 
@@ -192,7 +195,9 @@ class AdminController extends Controller
 
     private function renderRules() {
         $texts = $this->textsRepository->getInRangeById([63 => 63]);
-        $this->rules = view('admin.rules')->with('texts', $texts)->render();
+        $ruleCategories = $this->ruleCategoriesRepository->getAll();
+        dd($ruleCategories);
+        $this->rules = view('admin.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
     }
 
     private function renderMedicalCertificates() {
