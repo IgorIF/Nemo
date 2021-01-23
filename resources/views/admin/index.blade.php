@@ -75,3 +75,7 @@
 @section('medicalCertificates')
     {!! $medicalCertificates !!}
 @endsection
+
+@section('vacancies')
+    {!! $vacancies !!}
+@endsection
