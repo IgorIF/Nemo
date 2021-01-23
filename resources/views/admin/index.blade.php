@@ -71,3 +71,7 @@
 @section('rules')
     {!! $rules !!}
 @endsection
+
+@section('medicalCertificates')
+    {!! $medicalCertificates !!}
+@endsection

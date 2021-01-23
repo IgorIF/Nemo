@@ -36,6 +36,7 @@ class AdminController extends Controller
     private $footer;
 
     private $rules;
+    private $medicalCertificates;
 
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
@@ -83,6 +84,7 @@ class AdminController extends Controller
         $this->renderFooter();
 
         $this->renderRules();
+        $this->renderMedicalCertificates();
 
         return $this->renderOutput();
     }
@@ -116,6 +118,7 @@ class AdminController extends Controller
         $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
         $this->vars = Arr::add($this->vars, 'footer', $this->footer);
         $this->vars = Arr::add($this->vars, 'rules', $this->rules);
+        $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificates);
 
         return view($this->template)->with($this->vars);
     }
@@ -186,6 +189,10 @@ class AdminController extends Controller
 
     private function renderRules() {
         $this->rules = view('admin.rules')->render();
+    }
+
+    private function renderMedicalCertificates() {
+        $this->medicalCertificates = view('admin.medical_certificates')->render();
     }
 
     protected function editText(Request $request) {
