@@ -194,7 +194,7 @@ class AdminController extends Controller
     }
 
     private function renderRules() {
-        $texts = $this->textsRepository->getInRangeById([63 => 63]);
+        $texts = $this->textsRepository->getInRangeById([63 => 65]);
         $ruleCategories = $this->ruleCategoriesRepository->getAll();
         $this->rules = view('admin.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
     }

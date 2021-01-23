@@ -7,15 +7,14 @@
         </ul>
     </div>
 
-    <p>Для занятий необходимо:</p>
-
+    <p id="text_{{ $texts->get(64)->id }}" contenteditable="true">{!! $texts->get(64)->text !!}</p>
     <div class="rule2">
         <ul>
             <li></li>
         </ul>
     </div>
 
-    <p>Техника безопасности Акваклуба Немо </p>
+    <p id="text_{{ $texts->get(65)->id }}" contenteditable="true">{!! $texts->get(65)->text !!}</p>
     <div class="rule2">
         <ul>
             <li></li>

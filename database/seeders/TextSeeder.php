@@ -331,5 +331,15 @@ class TextSeeder extends Seeder
             'text' => 'Правила посещения Акваклуба Немо'
         ]);
 
+        DB::table('texts')->insert([
+            'id' => '64',
+            'text' => 'Для занятий необходимо:'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '65',
+            'text' => 'Техника безопасности Акваклуба Немо'
+        ]);
+
     }
 }
