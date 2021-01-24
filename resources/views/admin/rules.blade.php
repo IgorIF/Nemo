@@ -15,6 +15,11 @@
                 </div>
             @endforeach
         </ul>
+
+        <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
+            <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        </div>
+
     </div>
 
     <p id="text_{{ $texts->get(64)->id }}" contenteditable="true">{!! $texts->get(64)->text !!}</p>
@@ -32,6 +37,10 @@
                 </div>
             @endforeach
         </ul>
+
+        <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
+            <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        </div>
     </div>
 
     <p id="text_{{ $texts->get(65)->id }}" contenteditable="true">{!! $texts->get(65)->text !!}</p>
@@ -49,6 +58,10 @@
                 </div>
             @endforeach
         </ul>
+
+        <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
+            <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        </div>
     </div>
 </div>
 <button type="button" class="close" id="js-close-popup"></button>
