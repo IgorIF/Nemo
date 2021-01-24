@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\ImagesRepository;
 use App\Repositories\RuleCategoriesRepository;
+use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\SecurityItemsRepository;
 use App\Repositories\TextsRepository;
@@ -21,6 +22,7 @@ class AdminController extends Controller
     protected $securityItemsRepository;
     protected $videosRepository;
     protected $ruleCategoriesRepository;
+    protected $ruleItemsRepository;
 
     private $modalAboutUsEditVideo;
 
@@ -51,9 +53,11 @@ class AdminController extends Controller
      * @param SecurityItemsRepository $securityItemsRepository
      * @param VideosRepository $videosRepository
      * @param RuleCategoriesRepository $ruleCategoriesRepository
+     * @param RuleItemsRepository $ruleItemsRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository)
+                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
+                                RuleItemsRepository $ruleItemsRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
@@ -61,6 +65,7 @@ class AdminController extends Controller
         $this->securityItemsRepository = $securityItemsRepository;
         $this->videosRepository = $videosRepository;
         $this->ruleCategoriesRepository = $ruleCategoriesRepository;
+        $this->ruleItemsRepository = $ruleItemsRepository;
         $this->template = 'admin.index';
     }
 

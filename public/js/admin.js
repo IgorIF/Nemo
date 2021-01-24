@@ -25,6 +25,9 @@ $(document).ready(function () {
     /// Delete security item
     $(document).on('click', '#securityItem_delete_btn', onSecurityItemDeleteBtnClickListener);
 
+    /// Delete rule item
+    $(document).on('click', '#ruleItem_delete_btn', onRuleItemDeleteBtnClickListener);
+
     /// Delete video
     $(document).on('click', '#video_delete_btn', onVideoDeleteBtnClickListener);
 
@@ -127,7 +130,7 @@ $(document).ready(function () {
     function saveSecurityText(element, model) {
         let text = $(element).html();
         let data = {'text': text};
-        let id = $(element).parents('[id^="security"]').attr('id').split('_')[1]
+        let id = $(element).parents('[id^="security"]').attr('id').split('_')[1];
         let url = 'admin/security/';
 
         if (text !== initialText) {
@@ -142,6 +145,15 @@ $(document).ready(function () {
         }
 
 
+    }
+
+    function saveRuleText(element) {
+        let text = $(element).html();
+        let data = {'text': text};
+        let id = $(element).parents('[id^="ruleItem"]').attr('id').split('_')[1];
+        let url = 'admin/rules/' + id;
+
+        ajax('PUT', url, data);
     }
 
     function deleteTrainer(element) {
@@ -159,9 +171,22 @@ $(document).ready(function () {
         let securityItemId = $(element).parents('[id^="securityItem"]').attr('id').split('_')[1];
         let url = 'admin/security/items/' + securityItemId;
 
-        ajax('DELETE', url, null, function () {
-            $('#securityItem_' + securityItemId).remove();
+        ajax('DELETE', url, null, function (response) {
+            if (response.status === true) {
+                $('#securityItem_' + securityItemId).remove();
+            }
         });
+    }
+
+    function deleteRuleItem(element) {
+        let ruleItemId = $(element).parents('[id^="ruleItem"]').attr('id').split('_')[1];
+        let url = 'admin/rules/' + ruleItemId;
+
+        ajax('DELETE', url, null, function (response) {
+            if (response.status === true) {
+                $('#ruleItem_' + ruleItemId).remove();
+            }
+        })
     }
 
     function deleteVideo(element) {
@@ -465,6 +490,9 @@ $(document).ready(function () {
             case 'securityCategory':
             case 'securityItem':
                 saveSecurityText(this, id);
+                break;
+            case 'ruleItem':
+                saveRuleText(this);
         }
 
         initialText = null;
@@ -475,7 +503,12 @@ $(document).ready(function () {
     }
 
     function onSecurityItemDeleteBtnClickListener() {
+        console.log(this);
         deleteSecurityItem(this);
+    }
+
+    function onRuleItemDeleteBtnClickListener() {
+        deleteRuleItem(this);
     }
 
     function onVideoDeleteBtnClickListener() {

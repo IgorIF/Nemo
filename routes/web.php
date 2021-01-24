@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\RuleItemController;
 use App\Http\Controllers\Admin\SecurityCategoryController;
 use App\Http\Controllers\Admin\SecurityItemController;
 use App\Http\Controllers\Admin\TrainerController;
@@ -31,6 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
     Route::resource('security/categories', SecurityCategoryController::class)->only('update');
     Route::resource('security/items', SecurityItemController::class)->only(['store', 'update', 'destroy']);
     Route::resource('videos', VideoController::class)->only(['store', 'update', 'destroy']);
+    Route::resource('rules', RuleItemController::class)->only(['update', 'destroy']);
 
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 
