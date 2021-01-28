@@ -15,15 +15,9 @@ class SecurityCategoriesRepository extends Repository
 
     public function updateSecurityCategory(Request $request, int $id)
     {
-        $result = [];
-
         $securityCategory = SecurityCategory::find($id);
 
         $securityCategory->fill(['text' => $request->get('text')]);
         $securityCategory->update();
-
-        $result['status'] = true;
-
-        return $result;
     }
 }
