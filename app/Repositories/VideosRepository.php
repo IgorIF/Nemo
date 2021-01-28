@@ -42,20 +42,6 @@ class VideosRepository extends Repository
         ]);
     }
 
-    public function destroyVideo($id): array
-    {
-        $result = [];
-
-        $video = Video::find($id);
-
-        $this->deleteImage('public/images/videos/' . $video->image);
-        $video->delete();
-
-        $result['status'] = true;
-
-        return $result;
-    }
-
     /**
      * @param Request $request
      * @param int $id
@@ -85,5 +71,16 @@ class VideosRepository extends Repository
         $video->update();
 
         return $video;
+    }
+
+    /**
+     * @param $id
+     */
+    public function destroyVideo($id)
+    {
+        $video = Video::find($id);
+
+        $this->deleteImage('public/images/videos/' . $video->image);
+        $video->delete();
     }
 }

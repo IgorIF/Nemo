@@ -105,6 +105,6 @@ class VideoController extends AdminController
      */
     public function destroy(int $id)
     {
-        return $this->videosRepository->destroyVideo($id);
+        $this->videosRepository->destroyVideo($id);
     }
 }

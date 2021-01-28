@@ -14,20 +14,6 @@ class SecurityItemsRepository extends Repository
         $this->model = $securityItem;
     }
 
-    public function updateSecurityItem(Request $request, int $id)
-    {
-        $securityItem = SecurityItem::find($id);
-
-        $securityItem->fill(['text' => $request->get('text')]);
-        $securityItem->update();
-    }
-
-    public function destroySecurityItem($id)
-    {
-        $securityItem = SecurityItem::find($id);
-        $securityItem->delete();
-    }
-
     /**
      * @param Request $request
      * @return SecurityItem
@@ -43,5 +29,26 @@ class SecurityItemsRepository extends Repository
         $securityCategory->securityItems()->save($securityItem);
 
         return $securityItem;
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     */
+    public function updateSecurityItem(Request $request, int $id)
+    {
+        $securityItem = SecurityItem::find($id);
+
+        $securityItem->fill(['text' => $request->get('text')]);
+        $securityItem->update();
+    }
+
+    /**
+     * @param $id
+     */
+    public function destroySecurityItem($id)
+    {
+        $securityItem = SecurityItem::find($id);
+        $securityItem->delete();
     }
 }

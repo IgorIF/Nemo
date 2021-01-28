@@ -40,6 +40,7 @@ class RuleItemController extends AdminController
             'text' => 'required'
         ]);
 
+        // TODO
         return ['status' => true, 'request' => $request->all()];
     }
 

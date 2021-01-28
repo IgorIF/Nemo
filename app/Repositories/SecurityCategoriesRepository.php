@@ -13,6 +13,10 @@ class SecurityCategoriesRepository extends Repository
         $this->model = $securityCategory;
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     */
     public function updateSecurityCategory(Request $request, int $id)
     {
         $securityCategory = SecurityCategory::find($id);

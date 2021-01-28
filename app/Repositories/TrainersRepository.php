@@ -23,17 +23,6 @@ class TrainersRepository extends Repository
     }
 
     /**
-     * @param $id
-     */
-    public function destroyTrainer($id)
-    {
-        $trainer = Trainer::find($id);
-        $this->deleteImage($trainer->image);
-        $trainer->delete();
-    }
-
-
-    /**
      * @param Request $request
      * @return Trainer
      */
@@ -84,5 +73,15 @@ class TrainersRepository extends Repository
         $trainer->update();
 
         return $imageName;
+    }
+
+    /**
+     * @param $id
+     */
+    public function destroyTrainer($id)
+    {
+        $trainer = Trainer::find($id);
+        $this->deleteImage($trainer->image);
+        $trainer->delete();
     }
 }

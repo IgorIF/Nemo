@@ -15,6 +15,10 @@ class RuleItemsRepository extends Repository
         $this->model = $ruleItem;
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     */
     public function updateRuleItem(Request $request, int $id)
     {
         $ruleItem = RuleItem::find($id);
@@ -23,6 +27,10 @@ class RuleItemsRepository extends Repository
         $ruleItem->update();
     }
 
+
+    /**
+     * @param int $id
+     */
     public function destroyRuleItem(int $id)
     {
         $ruleItem = RuleItem::find($id);
