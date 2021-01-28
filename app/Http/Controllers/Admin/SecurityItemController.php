@@ -39,7 +39,9 @@ class SecurityItemController extends AdminController
             'text' => 'required'
         ]);
 
-        return $this->securityItemsRepository->createSecurityItem($request);
+        return response()->json(['fd' => 'afda']);
+
+        //return $this->securityItemsRepository->createSecurityItem($request);
     }
 
     /**

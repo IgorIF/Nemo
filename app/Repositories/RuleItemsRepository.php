@@ -15,29 +15,17 @@ class RuleItemsRepository extends Repository
         $this->model = $ruleItem;
     }
 
-    public function updateRuleItem(Request $request, int $id): array
+    public function updateRuleItem(Request $request, int $id)
     {
-        $result = [];
-
         $ruleItem = RuleItem::find($id);
 
         $ruleItem->fill(['text' => $request->get('text')]);
         $ruleItem->update();
-
-        $result['status'] = true;
-
-        return $result;
     }
 
     public function destroyRuleItem(int $id)
     {
-        $result = [];
-
         $ruleItem = RuleItem::find($id);
         $ruleItem->delete();
-
-        $result['status'] = true;
-
-        return $result;
     }
 }

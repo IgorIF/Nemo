@@ -70,21 +70,19 @@ class RuleItemController extends AdminController
      *
      * @param Request $request
      * @param int $id
-     * @return array
      */
-    public function update(Request $request, int $id): array
+    public function update(Request $request, int $id)
     {
-        return $this->ruleItemsRepository->updateRuleItem($request, $id);
+        $this->ruleItemsRepository->updateRuleItem($request, $id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return array
      */
-    public function destroy(int $id): array
+    public function destroy(int $id)
     {
-        return $this->ruleItemsRepository->destroyRuleItem($id);
+        $this->ruleItemsRepository->destroyRuleItem($id);
     }
 }

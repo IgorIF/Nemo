@@ -189,9 +189,7 @@ $(document).ready(function () {
         let url = 'admin/rules/' + ruleItemId;
 
         ajax('DELETE', url, null, function (response) {
-            if (response.status === true) {
-                $('#ruleItem_' + ruleItemId).remove();
-            }
+            $('#ruleItem_' + ruleItemId).remove();
         })
     }
 
@@ -257,7 +255,7 @@ $(document).ready(function () {
         data.append('securityCategoryId', securityCategoryId);
         let url = 'admin/security/items';
         ajax('POST', url, data, function (response) {
-            console.log(response);
+            console.log(response.status);
             if (response.status === true) {
                 let securityItem = response.securityItem;
                 securityItemAdd(securityItem);
@@ -265,7 +263,7 @@ $(document).ready(function () {
                 clearFields($modalAddItem);
             }
         }, function (error) {
-            console.log(error);
+            console.log(error.status);
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
                 addInvalidFeedback($modalAddItem, errors);
@@ -369,17 +367,10 @@ $(document).ready(function () {
             url: url,
             data: data,
             success: function (response) {
-                console.log(response);
-                if (response.status) {
-                    if (response.status === true) {
-                        if (onSuccess) {
-                            onSuccess(response);
-                        }
-                        toast('Сохранено', {type: 'success'});
-                    }
-                } else {
-                    toast('Ошибка сохранения', {type: 'danger'})
+                if (onSuccess) {
+                    onSuccess(response);
                 }
+                toast('Сохранено', {type: 'success'});
             },
             error: function (error) {
                 if (onError) {
