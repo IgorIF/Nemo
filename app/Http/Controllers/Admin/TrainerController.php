@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Trainer;
 use App\Repositories\TrainersRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -44,9 +44,9 @@ class TrainerController extends AdminController
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return array
+     * @return JsonResponse
      */
-    public function store(Request $request): array
+    public function store(Request $request): JsonResponse
     {
         $request->validate([
             'name' => 'required',
@@ -55,8 +55,9 @@ class TrainerController extends AdminController
             'video' => '',
         ]);
 
-        return $this->trainersRepository->createTrainer($request);
+        $trainer = $this->trainersRepository->createTrainer($request);
 
+        return response()->json(['trainer' => $trainer]);
     }
 
     /**
@@ -86,21 +87,21 @@ class TrainerController extends AdminController
      *
      * @param Request $request
      * @param int $id
-     * @return array
+     * @return JsonResponse
      */
-    public function update(Request $request, int $id): array
+    public function update(Request $request, int $id): JsonResponse
     {
-        return $this->trainersRepository->updateTrainer($request, $id);
+        $imageName = $this->trainersRepository->updateTrainer($request, $id);
+        return response()->json(['image' => $imageName]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return array
      */
-    public function destroy(int $id): array
+    public function destroy(int $id)
     {
-        return $this->trainersRepository->destroyTrainer($id);
+        $this->trainersRepository->destroyTrainer($id);
     }
 }

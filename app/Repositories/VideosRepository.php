@@ -23,10 +23,12 @@ class VideosRepository extends Repository
         return $this->model->where('id', 1)->first();
     }
 
-    public function createVideo(Request $request): array
+    /**
+     * @param Request $request
+     * @return Video
+     */
+    public function createVideo(Request $request): Video
     {
-        $result = [];
-
         $data = $request->all();
 
         $data['image-data'] = json_decode($data['image-data'], true);
@@ -34,14 +36,10 @@ class VideosRepository extends Repository
 
         $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/videos/');
 
-        $result['video'] = Video::create([
+        return Video::create([
             'url' => $data['url'],
             'image' => $fileName
         ]);
-
-        $result['status'] = true;
-
-        return $result;
     }
 
     public function destroyVideo($id): array
@@ -58,9 +56,13 @@ class VideosRepository extends Repository
         return $result;
     }
 
-    public function updateVideo(Request $request, int $id)
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return Video
+     */
+    public function updateVideo(Request $request, int $id): Video
     {
-        $result = [];
         $fill = [];
 
         $video = Video::find($id);
@@ -82,9 +84,6 @@ class VideosRepository extends Repository
 
         $video->update();
 
-        $result['video'] = $video;
-        $result['status'] = true;
-
-        return $result;
+        return $video;
     }
 }

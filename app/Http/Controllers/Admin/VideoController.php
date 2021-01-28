@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Repositories\VideosRepository;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -44,16 +44,18 @@ class VideoController extends AdminController
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return array
+     * @return JsonResponse
      */
-    public function store(Request $request): array
+    public function store(Request $request): JsonResponse
     {
         $request->validate([
             'url' => 'required|url',
             'image' => 'required'
         ]);
 
-        return $this->videosRepository->createVideo($request);
+        $video = $this->videosRepository->createVideo($request);
+
+        return response()->json(['video' => $video]);
     }
 
     /**
@@ -83,24 +85,25 @@ class VideoController extends AdminController
      *
      * @param Request $request
      * @param int $id
-     * @return array
+     * @return JsonResponse
      */
-    public function update(Request $request, int $id): array
+    public function update(Request $request, int $id): JsonResponse
     {
         $request->validate([
             'url' => 'required|url',
         ]);
 
-        return $this->videosRepository->updateVideo($request, $id);
+        $video = $this->videosRepository->updateVideo($request, $id);
+
+        return response()->json(['video' => $video]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return array
      */
-    public function destroy(int $id): array
+    public function destroy(int $id)
     {
         return $this->videosRepository->destroyVideo($id);
     }

@@ -5,7 +5,6 @@ namespace App\Repositories;
 
 use App\Models\SecurityCategory;
 use App\Models\SecurityItem;
-use App\Models\Trainer;
 use Illuminate\Http\Request;
 
 class SecurityItemsRepository extends Repository
@@ -29,10 +28,12 @@ class SecurityItemsRepository extends Repository
         $securityItem->delete();
     }
 
-    public function createSecurityItem(Request $request)
+    /**
+     * @param Request $request
+     * @return SecurityItem
+     */
+    public function createSecurityItem(Request $request): SecurityItem
     {
-        $result = [];
-
         $securityCategory = SecurityCategory::find($request->get('securityCategoryId'));
 
         $securityItem = SecurityItem::create([
@@ -41,9 +42,6 @@ class SecurityItemsRepository extends Repository
 
         $securityCategory->securityItems()->save($securityItem);
 
-        $result['securityItem'] = $securityItem;
-        $result['status'] = true;
-
-        return $result;
+        return $securityItem;
     }
 }

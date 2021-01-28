@@ -65,6 +65,7 @@ $(document).ready(function () {
     $modalAddItem.on('hidden.bs.modal', function () {
        securityCategoryId = null;
        ruleCategoryId = null;
+       saveItemBtnMode = null;
     });
 
     /// Trainer image edit cropper show
@@ -91,7 +92,7 @@ $(document).ready(function () {
     /// Save new trainer
     $('#trainer_save_btn').click(onTrainerSaveBtnClickListener);
 
-    /// Save new securityItem
+    /// Save new item
     $('#item_save_btn').click(onItemSaveBtnClickListener);
 
     /// Save new video
@@ -177,10 +178,8 @@ $(document).ready(function () {
         let securityItemId = $(element).parents('[id^="securityItem"]').attr('id').split('_')[1];
         let url = 'admin/security/items/' + securityItemId;
 
-        ajax('DELETE', url, null, function (response) {
-            if (response.status === true) {
-                $('#securityItem_' + securityItemId).remove();
-            }
+        ajax('DELETE', url, null, function () {
+            $('#securityItem_' + securityItemId).remove();
         });
     }
 
@@ -188,7 +187,7 @@ $(document).ready(function () {
         let ruleItemId = $(element).parents('[id^="ruleItem"]').attr('id').split('_')[1];
         let url = 'admin/rules/' + ruleItemId;
 
-        ajax('DELETE', url, null, function (response) {
+        ajax('DELETE', url, null, function () {
             $('#ruleItem_' + ruleItemId).remove();
         })
     }
@@ -209,7 +208,7 @@ $(document).ready(function () {
         if (videoId != null) {
             let url = 'admin/videos/' + videoId
 
-            ajax('DELETE', url, null, function (response) {
+            ajax('DELETE', url, null, function () {
                 videoSlickRemove(slickIndex);
                 videosSlickRefresh();
             })
@@ -235,13 +234,11 @@ $(document).ready(function () {
         data.append('image-data', JSON.stringify(cropperData));
         let url = 'admin/trainers';
         ajax('POST', url, data, function (response) {
-            if (response.status === true) {
-                let trainer = response.trainer;
-                trainerSlickAdd(trainer);
-                trainersSlickRefresh();
-                $modalAddTrainer.modal('hide');
-                clearFields($modalAddTrainer);
-            }
+            let trainer = response.trainer;
+            trainerSlickAdd(trainer);
+            trainersSlickRefresh();
+            $modalAddTrainer.modal('hide');
+            clearFields($modalAddTrainer);
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -255,15 +252,11 @@ $(document).ready(function () {
         data.append('securityCategoryId', securityCategoryId);
         let url = 'admin/security/items';
         ajax('POST', url, data, function (response) {
-            console.log(response.status);
-            if (response.status === true) {
-                let securityItem = response.securityItem;
-                securityItemAdd(securityItem);
-                $modalAddItem.modal('hide');
-                clearFields($modalAddItem);
-            }
+            let securityItem = response.securityItem;
+            securityItemAdd(securityItem);
+            $modalAddItem.modal('hide');
+            clearFields($modalAddItem);
         }, function (error) {
-            console.log(error.status);
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
                 addInvalidFeedback($modalAddItem, errors);
@@ -291,16 +284,16 @@ $(document).ready(function () {
         data.append('image-data', JSON.stringify(cropperData))
         let url = 'admin/videos';
         ajax('POST', url, data, function (response) {
-            if (response.status === true) {
-                let video = response.video;
-                videoSlickAdd(video);
-                videosSlickRefresh()
-                $modalAddVideo.modal('hide');
-                clearFields($modalAddVideo);
-            }
+            let video = response.video;
+            videoSlickAdd(video);
+            videosSlickRefresh()
+            $modalAddVideo.modal('hide');
+            clearFields($modalAddVideo);
         }, function (error) {
-            let errors = error.responseJSON.errors;
-            addInvalidFeedback($modalAddVideo, errors);
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalAddVideo, errors);
+            }
         }, true);
     }
 
@@ -310,12 +303,10 @@ $(document).ready(function () {
         data.append('image-data', JSON.stringify(cropperData))
         let url ='admin/videos/1'
         ajax('POST', url, data, function (response) {
-            if (response.status === true) {
-                let video = response.video;
-                aboutUsVideoUpdate(video);
-                $modalAboutUsEditVideo.modal('hide');
-                clearFields($modalAboutUsEditVideo);
-            }
+            let video = response.video;
+            aboutUsVideoUpdate(video);
+            $modalAboutUsEditVideo.modal('hide');
+            clearFields($modalAboutUsEditVideo);
         }, function (error){
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -518,7 +509,6 @@ $(document).ready(function () {
     }
 
     function onSecurityItemDeleteBtnClickListener() {
-        console.log(this);
         deleteSecurityItem(this);
     }
 
@@ -610,9 +600,6 @@ $(document).ready(function () {
                 saveNewRuleItem();
                 break;
         }
-
-        $modalAddItem.modal('hide');
-        saveItemBtnMode = null;
     }
 
     function onVideoSaveBtnClickListener() {

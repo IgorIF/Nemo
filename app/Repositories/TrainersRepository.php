@@ -10,6 +10,9 @@ use Intervention\Image\Facades\Image;
 
 class TrainersRepository extends Repository
 {
+
+    private const IMAGE_PATH = 'storage/images/trainers/';
+
     public function __construct(Trainer $trainer)
     {
         $this->model = $trainer;
@@ -19,48 +22,47 @@ class TrainersRepository extends Repository
         return Trainer::all();
     }
 
+    /**
+     * @param $id
+     */
     public function destroyTrainer($id)
     {
-        $result = [];
-
         $trainer = Trainer::find($id);
-
         $this->deleteImage($trainer->image);
         $trainer->delete();
-
-        $result['status'] = true;
-
-        return $result;
     }
 
-    public function createTrainer(Request $request)
+
+    /**
+     * @param Request $request
+     * @return Trainer
+     */
+    public function createTrainer(Request $request): Trainer
     {
-
-        $result = [];
-
         $data = $request->all();
 
         $data['image-data'] = json_decode($data['image-data'], true);
         $data['image-data'] = $this->roundImageData($data['image-data']);
 
-        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/trainers/');
+        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], self::IMAGE_PATH);
 
-        $result['trainer'] = Trainer::create([
+        return Trainer::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'video' => $data['video'],
             'image' => $fileName
         ]);
 
-        $result['status'] = true;
-
-        return $result;
-
     }
 
-    public function updateTrainer(Request $request, int $id)
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return string|null
+     */
+    public function updateTrainer(Request $request, int $id): ?string
     {
-        $result = [];
+        $imageName = null;
 
         $trainer = Trainer::find($id);
 
@@ -69,20 +71,18 @@ class TrainersRepository extends Repository
             $data['image-data'] = json_decode($data['image-data'], true);
 
             $data['image-data'] = $this->roundImageData($data['image-data']);
-            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data']);
+            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], self::IMAGE_PATH);
 
             $this->deleteImage('public/images/trainers/' . $trainer->image);
             $trainer->fill(['image' => $data['image']]);
 
-            $result['image'] = $data['image'];
+            $imageName = $data['image'];
         } else {
             $trainer->fill([$request->get('field') => $request->get('text')]);
         }
 
         $trainer->update();
 
-        $result['status'] = true;
-
-        return $result;
+        return $imageName;
     }
 }

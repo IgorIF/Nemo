@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -32,17 +33,17 @@ class SecurityItemController extends AdminController
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $request->validate([
             'text' => 'required'
         ]);
 
-        return response()->json(['fd' => 'afda']);
+        $securityItem = $this->securityItemsRepository->createSecurityItem($request);
 
-        //return $this->securityItemsRepository->createSecurityItem($request);
+        return response()->json(['securityItem' => $securityItem]);
     }
 
     /**
@@ -82,9 +83,8 @@ class SecurityItemController extends AdminController
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return array
      */
-    public function destroy(int $id): array
+    public function destroy(int $id)
     {
         $this->securityItemsRepository->destroySecurityItem($id);
     }
