@@ -1,23 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Mail\TrialLesson;
+use App\Http\Controllers\BaseController;
+use App\Repositories\RuleCategoriesRepository;
+use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
+use App\Repositories\SecurityItemsRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Mail;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
-
     protected $textsRepository;
     protected $trainersRepository;
     protected $securityCategoriesRepository;
+    protected $securityItemsRepository;
     protected $videosRepository;
+    protected $ruleCategoriesRepository;
+    protected $ruleItemsRepository;
+
+    private $modalAboutUsEditVideo;
 
     private $header;
     private $aboutUs;
@@ -31,25 +37,37 @@ class IndexController extends Controller
     private $swimmingPool;
     private $footer;
 
+    private $rules;
+    private $medicalCertificates;
+    private $vacancies;
+
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
 
     /**
-     * IndexController constructor.
+     * EditSite constructor.
      * @param TextsRepository $textsRepository
      * @param TrainersRepository $trainersRepository
      * @param SecurityCategoriesRepository $securityCategoriesRepository
+     * @param SecurityItemsRepository $securityItemsRepository
      * @param VideosRepository $videosRepository
+     * @param RuleCategoriesRepository $ruleCategoriesRepository
+     * @param RuleItemsRepository $ruleItemsRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                VideosRepository $videosRepository)
+                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
+                                RuleItemsRepository $ruleItemsRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
+        $this->securityItemsRepository = $securityItemsRepository;
         $this->videosRepository = $videosRepository;
-        $this->template = 'site.index';
+        $this->ruleCategoriesRepository = $ruleCategoriesRepository;
+        $this->ruleItemsRepository = $ruleItemsRepository;
+        $this->template = 'admin.index';
     }
+
 
     /**
      * Handle the incoming request.
@@ -59,6 +77,8 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $this->renderModalAboutUsEditVideo();
+
         $this->renderHeader();
         $this->renderAboutUs();
         $this->renderTheBenefitsOfEarlySwimming();
@@ -71,13 +91,30 @@ class IndexController extends Controller
         $this->renderSwimmingPool();
         $this->renderFooter();
 
+        $this->renderRules();
+        $this->renderMedicalCertificates();
+        $this->renderVacancies();
+
         return $this->renderOutput();
     }
 
-    protected function renderOutput() {
-        $howWeSwim = view('site.how_we_swim')->render();
+    private function renderOutput() {
+
+
+        $modalAddTrainer = view('admin.modals.modal_add_trainer')->render();
+        $modalAddSecurityItem = view('admin.modals.modal_add_item')->render();
+        $modalAddVideo = view('admin.modals.modal_add_video')->render();
+        $modalCropper = view('admin.modals.modal_cropper')->render();
+
+        $howWeSwim = view('admin.how_we_swim')->render();
+
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
+        $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideo);
+        $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
+        $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
+        $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
+        $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
@@ -89,95 +126,92 @@ class IndexController extends Controller
         $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
         $this->vars = Arr::add($this->vars, 'footer', $this->footer);
+        $this->vars = Arr::add($this->vars, 'rules', $this->rules);
+        $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificates);
+        $this->vars = Arr::add($this->vars, 'vacancies', $this->vacancies);
 
         return view($this->template)->with($this->vars);
     }
 
     private function renderHeader() {
         $texts = $this->textsRepository->getInRangeById([1 => 15]);
-        $this->header = view( 'site.header')->with('texts', $texts)->render();
+        $this->header = view( 'admin.header')->with('texts', $texts)->render();
     }
 
     private function renderAboutUs() {
         $texts = $this->textsRepository->getInRangeById([16 => 17]);
-        $this->aboutUs = view( 'site.about_us')->with('texts', $texts)->render();
+        $video = $this->videosRepository->getAboutUsVideo();
+        $this->aboutUs = view( 'admin.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
         $texts = $this->textsRepository->getInRangeById([18 => 30]);
-        $this->theBenefitsOfEarlySwimming = view('site. the_benefits_of_early_swimming')->with('texts', $texts)->render();
+        $this->theBenefitsOfEarlySwimming = view('admin.the_benefits_of_early_swimming')->with('texts', $texts)->render();
     }
 
     private function renderWhoSwimsWithUs() {
         $texts = $this->textsRepository->getInRangeById([31 => 40]);
-        $this->whoSwimsWithUs = view('site.who_swims_with_us')->with('texts', $texts)->render();
+        $this->whoSwimsWithUs = view('admin.who_swims_with_us')->with('texts', $texts)->render();
     }
 
     private function renderTrainers() {
         $texts = $this->textsRepository->getInRangeById([41 => 42]);
         $trainers = $this->trainersRepository->getTrainers();
-        $this->trainers = view('site.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
+        $this->trainers = view('admin.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 
     private function renderPrices() {
         $texts = $this->textsRepository->getInRangeById([43 => 43]);
-        $this->prices = view('site.prices')->with('texts', $texts)->render();
+        $this->prices = view('admin.prices')->with('texts', $texts)->render();
     }
 
     private function renderSwimNeverNotEarly() {
         $texts = $this->textsRepository->getInRangeById([44 => 45]);
-        $this->swimNeverNotEarly = view('site.swim_never_not_early')->with('texts', $texts)->render();
+        $this->swimNeverNotEarly = view('admin.swim_never_not_early')->with('texts', $texts)->render();
     }
 
     private function renderSecurity() {
         $texts = $this->textsRepository->getInRangeById([46 => 47]);
         $securityCategories = $this->securityCategoriesRepository->getAll();
-        $this->security = view('site.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
+        $this->security = view('admin.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
     }
 
     private function renderReviews() {
         $texts = $this->textsRepository->getInRangeById([48 => 48]);
         $videos = $this->videosRepository->getAllReviewsVideos();
-        $this->reviews = view('site.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
+        $this->reviews = view('admin.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
     private function renderSwimmingPool() {
         $texts = $this->textsRepository->getInRangeById([49 => 54]);
-        $this->swimmingPool = view('site.swimming_pool')->with('texts', $texts)->render();
+        $this->swimmingPool = view('admin.swimming_pool')->with('texts', $texts)->render();
     }
 
     private function renderFooter() {
         $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11]);
-        $this->footer = view('site.footer')->with('texts', $texts)->render();
+        $this->footer = view('admin.footer')->with('texts', $texts)->render();
     }
 
+    private function renderModalAboutUsEditVideo() {
+        $video = $this->videosRepository->getAboutUsVideo();
+        $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
+    }
 
-    public function sendMail(Request $request){
+    private function renderRules() {
+        $texts = $this->textsRepository->getInRangeById([63 => 65]);
+        $ruleCategories = $this->ruleCategoriesRepository->getAll();
+        $this->rules = view('admin.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
+    }
 
-        $data = $request->except('_token');
+    private function renderMedicalCertificates() {
+        $this->medicalCertificates = view('admin.medical_certificates')->render();
+    }
 
-        $address = '';
+    private function renderVacancies() {
+        $this->vacancies = view('admin.vacancies')->render();
+    }
 
-        switch ($data['select_pool']) {
-            case 1:
-                $data['select_pool'] = 'Пражская';
-                $address = 'aquaclubnemo@yandex.ru';
-                break;
-            case 2:
-                $data['select_pool'] = 'Академическая';
-                $address = 'aquanemoclub@yandex.ru';
-                break;
-            case 3:
-                $data['select_pool'] = 'Марьино';
-                $address = 'aquaclubnemo.m@yandex.ru';
-                break;
-            case 4:
-                $data['select_pool'] = 'Некрасовка';
-                $address = 'aquaclubnemo.l@yandex.ru';
-                break;
-        }
-
-        Mail::to($address)->send(new TrialLesson($data));
-        return redirect('/');
+    protected function editText(Request $request) {
+        return $this->textsRepository->updateText($request);
     }
 }

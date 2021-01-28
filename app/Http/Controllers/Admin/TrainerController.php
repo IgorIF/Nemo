@@ -7,7 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class TrainerController extends AdminController
+class TrainerController extends IndexController
 {
 
     /**

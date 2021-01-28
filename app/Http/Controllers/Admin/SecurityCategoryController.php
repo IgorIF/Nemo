@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class SecurityCategoryController extends AdminController
+class SecurityCategoryController extends IndexController
 {
     /**
      * Display a listing of the resource.

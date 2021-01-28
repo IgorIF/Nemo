@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class SecurityItemController extends AdminController
+class SecurityItemController extends IndexController
 {
     /**
      * Display a listing of the resource.

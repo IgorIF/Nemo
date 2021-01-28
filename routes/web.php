@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Site\IndexController as SiteController;
+
+use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\RuleItemController;
 use App\Http\Controllers\Admin\SecurityCategoryController;
 use App\Http\Controllers\Admin\SecurityItemController;
 use App\Http\Controllers\Admin\TrainerController;
-
 use App\Http\Controllers\Admin\VideoController;
-use App\Http\Controllers\IndexController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', IndexController::class);
+Route::get('/', SiteController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
@@ -38,7 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
 
 });
 
-Route::post('/sendmail', [IndexController::class, 'sendMail'])->name('sendmail');
+Route::post('/sendmail', [SiteController::class, 'sendMail'])->name('sendmail');
 
 
 Route::any('register', function(){
