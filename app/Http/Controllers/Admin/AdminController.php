@@ -103,7 +103,7 @@ class AdminController extends Controller
 
 
         $modalAddTrainer = view('admin.modals.modal_add_trainer')->render();
-        $modalAddSecurityItem = view('admin.modals.modal_add_security_item')->render();
+        $modalAddSecurityItem = view('admin.modals.modal_add_item')->render();
         $modalAddVideo = view('admin.modals.modal_add_video')->render();
         $modalCropper = view('admin.modals.modal_cropper')->render();
 

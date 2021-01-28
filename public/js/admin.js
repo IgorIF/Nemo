@@ -2,7 +2,7 @@ $(document).ready(function () {
     let initialText;
     let $modalCropper = $('#modal_cropper');
     let $modalAddTrainer = $('#modal_add_trainer');
-    let $modalAddSecurityItem = $('#modal_add_securityItem');
+    let $modalAddItem = $('#modal_add_item');
     let $modalAddVideo = $('#modal_add_video');
     let $modalAboutUsEditVideo = $('#modal_about_us_edit_video');
     let cropperImage = $('#cropper_image')[0];
@@ -10,8 +10,10 @@ $(document).ready(function () {
     let cropperData;
     let trainerId;
     let securityCategoryId;
+    let ruleCategoryId;
     let imageFile;
-    let cropBtnMode;
+    let cropBtnMode;        // trainer_create, trainer_update, video_create, about_us_video_update
+    let saveItemBtnMode;    // security, rule
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -60,8 +62,9 @@ $(document).ready(function () {
         cropperObj = null;
     });
 
-    $modalAddSecurityItem.on('hidden.bs.modal', function () {
+    $modalAddItem.on('hidden.bs.modal', function () {
        securityCategoryId = null;
+       ruleCategoryId = null;
     });
 
     /// Trainer image edit cropper show
@@ -76,6 +79,9 @@ $(document).ready(function () {
     /// Show add securityItem modal
     $('[id="securityItem_add_btn"]').click(onSecurityItemAddBtnClickListener);
 
+    /// Show add ruleItem modal
+    $('[id="ruleItem_add_btn"]').click(onRuleItemAddBtnClickListener);
+
     /// Show add review video modal
     $('#review_video_add_btn').click(onVideoAddBtnClickListener);
 
@@ -86,7 +92,7 @@ $(document).ready(function () {
     $('#trainer_save_btn').click(onTrainerSaveBtnClickListener);
 
     /// Save new securityItem
-    $('#securityItem_save_btn').click(onSecurityItemSaveBtnClickListener);
+    $('#item_save_btn').click(onItemSaveBtnClickListener);
 
     /// Save new video
     $('#video_save_btn').click(onVideoSaveBtnClickListener);
@@ -247,20 +253,37 @@ $(document).ready(function () {
     }
 
     function saveNewSecurityItem() {
-        let data = new FormData($modalAddSecurityItem.find('form')[0]);
+        let data = new FormData($modalAddItem.find('form')[0]);
         data.append('securityCategoryId', securityCategoryId);
         let url = 'admin/security/items';
         ajax('POST', url, data, function (response) {
+            console.log(response);
             if (response.status === true) {
                 let securityItem = response.securityItem;
                 securityItemAdd(securityItem);
-                $modalAddSecurityItem.modal('hide');
-                clearFields($modalAddSecurityItem);
+                $modalAddItem.modal('hide');
+                clearFields($modalAddItem);
             }
+        }, function (error) {
+            console.log(error);
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalAddItem, errors);
+            }
+        }, true);
+    }
+
+    function saveNewRuleItem() {
+        // TODO
+        let data = new FormData($modalAddItem.find('form')[0]);
+        data.append('ruleCategoryId', ruleCategoryId);
+        let url = 'admin/rules';
+        ajax('POST', url, data, function (response) {
+            console.log(response);
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
-                addInvalidFeedback($modalAddSecurityItem, errors);
+                addInvalidFeedback($modalAddItem, errors);
             }
         }, true);
     }
@@ -346,6 +369,7 @@ $(document).ready(function () {
             url: url,
             data: data,
             success: function (response) {
+                console.log(response);
                 if (response.status) {
                     if (response.status === true) {
                         if (onSuccess) {
@@ -563,8 +587,15 @@ $(document).ready(function () {
     }
 
     function onSecurityItemAddBtnClickListener() {
+        saveItemBtnMode = 'security';
         securityCategoryId = $(this).parents('[id^="securityCategory_"]').attr('id').split('_')[1];
-        $modalAddSecurityItem.modal('show');
+        $modalAddItem.modal('show');
+    }
+
+    function onRuleItemAddBtnClickListener() {
+        saveItemBtnMode = 'rule';
+        ruleCategoryId = $(this).parents('[id^="ruleCategory_"]').attr('id').split('_')[1];
+        $modalAddItem.modal('show');
     }
 
     function onVideoAddBtnClickListener() {
@@ -579,8 +610,18 @@ $(document).ready(function () {
         saveNewTrainer();
     }
 
-    function onSecurityItemSaveBtnClickListener() {
-        saveNewSecurityItem();
+    function onItemSaveBtnClickListener() {
+        switch (saveItemBtnMode) {
+            case 'security':
+                saveNewSecurityItem();
+                break;
+            case 'rule':
+                saveNewRuleItem();
+                break;
+        }
+
+        $modalAddItem.modal('hide');
+        saveItemBtnMode = null;
     }
 
     function onVideoSaveBtnClickListener() {
@@ -700,7 +741,7 @@ function clearFields(modal) {
             $(e).parent().find('div[class="invalid-feedback"]').text('');
         }
 
-        if (modalId === 'modal_add_trainer' || modalId === 'modal_add_securityItem' || modalId === 'modal_add_video')
+        if (modalId === 'modal_add_trainer' || modalId === 'modal_add_item' || modalId === 'modal_add_video')
             $(e).val('');
 
         if ($(e).attr('type') === 'file') {

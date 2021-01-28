@@ -1,10 +1,10 @@
 <!-- Modal -->
-<div class="modal fade" id="modal_add_securityItem" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_add_item" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalLabel">Добавить пункт</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal_add_securityItem').modal('hide')"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal_add_item').modal('hide')"></button>
             </div>
             <div class="modal-body">
                 <form>
@@ -16,7 +16,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <a class="btn aos-init aos-animate" data-aos="zoom-in" id="securityItem_save_btn" style="padding: 20px 30px">Сохранить</a>
+                <a class="btn aos-init aos-animate" data-aos="zoom-in" id="item_save_btn" style="padding: 20px 30px">Сохранить</a>
             </div>
         </div>
     </div>

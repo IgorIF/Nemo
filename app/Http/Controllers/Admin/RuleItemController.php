@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RuleItemController extends AdminController
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //
     }
@@ -20,9 +20,9 @@ class RuleItemController extends AdminController
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         //
     }
@@ -30,21 +30,26 @@ class RuleItemController extends AdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return array
      */
-    public function store(Request $request)
+    public function store(Request $request): array
     {
-        //
+
+        $request->validate([
+            'text' => 'required'
+        ]);
+
+        return ['status' => true, 'request' => $request->all()];
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
-    public function show($id)
+    public function show(int $id): Response
     {
         //
     }
@@ -52,10 +57,10 @@ class RuleItemController extends AdminController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
-    public function edit($id)
+    public function edit(int $id): Response
     {
         //
     }
@@ -63,11 +68,11 @@ class RuleItemController extends AdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param Request $request
+     * @param int $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): array
     {
         return $this->ruleItemsRepository->updateRuleItem($request, $id);
     }
@@ -75,10 +80,10 @@ class RuleItemController extends AdminController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return array
      */
-    public function destroy($id)
+    public function destroy(int $id): array
     {
         return $this->ruleItemsRepository->destroyRuleItem($id);
     }

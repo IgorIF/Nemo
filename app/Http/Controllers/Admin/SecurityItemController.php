@@ -31,7 +31,7 @@ class SecurityItemController extends AdminController
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
