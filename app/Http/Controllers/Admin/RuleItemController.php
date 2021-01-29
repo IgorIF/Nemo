@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -31,17 +32,17 @@ class RuleItemController extends IndexController
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return array
+     * @return JsonResponse
      */
-    public function store(Request $request): array
+    public function store(Request $request): JsonResponse
     {
-
         $request->validate([
             'text' => 'required'
         ]);
 
-        // TODO
-        return ['status' => true, 'request' => $request->all()];
+        $ruleItem = $this->ruleItemsRepository->createRuleItem($request);
+
+        return response()->json(['ruleItem' => $ruleItem]);
     }
 
     /**

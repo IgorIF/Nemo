@@ -5,8 +5,6 @@ namespace App\Repositories;
 
 use App\Models\Trainer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 class TrainersRepository extends Repository
 {

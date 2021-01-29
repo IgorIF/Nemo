@@ -5,8 +5,6 @@ namespace App\Repositories;
 
 use App\Models\Video;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 class VideosRepository extends Repository
 {
