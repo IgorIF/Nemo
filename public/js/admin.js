@@ -205,7 +205,18 @@ $(document).ready(function () {
         let url = 'admin/rules/' + ruleItemId;
 
         ajax('DELETE', url, null, function () {
-            $('#ruleItem_' + ruleItemId).remove();
+            let ruleItem = $('#ruleItem_' + ruleItemId);
+            let categoryId = $(ruleItem).parents('div[id^="ruleCategory"]').attr('id').split('_')[1];
+
+            if (categoryId === '1' || categoryId === '3') {
+                $(ruleItem).nextAll('div[id^="ruleItem"]').each(function (i, e) {
+                    let number = $(e).find('span[id="number"]');
+                    $(number).text($(number).text() - 1);
+
+                });
+            }
+
+            $(ruleItem).remove();
         })
     }
 
