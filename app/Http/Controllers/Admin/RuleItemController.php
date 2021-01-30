@@ -79,8 +79,6 @@ class RuleItemController extends IndexController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param int $id
      */
     public function destroy(int $id)

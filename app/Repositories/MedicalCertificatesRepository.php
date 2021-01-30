@@ -12,4 +12,13 @@ class MedicalCertificatesRepository extends Repository
     {
         $this->model = $medicalCertificate;
     }
+
+    /**
+     * @param int $id
+     */
+    public function destroyMedicalCertificate(int $id)
+    {
+        $medicalCertificate = MedicalCertificate::find($id);
+        $medicalCertificate->delete();
+    }
 }

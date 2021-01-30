@@ -30,6 +30,9 @@ $(document).ready(function () {
     /// Delete rule item
     $(document).on('click', '#ruleItem_delete_btn', onRuleItemDeleteBtnClickListener);
 
+    /// Delete medical certificate
+    $(document).on('click', '#medicalCertificate_delete_btn', onMedicalCertificateDeleteBtnClickListener);
+
     /// Delete video
     $(document).on('click', '#video_delete_btn', onVideoDeleteBtnClickListener);
 
@@ -190,6 +193,15 @@ $(document).ready(function () {
         ajax('DELETE', url, null, function () {
             $('#ruleItem_' + ruleItemId).remove();
         })
+    }
+
+    function deleteMedicalCertificate(element) {
+        let medicalCertificateId = $(element).parents('[id^="medicalCertificate"]').attr('id').split('_')[1];
+        let url = 'admin/medicalCertificates/' + medicalCertificateId;
+
+        ajax('DELETE', url, null, function () {
+            $('#medicalCertificate_' + medicalCertificateId).remove();
+        });
     }
 
     function deleteVideo(element) {
@@ -531,6 +543,10 @@ $(document).ready(function () {
 
     function onRuleItemDeleteBtnClickListener() {
         deleteRuleItem(this);
+    }
+
+    function onMedicalCertificateDeleteBtnClickListener() {
+        deleteMedicalCertificate(this);
     }
 
     function onVideoDeleteBtnClickListener() {

@@ -16,9 +16,13 @@
         @endforeach
     </ul>
 
+    <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
+        <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+    </div>
+
     <p>
         <strong>
-            *Для детей до 1 года результаты анализа на энтеробиоз и кала на яйца глист не требуются, необходима только справка от педиатра.
+            * <span id="text_{{ $texts->get(66)->id }}" contenteditable="true">{!! $texts->get(66)->text !!}</span>
         </strong>
     </p>
 </div>
