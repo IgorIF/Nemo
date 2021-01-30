@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -32,11 +33,17 @@ class MedicalCertificateController extends IndexController
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        $request->validate([
+            'text' => 'required'
+        ]);
+
+        $medicalCertificate = $this->medicalCertificatesRepository->createMedicalCertificate($request);
+
+        return response()->json(['medicalCertificate' => $medicalCertificate]);
     }
 
     /**

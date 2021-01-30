@@ -1,7 +1,7 @@
 <h3>Справки для занятий в бассейне:</h3>
 
 <div class="all-rules">
-    <ul>
+    <ul id="medicalCertificates">
         @foreach($medicalCertificates as $medicalCertificate)
             <div id="medicalCertificate_{{ $medicalCertificate->id }}" >
                 <li>
@@ -17,7 +17,7 @@
     </ul>
 
     <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
-        <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        <a id="medicalCertificate_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
     </div>
 
     <p>

@@ -13,7 +13,7 @@ $(document).ready(function () {
     let ruleCategoryId;
     let imageFile;
     let cropBtnMode;        // trainer_create, trainer_update, video_create, about_us_video_update
-    let saveItemBtnMode;    // security, rule
+    let saveItemBtnMode;    // security, rule, medicalCertificate
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -85,6 +85,9 @@ $(document).ready(function () {
 
     /// Show add ruleItem modal
     $('[id="ruleItem_add_btn"]').click(onRuleItemAddBtnClickListener);
+
+    /// Show add medicalCertificate modal
+    $('[id="medicalCertificate_add_btn"]').click(onMedicalCertificateAddBtnClickListener);
 
     /// Show add review video modal
     $('#review_video_add_btn').click(onVideoAddBtnClickListener);
@@ -302,6 +305,22 @@ $(document).ready(function () {
         }, true);
     }
 
+    function saveNewMedicalCertificate() {
+        let data = new FormData($modalAddItem.find('form')[0]);
+        let url = 'admin/medicalCertificates';
+        ajax('POST', url, data, function (response) {
+            let medicalCertificate = response.medicalCertificate;
+            medicalCertificateAdd(medicalCertificate);
+            $modalAddItem.modal('hide');
+            clearFields($modalAddItem);
+        }, function (error) {
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalAddItem, errors);
+            }
+        }, true);
+    }
+
     function saveNewVideo() {
         let data = new FormData($modalAddVideo.find('form')[0]);
         data.append('image-data', JSON.stringify(cropperData))
@@ -507,6 +526,23 @@ $(document).ready(function () {
         container.append(content);
     }
 
+    function medicalCertificateAdd(medicalCertificate) {
+        let container = $('ul[id="medicalCertificates"]');
+
+        let content = '<div id="medicalCertificate_' + medicalCertificate.id + '">' +
+                        '<li>' +
+                            '-' +
+                            '<span id="medicalCertificate_text" contenteditable="true">' + medicalCertificate.text + '</span>' +
+                            '<svg style="float: right" id="medicalCertificate_delete_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">' +
+                                '<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>' +
+                                '<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>' +
+                            '</svg>' +
+                        '</li>' +
+                    '</div>'
+
+        container.append(content);
+    }
+
     function aboutUsVideoUpdate(video) {
         let container = $('div[class*="about-image"]');
         container.find('img').attr('src', 'storage/images/videos/' + video.image);
@@ -624,6 +660,11 @@ $(document).ready(function () {
         $modalAddItem.modal('show');
     }
 
+    function onMedicalCertificateAddBtnClickListener() {
+        saveItemBtnMode = 'medicalCertificate';
+        $modalAddItem.modal('show');
+    }
+
     function onVideoAddBtnClickListener() {
         $modalAddVideo.modal('show');
     }
@@ -643,6 +684,9 @@ $(document).ready(function () {
                 break;
             case 'rule':
                 saveNewRuleItem();
+                break;
+            case 'medicalCertificate':
+                saveNewMedicalCertificate();
                 break;
         }
     }

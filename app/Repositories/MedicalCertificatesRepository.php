@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 
 use App\Models\MedicalCertificate;
+use Illuminate\Http\Request;
 
 class MedicalCertificatesRepository extends Repository
 {
@@ -13,7 +14,22 @@ class MedicalCertificatesRepository extends Repository
         $this->model = $medicalCertificate;
     }
 
-    public function updateMedicalCertificate(\Illuminate\Http\Request $request, int $id)
+    /**
+     * @param Request $request
+     * @return MedicalCertificate
+     */
+    public function createMedicalCertificate(Request $request): MedicalCertificate
+    {
+        return MedicalCertificate::create([
+            'text' => $request->get('text'),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     */
+    public function updateMedicalCertificate(Request $request, int $id)
     {
         $medicalCertificate = MedicalCertificate::find($id);
 
@@ -29,4 +45,5 @@ class MedicalCertificatesRepository extends Repository
         $medicalCertificate = MedicalCertificate::find($id);
         $medicalCertificate->delete();
     }
+
 }
