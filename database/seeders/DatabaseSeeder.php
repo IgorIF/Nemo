@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             SecurityItemSeeder::class,
             VideoSeeder::class,
             RuleCategorySeeder::class,
-            RuleSeeder::class
+            RuleItemSeeder::class,
+            MedicalCertificateSeeder::class
         ]);
     }
 }

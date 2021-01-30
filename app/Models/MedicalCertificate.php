@@ -5,7 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MedicalCertificates extends Model
+class MedicalCertificate extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'text'
+    ];
 }

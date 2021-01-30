@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
+use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
@@ -22,6 +23,7 @@ class IndexController extends BaseController
     protected $videosRepository;
     protected $ruleCategoriesRepository;
     protected $ruleItemsRepository;
+    protected $medicalCertificatesRepository;
 
     private $modalAboutUsEditVideo;
 
@@ -53,10 +55,11 @@ class IndexController extends BaseController
      * @param VideosRepository $videosRepository
      * @param RuleCategoriesRepository $ruleCategoriesRepository
      * @param RuleItemsRepository $ruleItemsRepository
+     * @param MedicalCertificatesRepository $medicalCertificatesRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                RuleItemsRepository $ruleItemsRepository)
+                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
@@ -65,6 +68,7 @@ class IndexController extends BaseController
         $this->videosRepository = $videosRepository;
         $this->ruleCategoriesRepository = $ruleCategoriesRepository;
         $this->ruleItemsRepository = $ruleItemsRepository;
+        $this->medicalCertificatesRepository = $medicalCertificatesRepository;
         $this->template = 'admin.index';
     }
 
@@ -204,7 +208,8 @@ class IndexController extends BaseController
     }
 
     private function renderMedicalCertificates() {
-        $this->medicalCertificates = view('admin.medical_certificates')->render();
+        $medicalCertificates = $this->medicalCertificatesRepository->getAll();
+        $this->medicalCertificates = view('admin.medical_certificates')->with('medicalCertificates', $medicalCertificates)->render();
     }
 
     private function renderVacancies() {
