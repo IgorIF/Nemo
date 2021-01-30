@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             VideoSeeder::class,
             RuleCategorySeeder::class,
             RuleItemSeeder::class,
-            MedicalCertificateSeeder::class
+            MedicalCertificateSeeder::class,
+            VacancySeeder::class
         ]);
     }
 }

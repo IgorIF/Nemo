@@ -353,5 +353,27 @@ class TextSeeder extends Seeder
             'text' => 'Для детей до 1 года результаты анализа на энтеробиоз и кала на яйца глист не требуются, необходима только справка от педиатра.'
         ]);
 
+
+        ///vacancies
+        DB::table('texts')->insert([
+            'id' => '68',
+            'text' => 'вакансии'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '69',
+            'text' => 'Сеть детских бассейнов <span>“Акваклуб Немо”</span> приглашает на работу:'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '70',
+            'text' => 'Резюме:'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '71',
+            'text' => 'aquanemo@yandex.ru'
+        ]);
+
     }
 }

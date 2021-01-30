@@ -10,6 +10,7 @@ use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\SecurityItemsRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
+use App\Repositories\VacanciesRepository;
 use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -24,6 +25,7 @@ class IndexController extends BaseController
     protected $ruleCategoriesRepository;
     protected $ruleItemsRepository;
     protected $medicalCertificatesRepository;
+    protected $vacanciesRepository;
 
     private $modalAboutUsEditVideo;
 
@@ -56,10 +58,11 @@ class IndexController extends BaseController
      * @param RuleCategoriesRepository $ruleCategoriesRepository
      * @param RuleItemsRepository $ruleItemsRepository
      * @param MedicalCertificatesRepository $medicalCertificatesRepository
+     * @param VacanciesRepository $vacanciesRepository
      */
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository)
+                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository)
     {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
@@ -69,6 +72,7 @@ class IndexController extends BaseController
         $this->ruleCategoriesRepository = $ruleCategoriesRepository;
         $this->ruleItemsRepository = $ruleItemsRepository;
         $this->medicalCertificatesRepository = $medicalCertificatesRepository;
+        $this->vacanciesRepository = $vacanciesRepository;
         $this->template = 'admin.index';
     }
 
@@ -214,7 +218,9 @@ class IndexController extends BaseController
     }
 
     private function renderVacancies() {
-        $this->vacancies = view('admin.vacancies')->render();
+        $texts = $this->textsRepository->getInRangeById([68 => 71]);
+        $vacancies = $this->vacanciesRepository->getAll();
+        $this->vacancies = view('admin.vacancies')->with(['texts' => $texts, 'vacancies' => $vacancies])->render();
     }
 
     protected function editText(Request $request) {
