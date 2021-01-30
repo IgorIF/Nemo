@@ -13,6 +13,14 @@ class MedicalCertificatesRepository extends Repository
         $this->model = $medicalCertificate;
     }
 
+    public function updateMedicalCertificate(\Illuminate\Http\Request $request, int $id)
+    {
+        $medicalCertificate = MedicalCertificate::find($id);
+
+        $medicalCertificate->fill(['text' => $request->get('text')]);
+        $medicalCertificate->update();
+    }
+
     /**
      * @param int $id
      */

@@ -31,7 +31,7 @@ class MedicalCertificateController extends IndexController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return Response
      */
     public function store(Request $request)
@@ -64,13 +64,12 @@ class MedicalCertificateController extends IndexController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
+     * @param Request $request
+     * @param int $id
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $this->medicalCertificatesRepository->updateMedicalCertificate($request, $id);
     }
 
     /**

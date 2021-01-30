@@ -166,6 +166,15 @@ $(document).ready(function () {
         ajax('PUT', url, data);
     }
 
+    function saveMedicalCertificateText(element) {
+        let text = $(element).html();
+        let data = {'text': text};
+        let id = $(element).parents('[id^="medicalCertificate"]').attr('id').split('_')[1];
+        let url = 'admin/medicalCertificates/' + id;
+
+        ajax('PUT', url, data);
+    }
+
     function deleteTrainer(element) {
         let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let slickIndex = $(element).parents('div[id^="trainer_"]').attr('data-slick-index');
@@ -528,6 +537,9 @@ $(document).ready(function () {
                 break;
             case 'ruleItem':
                 saveRuleText(this);
+                break;
+            case 'medicalCertificate':
+                saveMedicalCertificateText(this);
         }
 
         initialText = null;
