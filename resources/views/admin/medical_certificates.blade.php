@@ -1,4 +1,4 @@
-<h3>Справки для занятий в бассейне:</h3>
+<h3 id="text_{{ $texts->get(66)->id }}" contenteditable="true">{!! $texts->get(66)->text !!}</h3>
 
 <div class="all-rules">
     <ul id="medicalCertificates">
@@ -22,7 +22,7 @@
 
     <p>
         <strong>
-            * <span id="text_{{ $texts->get(66)->id }}" contenteditable="true">{!! $texts->get(66)->text !!}</span>
+            * <span id="text_{{ $texts->get(67)->id }}" contenteditable="true">{!! $texts->get(67)->text !!}</span>
         </strong>
     </p>
 </div>

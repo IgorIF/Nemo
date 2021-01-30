@@ -345,6 +345,11 @@ class TextSeeder extends Seeder
         /// medicineCertificates
         DB::table('texts')->insert([
             'id' => '66',
+            'text' => 'Справки для занятий в бассейне:'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => '67',
             'text' => 'Для детей до 1 года результаты анализа на энтеробиоз и кала на яйца глист не требуются, необходима только справка от педиатра.'
         ]);
 

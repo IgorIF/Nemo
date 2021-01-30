@@ -208,7 +208,7 @@ class IndexController extends BaseController
     }
 
     private function renderMedicalCertificates() {
-        $texts = $this->textsRepository->getInRangeById([66 => 66]);
+        $texts = $this->textsRepository->getInRangeById([66 => 67]);
         $medicalCertificates = $this->medicalCertificatesRepository->getAll();
         $this->medicalCertificates = view('admin.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $medicalCertificates])->render();
     }
