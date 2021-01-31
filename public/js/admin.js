@@ -13,7 +13,7 @@ $(document).ready(function () {
     let ruleCategoryId;
     let imageFile;
     let cropBtnMode;        // trainer_create, trainer_update, video_create, about_us_video_update
-    let saveItemBtnMode;    // security, rule, medicalCertificate
+    let saveItemBtnMode;    // security, rule, medicalCertificate, vacancy
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -88,6 +88,9 @@ $(document).ready(function () {
 
     /// Show add medicalCertificate modal
     $('[id="medicalCertificate_add_btn"]').click(onMedicalCertificateAddBtnClickListener);
+
+    /// Show add vacancy modal
+    $('[id="vacancy_add_btn"]').click(onVacancyAddBtnClickListener);
 
     /// Show add review video modal
     $('#review_video_add_btn').click(onVideoAddBtnClickListener);
@@ -324,6 +327,22 @@ $(document).ready(function () {
         ajax('POST', url, data, function (response) {
             let medicalCertificate = response.medicalCertificate;
             medicalCertificateAdd(medicalCertificate);
+            $modalAddItem.modal('hide');
+            clearFields($modalAddItem);
+        }, function (error) {
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalAddItem, errors);
+            }
+        }, true);
+    }
+
+    function saveNewVacancy() {
+        let data = new FormData($modalAddItem.find('form')[0]);
+        let url = 'admin/vacancies';
+        ajax('POST', url, data, function (response) {
+            let vacancy = response.vacancy;
+            vacancyAdd(vacancy);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem);
         }, function (error) {
@@ -588,6 +607,17 @@ $(document).ready(function () {
         container.append(content);
     }
 
+    function vacancyAdd(vacancy) {
+        let container = $('div[id="vacancies"]');
+
+        let content = $('<div class="popup5__item" id="vacancy_text" contenteditable="true">' + vacancy.text + '</div>');
+
+        content.focusin(onTextFocusinListener)
+            .focusout(onTextFocusoutListener);
+
+        container.append(content);
+    }
+
     function aboutUsVideoUpdate(video) {
         let container = $('div[class*="about-image"]');
         container.find('img').attr('src', 'storage/images/videos/' + video.image);
@@ -710,6 +740,11 @@ $(document).ready(function () {
         $modalAddItem.modal('show');
     }
 
+    function onVacancyAddBtnClickListener() {
+        saveItemBtnMode = 'vacancy';
+        $modalAddItem.modal('show');
+    }
+
     function onVideoAddBtnClickListener() {
         $modalAddVideo.modal('show');
     }
@@ -733,6 +768,8 @@ $(document).ready(function () {
             case 'medicalCertificate':
                 saveNewMedicalCertificate();
                 break;
+            case 'vacancy':
+                saveNewVacancy();
         }
     }
 
