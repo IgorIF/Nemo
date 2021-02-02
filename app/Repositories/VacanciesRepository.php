@@ -24,4 +24,24 @@ class VacanciesRepository extends Repository
             'text' => $request->get('text'),
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     */
+    public function updateVacancy(Request $request, int $id)
+    {
+        $vacancy = Vacancy::find($id);
+        $vacancy->fill(['text' => $request->get('text')]);
+        $vacancy->update();
+    }
+
+    /**
+     * @param int $id
+     */
+    public function destroyVacancy(int $id)
+    {
+        $vacancy = Vacancy::find($id);
+        $vacancy->delete();
+    }
 }

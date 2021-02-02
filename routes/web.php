@@ -37,7 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
     Route::resource('videos', VideoController::class)->only(['store', 'update', 'destroy']);
     Route::resource('rules', RuleItemController::class)->only(['store', 'update', 'destroy']);
     Route::resource('medicalCertificates', MedicalCertificateController::class)->only(['store', 'update', 'destroy']);
-    Route::resource('vacancies', VacancyController::class)->only(['store']);
+    Route::resource('vacancies', VacancyController::class)->only(['store', 'update', 'destroy']);
 
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 

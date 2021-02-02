@@ -33,6 +33,9 @@ $(document).ready(function () {
     /// Delete medical certificate
     $(document).on('click', '#medicalCertificate_delete_btn', onMedicalCertificateDeleteBtnClickListener);
 
+    /// Delete vacancy
+    $(document).on('click', '#vacancy_delete_btn', onVacancyDeleteBtnClickListener);
+
     /// Delete video
     $(document).on('click', '#video_delete_btn', onVideoDeleteBtnClickListener);
 
@@ -183,6 +186,16 @@ $(document).ready(function () {
             ajax('PUT', url, data);
     }
 
+    function savaVacancyText(element) {
+        let text = $(element).html();
+        let data = {'text': text};
+        let id = $(element).parents('[id^="vacancy"]').attr('id').split('_')[1];
+        let url = 'admin/vacancies/' + id;
+
+        if (text !== initialText)
+            ajax('PUT', url, data);
+    }
+
     function deleteTrainer(element) {
         let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let slickIndex = $(element).parents('div[id^="trainer_"]').attr('data-slick-index');
@@ -230,6 +243,15 @@ $(document).ready(function () {
         ajax('DELETE', url, null, function () {
             $('#medicalCertificate_' + medicalCertificateId).remove();
         });
+    }
+
+    function deleteVacancy(element) {
+        let vacancyId = $(element).parents('[id^="vacancy"]').attr('id').split('_')[1];
+        let url = 'admin/vacancies/' + vacancyId;
+
+        ajax('DELETE', url, null, function () {
+            $('#vacancy_' + vacancyId).remove();
+        })
     }
 
     function deleteVideo(element) {
@@ -635,6 +657,8 @@ $(document).ready(function () {
         frameAroundTextOff(this);
         let id = $(this).attr('id').split('_')[0];
 
+        console.log(this);
+
         switch (id) {
             case 'text':
                 saveText(this);
@@ -651,6 +675,9 @@ $(document).ready(function () {
                 break;
             case 'medicalCertificate':
                 saveMedicalCertificateText(this);
+                break;
+            case 'vacancy':
+                savaVacancyText(this);
         }
 
         initialText = null;
@@ -670,6 +697,10 @@ $(document).ready(function () {
 
     function onMedicalCertificateDeleteBtnClickListener() {
         deleteMedicalCertificate(this);
+    }
+
+    function onVacancyDeleteBtnClickListener () {
+        deleteVacancy(this);
     }
 
     function onVideoDeleteBtnClickListener() {
