@@ -47,3 +47,15 @@
 @section('footer')
     {!! $footer !!}
 @endsection
+
+@section('rules')
+    {!! $rules !!}
+@endsection
+
+@section('medicalCertificates')
+    {!! $medicalCertificates !!}
+@endsection
+
+@section('vacancies')
+    {!! $vacancies !!}
+@endsection
