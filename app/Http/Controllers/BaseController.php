@@ -19,7 +19,6 @@ class BaseController extends Controller
 {
     protected $template;        //шаблон
     protected $vars = [];       //массив с данными которые передаюся в шаблон
-    protected $directory;
 
     protected $textsRepository;
     protected $trainersRepository;
@@ -83,7 +82,7 @@ class BaseController extends Controller
 
     protected function renderOutput() {
 
-        $howWeSwim = view($this->directory . '.how_we_swim')->render();
+        $howWeSwim = view($this->template . '.how_we_swim')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $this->header);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
@@ -100,82 +99,84 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'rules', $this->rules);
         $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificates);
         $this->vars = Arr::add($this->vars, 'vacancies', $this->vacancies);
+
+        return view($this->template . '.index')->with($this->vars);
     }
 
     private function renderHeader() {
         $texts = $this->textsRepository->getInRangeById([1 => 15]);
-        $this->header = view( $this->directory . '.header')->with('texts', $texts)->render();
+        $this->header = view( $this->template . '.header')->with('texts', $texts)->render();
     }
 
     private function renderAboutUs() {
         $texts = $this->textsRepository->getInRangeById([16 => 17]);
         $video = $this->videosRepository->getAboutUsVideo();
-        $this->aboutUs = view( $this->directory . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
+        $this->aboutUs = view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
         $texts = $this->textsRepository->getInRangeById([18 => 30]);
-        $this->theBenefitsOfEarlySwimming = view($this->directory . '.the_benefits_of_early_swimming')->with('texts', $texts)->render();
+        $this->theBenefitsOfEarlySwimming = view($this->template . '.the_benefits_of_early_swimming')->with('texts', $texts)->render();
     }
 
     private function renderWhoSwimsWithUs() {
         $texts = $this->textsRepository->getInRangeById([31 => 40]);
-        $this->whoSwimsWithUs = view($this->directory . '.who_swims_with_us')->with('texts', $texts)->render();
+        $this->whoSwimsWithUs = view($this->template . '.who_swims_with_us')->with('texts', $texts)->render();
     }
 
     private function renderTrainers() {
         $texts = $this->textsRepository->getInRangeById([41 => 42]);
         $trainers = $this->trainersRepository->getTrainers();
-        $this->trainers = view($this->directory . '.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
+        $this->trainers = view($this->template . '.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 
     private function renderPrices() {
         $texts = $this->textsRepository->getInRangeById([43 => 43]);
-        $this->prices = view($this->directory . '.prices')->with('texts', $texts)->render();
+        $this->prices = view($this->template . '.prices')->with('texts', $texts)->render();
     }
 
     private function renderSwimNeverNotEarly() {
         $texts = $this->textsRepository->getInRangeById([44 => 45]);
-        $this->swimNeverNotEarly = view($this->directory . '.swim_never_not_early')->with('texts', $texts)->render();
+        $this->swimNeverNotEarly = view($this->template . '.swim_never_not_early')->with('texts', $texts)->render();
     }
 
     private function renderSecurity() {
         $texts = $this->textsRepository->getInRangeById([46 => 47]);
         $securityCategories = $this->securityCategoriesRepository->getAll();
-        $this->security = view($this->directory . '.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
+        $this->security = view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
     }
 
     private function renderReviews() {
         $texts = $this->textsRepository->getInRangeById([48 => 48]);
         $videos = $this->videosRepository->getAllReviewsVideos();
-        $this->reviews = view($this->directory . '.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
+        $this->reviews = view($this->template . '.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
     private function renderSwimmingPool() {
         $texts = $this->textsRepository->getInRangeById([49 => 54]);
-        $this->swimmingPool = view($this->directory . '.swimming_pool')->with('texts', $texts)->render();
+        $this->swimmingPool = view($this->template . '.swimming_pool')->with('texts', $texts)->render();
     }
 
     private function renderFooter() {
         $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11]);
-        $this->footer = view($this->directory . '.footer')->with('texts', $texts)->render();
+        $this->footer = view($this->template . '.footer')->with('texts', $texts)->render();
     }
 
     private function renderRules() {
         $texts = $this->textsRepository->getInRangeById([63 => 65]);
         $ruleCategories = $this->ruleCategoriesRepository->getAll();
-        $this->rules = view($this->directory . '.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
+        $this->rules = view($this->template . '.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
     }
 
     private function renderMedicalCertificates() {
         $texts = $this->textsRepository->getInRangeById([66 => 67]);
         $medicalCertificates = $this->medicalCertificatesRepository->getAll();
-        $this->medicalCertificates = view($this->directory . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $medicalCertificates])->render();
+        $this->medicalCertificates = view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $medicalCertificates])->render();
     }
 
     private function renderVacancies() {
         $texts = $this->textsRepository->getInRangeById([68 => 71]);
         $vacancies = $this->vacanciesRepository->getAll();
-        $this->vacancies = view($this->directory . '.vacancies')->with(['texts' => $texts, 'vacancies' => $vacancies])->render();
+        $this->vacancies = view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $vacancies])->render();
     }
 }

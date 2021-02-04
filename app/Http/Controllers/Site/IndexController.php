@@ -23,18 +23,17 @@ class IndexController extends BaseController
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository)
     {
         $this->initRepositories($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository, $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository);
-        $this->template = 'site.index';
-        $this->directory = 'site';
+        $this->template = 'site';
     }
 
     public function __invoke(Request $request)
     {
+        parent::__invoke($request);
         return $this->renderOutput();
     }
 
     protected function renderOutput() {
-        parent::renderOutput();
-        return view($this->template)->with($this->vars);
+        return parent::renderOutput();
     }
 
 

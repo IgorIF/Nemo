@@ -24,12 +24,12 @@ class IndexController extends BaseController
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository)
     {
         $this->initRepositories($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository, $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository);
-        $this->template = 'admin.index';
-        $this->directory = 'admin';
+        $this->template = 'admin';
     }
 
     public function __invoke(Request $request)
     {
+        parent::__invoke($request);
         $this->renderModalAboutUsEditVideo();
         return $this->renderOutput();
     }
@@ -47,15 +47,13 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
         $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
 
-        return view($this->template)->with($this->vars);
+        return parent::renderOutput();
     }
 
     private function renderModalAboutUsEditVideo() {
         $video = $this->videosRepository->getAboutUsVideo();
         $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
     }
-
-
 
     protected function editText(Request $request) {
         return $this->textsRepository->updateText($request);
