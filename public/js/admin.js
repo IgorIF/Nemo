@@ -688,8 +688,6 @@ $(document).ready(function () {
         frameAroundTextOff(this);
         let id = $(this).attr('id').split('_')[0];
 
-        console.log(this);
-
         switch (id) {
             case 'text':
                 saveText(this);

@@ -39,7 +39,6 @@ class TrainersRepository extends Repository
             'video' => $data['video'],
             'image' => $fileName
         ]);
-
     }
 
     /**
