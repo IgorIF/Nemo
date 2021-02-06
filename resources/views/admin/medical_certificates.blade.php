@@ -28,10 +28,8 @@
         <a id="medicalCertificate_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
     </div>
 
-    <p>
-        <strong>
-            * <span id="text_{{ $texts->get(67)->id }}" contenteditable="true">{!! $texts->get(67)->text !!}</span>
-        </strong>
+    <p style="font-weight: bolder">
+        <div id="text_{{ $texts->get(67)->id }}" contenteditable="true">{!! $texts->get(67)->text !!}</div>
     </p>
 </div>
 <button type="button" class="close" id="js-close-popup"></button>

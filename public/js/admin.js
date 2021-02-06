@@ -576,8 +576,6 @@ $(document).ready(function () {
     function ruleItemAdd(ruleItem) {
         let container = $('div[id="ruleCategory_' + ruleCategoryId + '"]').children('ul');
 
-        //TODO
-
         let content = $('<div id="ruleItem_' + ruleItem.id + '" style="display: table; width: 100%">' +
                             '<div style="display: table-cell">' +
                                 '<li style="display: table; width: 100%">' +
@@ -601,8 +599,6 @@ $(document).ready(function () {
         let textContainer = content.find('li').find('div[id="securityItem_text"]');
         let deleteBtnContainer = content.find('div').last();
 
-        console.log(textContainer);
-
         switch (ruleCategoryId) {
             case '1':
             case '3':
@@ -623,23 +619,32 @@ $(document).ready(function () {
     function medicalCertificateAdd(medicalCertificate) {
         let container = $('ul[id="medicalCertificates"]');
 
-        let content = $('<div id="medicalCertificate_' + medicalCertificate.id + '">' +
-                        '<li>' +
-                            '-' +
-                        '</li>' +
-                    '</div>');
 
-        let text = $('<span id="medicalCertificate_text" contenteditable="true">' + medicalCertificate.text + '</span>');
+        let content = $('<div id="medicalCertificate_' + medicalCertificate.id + '" style="display: table; width: 100%">' +
+                            '<div style="display: table-cell">' +
+                                '<li>' +
+                                    '<div style="display: table-cell; width: 25px">' +
+                                        '-' +
+                                    '</div>' +
+                                '</li>' +
+                            '</div>' +
+                            '<div style="display: table-cell"></div>' +
+                        '</div>');
+
+        let text = $('<div id="medicalCertificate_text" contenteditable="true" style="display: table-cell">' + medicalCertificate.text + '</div>');
         let deleteBtn = $('<svg style="float: right" id="medicalCertificate_delete_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">' +
                             '<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>' +
                             '<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>' +
-                         '</svg>')
+                        '</svg>');
 
         text.focusin(onTextFocusinListener)
             .focusout(onTextFocusoutListener);
 
-        let liContainer = content.find('li');
-        liContainer.append(text).append(deleteBtn);
+        let textContainer = content.find('li');
+        let deleteBtnContainer = content.find('div').last();
+
+        textContainer.append(text);
+        deleteBtnContainer.append(deleteBtn);
 
         container.append(content);
     }
