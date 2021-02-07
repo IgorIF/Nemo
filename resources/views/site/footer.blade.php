@@ -5,8 +5,8 @@
                 <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
             </a>
             <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
-        </div>
-        <div class="center1" data-aos="fade-up">
+
+        </div><div class="center1" data-aos="fade-up">
             <h3 data-aos="fade-up">{!! $texts->get(55)->text !!}</h3>
             <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up">{!! $texts->get(1)->text !!}</a>
             <address data-aos="fade-up">{!! $texts->get(2)->text !!}</address>
@@ -16,15 +16,14 @@
             <address>{!! $texts->get(8)->text !!}</address>
             <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $texts->get(10)->text !!}</a>
             <address>{!! $texts->get(11)->text !!}</address>
-        </div>
-        <div class="center2">
+
+        </div><div class="center2">
             <h3>{!! $texts->get(56)->text !!}</h3>
             <p>{!! $texts->get(57)->text !!}</p>
             <span>{!! $texts->get(58)->text !!}</span>
 
 
-        </div>
-        <div class="right">
+        </div><div class="right">
             <h3>{!! $texts->get(59)->text !!}</h3>
             <div class="social-link">
                 <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
