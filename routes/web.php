@@ -25,11 +25,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', SiteController::class);
+Route::get('/', SiteController::class)->name('site');
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
-    Route::get('/', AdminController::class);
+    Route::get('/', AdminController::class)->name('admin');
 
     Route::resource('trainers', TrainerController::class)->only(['store', 'update', 'destroy']);
     Route::resource('security/categories', SecurityCategoryController::class)->only('update');

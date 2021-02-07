@@ -5465,3 +5465,11 @@ border-radius: 15px;
     border-style: solid;
 }
 
+.itemDeleteBtn {
+    float: right;
+    cursor: pointer;
+}
+
+.videoDeleteBtn {
+    cursor: pointer;
+}
