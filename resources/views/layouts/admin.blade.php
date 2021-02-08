@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=1') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 
@@ -493,6 +493,9 @@
 <!-- Модальное окно закрытие клуба -->
 
 <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
+
+@yield('adminNav')
+
 </body>
 
 </html>

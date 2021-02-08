@@ -40,12 +40,14 @@ class IndexController extends BaseController
         $modalAddSecurityItem = view('admin.modals.modal_add_item')->render();
         $modalAddVideo = view('admin.modals.modal_add_video')->render();
         $modalCropper = view('admin.modals.modal_cropper')->render();
+        $adminNav = view('admin.admin_nav')->render();
 
         $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideo);
         $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
         $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
         $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
         $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
+        $this->vars = Arr::add($this->vars, 'adminNav', $adminNav);
 
         return parent::renderOutput();
     }

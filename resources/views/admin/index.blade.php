@@ -79,3 +79,7 @@
 @section('vacancies')
     {!! $vacancies !!}
 @endsection
+
+@section('adminNav')
+    {!! $adminNav !!}
+@endsection

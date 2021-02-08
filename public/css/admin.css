@@ -14,3 +14,34 @@
 .videoDeleteBtn {
     cursor: pointer;
 }
+
+nav.fixed.snow{
+    top: 50px;
+}
+
+.header-top
+{
+    margin-top: 50px;
+}
+
+.admin-nav {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #3b3b3b;
+    text-align: right;
+    color: #FFFFFF;
+    z-index: 2;
+}
+
+.admin-nav div {
+    width: 100%;
+    padding-right: 50px;
+}
+
+.admin-nav div a {
+    float: left;
+    padding-left: 50px;
+}
