@@ -717,7 +717,23 @@ $(document).ready(function () {
     }
 
     function onSecurityItemDeleteBtnClickListener() {
-        deleteSecurityItem(this);
+        let tooltip = $(this).next('div[class="delete-tooltip"]');
+
+        $(tooltip).focusout(function () {
+            $(this).fadeOut(300);
+        })
+
+        $(tooltip).fadeIn(300);
+
+        $(tooltip).focus();
+
+        $(tooltip).find('a').click(function () {
+            console.log(111233243432);
+        });
+
+
+
+        //deleteSecurityItem(this);
     }
 
     function onRuleItemDeleteBtnClickListener() {

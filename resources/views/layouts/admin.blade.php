@@ -56,7 +56,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/style.css?vr=2') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin.css?vr=1') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css?vr=2') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -110,6 +110,8 @@
 </head>
 
 <body>
+
+@yield('adminNav')
 
 <header class="header">
 
@@ -494,7 +496,10 @@
 
 <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
 
-@yield('adminNav')
+<div class="delete-tooltip">
+    Удалить запись?
+    <button>Да</button>
+</div>
 
 </body>
 

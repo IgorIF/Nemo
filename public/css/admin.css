@@ -72,3 +72,20 @@ nav.fixed.snow{
 .popup5 {
     top: 100px;
 }
+
+.delete-tooltip {
+    display: none;
+    position: absolute;
+    width: 200px;
+    border-radius: 10px;
+    left: 20px;
+    top: -60px;
+    padding: 5px 10px 5px 10px;
+    background: #FF680D;
+    color: #FFFFFF;
+}
+
+.delete-tooltip a {
+    border-radius: 10px;
+    cursor: pointer;
+}
