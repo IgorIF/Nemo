@@ -21,23 +21,8 @@ $(document).ready(function () {
     $('[contenteditable="true"]').focusin(onTextFocusinListener)
         .focusout(onTextFocusoutListener);
 
-    /// Delete trainer
-    $(document).on('click', '#trainer_delete_btn', onTrainerDeleteBtnClickListener);
-
-    /// Delete security item
-    $(document).on('click', '#securityItem_delete_btn', onSecurityItemDeleteBtnClickListener);
-
-    /// Delete rule item
-    $(document).on('click', '#ruleItem_delete_btn', onRuleItemDeleteBtnClickListener);
-
-    /// Delete medical certificate
-    $(document).on('click', '#medicalCertificate_delete_btn', onMedicalCertificateDeleteBtnClickListener);
-
-    /// Delete vacancy
-    $(document).on('click', '#vacancy_delete_btn', onVacancyDeleteBtnClickListener);
-
-    /// Delete video
-    $(document).on('click', '#video_delete_btn', onVideoDeleteBtnClickListener);
+    /// Delete item
+    $(document).on('click', '[id$="_delete_btn"]', onDeleteBtnClickListener);
 
     /// Cropper
     $modalCropper.on('shown.bs.modal', function () {
@@ -712,12 +697,11 @@ $(document).ready(function () {
         initialText = null;
     }
 
-    function onTrainerDeleteBtnClickListener() {
-        deleteTrainer(this);
-    }
-
-    function onSecurityItemDeleteBtnClickListener() {
+    function onDeleteBtnClickListener() {
+        let id = $(this).attr('id').split('_')[0];
         let tooltip = $(this).next('div[class="delete-tooltip"]');
+
+        console.log(tooltip);
 
         $(tooltip).focusout(function () {
             $(this).fadeOut(300);
@@ -728,28 +712,27 @@ $(document).ready(function () {
         $(tooltip).focus();
 
         $(tooltip).find('a').click(function () {
-            console.log(111233243432);
+            console.log(id);
+            switch (id) {
+                case 'trainer':
+                    deleteTrainer(this);
+                    break;
+                case 'securityItem':
+                    deleteSecurityItem(this);
+                    break;
+                case 'ruleItem':
+                    deleteRuleItem(this);
+                    break
+                case 'medicalCertificate':
+                    deleteMedicalCertificate(this);
+                    break;
+                case 'vacancy':
+                    deleteVacancy(this);
+                    break;
+                case 'video':
+                    deleteVideo(this);
+            }
         });
-
-
-
-        //deleteSecurityItem(this);
-    }
-
-    function onRuleItemDeleteBtnClickListener() {
-        deleteRuleItem(this);
-    }
-
-    function onMedicalCertificateDeleteBtnClickListener() {
-        deleteMedicalCertificate(this);
-    }
-
-    function onVacancyDeleteBtnClickListener () {
-        deleteVacancy(this);
-    }
-
-    function onVideoDeleteBtnClickListener() {
-        deleteVideo(this);
     }
 
     function onCreateTrainerImageChangeListener() {
