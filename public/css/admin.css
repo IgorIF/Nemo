@@ -33,7 +33,7 @@ nav.fixed.snow{
     background: #3b3b3b;
     text-align: right;
     color: #FFFFFF;
-    z-index: 2;
+    z-index: 1002;
 }
 
 .admin-nav div {

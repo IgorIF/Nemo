@@ -848,8 +848,8 @@ function toast(content, opts){
     opts = $.extend( true, {
 
         type: 'primary', //primary, secondary, success, danger, warning, info, light, dark
-        position: 'bottomleft', //topleft, topcenter, topright, bottomleft, bottomcenter, bottonright, center,
-        appendType: 'prepend', //append, prepend
+        position: 'topcenter', //topleft, topcenter, topright, bottomleft, bottomcenter, bottonright, center,
+        appendType: 'append', //append, prepend
         closeBtn: false,
         autoClose: 4000,
         className: '',
