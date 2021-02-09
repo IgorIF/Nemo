@@ -42,6 +42,15 @@ nav.fixed.snow{
 }
 
 .admin-nav div a {
+    color: #FFFFFF;
     float: left;
     padding-left: 50px;
+}
+
+.admin-nav div a:hover {
+    color: #868686;
+}
+
+.admin-nav div button:hover {
+    background: #868686;
 }

@@ -56,7 +56,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/style.css?vr=1') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css?vr=1') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
