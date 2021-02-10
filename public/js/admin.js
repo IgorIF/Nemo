@@ -701,18 +701,15 @@ $(document).ready(function () {
         let id = $(this).attr('id').split('_')[0];
         let tooltip = $(this).next('div[class="delete-tooltip"]');
 
-        console.log(tooltip);
+        $(tooltip).fadeIn(300);
 
-        $(tooltip).focusout(function () {
+        $(tooltip).unbind('focusout').bind('focusout', function () {
             $(this).fadeOut(300);
         })
 
-        $(tooltip).fadeIn(300);
-
         $(tooltip).focus();
 
-        $(tooltip).find('a').click(function () {
-            console.log(id);
+        $(tooltip).find('a').unbind('click').bind('click', function () {
             switch (id) {
                 case 'trainer':
                     deleteTrainer(this);

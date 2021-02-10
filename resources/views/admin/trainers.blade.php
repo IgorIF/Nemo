@@ -26,11 +26,13 @@
 
 
                     </div>
-                    <div style="max-width: 90%; width: 100%; margin: auto; height: 100px; position: relative">
-                        <a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>
-                        <div class="delete-tooltip" tabindex="1">
-                            Удалить запись?
-                            <a class="button--border">Да</a>
+                    <div style="max-width: 90%; width: 100%; margin: auto;">
+                        <div style="display: inline-block; float: right; position: relative;">
+                            <a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; box-shadow: none">Удалить тренера</a>
+                            <div class="delete-tooltip" tabindex="1">
+                                Удалить запись?
+                                <a class="button--border">Да</a>
+                            </div>
                         </div>
                     </div>
                 </div>
