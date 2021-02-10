@@ -476,14 +476,22 @@ $(document).ready(function () {
                                 '</label>' +
                             '</div>' +
                             '<div class="trainer_caption"></div>' +
-                            '<div style="max-width: 90%; width: 100%; margin: auto; height: 100px"></div>' +
+                            '<div class="trainer-delete-container">' +
+                                '<div class="trainer-delete-sub-container">' +
+                                    '<a id="trainer_delete_btn" class="btn">Удалить тренера</a>' +
+                                    '<div id="deleteTooltip" class="delete-tooltip delete-trainer" tabIndex="1">' +
+                                        'Удалить тренера?' +
+                                        '<a class="button--border">Да</a>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>' +
                         '</div>' +
                     '</div>');
 
         let imgInput = $('<input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">');
         let name = $('<h4 id="trainer_name" contenteditable="true">' + trainer.name + '</h4>');
         let description = $('<p id="trainer_description" contenteditable="true">' + trainer.description + '</p>');
-        let deleteBtn = $('<a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Удалить тренера</a>');
+
 
         imgInput.change(onUpdateTrainerImageChangeListener);
 
@@ -493,15 +501,12 @@ $(document).ready(function () {
         description.focusin(onTextFocusinListener)
             .focusout(onTextFocusoutListener);
 
-        //deleteBtn.click(onTrainerDeleteBtnClickListener);
-
         let trainerCaptionContainer = slide.find('.trainer_caption');
-        let trainerDeleteBtnContainer = trainerCaptionContainer.next('div');
         let trainerInputContainer = slide.find('label[class="label"]');
 
         trainerInputContainer.append(imgInput);
         trainerCaptionContainer.append(name).append(description);
-        trainerDeleteBtnContainer.append(deleteBtn);
+
         if (trainer.video !== null)
             trainerCaptionContainer.append('<div><a data-fancybox href="' + trainer.video + '">Смотреть занятие</a></div>');
 

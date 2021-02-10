@@ -26,9 +26,9 @@
 
 
                     </div>
-                    <div style="max-width: 90%; width: 100%; margin: auto;">
-                        <div style="display: inline-block; float: right; position: relative;">
-                            <a id="trainer_delete_btn" class="btn" style="padding: 20px 30px; box-shadow: none">Удалить тренера</a>
+                    <div class="trainer-delete-container">
+                        <div class="trainer-delete-sub-container">
+                            <a id="trainer_delete_btn" class="btn">Удалить тренера</a>
                             <div id="deleteTooltip" class="delete-tooltip delete-trainer" tabindex="1">
                                 Удалить тренера?
                                 <a class="button--border">Да</a>

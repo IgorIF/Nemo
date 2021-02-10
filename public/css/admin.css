@@ -112,7 +112,7 @@ div.delete-tooltip:before {
     cursor: pointer;
 }
 
-.delete-trainer {
+div.delete-trainer {
     right: 140px;
     top: -70px;
 }
@@ -123,3 +123,20 @@ div.delete-tooltip:before {
         right: 80px;
     }
 }
+
+div.trainer-delete-container {
+    max-width: 90%;
+    width: 100%;
+    margin: auto;
+}
+
+div.trainer-delete-sub-container {
+    display: inline-block; float: right; position: relative;
+}
+
+a#trainer_delete_btn {
+    padding: 20px 30px;
+    box-shadow: none;
+}
+
+
