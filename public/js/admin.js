@@ -699,7 +699,7 @@ $(document).ready(function () {
 
     function onDeleteBtnClickListener() {
         let id = $(this).attr('id').split('_')[0];
-        let tooltip = $(this).next('div[class="delete-tooltip"]');
+        let tooltip = $(this).next('div[id="deleteTooltip"]');
 
         $(tooltip).fadeIn(300);
 

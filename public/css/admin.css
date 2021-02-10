@@ -81,19 +81,45 @@ nav.fixed.snow{
     top: 100px;
 }
 
-.delete-tooltip {
+div.delete-tooltip {
     display: none;
     position: absolute;
     width: 200px;
+    height: 75px;
+    text-align: center;
     border-radius: 10px;
-    left: 20px;
-    top: -60px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     padding: 5px 10px 5px 10px;
     background: #FF680D;
     color: #FFFFFF;
+    z-index: 9999;
+}
+
+div.delete-tooltip:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 170px;
+    top: 75px;
+    border: 10px solid;
+    border-color: #FF680D #FF680D transparent transparent;
 }
 
 .delete-tooltip a {
     border-radius: 10px;
     cursor: pointer;
+}
+
+.delete-trainer {
+    right: 140px;
+    top: -70px;
+}
+
+@media all and (max-width: 560px)
+{
+    .delete-trainer {
+        right: 80px;
+    }
 }
