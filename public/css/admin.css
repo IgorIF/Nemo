@@ -1,9 +1,7 @@
 .backLightFrame {
-    border-radius: 8px;
-    padding: 2px;
-    border-width: 2px;
-    border-color: #ff680d;
-    border-style: solid;
+    outline: #FF680D solid 2px;
+    outline-offset: 2px;
+    -moz-outline-radius: 10px;
 }
 
 .itemDeleteBtn {
