@@ -29,7 +29,7 @@ Route::get('/', SiteController::class)->name('site');
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
-    Route::get('/', AdminController::class)->name('admin');
+    Route::get('/', AdminController::class);
 
     Route::resource('trainers', TrainerController::class)->only(['store', 'update', 'destroy']);
     Route::resource('security/categories', SecurityCategoryController::class)->only('update');

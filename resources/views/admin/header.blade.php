@@ -21,7 +21,7 @@
         </div>
         <div class="adcdsc">
             <div class="header-logo" id="logos">
-                <a href="index.html">
+                <a href="{{ route('admin.') }}">
                     <picture>
                         <source srcset="{{ asset('images/logo.svg') }}">
                         <img src="{{ asset('images/logo.png') }}" alt="Акваклуб Nemo" width="135" height="72">
@@ -76,9 +76,9 @@
                 </ul>
             </div>
             <div class="soc flex jcsb aic">
-                <a href="https://vk.com/aquaclubnemo" target="_blank"><img src="{{ asset('images/vk_red_copy.png') }}"></a>
-                <a href="https://www.facebook.com/aquaclubnemo" target="_blank"><img src="{{ asset('images/fb_red copy.svg') }}"></a>
-                <a href="https://www.instagram.com/aquaclubnemo/" target="_blank"><img src="{{ asset('images/insta_red copy.png') }}"></a>
+                <a href="#"><img src="{{ asset('images/vk_red_copy.png') }}"></a>
+                <a href="#"><img src="{{ asset('images/fb_red copy.svg') }}"></a>
+                <a href="#"><img src="{{ asset('images/insta_red copy.png') }}"></a>
                 <a href="" data-type="ПРОБНОЕ ЗАНЯТИЕ" class="js-popup button--border">Пробное занятие</a>
             </div>
         </div>
@@ -95,6 +95,6 @@
             <span id="text_{{ $texts->get(15)->id }}" contenteditable="true">{!! $texts->get(15)->text !!}</span>
         </p>
         <p>
-            <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
+            <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="{{ route('admin.') }}" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
     </div>
 </div>
