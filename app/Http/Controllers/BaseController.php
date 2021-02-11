@@ -41,6 +41,7 @@ class BaseController extends Controller
     protected $reviews;
     protected $swimmingPool;
     protected $footer;
+    protected $trialLesson;
     protected $rules;
     protected $medicalCertificates;
     protected $vacancies;
@@ -61,6 +62,7 @@ class BaseController extends Controller
         $this->renderReviews();
         $this->renderSwimmingPool();
         $this->renderFooter();
+        $this->renderTrialLesson();
         $this->renderRules();
         $this->renderMedicalCertificates();
         $this->renderVacancies();
@@ -96,6 +98,7 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
         $this->vars = Arr::add($this->vars, 'footer', $this->footer);
+        $this->vars = Arr::add($this->vars, 'trialLesson', $this->trialLesson);
         $this->vars = Arr::add($this->vars, 'rules', $this->rules);
         $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificates);
         $this->vars = Arr::add($this->vars, 'vacancies', $this->vacancies);
@@ -160,6 +163,11 @@ class BaseController extends Controller
     private function renderFooter() {
         $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11]);
         $this->footer = view($this->template . '.footer')->with('texts', $texts)->render();
+    }
+
+    private function renderTrialLesson() {
+        $texts = $this->textsRepository->getInRangeById([72 => 72]);
+        $this->trialLesson = view($this->template . '.trial_lesson')->with('texts' , $texts)->render();
     }
 
     private function renderRules() {

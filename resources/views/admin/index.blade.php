@@ -68,6 +68,10 @@
     {!! $footer !!}
 @endsection
 
+@section('trialLesson')
+    {!! $trialLesson !!}
+@endsection
+
 @section('rules')
     {!! $rules !!}
 @endsection

@@ -375,5 +375,13 @@ class TextSeeder extends Seeder
             'text' => 'aquanemo@yandex.ru'
         ]);
 
+
+        /// trial lesson
+
+        DB::table('texts')->insert([
+            'id' => '72',
+            'text' => 'Запись на занятие'
+        ]);
+
     }
 }
