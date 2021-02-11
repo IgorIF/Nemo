@@ -146,6 +146,17 @@ div.delete-rule-item {
     top: 40px;
 }
 
+div.delete-medical-certificate:before {
+    right: 15px;
+    top: -20px;
+    border-color: transparent #FF680D #FF680D transparent;
+}
+
+div.delete-medical-certificate {
+    right: 0;
+    top: 40px;
+}
+
 .delete-tooltip a {
     border-radius: 10px;
     cursor: pointer;
