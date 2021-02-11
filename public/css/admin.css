@@ -93,7 +93,6 @@ div.delete-tooltip {
     padding: 5px 10px 5px 10px;
     background: #FF680D;
     color: #FFFFFF;
-    z-index: 1005;
 }
 
 div.delete-tooltip:before {
@@ -134,6 +133,17 @@ div.delete-video:before {
 div.delete-video {
     left: 69px;
     top: -98px;
+}
+
+div.delete-rule-item:before {
+    right: 15px;
+    top: -20px;
+    border-color: transparent #FF680D #FF680D transparent;
+}
+
+div.delete-rule-item {
+    right: 0;
+    top: 40px;
 }
 
 .delete-tooltip a {

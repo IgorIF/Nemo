@@ -496,11 +496,6 @@
 
 <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
 
-<div class="delete-tooltip">
-    Удалить запись?
-    <button>Да</button>
-</div>
-
 </body>
 
 </html>
