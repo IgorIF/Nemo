@@ -93,7 +93,6 @@ div.delete-tooltip {
     padding: 5px 10px 5px 10px;
     background: #FF680D;
     color: #FFFFFF;
-    z-index: 9999;
 }
 
 div.delete-tooltip:before {
@@ -101,15 +100,18 @@ div.delete-tooltip:before {
     position: absolute;
     width: 0;
     height: 0;
-    left: 170px;
     top: 75px;
     border: 10px solid;
+}
+
+div.delete-trainer:before {
+    right: 15px;
     border-color: #FF680D #FF680D transparent transparent;
 }
 
-.delete-tooltip a {
-    border-radius: 10px;
-    cursor: pointer;
+div.delete-security-item:before {
+    left: 15px;
+    border-color: #FF680D transparent transparent #FF680D;
 }
 
 div.delete-trainer {
@@ -117,10 +119,34 @@ div.delete-trainer {
     top: -70px;
 }
 
+div.delete-security-item {
+    left: 0;
+    top: -98px;
+}
+
+.delete-tooltip a {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 @media all and (max-width: 560px)
 {
-    .delete-trainer {
+    div.delete-trainer {
         right: 80px;
+    }
+}
+
+@media all and (max-width: 1380px)
+{
+    div.delete-security-item:before {
+        left: unset;
+        right: 15px;
+        border-color: #FF680D #FF680D transparent transparent;
+    }
+
+    div.delete-security-item {
+        left: unset;
+        right: 0;
     }
 }
 
