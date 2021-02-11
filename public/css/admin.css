@@ -157,6 +157,17 @@ div.delete-medical-certificate {
     top: 40px;
 }
 
+div.delete-vacancy:before {
+    right: 15px;
+    top: -20px;
+    border-color: transparent #FF680D #FF680D transparent;
+}
+
+div.delete-vacancy {
+    right: 0;
+    top: 40px;
+}
+
 .delete-tooltip a {
     border-radius: 10px;
     cursor: pointer;
