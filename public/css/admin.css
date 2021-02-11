@@ -93,6 +93,7 @@ div.delete-tooltip {
     padding: 5px 10px 5px 10px;
     background: #FF680D;
     color: #FFFFFF;
+    z-index: 1005;
 }
 
 div.delete-tooltip:before {
@@ -121,6 +122,17 @@ div.delete-trainer {
 
 div.delete-security-item {
     left: 0;
+    top: -98px;
+}
+
+div.delete-video:before {
+    border: 15px solid;
+    left: 85px;
+    border-color: #FF680D transparent transparent transparent;
+}
+
+div.delete-video {
+    left: 69px;
     top: -98px;
 }
 
@@ -166,6 +178,11 @@ div.item-delete-container {
     display: table-cell;
     position: relative;
     width: 16px
+}
+
+div.video-delete-container {
+    text-align: center;
+    position: relative
 }
 
 a#trainer_delete_btn {
