@@ -157,7 +157,15 @@ div.trainer-delete-container {
 }
 
 div.trainer-delete-sub-container {
-    display: inline-block; float: right; position: relative;
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+
+div.item-delete-container {
+    display: table-cell;
+    position: relative;
+    width: 16px
 }
 
 a#trainer_delete_btn {
