@@ -220,4 +220,52 @@ a#trainer_delete_btn {
     box-shadow: none;
 }
 
+.about .right h2 {
+    padding-bottom: 0;
+    margin-bottom: 25px;
+}
 
+.the-advantages-of-early-development h2 {
+    padding-top: 0;
+    margin-top: 80px;
+}
+
+.age-of-child .container h2 {
+    padding-top: 0;
+    margin-top: 80px;
+}
+
+.trainer_caption h4 {
+    max-width: 90%;
+}
+
+@media all and (max-width: 755px)
+{
+    .trainer_caption h4 {
+        margin: 5px;
+    }
+
+    .trainer_caption p {
+        margin: 5px;
+    }
+}
+
+.subscribers-for-visits .container h2 {
+    padding: 0;
+    margin: 70px 0 30px 0;
+}
+
+.submit-your-application .container .left h2 {
+    padding-top: 0;
+    margin-top: 10px;
+}
+
+.security .container h2 {
+    padding-bottom: 0;
+    margin-bottom: 50px;
+}
+
+.swimming-pool .container h3 {
+    padding-top: 0;
+    margin-top: 100px;
+}

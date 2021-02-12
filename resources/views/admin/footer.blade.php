@@ -2,7 +2,7 @@
     <div class="container">
         <div class="footer-top">
             <div class="left">
-                <a href="index.html" data-aos="fade-up">
+                <a href="{{ route('admin.') }}" data-aos="fade-up">
                     <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
@@ -26,19 +26,19 @@
             </div><div class="right">
                 <h3 id="text_{{ $texts->get(59)->id }}" contenteditable="true">{!! $texts->get(59)->text !!}</h3>
                 <div class="social-link">
-                    <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
+                    <a href="#">
                         <picture>
                             <source srcset="{{ asset('images/instagramm.svg') }}">
                             <img src="{{ asset('images/instagramm.png') }}" alt="инстаграмм">
                         </picture>
                     </a>
-                    <a href="https://vk.com/aquaclubnemo" target="_blank">
+                    <a href="#">
                         <picture>
                             <source srcset="{{ asset('images/vk.svg') }}">
                             <img src="{{ asset('images/vk.png') }}" alt="вконтакте">
                         </picture>
                     </a>
-                    <a href="https://www.facebook.com/aquaclubnemo" target="_blank">
+                    <a href="#">
                         <picture>
                             <source srcset="{{ asset('images/fb.svg') }}">
                             <img src="{{ asset('images/fb.png') }}" alt="фейсбук">

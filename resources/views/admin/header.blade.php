@@ -89,7 +89,9 @@
 </nav>
 <div class="container">
     <div class="header-bottom">
-        <h1 data-aos="fade-up" id="text_{{ $texts->get(13)->id }}" contenteditable="true">{!! $texts->get(13)->text !!}</h1>
+        <h1 data-aos="fade-up" id="text_{{ $texts->get(13)->id }}" contenteditable="true">
+            {!! $texts->get(13)->text !!}
+        </h1>
         <p data-aos="fade-up" id="text_{{ $texts->get(14)->id }}" contenteditable="true">{!! $texts->get(14)->text !!}</p>
         <p data-aos="fade-up">
             <span id="text_{{ $texts->get(15)->id }}" contenteditable="true">{!! $texts->get(15)->text !!}</span>

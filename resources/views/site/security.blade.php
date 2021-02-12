@@ -21,6 +21,9 @@
                         <li>{!! $securityItem->text !!}</li>
                     @endforeach
                 </ul>
+                @if($securityCategory->id == 2)
+                    <p>{!! $texts->get(47)->text !!}</p>
+                @endif
             </div>
         @endforeach
     </div>

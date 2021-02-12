@@ -1,10 +1,10 @@
 <div class="container">
     <div class="footer-top">
         <div class="left">
-            <a href="index.html" data-aos="fade-up">
+            <a href="{{ route('site') }}" data-aos="fade-up">
                 <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
             </a>
-            <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
+            <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="{{ route('site') }}" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
         </div><div class="center1" data-aos="fade-up">
             <h3 data-aos="fade-up">{!! $texts->get(55)->text !!}</h3>
@@ -130,7 +130,7 @@
             <a class="footer-logo" href="index.html">
                 <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
             </a>
-            <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
+            <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="{{ route('site') }}">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
             <div class="footer-hidden-bottom">
                 <p>{!! $texts->get(62)->text !!}</p>
