@@ -172,27 +172,6 @@ div.delete-vacancy {
     cursor: pointer;
 }
 
-@media all and (max-width: 560px)
-{
-    div.delete-trainer {
-        right: 80px;
-    }
-}
-
-@media all and (max-width: 1380px)
-{
-    div.delete-security-item:before {
-        left: unset;
-        right: 15px;
-        border-color: #FF680D #FF680D transparent transparent;
-    }
-
-    div.delete-security-item {
-        left: unset;
-        right: 0;
-    }
-}
-
 div.trainer-delete-container {
     max-width: 90%;
     width: 100%;
@@ -208,7 +187,8 @@ div.trainer-delete-sub-container {
 div.item-delete-container {
     display: table-cell;
     position: relative;
-    width: 16px
+    width: 16px;
+    padding: 0 5px 0 5px;
 }
 
 div.video-delete-container {
@@ -240,17 +220,6 @@ a#trainer_delete_btn {
     max-width: 90%;
 }
 
-@media all and (max-width: 755px)
-{
-    .trainer_caption h4 {
-        margin: 5px;
-    }
-
-    .trainer_caption p {
-        margin: 5px;
-    }
-}
-
 .subscribers-for-visits .container h2 {
     padding: 0;
     margin: 70px 0 30px 0;
@@ -270,3 +239,50 @@ a#trainer_delete_btn {
     padding-top: 0;
     margin-top: 100px;
 }
+
+.header .container .header-bottom h1 {
+    padding-top: 0;
+    margin-top: 150px;
+}
+
+div.rule1 {
+    margin-top: 5px;
+}
+
+@media all and (max-width: 560px)
+{
+    div.delete-trainer {
+        right: 80px;
+    }
+}
+
+@media all and (max-width: 760px)
+{
+    .trainer_caption h4 {
+        margin: 5px;
+    }
+
+    .trainer_caption p {
+        margin: 5px;
+    }
+
+    .header .container .header-bottom h1 {
+        margin-top: 0;
+        padding-top: 130px;
+    }
+}
+
+@media all and (max-width: 1380px)
+{
+    div.delete-security-item:before {
+        left: unset;
+        right: 15px;
+        border-color: #FF680D #FF680D transparent transparent;
+    }
+
+    div.delete-security-item {
+        left: unset;
+        right: 0;
+    }
+}
+

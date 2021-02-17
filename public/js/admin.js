@@ -752,8 +752,6 @@ $(document).ready(function () {
 
         $(tooltip).focus();
 
-        console.log(tooltip);
-
         $(tooltip).find('a').unbind('click').bind('click', function () {
             switch (id) {
                 case 'trainer':
