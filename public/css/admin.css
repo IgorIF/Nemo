@@ -91,6 +91,7 @@ div.delete-tooltip {
     padding: 5px 10px 5px 10px;
     background: #FF680D;
     color: #FFFFFF;
+    z-index: 1051;
 }
 
 div.delete-tooltip:before {

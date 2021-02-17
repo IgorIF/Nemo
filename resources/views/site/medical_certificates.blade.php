@@ -9,7 +9,7 @@
 
     <p>
         <strong>
-            * {!! $texts->get(67)->text !!}
+            {!! $texts->get(67)->text !!}
         </strong>
     </p>
 </div>

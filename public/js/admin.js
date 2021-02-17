@@ -752,7 +752,7 @@ $(document).ready(function () {
 
         $(tooltip).focus();
 
-        console.log('id');
+        console.log(tooltip);
 
         $(tooltip).find('a').unbind('click').bind('click', function () {
             switch (id) {
