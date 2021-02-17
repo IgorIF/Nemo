@@ -114,7 +114,9 @@ $(document).ready(function () {
             let url = 'admin/edittext';
             let data = {'id': textId, 'text': text};
 
-            ajax('PUT', url, data);
+            ajax('PUT', url, data, function () {
+                toast('Текст обновлен', {type: 'success'});
+            });
         }
     }
 
@@ -127,7 +129,9 @@ $(document).ready(function () {
             let url = 'admin/trainers/' + trainerId;
             let data = {'field': fieldName, 'text': text};
 
-            ajax('PUT', url, data);
+            ajax('PUT', url, data, function () {
+                toast('Тренер обновлен', {type: 'success'});
+            });
         }
     }
 
@@ -145,7 +149,9 @@ $(document).ready(function () {
             }
             url += id;
 
-            ajax('PUT', url, data);
+            ajax('PUT', url, data, function () {
+                toast('Запись обновлена', {type: 'success'});
+            });
         }
 
 
@@ -158,7 +164,9 @@ $(document).ready(function () {
         let url = 'admin/rules/' + id;
 
         if (text !== initialText)
-            ajax('PUT', url, data);
+            ajax('PUT', url, data, function () {
+                toast('Правило обновлено', {type: 'success'});
+            });
     }
 
     function saveMedicalCertificateText(element) {
@@ -168,7 +176,9 @@ $(document).ready(function () {
         let url = 'admin/medicalCertificates/' + id;
 
         if (text !== initialText)
-            ajax('PUT', url, data);
+            ajax('PUT', url, data, function () {
+                toast('Запись обновлена', {type: 'success'});
+            });
     }
 
     function savaVacancyText(element) {
@@ -178,7 +188,9 @@ $(document).ready(function () {
         let url = 'admin/vacancies/' + id;
 
         if (text !== initialText)
-            ajax('PUT', url, data);
+            ajax('PUT', url, data, function () {
+                toast('Вакансия обновлена', {type: 'success'});
+            });
     }
 
     function deleteTrainer(element) {
@@ -189,6 +201,7 @@ $(document).ready(function () {
         ajax('DELETE', url, null, function () {
             trainerSlickRemove(slickIndex);
             trainersSlickRefresh();
+            toast('Тренер удален', {type: 'success'});
         });
     }
 
@@ -198,6 +211,7 @@ $(document).ready(function () {
 
         ajax('DELETE', url, null, function () {
             $('#securityItem_' + securityItemId).remove();
+            toast('Запись удалена', {type: 'success'});
         });
     }
 
@@ -218,6 +232,7 @@ $(document).ready(function () {
             }
 
             $(ruleItem).remove();
+            toast('Правило удалено', {type: 'success'});
         })
     }
 
@@ -227,6 +242,7 @@ $(document).ready(function () {
 
         ajax('DELETE', url, null, function () {
             $('#medicalCertificate_' + medicalCertificateId).remove();
+            toast('Запись удалена', {type: 'success'});
         });
     }
 
@@ -234,10 +250,9 @@ $(document).ready(function () {
         let vacancyId = $(element).parents('[id^="vacancy"]').attr('id').split('_')[1];
         let url = 'admin/vacancies/' + vacancyId;
 
-        /*console.log(element);
-        console.log(vacancyId);*/
         ajax('DELETE', url, null, function () {
             $('#vacancy_' + vacancyId).remove();
+            toast('Вакансия удалена', {type: 'success'});
         })
     }
 
@@ -260,6 +275,7 @@ $(document).ready(function () {
             ajax('DELETE', url, null, function () {
                 videoSlickRemove(slickIndex);
                 videosSlickRefresh();
+                toast('Видео удалено', {type: 'success'});
             })
         }
     }
@@ -275,6 +291,7 @@ $(document).ready(function () {
 
         ajax('POST', url, data, function (response) {
             $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/images/trainers/' + response.image);
+            toast('Тренер обновлен', {type: 'success'});
         }, null, true);
     }
 
@@ -288,6 +305,7 @@ $(document).ready(function () {
             trainersSlickRefresh();
             $modalAddTrainer.modal('hide');
             clearFields($modalAddTrainer);
+            toast('Тренер добавлен', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -305,6 +323,7 @@ $(document).ready(function () {
             securityItemAdd(securityItem);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem);
+            toast('Запись добавлена', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -322,6 +341,7 @@ $(document).ready(function () {
             ruleItemAdd(ruleItem);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem)
+            toast('Правило добавлено', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -338,6 +358,7 @@ $(document).ready(function () {
             medicalCertificateAdd(medicalCertificate);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem);
+            toast('Запись добавлена', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -354,6 +375,7 @@ $(document).ready(function () {
             vacancyAdd(vacancy);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem);
+            toast('Вакансия добавлена', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -372,6 +394,7 @@ $(document).ready(function () {
             videosSlickRefresh()
             $modalAddVideo.modal('hide');
             clearFields($modalAddVideo);
+            toast('Видео добавлено', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -390,6 +413,7 @@ $(document).ready(function () {
             aboutUsVideoUpdate(video);
             $modalAboutUsEditVideo.modal('hide');
             clearFields($modalAboutUsEditVideo);
+            toast('Видео обновлено', {type: 'success'});
         }, function (error){
             if (error.status === 422) {
                 let errors = error.responseJSON.errors;
@@ -444,7 +468,6 @@ $(document).ready(function () {
                 if (onSuccess) {
                     onSuccess(response);
                 }
-                toast('Сохранено', {type: 'success'});
             },
             error: function (error) {
                 if (onError) {
