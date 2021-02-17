@@ -249,6 +249,10 @@ div.rule1 {
     margin-top: 5px;
 }
 
+div#text_67 {
+    margin: 5px 5px 0 5px;
+}
+
 @media all and (max-width: 560px)
 {
     div.delete-trainer {
