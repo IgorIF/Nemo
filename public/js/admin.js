@@ -677,9 +677,9 @@ $(document).ready(function () {
     function vacancyAdd(vacancy) {
         let container = $('div[id="vacancies"]');
 
-        let content = $('<div id="vacancy_' + vacancy.id + '" style="display: table; width: 100%"></div>');
+        let content = $('<div class="item-container" id="vacancy_' + vacancy.id + '"></div>');
 
-        let text = $('<div class="popup5__item" id="vacancy_text" contenteditable="true" style="display: table-cell">' + vacancy.text + '</div>');
+        let text = $('<div class="popup5__item" id="vacancy_text" contenteditable="true">' + vacancy.text + '</div>');
         let deleteBtnBlock = $('<div class="item-delete-container">' +
                                     '<svg id="vacancy_delete_btn" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash itemDeleteBtn" viewBox="0 0 16 16">' +
                                         '<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>' +

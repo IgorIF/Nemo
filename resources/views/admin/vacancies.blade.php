@@ -5,8 +5,8 @@
     <div class="popup5__block">
         <div id="vacancies">
             @foreach($vacancies as $vacancy)
-                <div id="vacancy_{{ $vacancy->id }}" style="display: table; width: 100%">
-                    <div class="popup5__item" id="vacancy_text" contenteditable="true" style="display: table-cell">
+                <div class="item-container" id="vacancy_{{ $vacancy->id }}">
+                    <div class="popup5__item" id="vacancy_text" contenteditable="true">
                         {!! $vacancy->text !!}
                     </div>
                     <div class="item-delete-container">
@@ -22,8 +22,8 @@
                 </div>
             @endforeach
         </div>
-        <div style="margin: auto; height: 100px;">
-            <a id="vacancy_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        <div class="item-add-container">
+            <a id="vacancy_add_btn" class="btn">Добавить пункт</a>
         </div>
     </div>
     <div class="popup5__email">

@@ -280,6 +280,10 @@ div.item-container div.item-content-container li div#medicalCertificate_text {
     display: table-cell
 }
 
+div.item-container div#vacancy_text {
+    display: table-cell
+}
+
 div.item-add-container {
     max-width: 90%;
     width: 100%;
