@@ -126,7 +126,7 @@
             </div>
 
             <div class="footer-hidden-logo">
-                <a class="footer-logo" href="index.html">
+                <a class="footer-logo" href="{{ route('admin.') }}">
                     <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
@@ -138,3 +138,10 @@
         </div>
     </div>
 </footer>
+
+<div class="block-bottom">
+    <div class="container">
+        <span id="text_{{ $texts->get(73)->id }}" contenteditable="true">{!! $texts->get(73)->text !!}</span>
+        <a href="" class="js-popup5 button--border">вакансии</a>
+    </div>
+</div>

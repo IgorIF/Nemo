@@ -100,9 +100,9 @@ class TrainerSeeder extends Seeder
         ]);
 
         DB::table('trainers')->insert([
-            'name' => '',
+            'name' => 'Имя',
             'image' => '14.jpg',
-            'description' => ''
+            'description' => 'Текст'
         ]);
     }
 }

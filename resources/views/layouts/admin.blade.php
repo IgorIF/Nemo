@@ -212,15 +212,8 @@
     </div>
 </section>
 
+
 @yield('footer')
-
-<div class="block-bottom">
-    <div class="container">
-        <span>Приглашаем на работу в наш дружный коллектив</span>
-        <a href="" class="js-popup5 button--border">вакансии</a>
-    </div>
-</div>
-
 
 
 <!-- popups -->
