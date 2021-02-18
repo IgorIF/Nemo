@@ -25,18 +25,18 @@
         </div>
     </div>
 
-    <div class="tab_content" data-aos="fade-up">
-        <div class="tab_item item1">
+    <div id="whoSwimWithUs" class="tab_content" data-aos="fade-up">
+        <div class="tab_item item1" style="background-image: url({{ asset('images/baby-tab-1.png') }})">
             <h3 id="text_{{ $texts->get(35)->id }}" contenteditable="true">{!! $texts->get(35)->text !!}</h3>
             <p id="text_{{ $texts->get(36)->id }}" contenteditable="true">{!! $texts->get(36)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
         </div>
-        <div class="tab_item item2">
+        <div class="tab_item item2" style="background-image: url({{ asset('images/baby-tab-2.png') }})">
             <h3 id="text_{{ $texts->get(37)->id }}" contenteditable="true">{!! $texts->get(37)->text !!}</h3>
             <p id="text_{{ $texts->get(38)->id }}" contenteditable="true">{!! $texts->get(38)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
         </div>
-        <div class="tab_item item3">
+        <div class="tab_item item3" style="background-image: url({{ asset('images/baby-tab-3.png') }})">
             <h3 id="text_{{ $texts->get(39)->id }}" contenteditable="true">{!! $texts->get(39)->text !!}</h3>
             <p id="text_{{ $texts->get(40)->id }}" contenteditable="true">{!! $texts->get(40)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>

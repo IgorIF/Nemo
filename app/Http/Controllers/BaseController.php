@@ -161,7 +161,7 @@ class BaseController extends Controller
     }
 
     private function renderFooter() {
-        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73]);
+        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 75]);
         $this->footer = view($this->template . '.footer')->with('texts', $texts)->render();
     }
 

@@ -17,6 +17,8 @@
                 <address id="text_{{ $texts->get(8)->id }}" contenteditable="true">{!! $texts->get(8)->text !!}</address>
                 <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
                 <address id="text_{{ $texts->get(11)->id }}" contenteditable="true">{!! $texts->get(11)->text !!}</address>
+                <a href="tel:{{ $texts->get(74)->text }}" data-aos="fade-up" id="text_{{ $texts->get(74)->id }}" contenteditable="true">{!! $texts->get(74)->text !!}</a>
+                <address id="text_{{ $texts->get(75)->id }}" contenteditable="true">{!! $texts->get(75)->text !!}</address>
 
             </div><div class="center2">
                 <h3 id="text_{{ $texts->get(56)->id }}" contenteditable="true">{!! $texts->get(56)->text !!}</h3>
@@ -86,6 +88,13 @@
                         <span class="metro metro4">(метро Некрасовка)</span>
                     </address>
                     <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+                </div>
+                <div class="left">
+                    <address id="text_{{ $texts->get(75)->id }}" contenteditable="true">
+                        {!! $texts->get(75)->text !!}
+                        <span class="metro metro1">(метро Речной вокзал)</span>
+                    </address>
+                    <a href="tel:{{ $texts->get(74)->text }}" id="text_{{ $texts->get(74)->id }}" contenteditable="true">{!! $texts->get(74)->text !!}</a>
                 </div>
             </div>
 

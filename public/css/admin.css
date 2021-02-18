@@ -297,6 +297,28 @@ div.item-add-container a {
     box-shadow: none
 }
 
+div.image-edit-area {
+    position: absolute;
+}
+
+.age-of-child .container .age-of-child-items .item1 div.image-edit-area
+{
+    left: 0;
+    top: 0;
+}
+
+.age-of-child .container .age-of-child-items .item2 div.image-edit-area
+{
+    left: 15%;
+    top: 0
+}
+
+.age-of-child .container .age-of-child-items .item3 div.image-edit-area
+{
+    left: 15%;
+    top: 0
+}
+
 @media all and (max-width: 560px)
 {
     div.delete-trainer {

@@ -17,6 +17,8 @@
                 <address>{!! $texts->get(8)->text !!}</address>
                 <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $texts->get(10)->text !!}</a>
                 <address>{!! $texts->get(11)->text !!}</address>
+                <a href="tel:{{ $texts->get(74)->text }}" data-aos="fade-up">{!! $texts->get(74)->text !!}</a>
+                <address>{!! $texts->get(75)->text !!}</address>
 
             </div><div class="center2">
                 <h3>{!! $texts->get(56)->text !!}</h3>
@@ -88,6 +90,14 @@
 
                     </address>
                     <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">{!! $texts->get(10)->text !!}</a>
+                </div>
+
+                <div class="left">
+                    <address>
+                        {!! $texts->get(75)->text !!}
+                        <span class="metro metro1">(метро Речной вокзал)</span>
+                    </address>
+                    <a href="tel:{{ $texts->get(74)->text }}">{!! $texts->get(74)->text !!}</a>
                 </div>
             </div>
 

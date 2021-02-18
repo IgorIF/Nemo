@@ -98,6 +98,10 @@ $(document).ready(function () {
     /// Update about us video
     $('#about_us_video_update_btn').click(onAboutUsVideoUpdateBtnClickListener);
 
+    ///
+    updateWhoSwimWithUsImage();
+
+
     $modalAddTrainer.find('input[id="input"]').change(onCreateTrainerImageChangeListener);
 
     $modalAddVideo.find('input[id="input"]').change(onVideoPreviewChangeListener);
@@ -705,6 +709,24 @@ $(document).ready(function () {
         container.find('a[id="play-video"]').attr('href', video.url);
     }
 
+    function updateWhoSwimWithUsImage() {
+        let containers = $('div[class*="age-of-child-items"]').find('div[class*="tab_item"]');
+
+        //TODO
+
+        $(containers).each(function (i, e) {
+            let left = $(e).css('background-position-x');
+            let top = $(e).css('background-position-y');
+            bgSize($(e), function(width, height){
+                let clickArea = $('<div class="image-edit-area" style="left: ' + left + '; top: ' + top + '; width: ' + width + 'px; height: ' + height + 'px"></div>');
+
+                $(clickArea).click(onImageUpdateClickListener);
+
+                $(e).append(clickArea);
+            });
+        })
+    }
+
 
     /// Handlers
     function onTextFocusinListener() {
@@ -879,6 +901,10 @@ $(document).ready(function () {
     function onAboutUsVideoUpdateBtnClickListener() {
         updateAboutUsVideo();
     }
+
+    function onImageUpdateClickListener() {
+        console.log(1);
+    }
 });
 
 
@@ -1003,4 +1029,10 @@ function clearFields(modal) {
             }
         }
     });
+}
+
+function bgSize($el, cb){
+    $('<img />')
+        .load(function(){ cb(this.width, this.height); })
+        .attr('src', $el.css('background-image').match(/^url\("?(.+?)"?\)$/)[1]);
 }

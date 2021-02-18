@@ -777,17 +777,20 @@ font-weight: 400;
 
 .age-of-child .container .age-of-child-items .item1
 {
-  background: url('../images/baby-tab-1.png') 0 0 no-repeat;
+    background-position: 0 0;
+    background-repeat: no-repeat;
 }
 
 .age-of-child .container .age-of-child-items .item2
 {
-  background: url('../images/baby-tab-2.png') 15% 0 no-repeat;
+    background-position: 15% 0;
+    background-repeat: no-repeat;
 }
 
 .age-of-child .container .age-of-child-items .item3
 {
-  background: url('../images/baby-tab-3.png') 15% 0 no-repeat;
+    background-position: 15% 0;
+    background-repeat: no-repeat;
 }
 
 .submit-your-application
@@ -818,7 +821,7 @@ font-weight: 400;
 .submit-your-application .container .left p
 {
   font-family: 'Comfortaa', cursive;
-font-weight: 300;
+    font-weight: 300;
   font-size: 17px;
   color: #747474;
   line-height: 28px;
