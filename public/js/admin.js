@@ -596,10 +596,10 @@ $(document).ready(function () {
     function ruleItemAdd(ruleItem) {
         let container = $('div[id="ruleCategory_' + ruleCategoryId + '"]').children('ul');
 
-        let content = $('<div id="ruleItem_' + ruleItem.id + '" style="display: table; width: 100%">' +
-                            '<div style="display: table-cell">' +
-                                '<li style="display: table; width: 100%">' +
-                                    '<div style="display: table-cell; width: 25px"></div>' +
+        let content = $('<div class="rule-item-container" id="ruleItem_' + ruleItem.id + '">' +
+                            '<div class="rule-item-content-container">' +
+                                '<li>' +
+                                    '<div class="rule-item-marker-container"></div>' +
                                 '</li>' +
                             '</div>' +
                             '<div class="item-delete-container">' +
@@ -614,7 +614,7 @@ $(document).ready(function () {
                              '</div>' +
                           '</div>');
 
-        let text = $('<div id="securityItem_text" contenteditable="true" style="display: table-cell">' + ruleItem.text + '</div>');
+        let text = $('<div id="ruleItem_text" contenteditable="true">' + ruleItem.text + '</div>');
 
         text.focusin(onTextFocusinListener)
             .focusout(onTextFocusoutListener);

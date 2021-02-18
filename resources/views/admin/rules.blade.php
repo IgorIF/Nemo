@@ -4,13 +4,13 @@
     <div id="ruleCategory_{{ $ruleCategories[0]->id }}" class="rule1">
         <ul>
             @foreach($ruleCategories[0]->ruleItems as $rule)
-                <div id="ruleItem_{{ $rule->id }}" style="display: table; width: 100%">
-                    <div style="display: table-cell">
-                        <li style="display: table; width: 100%">
-                            <div style="display: table-cell; width: 25px">
+                <div class="rule-item-container" id="ruleItem_{{ $rule->id }}">
+                    <div class="rule-item-content-container">
+                        <li>
+                            <div class="rule-item-marker-container">
                                 <span id="number">{{ $loop->iteration }}</span>.
                             </div>
-                            <div id="securityItem_text" contenteditable="true" style="display: table-cell">
+                            <div id="ruleItem_text" contenteditable="true">
                                 {!! $rule->text !!}
                             </div>
                         </li>
@@ -29,8 +29,8 @@
             @endforeach
         </ul>
 
-        <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
-            <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        <div class="rule-item-add-container">
+            <a id="ruleItem_add_btn" class="btn">Добавить пункт</a>
         </div>
 
     </div>
@@ -39,13 +39,13 @@
     <div id="ruleCategory_{{ $ruleCategories[1]->id }}" class="rule2">
         <ul>
             @foreach($ruleCategories[1]->ruleItems as $rule)
-                <div id="ruleItem_{{ $rule->id }}" style="display: table; width: 100%">
-                    <div style="display: table-cell">
-                        <li style="display: table; width: 100%">
-                            <div style="display: table-cell; width: 25px">
+                <div class="rule-item-container" id="ruleItem_{{ $rule->id }}">
+                    <div class="rule-item-content-container">
+                        <li>
+                            <div class="rule-item-marker-container">
                                 -
                             </div>
-                            <div id="securityItem_text" contenteditable="true" style="display: table-cell">
+                            <div id="ruleItem_text" contenteditable="true">
                                 {!! $rule->text !!}
                             </div>
                         </li>
@@ -64,8 +64,8 @@
             @endforeach
         </ul>
 
-        <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
-            <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        <div class="rule-item-add-container">
+            <a id="ruleItem_add_btn" class="btn">Добавить пункт</a>
         </div>
     </div>
 
@@ -73,13 +73,13 @@
     <div id="ruleCategory_{{ $ruleCategories[2]->id }}" class="rule2">
         <ul>
             @foreach($ruleCategories[2]->ruleItems as $rule)
-                <div id="ruleItem_{{ $rule->id }}" style="display: table; width: 100%">
-                    <div style="display: table-cell">
-                        <li style="display: table; width: 100%">
-                            <div style="display: table-cell; width: 25px">
+                <div class="rule-item-container" id="ruleItem_{{ $rule->id }}">
+                    <div class="rule-item-content-container">
+                        <li>
+                            <div class="rule-item-marker-container">
                                 <span id="number">{{ $loop->iteration }}</span>.
                             </div>
-                            <div id="securityItem_text" contenteditable="true" style="display: table-cell">
+                            <div id="ruleItem_text" contenteditable="true">
                                 {!! $rule->text !!}
                             </div>
                         </li>
@@ -98,8 +98,8 @@
             @endforeach
         </ul>
 
-        <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
-            <a id="ruleItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+        <div class="rule-item-add-container">
+            <a id="ruleItem_add_btn" class="btn">Добавить пункт</a>
         </div>
     </div>
 </div>
