@@ -596,10 +596,10 @@ $(document).ready(function () {
     function ruleItemAdd(ruleItem) {
         let container = $('div[id="ruleCategory_' + ruleCategoryId + '"]').children('ul');
 
-        let content = $('<div class="rule-item-container" id="ruleItem_' + ruleItem.id + '">' +
-                            '<div class="rule-item-content-container">' +
+        let content = $('<div class="item-container" id="ruleItem_' + ruleItem.id + '">' +
+                            '<div class="item-content-container">' +
                                 '<li>' +
-                                    '<div class="rule-item-marker-container"></div>' +
+                                    '<div class="item-marker-container"></div>' +
                                 '</li>' +
                             '</div>' +
                             '<div class="item-delete-container">' +
@@ -642,10 +642,10 @@ $(document).ready(function () {
         let container = $('ul[id="medicalCertificates"]');
 
 
-        let content = $('<div id="medicalCertificate_' + medicalCertificate.id + '" style="display: table; width: 100%">' +
-                            '<div style="display: table-cell">' +
+        let content = $('<div class="item-container" id="medicalCertificate_' + medicalCertificate.id + '">' +
+                            '<div class="item-content-container">' +
                                 '<li>' +
-                                    '<div style="display: table-cell; width: 25px">' +
+                                    '<div class="item-marker-container">' +
                                         '-' +
                                     '</div>' +
                                 '</li>' +
@@ -662,7 +662,7 @@ $(document).ready(function () {
                              '</div>' +
                          '</div>');
 
-        let text = $('<div id="medicalCertificate_text" contenteditable="true" style="display: table-cell">' + medicalCertificate.text + '</div>');
+        let text = $('<div id="medicalCertificate_text" contenteditable="true">' + medicalCertificate.text + '</div>');
 
         text.focusin(onTextFocusinListener)
             .focusout(onTextFocusoutListener);

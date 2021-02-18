@@ -4,10 +4,10 @@
     <div id="ruleCategory_{{ $ruleCategories[0]->id }}" class="rule1">
         <ul>
             @foreach($ruleCategories[0]->ruleItems as $rule)
-                <div class="rule-item-container" id="ruleItem_{{ $rule->id }}">
-                    <div class="rule-item-content-container">
+                <div class="item-container" id="ruleItem_{{ $rule->id }}">
+                    <div class="item-content-container">
                         <li>
-                            <div class="rule-item-marker-container">
+                            <div class="item-marker-container">
                                 <span id="number">{{ $loop->iteration }}</span>.
                             </div>
                             <div id="ruleItem_text" contenteditable="true">
@@ -29,7 +29,7 @@
             @endforeach
         </ul>
 
-        <div class="rule-item-add-container">
+        <div class="item-add-container">
             <a id="ruleItem_add_btn" class="btn">Добавить пункт</a>
         </div>
 
@@ -39,10 +39,10 @@
     <div id="ruleCategory_{{ $ruleCategories[1]->id }}" class="rule2">
         <ul>
             @foreach($ruleCategories[1]->ruleItems as $rule)
-                <div class="rule-item-container" id="ruleItem_{{ $rule->id }}">
-                    <div class="rule-item-content-container">
+                <div class="item-container" id="ruleItem_{{ $rule->id }}">
+                    <div class="item-content-container">
                         <li>
-                            <div class="rule-item-marker-container">
+                            <div class="item-marker-container">
                                 -
                             </div>
                             <div id="ruleItem_text" contenteditable="true">
@@ -64,7 +64,7 @@
             @endforeach
         </ul>
 
-        <div class="rule-item-add-container">
+        <div class="item-add-container">
             <a id="ruleItem_add_btn" class="btn">Добавить пункт</a>
         </div>
     </div>
@@ -73,10 +73,10 @@
     <div id="ruleCategory_{{ $ruleCategories[2]->id }}" class="rule2">
         <ul>
             @foreach($ruleCategories[2]->ruleItems as $rule)
-                <div class="rule-item-container" id="ruleItem_{{ $rule->id }}">
-                    <div class="rule-item-content-container">
+                <div class="item-container" id="ruleItem_{{ $rule->id }}">
+                    <div class="item-content-container">
                         <li>
-                            <div class="rule-item-marker-container">
+                            <div class="item-marker-container">
                                 <span id="number">{{ $loop->iteration }}</span>.
                             </div>
                             <div id="ruleItem_text" contenteditable="true">
@@ -98,7 +98,7 @@
             @endforeach
         </ul>
 
-        <div class="rule-item-add-container">
+        <div class="item-add-container">
             <a id="ruleItem_add_btn" class="btn">Добавить пункт</a>
         </div>
     </div>

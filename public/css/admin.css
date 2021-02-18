@@ -253,37 +253,41 @@ div#text_67 {
     margin: 5px 5px 0 5px;
 }
 
-div.rule-item-container {
+div.item-container {
     display: table;
     width: 100%
 }
 
-div.rule-item-container div.rule-item-content-container {
+div.item-container div.item-content-container {
     display: table-cell
 }
 
-div.rule-item-container div.rule-item-content-container li {
+div.item-container div.item-content-container li {
     display: table;
     width: 100%
 }
 
-div.rule-item-container div.rule-item-content-container li div.rule-item-marker-container {
+div.item-marker-container {
     display: table-cell;
     width: 25px
 }
 
-div.rule-item-container div.rule-item-content-container li div#ruleItem_text {
+div.item-container div.item-content-container li div#ruleItem_text {
     display: table-cell
 }
 
-div.rule-item-add-container {
+div.item-container div.item-content-container li div#medicalCertificate_text {
+    display: table-cell
+}
+
+div.item-add-container {
     max-width: 90%;
     width: 100%;
     margin: auto;
     height: 100px
 }
 
-div.rule-item-add-container a {
+div.item-add-container a {
     padding: 20px 30px;
     float: right;
     box-shadow: none

@@ -3,13 +3,13 @@
 <div class="all-rules">
     <ul id="medicalCertificates">
         @foreach($medicalCertificates as $medicalCertificate)
-            <div id="medicalCertificate_{{ $medicalCertificate->id }}" style="display: table; width: 100%">
-                <div style="display: table-cell">
+            <div class="item-container" id="medicalCertificate_{{ $medicalCertificate->id }}">
+                <div class="item-content-container">
                     <li>
-                        <div style="display: table-cell; width: 25px">
+                        <div class="item-marker-container">
                             -
                         </div>
-                        <div id="medicalCertificate_text" contenteditable="true" style="display: table-cell">
+                        <div id="medicalCertificate_text" contenteditable="true">
                             {!! $medicalCertificate->text !!}
                         </div>
                     </li>
@@ -28,8 +28,8 @@
         @endforeach
     </ul>
 
-    <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
-        <a id="medicalCertificate_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить пункт</a>
+    <div class="item-add-container">
+        <a id="medicalCertificate_add_btn" class="btn">Добавить пункт</a>
     </div>
 
     <p style="font-weight: bolder">
