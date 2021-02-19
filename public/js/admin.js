@@ -12,7 +12,7 @@ $(document).ready(function () {
     let securityCategoryId;
     let ruleCategoryId;
     let imageFile;
-    let cropBtnMode;        // trainer_create, trainer_update, video_create, about_us_video_update
+    let cropBtnMode;        // trainer_create, trainer_update, video_create, about_us_video_update, image_update
     let saveItemBtnMode;    // security, rule, medicalCertificate, vacancy
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -446,6 +446,8 @@ $(document).ready(function () {
 
         let reader;
 
+        console.log(files);
+
         if (files && files.length > 0) {
             imageFile = files[0];
 
@@ -712,15 +714,14 @@ $(document).ready(function () {
     function updateWhoSwimWithUsImage() {
         let containers = $('div[class*="age-of-child-items"]').find('div[class*="tab_item"]');
 
-        //TODO
-
         $(containers).each(function (i, e) {
-            let left = $(e).css('background-position-x');
-            let top = $(e).css('background-position-y');
             bgSize($(e), function(width, height){
-                let clickArea = $('<div class="image-edit-area" style="width: ' + width + 'px; height: ' + height + 'px"></div>');
+                let clickArea = $(e).find('label[class*="image-edit-area"]');
+                clickArea.css('width', width + 'px');
+                clickArea.css('height', height + 'px');
 
-                $(clickArea).click(onImageUpdateClickListener);
+                $(clickArea).change(onUpdateImageChangeListener);
+                $(clickArea).tooltip();
 
                 $(e).append(clickArea);
             });
@@ -902,8 +903,10 @@ $(document).ready(function () {
         updateAboutUsVideo();
     }
 
-    function onImageUpdateClickListener() {
+    function onUpdateImageChangeListener() {
         console.log(1);
+        cropBtnMode = 'image_update';
+        showCropperImage(this);
     }
 });
 

@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.our-trainers #f1 img {
+    cursor: pointer;
+}
+
 .videoDeleteBtn {
     cursor: pointer;
 }
@@ -302,17 +306,18 @@ div.item-add-container a {
     position: relative;
 }
 
-div.image-edit-area {
+label.image-edit-area {
     position: absolute;
+    cursor: pointer;
 }
 
-.age-of-child .container .age-of-child-items .item1 div.image-edit-area
+.age-of-child .container .age-of-child-items .item1 label.image-edit-area
 {
     left: 0;
     top: 0;
 }
 
-.age-of-child .container .age-of-child-items .item2 div.image-edit-area
+.age-of-child .container .age-of-child-items .item2 label.image-edit-area
 {
     left: 15%;
     top: 0;
@@ -320,7 +325,7 @@ div.image-edit-area {
     transform: translate(-15%, 0px);
 }
 
-.age-of-child .container .age-of-child-items .item3 div.image-edit-area
+.age-of-child .container .age-of-child-items .item3 label.image-edit-area
 {
     left: 15%;
     top: 0;
