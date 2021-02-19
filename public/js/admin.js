@@ -718,7 +718,7 @@ $(document).ready(function () {
             let left = $(e).css('background-position-x');
             let top = $(e).css('background-position-y');
             bgSize($(e), function(width, height){
-                let clickArea = $('<div class="image-edit-area" style="left: ' + left + '; top: ' + top + '; width: ' + width + 'px; height: ' + height + 'px"></div>');
+                let clickArea = $('<div class="image-edit-area" style="width: ' + width + 'px; height: ' + height + 'px"></div>');
 
                 $(clickArea).click(onImageUpdateClickListener);
 

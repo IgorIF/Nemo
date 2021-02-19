@@ -297,6 +297,11 @@ div.item-add-container a {
     box-shadow: none
 }
 
+.age-of-child .container .age-of-child-items .tab_content .tab_item
+{
+    position: relative;
+}
+
 div.image-edit-area {
     position: absolute;
 }
@@ -310,19 +315,33 @@ div.image-edit-area {
 .age-of-child .container .age-of-child-items .item2 div.image-edit-area
 {
     left: 15%;
-    top: 0
+    top: 0;
+    -ms-transform: translate(-15%, 0px);
+    transform: translate(-15%, 0px);
 }
 
 .age-of-child .container .age-of-child-items .item3 div.image-edit-area
 {
     left: 15%;
-    top: 0
+    top: 0;
+    -ms-transform: translate(-15%, 0px);
+    transform: translate(-15%, 0px);
 }
 
 @media all and (max-width: 560px)
 {
     div.delete-trainer {
         right: 80px;
+    }
+}
+
+@media all and (max-width: 600px)
+{
+    .age-of-child .container .age-of-child-items .tab_content .tab_item .image-edit-area
+    {
+        left: 50%;
+        -ms-transform: translate(-50%);
+        transform: translate(-50%);
     }
 }
 
