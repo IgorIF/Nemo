@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="early-development-center">
-    <img src="{{ asset('images/baby2.png') }}">
+    <img src="{{ asset('storage/images/images/' . $images->get(2)->image) }}">
 </div>
 <div class="early-development-right">
     <div class="top" data-aos="fade-up">
