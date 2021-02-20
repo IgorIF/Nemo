@@ -313,7 +313,8 @@ $(document).ready(function () {
         let url = 'admin/images/' + imageId;
 
         ajax('POST', url, data, function (response) {
-            console.log(response);
+            $('[id="image_' + imageId + '"]').attr('style', 'background-image: url(../storage/images/images/' + response.image + ')');
+            toast('Изображение обновлено', {type: 'success'});
         }, function (error) {
             console.log(error);
         }, true);
