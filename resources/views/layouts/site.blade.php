@@ -96,11 +96,7 @@
 
 <body>
 
-<header class="header">
-
-    @yield('header')
-
-</header>
+@yield('header')
 
 <section class="about" id="about">
     <div class="container clearfix">
