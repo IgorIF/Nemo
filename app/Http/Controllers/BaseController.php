@@ -112,7 +112,7 @@ class BaseController extends Controller
     private function renderHeader() {
         $texts = $this->textsRepository->getInRangeById([1 => 15]);
         $images = $this->imagesRepository->getInRangeById([1 => 1]);
-        $this->header = view( $this->template . '.header')->with('texts', $texts)->render();
+        $this->header = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderAboutUs() {

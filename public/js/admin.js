@@ -9,6 +9,7 @@ $(document).ready(function () {
     let cropperObj;
     let cropperData;
     let trainerId;
+    let imageId;
     let securityCategoryId;
     let ruleCategoryId;
     let imageFile;
@@ -62,6 +63,9 @@ $(document).ready(function () {
     /// Trainer image edit cropper show
     $('[id^="trainer_image"]').change(onUpdateTrainerImageChangeListener);
 
+    /// Image edit cropper show
+    $('input[id="image"]').change(onUpdateImageChangeListener);
+
     /// Save trainer image
     $('#crop_btn').click(onCropBtnClickListener);
 
@@ -99,7 +103,7 @@ $(document).ready(function () {
     $('#about_us_video_update_btn').click(onAboutUsVideoUpdateBtnClickListener);
 
     ///
-    updateWhoSwimWithUsImage();
+    //updateWhoSwimWithUsImage();
 
 
     $modalAddTrainer.find('input[id="input"]').change(onCreateTrainerImageChangeListener);
@@ -299,6 +303,22 @@ $(document).ready(function () {
         }, null, true);
     }
 
+    function saveImage() {
+        let data = new FormData();
+        let imageData = JSON.stringify(cropperData);
+        data.append('_method', 'PUT');
+        data.append('image', imageFile);
+        data.append('image-data', imageData);
+
+        let url = 'admin/images/' + imageId;
+
+        ajax('POST', url, data, function (response) {
+            console.log(response);
+        }, function (error) {
+            console.log(error);
+        }, true);
+    }
+
     function saveNewTrainer() {
         let data = new FormData($modalAddTrainer.find('form')[0]);
         data.append('image-data', JSON.stringify(cropperData));
@@ -445,8 +465,6 @@ $(document).ready(function () {
         };
 
         let reader;
-
-        console.log(files);
 
         if (files && files.length > 0) {
             imageFile = files[0];
@@ -835,6 +853,9 @@ $(document).ready(function () {
             case 'about_us_video_update':
                 updatePreview($modalAboutUsEditVideo);
                 break
+            case 'image_update':
+                saveImage();
+
         }
 
         $modalCropper.modal('hide');
@@ -904,8 +925,8 @@ $(document).ready(function () {
     }
 
     function onUpdateImageChangeListener() {
-        console.log(1);
         cropBtnMode = 'image_update';
+        imageId = $(this).parents('[id^="image_"]').attr('id').split('_')[1];
         showCropperImage(this);
     }
 });

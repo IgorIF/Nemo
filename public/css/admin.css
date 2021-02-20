@@ -342,6 +342,7 @@ label.image-edit-area {
     height: 619px;
     width: 100%;
     bottom: 0;
+    cursor: pointer;
 }
 
 @media all and (max-width: 1074px)

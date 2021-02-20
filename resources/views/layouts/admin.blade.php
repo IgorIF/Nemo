@@ -113,11 +113,7 @@
 
 @yield('adminNav')
 
-<header class="header">
-
-    @yield('header')
-
-</header>
+@yield('header')
 
 @yield('modalAboutUsEditVideo')
 @yield('modalAddTrainer')
