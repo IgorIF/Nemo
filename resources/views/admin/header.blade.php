@@ -87,6 +87,9 @@
         <div class="progress-bar" id="myBar"></div>
     </div>
 </nav>
+<label class="header-image-edit-area label" data-toggle="tooltip" title="Изменить фон">
+    <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
+</label>
 <div class="container">
     <div class="header-bottom">
         <h1 data-aos="fade-up" id="text_{{ $texts->get(13)->id }}" contenteditable="true">

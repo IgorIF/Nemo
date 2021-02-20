@@ -333,10 +333,28 @@ label.image-edit-area {
     transform: translate(-15%, 0px);
 }
 
-@media all and (max-width: 560px)
+.header {
+    position: relative;
+}
+
+.header-image-edit-area {
+    position: absolute;
+    height: 619px;
+    width: 100%;
+    bottom: 0;
+}
+
+@media all and (max-width: 1074px)
 {
-    div.delete-trainer {
-        right: 80px;
+    .header-image-edit-area {
+        height: 600px;
+    }
+}
+
+@media all and (max-width: 1074px)
+{
+    .header-image-edit-area {
+        height: 600px;
     }
 }
 
@@ -363,6 +381,10 @@ label.image-edit-area {
     .header .container .header-bottom h1 {
         margin-top: 0;
         padding-top: 130px;
+    }
+
+    .header-image-edit-area {
+        height: 582px;
     }
 }
 
