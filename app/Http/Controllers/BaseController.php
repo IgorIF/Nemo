@@ -129,7 +129,8 @@ class BaseController extends Controller
 
     private function renderWhoSwimsWithUs() {
         $texts = $this->textsRepository->getInRangeById([31 => 40]);
-        $this->whoSwimsWithUs = view($this->template . '.who_swims_with_us')->with('texts', $texts)->render();
+        $images = $this->imagesRepository->getInRangeById([3 => 5]);
+        $this->whoSwimsWithUs = view($this->template . '.who_swims_with_us')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderTrainers() {
