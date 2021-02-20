@@ -17,7 +17,11 @@
     </div>
 </div>
 <div class="early-development-center">
-    <img src="{{ asset('images/baby2.png') }}">
+    <label style="cursor: pointer">
+        <img id="image_{{ $images->get(2)->id }}" src="{{ asset('storage/images/images/' . $images->get(2)->image) }}">
+        <div></div>
+        <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
+    </label>
 </div>
 <div class="early-development-right">
     <div class="top" data-aos="fade-up">

@@ -123,7 +123,8 @@ class BaseController extends Controller
 
     private function renderTheBenefitsOfEarlySwimming() {
         $texts = $this->textsRepository->getInRangeById([18 => 30]);
-        $this->theBenefitsOfEarlySwimming = view($this->template . '.the_benefits_of_early_swimming')->with('texts', $texts)->render();
+        $images = $this->imagesRepository->getInRangeById([2 => 2]);
+        $this->theBenefitsOfEarlySwimming = view($this->template . '.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderWhoSwimsWithUs() {

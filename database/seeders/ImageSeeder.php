@@ -19,5 +19,11 @@ class ImageSeeder extends Seeder
             'id' => 1,
             'image' => 'description-bg.jpg',
         ]);
+
+        // the benefits of early swimming
+        DB::table('images')->insert([
+            'id' => 2,
+            'image' => 'baby2.png',
+        ]);
     }
 }

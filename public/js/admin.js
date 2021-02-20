@@ -313,11 +313,18 @@ $(document).ready(function () {
         let url = 'admin/images/' + imageId;
 
         ajax('POST', url, data, function (response) {
-            $('[id="image_' + imageId + '"]').attr('style', 'background-image: url(../storage/images/images/' + response.image + ')');
+
+            let imgElement = $('[id="image_' + imageId + '"]');
+            let tagName = $(imgElement)[0].tagName;
+
+            if (tagName === "IMG") {
+                $(imgElement).attr('src', '../storage/images/images/' + response.image);
+            } else {
+                $(imgElement).attr('style', 'background-image: url(../storage/images/images/' + response.image + ')');
+            }
+
             toast('Изображение обновлено', {type: 'success'});
-        }, function (error) {
-            console.log(error);
-        }, true);
+        }, null, true);
     }
 
     function saveNewTrainer() {
@@ -927,7 +934,17 @@ $(document).ready(function () {
 
     function onUpdateImageChangeListener() {
         cropBtnMode = 'image_update';
-        imageId = $(this).parents('[id^="image_"]').attr('id').split('_')[1];
+
+        let imageContainer;
+
+        if($(this).siblings('[id^="image_"]').length) {
+            imageContainer = $(this).siblings('[id^="image_"]');
+        }else {
+            imageContainer = $(this).parents('[id^="image_"]');
+        }
+
+        imageId = $(imageContainer).attr('id').split('_')[1];
+
         showCropperImage(this);
     }
 });
