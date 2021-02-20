@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\RuleItemsRepository;
@@ -29,6 +30,7 @@ class BaseController extends Controller
     protected $ruleItemsRepository;
     protected $medicalCertificatesRepository;
     protected $vacanciesRepository;
+    protected $imagesRepository;
 
     protected $header;
     protected $aboutUs;
@@ -70,7 +72,7 @@ class BaseController extends Controller
 
     protected function initRepositories(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                         SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                        RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository) {
+                                        RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository, ImagesRepository $imagesRepository) {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
@@ -80,6 +82,7 @@ class BaseController extends Controller
         $this->ruleItemsRepository = $ruleItemsRepository;
         $this->medicalCertificatesRepository = $medicalCertificatesRepository;
         $this->vacanciesRepository = $vacanciesRepository;
+        $this->imagesRepository = $imagesRepository;
     }
 
     protected function renderOutput() {
@@ -108,6 +111,7 @@ class BaseController extends Controller
 
     private function renderHeader() {
         $texts = $this->textsRepository->getInRangeById([1 => 15]);
+        $images = $this->imagesRepository->getInRangeById([1 => 1]);
         $this->header = view( $this->template . '.header')->with('texts', $texts)->render();
     }
 
