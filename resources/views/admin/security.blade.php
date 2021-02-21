@@ -18,7 +18,7 @@
 
         @foreach($securityCategories as $securityCategory)
 
-            <div id="securityCategory_{{ $securityCategory->id }}" class="tab_item2 item{{ $loop->iteration }}" style="background-image: url({{ asset('storage/images/images/' . $images->get(6 + $loop->iteration)->image) }})">
+            <div id="securityCategory_{{ $securityCategory->id }}" class="tab_item2 item{{ $loop->iteration }} image_{{ $images->get(6 + $loop->iteration)->id }}" style="background-image: url({{ asset('storage/images/images/' . $images->get(6 + $loop->iteration)->image) }})">
                 <ul>
                     @foreach($securityCategory->securityItems as $securityItem)
                         <div id="securityItem_{{ $securityItem->id }}" style="display: table; width: 100%">

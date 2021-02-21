@@ -320,7 +320,7 @@ $(document).ready(function () {
 
         ajax('POST', url, data, function (response) {
 
-            let imgElement = $('[id="image_' + imageId + '"]');
+            let imgElement = $('[class*="image_' + imageId + '"]');
             let tagName = $(imgElement)[0].tagName;
 
             if (tagName === "IMG") {
@@ -943,18 +943,24 @@ $(document).ready(function () {
 
         let imageContainer;
 
-        if($(this).siblings('[id^="image_"]').length) {
-            imageContainer = $(this).siblings('[id^="image_"]');
+        if($(this).siblings('[class*="image_"]').length) {
+            imageContainer = $(this).siblings('[class*="image_"]');
             aspectRatio = imageContainer.width() / imageContainer.height();
         }else {
-            imageContainer = $(this).parents('[id^="image_"]');
+            imageContainer = $(this).parents('[class*="image_"]');
+
             if ($(imageContainer)[0].tagName !== 'HEADER') {
                 let label = $(imageContainer).find('label');
                 aspectRatio = label.width() / label.height();
             }
         }
 
-        imageId = $(imageContainer).attr('id').split('_')[1];
+        $(imageContainer).attr('class').split(' ').some(function (e) {
+            if (e.split('_')[0] === 'image') {
+                imageId = e.split('_')[1];
+                return true;
+            }
+        })
 
         showCropperImage(this);
     }

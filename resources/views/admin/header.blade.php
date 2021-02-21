@@ -1,4 +1,4 @@
-<header id="image_{{ $images->get(1)->id }}" class="header" style="background-image: url({{ asset('storage/images/images/' . $images->get(1)->image) }})">
+<header class="header image_{{ $images->get(1)->id }}" style="background-image: url({{ asset('storage/images/images/' . $images->get(1)->image) }})">
     <div class="header-top clearfix">
         <div class="container">
             <div class="menu-mobile_div visible-mobile">

@@ -18,7 +18,7 @@
 </div>
 <div class="early-development-center">
     <label style="cursor: pointer">
-        <img id="image_{{ $images->get(2)->id }}" src="{{ asset('storage/images/images/' . $images->get(2)->image) }}">
+        <img class="image_{{ $images->get(2)->id }}" src="{{ asset('storage/images/images/' . $images->get(2)->image) }}">
         <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
     </label>
 </div>
