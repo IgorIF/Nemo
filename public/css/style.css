@@ -3116,6 +3116,7 @@ font-weight: 300;
 {
   width: 565px;
   float: left;
+    text-align: center;
 }
 
 @font-face

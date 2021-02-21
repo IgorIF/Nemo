@@ -390,6 +390,12 @@ label.image-edit-area {
         -ms-transform: translate(-50%);
         transform: translate(-50%);
     }
+
+    .security .container .right .tab_content2 .tab_item2 .image-edit-area {
+        left: 50%;
+        -ms-transform: translate(-50%);
+        transform: translate(-50%);
+    }
 }
 
 @media all and (max-width: 760px)
