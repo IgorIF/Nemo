@@ -15,6 +15,7 @@ $(document).ready(function () {
     let imageFile;
     let cropBtnMode;        // trainer_create, trainer_update, video_create, about_us_video_update, image_update
     let saveItemBtnMode;    // security, rule, medicalCertificate, vacancy
+    let aspectRatio;
 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -39,6 +40,10 @@ $(document).ready(function () {
             case 'about_us_video_update':
                 params.aspectRatio = 1.454;
                 break;
+            case 'image_update':
+                if (aspectRatio != null)
+                    params.aspectRatio = aspectRatio;
+
         }
         params.autoCropArea = 1;
         params.movable = false;
@@ -52,6 +57,7 @@ $(document).ready(function () {
     }).on('hidden.bs.modal', function () {
         cropperObj.destroy();
         cropperObj = null;
+        aspectRatio = null;
     });
 
     $modalAddItem.on('hidden.bs.modal', function () {
@@ -103,7 +109,7 @@ $(document).ready(function () {
     $('#about_us_video_update_btn').click(onAboutUsVideoUpdateBtnClickListener);
 
     ///
-    //updateWhoSwimWithUsImage();
+    setBackgroundImageChangeAreaDimensions();
 
 
     $modalAddTrainer.find('input[id="input"]').change(onCreateTrainerImageChangeListener);
@@ -737,7 +743,7 @@ $(document).ready(function () {
         container.find('a[id="play-video"]').attr('href', video.url);
     }
 
-    function updateWhoSwimWithUsImage() {
+    function setBackgroundImageChangeAreaDimensions() {
         let containers = $('div[class*="age-of-child-items"]').find('div[class*="tab_item"]');
 
         $(containers).each(function (i, e) {
@@ -745,11 +751,6 @@ $(document).ready(function () {
                 let clickArea = $(e).find('label[class*="image-edit-area"]');
                 clickArea.css('width', width + 'px');
                 clickArea.css('height', height + 'px');
-
-                $(clickArea).change(onUpdateImageChangeListener);
-                $(clickArea).tooltip();
-
-                $(e).append(clickArea);
             });
         })
     }
@@ -939,8 +940,13 @@ $(document).ready(function () {
 
         if($(this).siblings('[id^="image_"]').length) {
             imageContainer = $(this).siblings('[id^="image_"]');
+            aspectRatio = imageContainer.width() / imageContainer.height();
         }else {
             imageContainer = $(this).parents('[id^="image_"]');
+            if ($(imageContainer)[0].tagName !== 'HEADER') {
+                let label = $(imageContainer).find('label');
+                aspectRatio = label.width() / label.height();
+            }
         }
 
         imageId = $(imageContainer).attr('id').split('_')[1];
