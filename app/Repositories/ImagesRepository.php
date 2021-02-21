@@ -16,6 +16,11 @@ class ImagesRepository extends Repository
         $this->model = $image;
     }
 
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return string|null
+     */
     public function updateImage(Request $request, int $id): ?string
     {
         $imageName = null;
