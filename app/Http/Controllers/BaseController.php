@@ -48,8 +48,19 @@ class BaseController extends Controller
     protected $medicalCertificates;
     protected $vacancies;
 
-    public function __construct() {
-        //
+    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
+                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
+                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository, ImagesRepository $imagesRepository) {
+        $this->textsRepository = $textsRepository;
+        $this->trainersRepository = $trainersRepository;
+        $this->securityCategoriesRepository = $securityCategoriesRepository;
+        $this->securityItemsRepository = $securityItemsRepository;
+        $this->videosRepository = $videosRepository;
+        $this->ruleCategoriesRepository = $ruleCategoriesRepository;
+        $this->ruleItemsRepository = $ruleItemsRepository;
+        $this->medicalCertificatesRepository = $medicalCertificatesRepository;
+        $this->vacanciesRepository = $vacanciesRepository;
+        $this->imagesRepository = $imagesRepository;
     }
 
     public function __invoke(Request $request) {
@@ -68,21 +79,6 @@ class BaseController extends Controller
         $this->renderRules();
         $this->renderMedicalCertificates();
         $this->renderVacancies();
-    }
-
-    protected function initRepositories(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                        SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                        RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository, ImagesRepository $imagesRepository) {
-        $this->textsRepository = $textsRepository;
-        $this->trainersRepository = $trainersRepository;
-        $this->securityCategoriesRepository = $securityCategoriesRepository;
-        $this->securityItemsRepository = $securityItemsRepository;
-        $this->videosRepository = $videosRepository;
-        $this->ruleCategoriesRepository = $ruleCategoriesRepository;
-        $this->ruleItemsRepository = $ruleItemsRepository;
-        $this->medicalCertificatesRepository = $medicalCertificatesRepository;
-        $this->vacanciesRepository = $vacanciesRepository;
-        $this->imagesRepository = $imagesRepository;
     }
 
     protected function renderOutput() {
