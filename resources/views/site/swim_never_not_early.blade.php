@@ -1,5 +1,5 @@
 <div class="right" data-aos="fade-up">
-    <img src="{{ asset('images/submit-your-application-bg.png') }}" alt="Детский акваклуб «Немо»" width="632" height="411">
+    <img src="{{ asset('storage/images/images/' . $images->get(6)->image) }}" alt="Детский акваклуб «Немо»" width="632" height="411">
 </div>
 
 <div class="left">

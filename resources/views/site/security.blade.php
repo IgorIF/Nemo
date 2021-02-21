@@ -15,7 +15,7 @@
     <div class="tab_content2" data-aos="fade-up">
 
         @foreach($securityCategories as $securityCategory)
-            <div class="tab_item2 item{{ $loop->iteration }}">
+            <div class="tab_item2 item{{ $loop->iteration }}" style="background-image: url({{ asset('storage/images/images/' . $images->get(6 + $loop->iteration)->image) }})">
                 <ul>
                     @foreach($securityCategory->securityItems as $securityItem)
                         <li>{!! $securityItem->text !!}</li>
