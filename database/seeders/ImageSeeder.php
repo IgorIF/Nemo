@@ -50,5 +50,22 @@ class ImageSeeder extends Seeder
             'id' => 6,
             'image' => 'submit-your-application-bg.png',
         ]);
+
+
+        // security
+        DB::table('images')->insert([
+            'id' => 7,
+            'image' => 'security1.png',
+        ]);
+
+        DB::table('images')->insert([
+            'id' => 8,
+            'image' => 'security2.png',
+        ]);
+
+        DB::table('images')->insert([
+            'id' => 9,
+            'image' => 'security3.png',
+        ]);
     }
 }

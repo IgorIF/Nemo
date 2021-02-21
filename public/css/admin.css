@@ -306,6 +306,10 @@ div.item-add-container a {
     position: relative;
 }
 
+.security .container .right .tab_content2 .tab_item2 {
+    position: relative;
+}
+
 label.image-edit-area {
     position: absolute;
     cursor: pointer;
@@ -327,6 +331,25 @@ label.image-edit-area {
 
 .age-of-child .container .age-of-child-items .item3 label.image-edit-area
 {
+    left: 15%;
+    top: 0;
+    -ms-transform: translate(-15%, 0px);
+    transform: translate(-15%, 0px);
+}
+
+.security .container .right .item1 label.image-edit-area {
+    left: 0;
+    top: 0
+}
+
+.security .container .right .item2 label.image-edit-area {
+    left: 15%;
+    top: 0;
+    -ms-transform: translate(-15%, 0px);
+    transform: translate(-15%, 0px);
+}
+
+.security .container .right .item3 label.image-edit-area {
     left: 15%;
     top: 0;
     -ms-transform: translate(-15%, 0px);

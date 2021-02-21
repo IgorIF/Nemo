@@ -14,8 +14,11 @@
 
     <div class="tab_content2" data-aos="fade-up">
 
+
+
         @foreach($securityCategories as $securityCategory)
-            <div id="securityCategory_{{ $securityCategory->id }}" class="tab_item2 item{{ $loop->iteration }}">
+
+            <div id="securityCategory_{{ $securityCategory->id }}" class="tab_item2 item{{ $loop->iteration }}" style="background-image: url({{ asset('storage/images/images/' . $images->get(6 + $loop->iteration)->image) }})">
                 <ul>
                     @foreach($securityCategory->securityItems as $securityItem)
                         <div id="securityItem_{{ $securityItem->id }}" style="display: table; width: 100%">
@@ -46,6 +49,10 @@
                 <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">
                     <a id="securityItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить запись</a>
                 </div>
+
+                <label class="image-edit-area label" data-toggle="tooltip" title="Изменить">
+                    <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
+                </label>
 
             </div>
         @endforeach

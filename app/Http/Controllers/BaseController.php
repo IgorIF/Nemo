@@ -153,7 +153,8 @@ class BaseController extends Controller
     private function renderSecurity() {
         $texts = $this->textsRepository->getInRangeById([46 => 47]);
         $securityCategories = $this->securityCategoriesRepository->getAll();
-        $this->security = view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories])->render();
+        $images = $this->imagesRepository->getInRangeById([7 => 9]);
+        $this->security = view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories, 'images' => $images])->render();
     }
 
     private function renderReviews() {

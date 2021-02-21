@@ -744,7 +744,12 @@ $(document).ready(function () {
     }
 
     function setBackgroundImageChangeAreaDimensions() {
-        let containers = $('div[class*="age-of-child-items"]').find('div[class*="tab_item"]');
+        let containers = $('div[class*="tab_item"]');
+
+        containers = $(containers).add('div[class*="tab_item2"]');
+
+        console.log(containers);
+
 
         $(containers).each(function (i, e) {
             bgSize($(e), function(width, height){

@@ -1532,12 +1532,14 @@ font-weight: 300;
 
 .security .container .right .item1
 {
-  background: url('../images/security1.png') 0 0 no-repeat;
+    background-position: 0 0;
+    background-repeat: no-repeat;
 }
 
 .security .container .right .item2
 {
-  background: url('../images/security2.png') 15% 0 no-repeat;
+    background-position: 15% 0;
+    background-repeat: no-repeat;
 }
 
 .security .container .right .item2 p
@@ -1553,7 +1555,8 @@ font-weight: 300;
 
 .security .container .right .item3
 {
-  background: url('../images/security3.png') 15% 0 no-repeat;
+    background-position: 15% 0;
+    background-repeat: no-repeat;
 }
 
 .subscribers-for-visits
