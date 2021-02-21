@@ -43,5 +43,12 @@ class ImageSeeder extends Seeder
             'id' => 5,
             'image' => 'baby-tab-3.png',
         ]);
+
+
+        // swim never not early
+        DB::table('images')->insert([
+            'id' => 6,
+            'image' => 'submit-your-application-bg.png',
+        ]);
     }
 }

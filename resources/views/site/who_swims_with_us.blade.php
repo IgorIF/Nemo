@@ -26,17 +26,17 @@
     </div>
 
     <div class="tab_content" data-aos="fade-up">
-        <div class="tab_item item1">
+        <div class="tab_item item1" style="background-image: url({{ asset('storage/images/images/' . $images->get(3)->image) }})">
             <h3>{!! $texts->get(35)->text !!}</h3>
             <p>{!! $texts->get(36)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
         </div>
-        <div class="tab_item item2">
+        <div class="tab_item item2" style="background-image: url({{ asset('storage/images/images/' . $images->get(4)->image) }})">
             <h3>{!! $texts->get(37)->text !!}</h3>
             <p>{!! $texts->get(38)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
         </div>
-        <div class="tab_item item3">
+        <div class="tab_item item3" style="background-image: url({{ asset('storage/images/images/' . $images->get(5)->image) }})">
             <h3>{!! $texts->get(39)->text !!}</h3>
             <p>{!! $texts->get(40)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>

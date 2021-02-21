@@ -146,7 +146,8 @@ class BaseController extends Controller
 
     private function renderSwimNeverNotEarly() {
         $texts = $this->textsRepository->getInRangeById([44 => 45]);
-        $this->swimNeverNotEarly = view($this->template . '.swim_never_not_early')->with('texts', $texts)->render();
+        $images = $this->imagesRepository->getInRangeById([6 => 6]);
+        $this->swimNeverNotEarly = view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderSecurity() {
