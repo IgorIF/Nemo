@@ -25,7 +25,7 @@ class VideosRepository extends Repository
      * @param Request $request
      * @return Video
      */
-    public function createVideo(Request $request): Video
+    public function createVideo(Request $request) : Video
     {
         $data = $request->all();
 
@@ -35,7 +35,7 @@ class VideosRepository extends Repository
         $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/videos/');
 
         return Video::create([
-            'url' => $data['url'],
+            'url' => $this->getLink($data['url']),
             'image' => $fileName
         ]);
     }
@@ -80,5 +80,21 @@ class VideosRepository extends Repository
 
         $this->deleteImage('public/images/videos/' . $video->image);
         $video->delete();
+    }
+
+    private function getLink($data): string
+    {
+        $link = null;
+
+        $arr = explode('/', $data);
+        $linkCase = $arr[count($arr) - 1];
+
+        if (count(explode('=', $linkCase)) < 2) {
+            $link = $linkCase;
+        } else {
+            $arr = explode('=', $linkCase);
+            $link = $arr[count($arr) - 1];
+        }
+        return $link;
     }
 }

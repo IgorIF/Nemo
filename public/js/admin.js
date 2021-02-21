@@ -581,7 +581,7 @@ $(document).ready(function () {
                         '<div class="review_block">' +
                             '<div class="play_block">' +
                                 '<img src="storage/images/videos/' + video.image + '"  alt=""/>' +
-                                '<a id="play-video-review" class="video-play-button" href="' + video.url + '"><span></span></a>' +
+                                '<a id="play-video-review" class="video-play-button" href="https://www.youtube.com/embed/' + video.url + '?autoplay=1"><span></span></a>' +
                             '</div>' +
                         '</div>' +
                         '<div class="video-delete-container">' +
