@@ -14,7 +14,7 @@ class MedicalCertificateController extends IndexController
      *
      * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         //
     }
@@ -24,7 +24,7 @@ class MedicalCertificateController extends IndexController
      *
      * @return Response
      */
-    public function create()
+    public function create(): Response
     {
         //
     }
@@ -49,10 +49,10 @@ class MedicalCertificateController extends IndexController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function show(int $id): Response
     {
         //
     }
@@ -60,10 +60,10 @@ class MedicalCertificateController extends IndexController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(int $id): Response
     {
         //
     }
