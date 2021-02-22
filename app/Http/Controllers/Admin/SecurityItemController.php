@@ -40,7 +40,7 @@ class SecurityItemController extends IndexController
             'text' => 'required'
         ]);
 
-        $securityItem = $this->securityItemsRepository->createSecurityItem($request);
+        $securityItem = $this->securityItemsRepository->create($request);
 
         return response()->json(['securityItem' => $securityItem]);
     }
@@ -75,7 +75,7 @@ class SecurityItemController extends IndexController
      */
     public function update(Request $request, int $id)
     {
-        $this->securityItemsRepository->updateSecurityItem($request, $id);
+        $this->securityItemsRepository->update($request, $id);
     }
 
     /**

@@ -18,7 +18,7 @@ class SecurityItemsRepository extends Repository
      * @param Request $request
      * @return SecurityItem
      */
-    public function createSecurityItem(Request $request): SecurityItem
+    public function create(Request $request): SecurityItem
     {
         $securityCategory = SecurityCategory::find($request->get('securityCategoryId'));
 
@@ -35,10 +35,9 @@ class SecurityItemsRepository extends Repository
      * @param Request $request
      * @param int $id
      */
-    public function updateSecurityItem(Request $request, int $id)
+    public function update(Request $request, int $id)
     {
         $securityItem = $this->model::find($id);
-
         $securityItem->fill(['text' => $request->get('text')]);
         $securityItem->update();
     }
