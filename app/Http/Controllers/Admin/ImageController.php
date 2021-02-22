@@ -71,7 +71,7 @@ class ImageController extends IndexController
      */
     public function update(Request $request, int $id): JsonResponse
     {
-        $imageName = $this->imagesRepository->updateImage($request, $id);
+        $imageName = $this->imagesRepository->update($request, $id);
         return response()->json(['image' => $imageName]);
     }
 

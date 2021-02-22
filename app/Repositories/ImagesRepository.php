@@ -20,7 +20,7 @@ class ImagesRepository extends Repository
      * @param int $id
      * @return string|null
      */
-    public function updateImage(Request $request, int $id): ?string
+    public function update(Request $request, int $id): ?string
     {
         $image = $this->model::find($id);
 
