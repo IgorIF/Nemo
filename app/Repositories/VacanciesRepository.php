@@ -3,7 +3,6 @@
 
 namespace App\Repositories;
 
-
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 

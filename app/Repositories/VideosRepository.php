@@ -10,6 +10,7 @@ class VideosRepository extends Repository
 {
     public function __construct(Video $video) {
         $this->model = $video;
+        $this->imagePath = 'images/videos/';
     }
 
     public function getAllReviewsVideos() {
@@ -25,16 +26,16 @@ class VideosRepository extends Repository
      * @param Request $request
      * @return Video
      */
-    public function createVideo(Request $request) : Video
+    public function create(Request $request) : Video
     {
         $data = $request->all();
 
         $data['image-data'] = json_decode($data['image-data'], true);
         $data['image-data'] = $this->roundImageData($data['image-data']);
 
-        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/videos/');
+        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
 
-        return Video::create([
+        return $this->model::create([
             'url' => $this->getLink($data['url']),
             'image' => $fileName
         ]);
@@ -45,20 +46,20 @@ class VideosRepository extends Repository
      * @param int $id
      * @return Video
      */
-    public function updateVideo(Request $request, int $id): Video
+    public function update(Request $request, int $id): Video
     {
         $fill = [];
 
-        $video = Video::find($id);
+        $video = $this->model::find($id);
 
         if ($request->file('image')) {
             $data = $request->except('_method');
             $data['image-data'] = json_decode($data['image-data'], true);
-
             $data['image-data'] = $this->roundImageData($data['image-data']);
-            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/images/videos/');
 
-            $this->deleteImage('public/images/videos/' . $video->image);
+            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
+
+            $this->deleteImage('public/'. $this->imagePath . $video->image);
 
             $fill['image'] = $data['image'];
         }
@@ -76,8 +77,8 @@ class VideosRepository extends Repository
      */
     public function delete($id)
     {
-        $video = Video::find($id);
-        $this->deleteImage('public/images/videos/' . $video->image);
+        $video = $this->model::find($id);
+        $this->deleteImage('public/' . $this->imagePath . $video->image);
         $video->delete();
     }
 

@@ -74,7 +74,7 @@ class TrainersRepository extends Repository
     public function delete(int $id)
     {
         $trainer = $this->model::find($id);
-        $this->deleteImage($trainer->image);
+        $this->deleteImage('public/' . $this->imagePath . $trainer->image);
         $trainer->delete();
     }
 }

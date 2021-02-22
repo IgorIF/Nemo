@@ -53,7 +53,7 @@ class VideoController extends IndexController
             'image' => 'required'
         ]);
 
-        $video = $this->videosRepository->createVideo($request);
+        $video = $this->videosRepository->create($request);
 
         return response()->json(['video' => $video]);
     }
@@ -93,7 +93,7 @@ class VideoController extends IndexController
             'url' => 'required|url',
         ]);
 
-        $video = $this->videosRepository->updateVideo($request, $id);
+        $video = $this->videosRepository->update($request, $id);
 
         return response()->json(['video' => $video]);
     }
