@@ -41,7 +41,7 @@ class VacancyController extends IndexController
             'text' => 'required'
         ]);
 
-        $vacancy = $this->vacanciesRepository->createVacancy($request);
+        $vacancy = $this->vacanciesRepository->create($request);
 
         return response()->json(['vacancy' => $vacancy]);
     }
@@ -76,7 +76,7 @@ class VacancyController extends IndexController
      */
     public function update(Request $request, int $id)
     {
-        $this->vacanciesRepository->updateVacancy($request, $id);
+        $this->vacanciesRepository->update($request, $id);
     }
 
     /**

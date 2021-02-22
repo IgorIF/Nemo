@@ -18,7 +18,7 @@ class VacanciesRepository extends Repository
      * @param Request $request
      * @return Vacancy
      */
-    public function createVacancy(Request $request): Vacancy
+    public function create(Request $request): Vacancy
     {
         return $this->model::create([
             'text' => $request->get('text'),
@@ -29,7 +29,7 @@ class VacanciesRepository extends Repository
      * @param Request $request
      * @param int $id
      */
-    public function updateVacancy(Request $request, int $id)
+    public function update(Request $request, int $id)
     {
         $vacancy = $this->model::find($id);
         $vacancy->fill(['text' => $request->get('text')]);
