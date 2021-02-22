@@ -1,11 +1,9 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Models\Text;
 use Illuminate\Http\Request;
-
 
 class TextsRepository extends Repository
 {

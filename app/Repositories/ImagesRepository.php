@@ -1,11 +1,9 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
-
 
 class ImagesRepository extends Repository
 {

@@ -1,12 +1,10 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Models\RuleCategory;
 use App\Models\RuleItem;
 use Illuminate\Http\Request;
-
 
 class RuleItemsRepository extends Repository
 {

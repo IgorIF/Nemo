@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Models\RuleCategory;
-
 
 class RuleCategoriesRepository extends Repository
 {

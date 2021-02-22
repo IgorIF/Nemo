@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Repositories;
 
 use App\Models\Trainer;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class TrainersRepository extends Repository
