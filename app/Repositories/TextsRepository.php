@@ -18,7 +18,7 @@ class TextsRepository extends Repository
     {
         $result = [];
 
-        $text = Text::find($request->get('id'));
+        $text = $this->model::find($request->get('id'));
         $num = $text->fill(['text' => $request->get('text')])->update();
 
         if ($num == 1)

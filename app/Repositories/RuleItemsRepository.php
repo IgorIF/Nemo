@@ -23,7 +23,7 @@ class RuleItemsRepository extends Repository
     {
         $ruleCategory = RuleCategory::find($request->get('ruleCategoryId'));
 
-        $ruleItem = RuleItem::create([
+        $ruleItem = $this->model::create([
             'text' => $request->get('text'),
         ]);
 
@@ -38,7 +38,7 @@ class RuleItemsRepository extends Repository
      */
     public function updateRuleItem(Request $request, int $id)
     {
-        $ruleItem = RuleItem::find($id);
+        $ruleItem = $this->model::find($id);
 
         $ruleItem->fill(['text' => $request->get('text')]);
         $ruleItem->update();
@@ -50,7 +50,7 @@ class RuleItemsRepository extends Repository
      */
     public function destroyRuleItem(int $id)
     {
-        $ruleItem = RuleItem::find($id);
+        $ruleItem = $this->model::find($id);
         $ruleItem->delete();
     }
 }

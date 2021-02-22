@@ -20,7 +20,7 @@ class VacanciesRepository extends Repository
      */
     public function createVacancy(Request $request): Vacancy
     {
-        return Vacancy::create([
+        return $this->model::create([
             'text' => $request->get('text'),
         ]);
     }
@@ -31,7 +31,7 @@ class VacanciesRepository extends Repository
      */
     public function updateVacancy(Request $request, int $id)
     {
-        $vacancy = Vacancy::find($id);
+        $vacancy = $this->model::find($id);
         $vacancy->fill(['text' => $request->get('text')]);
         $vacancy->update();
     }
@@ -41,7 +41,7 @@ class VacanciesRepository extends Repository
      */
     public function destroyVacancy(int $id)
     {
-        $vacancy = Vacancy::find($id);
+        $vacancy = $this->model::find($id);
         $vacancy->delete();
     }
 }

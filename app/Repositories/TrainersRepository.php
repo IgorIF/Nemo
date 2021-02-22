@@ -4,11 +4,11 @@
 namespace App\Repositories;
 
 use App\Models\Trainer;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class TrainersRepository extends Repository
 {
-
     private const IMAGE_PATH = 'storage/images/trainers/';
 
     public function __construct(Trainer $trainer)
@@ -16,8 +16,11 @@ class TrainersRepository extends Repository
         $this->model = $trainer;
     }
 
+    /**
+     * @return Trainer[]|Collection
+     */
     public function getTrainers() {
-        return Trainer::all();
+        return $this->model::all();
     }
 
     /**
@@ -33,7 +36,7 @@ class TrainersRepository extends Repository
 
         $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], self::IMAGE_PATH);
 
-        return Trainer::create([
+        return $this->model::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'video' => $data['video'],
@@ -50,7 +53,7 @@ class TrainersRepository extends Repository
     {
         $imageName = null;
 
-        $trainer = Trainer::find($id);
+        $trainer = $this->model::find($id);
 
         if ($request->file('image')) {
             $data = $request->except('_method');
@@ -59,7 +62,7 @@ class TrainersRepository extends Repository
             $data['image-data'] = $this->roundImageData($data['image-data']);
             $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], self::IMAGE_PATH);
 
-            $this->deleteImage('public/images/trainers/' . $trainer->image);
+            //$this->deleteImage('public/images/trainers/' . $trainer->image);
             $trainer->fill(['image' => $data['image']]);
 
             $imageName = $data['image'];
@@ -73,11 +76,11 @@ class TrainersRepository extends Repository
     }
 
     /**
-     * @param $id
+     * @param int $id
      */
-    public function destroyTrainer($id)
+    public function destroyTrainer(int $id)
     {
-        $trainer = Trainer::find($id);
+        $trainer = $this->model::find($id);
         $this->deleteImage($trainer->image);
         $trainer->delete();
     }

@@ -22,7 +22,7 @@ class SecurityItemsRepository extends Repository
     {
         $securityCategory = SecurityCategory::find($request->get('securityCategoryId'));
 
-        $securityItem = SecurityItem::create([
+        $securityItem = $this->model::create([
            'text' => $request->get('text'),
         ]);
 
@@ -37,18 +37,18 @@ class SecurityItemsRepository extends Repository
      */
     public function updateSecurityItem(Request $request, int $id)
     {
-        $securityItem = SecurityItem::find($id);
+        $securityItem = $this->model::find($id);
 
         $securityItem->fill(['text' => $request->get('text')]);
         $securityItem->update();
     }
 
     /**
-     * @param $id
+     * @param int $id
      */
-    public function destroySecurityItem($id)
+    public function destroySecurityItem(int $id)
     {
-        $securityItem = SecurityItem::find($id);
+        $securityItem = $this->model::find($id);
         $securityItem->delete();
     }
 }

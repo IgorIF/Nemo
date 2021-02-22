@@ -19,7 +19,7 @@ class SecurityCategoriesRepository extends Repository
      */
     public function updateSecurityCategory(Request $request, int $id)
     {
-        $securityCategory = SecurityCategory::find($id);
+        $securityCategory = $this->model::find($id);
 
         $securityCategory->fill(['text' => $request->get('text')]);
         $securityCategory->update();

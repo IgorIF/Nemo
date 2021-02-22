@@ -3,15 +3,21 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use phpDocumentor\Reflection\Types\Mixed_;
 
 class Repository
 {
     protected $model = false;
 
-    public function getInRangeById($intervals) {
-
+    /**
+     * @param array $intervals
+     * @return Collection
+     */
+    public function getInRangeById(array $intervals): Collection
+    {
         $result = collect();
 
         foreach ($intervals as $from => $to) {
@@ -26,11 +32,19 @@ class Repository
         return $result;
     }
 
+    /**
+     * @return mixed
+     */
     public function getAll() {
         return $this->model->all();
     }
 
-    protected function roundImageData($imageData) {
+    /**
+     * @param array $imageData
+     * @return array
+     */
+    protected function roundImageData(array $imageData): array
+    {
         $imageData['x'] = round($imageData['x'], 0);
         $imageData['y'] = round($imageData['y'], 0);
         if ($imageData['width'] == $imageData['height'])
@@ -42,7 +56,14 @@ class Repository
         return $imageData;
     }
 
-    protected function cropAndSaveImage($image, $imageData, $path) {
+    /**
+     * @param $image
+     * @param array $imageData
+     * @param string $path
+     * @return string
+     */
+    protected function cropAndSaveImage($image, array $imageData, string $path): string
+    {
         $extension = $image->getClientOriginalExtension();
         $fileName = time() . '.' . $extension;
         $img = Image::make($image);
@@ -51,7 +72,10 @@ class Repository
         return $fileName;
     }
 
-    protected function deleteImage($path) {
+    /**
+     * @param string $path
+     */
+    protected function deleteImage(string $path) {
         Storage::delete($path);
     }
 }

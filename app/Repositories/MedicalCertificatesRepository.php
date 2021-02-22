@@ -20,7 +20,7 @@ class MedicalCertificatesRepository extends Repository
      */
     public function createMedicalCertificate(Request $request): MedicalCertificate
     {
-        return MedicalCertificate::create([
+        return $this->model::create([
             'text' => $request->get('text'),
         ]);
     }
@@ -31,7 +31,7 @@ class MedicalCertificatesRepository extends Repository
      */
     public function updateMedicalCertificate(Request $request, int $id)
     {
-        $medicalCertificate = MedicalCertificate::find($id);
+        $medicalCertificate = $this->model::find($id);
 
         $medicalCertificate->fill(['text' => $request->get('text')]);
         $medicalCertificate->update();
@@ -42,7 +42,7 @@ class MedicalCertificatesRepository extends Repository
      */
     public function destroyMedicalCertificate(int $id)
     {
-        $medicalCertificate = MedicalCertificate::find($id);
+        $medicalCertificate = $this->model::find($id);
         $medicalCertificate->delete();
     }
 
