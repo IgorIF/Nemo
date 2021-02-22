@@ -10,10 +10,6 @@ class Repository
 {
     protected $model = false;
 
-    public function getOneById($id) {
-        return $this->model->where('id', $id)->first();
-    }
-
     public function getInRangeById($intervals) {
 
         $result = collect();
