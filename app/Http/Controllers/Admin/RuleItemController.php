@@ -40,7 +40,7 @@ class RuleItemController extends IndexController
             'text' => 'required'
         ]);
 
-        $ruleItem = $this->ruleItemsRepository->createRuleItem($request);
+        $ruleItem = $this->ruleItemsRepository->create($request);
 
         return response()->json(['ruleItem' => $ruleItem]);
     }
@@ -75,7 +75,7 @@ class RuleItemController extends IndexController
      */
     public function update(Request $request, int $id)
     {
-        $this->ruleItemsRepository->updateRuleItem($request, $id);
+        $this->ruleItemsRepository->update($request, $id);
     }
 
     /**

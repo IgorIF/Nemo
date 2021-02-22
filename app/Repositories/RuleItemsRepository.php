@@ -19,7 +19,7 @@ class RuleItemsRepository extends Repository
      * @param Request $request
      * @return RuleItem
      */
-    public function createRuleItem(Request $request): RuleItem
+    public function create(Request $request): RuleItem
     {
         $ruleCategory = RuleCategory::find($request->get('ruleCategoryId'));
 
@@ -36,10 +36,9 @@ class RuleItemsRepository extends Repository
      * @param Request $request
      * @param int $id
      */
-    public function updateRuleItem(Request $request, int $id)
+    public function update(Request $request, int $id)
     {
         $ruleItem = $this->model::find($id);
-
         $ruleItem->fill(['text' => $request->get('text')]);
         $ruleItem->update();
     }
