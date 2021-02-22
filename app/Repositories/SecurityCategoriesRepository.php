@@ -17,10 +17,9 @@ class SecurityCategoriesRepository extends Repository
      * @param Request $request
      * @param int $id
      */
-    public function updateSecurityCategory(Request $request, int $id)
+    public function update(Request $request, int $id)
     {
         $securityCategory = $this->model::find($id);
-
         $securityCategory->fill(['text' => $request->get('text')]);
         $securityCategory->update();
     }

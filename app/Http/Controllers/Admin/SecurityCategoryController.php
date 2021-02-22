@@ -68,7 +68,7 @@ class SecurityCategoryController extends IndexController
      */
     public function update(Request $request, int $id)
     {
-        $this->securityCategoriesRepository->updateSecurityCategory($request, $id);
+        $this->securityCategoriesRepository->update($request, $id);
     }
 
     /**
