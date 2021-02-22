@@ -46,17 +46,8 @@ class TrainersRepository extends Repository
         $trainer = $this->model::find($id);
 
         if ($request->file('image')) {
-            $data = $request->except('_method');
-
-            $data['image-data'] = json_decode($data['image-data'], true);
-            $data['image-data'] = $this->roundImageData($data['image-data']);
-
-            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
-
-            $this->deleteImage('public/' . $this->imagePath . $trainer->image);
-            $trainer->fill(['image' => $data['image']]);
-
-            $imageName = $data['image'];
+            $imageName = $this->updateImage($request->except('_method'), $trainer);
+            $trainer->fill(['image' => $imageName]);
         } else {
             $trainer->fill([$request->get('field') => $request->get('text')]);
         }

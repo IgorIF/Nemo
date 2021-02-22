@@ -22,18 +22,11 @@ class ImagesRepository extends Repository
     {
         $image = $this->model::find($id);
 
-        $data = $request->except('_method');
+        $imageName = $this->updateImage($request->except('_method'), $image);
 
-        $data['image-data'] = json_decode($data['image-data'], true);
-        $data['image-data'] = $this->roundImageData($data['image-data']);
-
-        $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
-
-        $this->deleteImage('public/' . $this->imagePath . $image->image);
-
-        $image->fill(['image' => $data['image']]);
+        $image->fill(['image' => $imageName]);
         $image->update();
 
-        return $data['image'];
+        return $imageName;
     }
 }

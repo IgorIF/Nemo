@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -72,9 +73,26 @@ class Repository
     }
 
     /**
+     * @param array $data
+     * @param Model $model
+     * @return string
+     */
+    protected function updateImage(array $data, Model $model): string
+    {
+        $data['image-data'] = json_decode($data['image-data'], true);
+        $data['image-data'] = $this->roundImageData($data['image-data']);
+        $imageName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
+
+        $this->deleteImage('public/' . $this->imagePath . $model->image);
+
+        return $imageName;
+    }
+
+    /**
      * @param string $path
      */
-    protected function deleteImage(string $path) {
+    protected function deleteImage(string $path)
+    {
         Storage::delete($path);
     }
 
