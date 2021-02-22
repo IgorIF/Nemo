@@ -42,13 +42,4 @@ class SecurityItemsRepository extends Repository
         $securityItem->fill(['text' => $request->get('text')]);
         $securityItem->update();
     }
-
-    /**
-     * @param int $id
-     */
-    public function destroySecurityItem(int $id)
-    {
-        $securityItem = $this->model::find($id);
-        $securityItem->delete();
-    }
 }

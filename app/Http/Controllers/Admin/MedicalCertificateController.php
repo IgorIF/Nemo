@@ -84,6 +84,6 @@ class MedicalCertificateController extends IndexController
      */
     public function destroy(int $id)
     {
-        $this->medicalCertificatesRepository->destroyMedicalCertificate($id);
+        $this->medicalCertificatesRepository->delete($id);
     }
 }

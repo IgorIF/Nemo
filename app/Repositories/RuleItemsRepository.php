@@ -43,14 +43,4 @@ class RuleItemsRepository extends Repository
         $ruleItem->fill(['text' => $request->get('text')]);
         $ruleItem->update();
     }
-
-
-    /**
-     * @param int $id
-     */
-    public function destroyRuleItem(int $id)
-    {
-        $ruleItem = $this->model::find($id);
-        $ruleItem->delete();
-    }
 }

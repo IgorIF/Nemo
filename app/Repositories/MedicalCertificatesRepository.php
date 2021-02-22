@@ -36,14 +36,4 @@ class MedicalCertificatesRepository extends Repository
         $medicalCertificate->fill(['text' => $request->get('text')]);
         $medicalCertificate->update();
     }
-
-    /**
-     * @param int $id
-     */
-    public function destroyMedicalCertificate(int $id)
-    {
-        $medicalCertificate = $this->model::find($id);
-        $medicalCertificate->delete();
-    }
-
 }

@@ -9,11 +9,10 @@ use Illuminate\Http\Request;
 
 class ImagesRepository extends Repository
 {
-    private const IMAGE_PATH = 'storage/images/images/';
-
     public function __construct(Image $image)
     {
         $this->model = $image;
+        $this->imagePath = 'images/images/';
     }
 
     /**
@@ -23,23 +22,19 @@ class ImagesRepository extends Repository
      */
     public function updateImage(Request $request, int $id): ?string
     {
-        $imageName = null;
-
-        $image = Image::find($id);
+        $image = $this->model::find($id);
 
         $data = $request->except('_method');
         $data['image-data'] = json_decode($data['image-data'], true);
 
         $data['image-data'] = $this->roundImageData($data['image-data']);
-        $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], self::IMAGE_PATH);
+        $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
 
-        //$this->deleteImage('public/images/trainers/' . $trainer->image);
+        $this->deleteImage('public/' . $this->imagePath . $image->image);
+
         $image->fill(['image' => $data['image']]);
-
-        $imageName = $data['image'];
-
         $image->update();
 
-        return $imageName;
+        return $data['image'];
     }
 }

@@ -6,11 +6,11 @@ namespace App\Repositories;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use phpDocumentor\Reflection\Types\Mixed_;
 
 class Repository
 {
     protected $model = false;
+    protected $imagePath;
 
     /**
      * @param array $intervals
@@ -77,5 +77,13 @@ class Repository
      */
     protected function deleteImage(string $path) {
         Storage::delete($path);
+    }
+
+    /**
+     * @param int $id
+     */
+    public function delete(int $id)
+    {
+        $this->model::find($id)->delete();
     }
 }

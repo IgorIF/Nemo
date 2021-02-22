@@ -86,6 +86,6 @@ class VacancyController extends IndexController
      */
     public function destroy(int $id)
     {
-        $this->vacanciesRepository->destroyVacancy($id);
+        $this->vacanciesRepository->delete($id);
     }
 }

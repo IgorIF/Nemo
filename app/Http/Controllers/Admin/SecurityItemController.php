@@ -85,6 +85,6 @@ class SecurityItemController extends IndexController
      */
     public function destroy(int $id)
     {
-        $this->securityItemsRepository->destroySecurityItem($id);
+        $this->securityItemsRepository->delete($id);
     }
 }

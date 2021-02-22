@@ -105,6 +105,6 @@ class VideoController extends IndexController
      */
     public function destroy(int $id)
     {
-        $this->videosRepository->destroyVideo($id);
+        $this->videosRepository->delete($id);
     }
 }

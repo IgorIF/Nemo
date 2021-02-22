@@ -83,6 +83,6 @@ class RuleItemController extends IndexController
      */
     public function destroy(int $id)
     {
-        $this->ruleItemsRepository->destroyRuleItem($id);
+        $this->ruleItemsRepository->delete($id);
     }
 }

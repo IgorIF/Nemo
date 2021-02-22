@@ -35,13 +35,4 @@ class VacanciesRepository extends Repository
         $vacancy->fill(['text' => $request->get('text')]);
         $vacancy->update();
     }
-
-    /**
-     * @param int $id
-     */
-    public function destroyVacancy(int $id)
-    {
-        $vacancy = $this->model::find($id);
-        $vacancy->delete();
-    }
 }

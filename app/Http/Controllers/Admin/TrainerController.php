@@ -102,6 +102,6 @@ class TrainerController extends IndexController
      */
     public function destroy(int $id)
     {
-        $this->trainersRepository->destroyTrainer($id);
+        $this->trainersRepository->delete($id);
     }
 }

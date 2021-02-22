@@ -74,10 +74,9 @@ class VideosRepository extends Repository
     /**
      * @param $id
      */
-    public function destroyVideo($id)
+    public function delete($id)
     {
         $video = Video::find($id);
-
         $this->deleteImage('public/images/videos/' . $video->image);
         $video->delete();
     }
