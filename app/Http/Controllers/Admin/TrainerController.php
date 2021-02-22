@@ -52,7 +52,7 @@ class TrainerController extends IndexController
             'name' => 'required',
             'description' => 'required',
             'image' => 'required',
-            'video' => 'url',
+            'video' => 'url|nullable',
         ]);
 
         $trainer = $this->trainersRepository->createTrainer($request);
