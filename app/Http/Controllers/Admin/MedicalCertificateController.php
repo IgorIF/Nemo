@@ -41,7 +41,7 @@ class MedicalCertificateController extends IndexController
             'text' => 'required'
         ]);
 
-        $medicalCertificate = $this->medicalCertificatesRepository->createMedicalCertificate($request);
+        $medicalCertificate = $this->medicalCertificatesRepository->create($request);
 
         return response()->json(['medicalCertificate' => $medicalCertificate]);
     }
@@ -76,7 +76,7 @@ class MedicalCertificateController extends IndexController
      */
     public function update(Request $request, int $id)
     {
-        $this->medicalCertificatesRepository->updateMedicalCertificate($request, $id);
+        $this->medicalCertificatesRepository->update($request, $id);
     }
 
     /**
