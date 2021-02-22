@@ -23,6 +23,7 @@ class ImagesRepository extends Repository
         $image = $this->model::find($id);
 
         $data = $request->except('_method');
+
         $data['image-data'] = json_decode($data['image-data'], true);
         $data['image-data'] = $this->roundImageData($data['image-data']);
 

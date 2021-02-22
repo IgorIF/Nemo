@@ -58,7 +58,12 @@ class IndexController extends BaseController
         $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
     }
 
-    protected function editText(Request $request) {
+    /**
+     * @param Request $request
+     * @return int
+     */
+    protected function editText(Request $request): int
+    {
         return $this->textsRepository->update($request);
     }
 }

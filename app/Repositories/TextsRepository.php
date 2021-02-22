@@ -12,15 +12,13 @@ class TextsRepository extends Repository
         $this->model = $text;
     }
 
-    public function update(Request $request)
+    /**
+     * @param Request $request
+     * @return int
+     */
+    public function update(Request $request): int
     {
-        $result = [];
-
         $text = $this->model::find($request->get('id'));
-        $num = $text->fill(['text' => $request->get('text')])->update();
-
-        if ($num == 1)
-            $result['status'] = true;
-        return $result;
+        return $text->fill(['text' => $request->get('text')])->update();
     }
 }
