@@ -10,7 +10,8 @@
                 <form>
                     <div class="form-group">
                         <label for="name">Ссылка на видео</label>
-                        <input type="text" class="form-control" id="text" name="url" placeholder="Введите ссылку" value="{{ $video->url }}" >
+                        <input type="text" class="form-control" id="text" name="url" placeholder="Введите ссылку" value="https://www.youtube.com/watch?v={{ $video->url }}" >
+                        <small id="emailHelp" class="form-text text-muted">(Ссылка вида: https://www.youtube.com/watch?v=XXXXXXXXXXX или https://youtu.be/XXXXXXXXXXX)</small>
                         <div class="invalid-feedback"></div>
                     </div>
                     <br />

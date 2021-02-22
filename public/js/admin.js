@@ -740,7 +740,7 @@ $(document).ready(function () {
     function aboutUsVideoUpdate(video) {
         let container = $('div[class*="about-image"]');
         container.find('img').attr('src', 'storage/images/videos/' + video.image);
-        container.find('a[id="play-video"]').attr('href', video.url);
+        container.find('a[id="play-video"]').attr('href', 'https://www.youtube.com/embed/' + video.url + '?autoplay=1');
     }
 
     function setBackgroundImageChangeAreaDimensions() {

@@ -63,7 +63,7 @@ class VideosRepository extends Repository
             $fill['image'] = $data['image'];
         }
 
-        $fill['url'] = $request['url'];
+        $fill['url'] = $this->getLink($request['url']);
         $video->fill($fill);
 
         $video->update();
