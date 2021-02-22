@@ -55,7 +55,7 @@ class TrainerController extends IndexController
             'video' => 'url|nullable',
         ]);
 
-        $trainer = $this->trainersRepository->createTrainer($request);
+        $trainer = $this->trainersRepository->create($request);
 
         return response()->json(['trainer' => $trainer]);
     }
@@ -91,7 +91,7 @@ class TrainerController extends IndexController
      */
     public function update(Request $request, int $id): JsonResponse
     {
-        $imageName = $this->trainersRepository->updateTrainer($request, $id);
+        $imageName = $this->trainersRepository->update($request, $id);
         return response()->json(['image' => $imageName]);
     }
 

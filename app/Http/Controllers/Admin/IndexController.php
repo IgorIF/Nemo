@@ -59,6 +59,6 @@ class IndexController extends BaseController
     }
 
     protected function editText(Request $request) {
-        return $this->textsRepository->updateText($request);
+        return $this->textsRepository->update($request);
     }
 }

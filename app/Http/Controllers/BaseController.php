@@ -131,7 +131,7 @@ class BaseController extends Controller
 
     private function renderTrainers() {
         $texts = $this->textsRepository->getInRangeById([41 => 42]);
-        $trainers = $this->trainersRepository->getTrainers();
+        $trainers = $this->trainersRepository->getAll();
         $this->trainers = view($this->template . '.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 

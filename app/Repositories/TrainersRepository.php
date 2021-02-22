@@ -9,32 +9,24 @@ use Illuminate\Http\Request;
 
 class TrainersRepository extends Repository
 {
-    private const IMAGE_PATH = 'storage/images/trainers/';
-
     public function __construct(Trainer $trainer)
     {
         $this->model = $trainer;
-    }
-
-    /**
-     * @return Trainer[]|Collection
-     */
-    public function getTrainers() {
-        return $this->model::all();
+        $this->imagePath = 'images/trainers/';
     }
 
     /**
      * @param Request $request
      * @return Trainer
      */
-    public function createTrainer(Request $request): Trainer
+    public function create(Request $request): Trainer
     {
         $data = $request->all();
 
         $data['image-data'] = json_decode($data['image-data'], true);
         $data['image-data'] = $this->roundImageData($data['image-data']);
 
-        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], self::IMAGE_PATH);
+        $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
 
         return $this->model::create([
             'name' => $data['name'],
@@ -49,7 +41,7 @@ class TrainersRepository extends Repository
      * @param int $id
      * @return string|null
      */
-    public function updateTrainer(Request $request, int $id): ?string
+    public function update(Request $request, int $id): ?string
     {
         $imageName = null;
 
@@ -57,12 +49,13 @@ class TrainersRepository extends Repository
 
         if ($request->file('image')) {
             $data = $request->except('_method');
+
             $data['image-data'] = json_decode($data['image-data'], true);
-
             $data['image-data'] = $this->roundImageData($data['image-data']);
-            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], self::IMAGE_PATH);
 
-            //$this->deleteImage('public/images/trainers/' . $trainer->image);
+            $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
+
+            $this->deleteImage('public/' . $this->imagePath . $trainer->image);
             $trainer->fill(['image' => $data['image']]);
 
             $imageName = $data['image'];

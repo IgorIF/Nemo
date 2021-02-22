@@ -26,8 +26,8 @@ class ImagesRepository extends Repository
 
         $data = $request->except('_method');
         $data['image-data'] = json_decode($data['image-data'], true);
-
         $data['image-data'] = $this->roundImageData($data['image-data']);
+
         $data['image'] = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
 
         $this->deleteImage('public/' . $this->imagePath . $image->image);

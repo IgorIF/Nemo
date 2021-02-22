@@ -14,7 +14,7 @@ class TextsRepository extends Repository
         $this->model = $text;
     }
 
-    public function updateText(Request $request)
+    public function update(Request $request)
     {
         $result = [];
 
