@@ -89,8 +89,10 @@ class TrainerController extends IndexController
      * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, int $id)
     {
+
+        return $request;
         $imageName = $this->trainersRepository->update($request, $id);
         return response()->json(['image' => $imageName]);
     }

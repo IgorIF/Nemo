@@ -368,6 +368,10 @@ label.image-edit-area {
     cursor: pointer;
 }
 
+.trainer_caption a.video-control {
+    background: url("../images/icon_add.png") no-repeat;
+}
+
 @media all and (max-width: 1074px)
 {
     .header-image-edit-area {

@@ -12,6 +12,10 @@
     {!! $modalAddTrainer !!}
 @endsection
 
+@section('modalTrainerVideo')
+    {!! $modalTrainerVideo !!}
+@endsection
+
 @section('modalAddSecurityItem')
     {!! $modalAddSecurityItem !!}
 @endsection

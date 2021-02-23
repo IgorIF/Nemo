@@ -2,6 +2,7 @@ $(document).ready(function () {
     let initialText;
     let $modalCropper = $('#modal_cropper');
     let $modalAddTrainer = $('#modal_add_trainer');
+    let $modalTrainerVideo = $('#modalTrainerVideo');
     let $modalAddItem = $('#modal_add_item');
     let $modalAddVideo = $('#modal_add_video');
     let $modalAboutUsEditVideo = $('#modal_about_us_edit_video');
@@ -13,8 +14,9 @@ $(document).ready(function () {
     let securityCategoryId;
     let ruleCategoryId;
     let imageFile;
-    let cropBtnMode;        // trainer_create, trainer_update, video_create, about_us_video_update, image_update
-    let saveItemBtnMode;    // security, rule, medicalCertificate, vacancy
+    let cropBtnMode;                // trainer_create, trainer_update, video_create, about_us_video_update, image_update
+    let saveItemBtnMode;            // security, rule, medicalCertificate, vacancy
+    let saveTrainerVideoBtnMode;    // create
     let aspectRatio;
 
     $('[data-toggle="tooltip"]').tooltip();
@@ -96,6 +98,9 @@ $(document).ready(function () {
     /// Show edit about us video modal
     $('#about_us_video_edit_btn').click(onAboutUsVideoEditBtnClickListener);
 
+    /// Show add trainer video modal
+    $('[id="trainerVideoAddBtn"]').click(onTrainerVideoAddBtnClickListener);
+
     /// Save new trainer
     $('#trainer_save_btn').click(onTrainerSaveBtnClickListener);
 
@@ -104,6 +109,9 @@ $(document).ready(function () {
 
     /// Save new video
     $('#video_save_btn').click(onVideoSaveBtnClickListener);
+
+    /// Save trainer video
+    $('#trainerVideoSaveBtn').click(onTrainerVideoSaveBtnClickListener);
 
     /// Update about us video
     $('#about_us_video_update_btn').click(onAboutUsVideoUpdateBtnClickListener);
@@ -439,6 +447,37 @@ $(document).ready(function () {
                 addInvalidFeedback($modalAddVideo, errors);
             }
         }, true);
+    }
+
+    function addTrainerVideo() {
+        let data = new FormData($modalTrainerVideo.find('form')[0]);
+        data.append('_method', 'PUT');
+        data.append('action', 'videoAdd');
+
+        let url = 'admin/trainers/' + trainerId;
+
+        ajax('POST', url, data, function (response) {
+            console.log(response);
+        }, function (error) {
+            console.log(error);
+        }, true);
+
+
+        /*data.append('image-data', JSON.stringify(cropperData))
+        let url = 'admin/videos';
+        ajax('POST', url, data, function (response) {
+            let video = response.video;
+            videoSlickAdd(video);
+            videosSlickRefresh()
+            $modalAddVideo.modal('hide');
+            clearFields($modalAddVideo);
+            toast('Видео добавлено', {type: 'success'});
+        }, function (error) {
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalAddVideo, errors);
+            }
+        }, true);*/
     }
 
     function updateAboutUsVideo() {
@@ -905,6 +944,12 @@ $(document).ready(function () {
         $modalAboutUsEditVideo.modal('show');
     }
 
+    function onTrainerVideoAddBtnClickListener() {
+        saveTrainerVideoBtnMode = 'create';
+        trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        $modalTrainerVideo.modal('show');
+    }
+
     function onTrainerSaveBtnClickListener() {
         saveNewTrainer();
     }
@@ -927,6 +972,15 @@ $(document).ready(function () {
 
     function onVideoSaveBtnClickListener() {
         saveNewVideo();
+    }
+
+    function onTrainerVideoSaveBtnClickListener() {
+        switch (saveTrainerVideoBtnMode) {
+            case 'create':
+                addTrainerVideo();
+                break;
+            // TODO
+        }
     }
 
     function onAboutUsVideoUpdateBtnClickListener() {

@@ -117,6 +117,7 @@
 
 @yield('modalAboutUsEditVideo')
 @yield('modalAddTrainer')
+@yield('modalTrainerVideo')
 @yield('modalAddSecurityItem')
 @yield('modalAddVideo')
 @yield('modalCropper')
