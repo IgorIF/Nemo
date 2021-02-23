@@ -399,5 +399,37 @@ class TextSeeder extends Seeder
             'text' => 'ул. Петрозаводская 11, к2 (скоро открытие)'
         ]);
 
+        DB::table('texts')->insert([
+            'id' => 76,
+            'text' => '(метро Пражская)'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 77,
+            'text' => '(метро Академическая)'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 78,
+            'text' => '(метро Марьино)'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 79,
+            'text' => '(метро Некрасовка)'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 80,
+            'text' => '(метро Речной вокзал)'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 81,
+            'text' => ''
+        ]);
+
+
+
     }
 }

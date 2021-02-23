@@ -60,6 +60,10 @@
     {!! $medicalCertificates !!}
 @endsection
 
+@section('contactUs')
+    {!! $contactUs !!}
+@endsection
+
 @section('vacancies')
     {!! $vacancies !!}
 @endsection

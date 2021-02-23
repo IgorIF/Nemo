@@ -46,6 +46,7 @@ class BaseController extends Controller
     protected $trialLesson;
     protected $rules;
     protected $medicalCertificates;
+    protected $contactUs;
     protected $vacancies;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
@@ -78,6 +79,7 @@ class BaseController extends Controller
         $this->renderTrialLesson();
         $this->renderRules();
         $this->renderMedicalCertificates();
+        $this->renderContactUs();
         $this->renderVacancies();
     }
 
@@ -100,6 +102,7 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'trialLesson', $this->trialLesson);
         $this->vars = Arr::add($this->vars, 'rules', $this->rules);
         $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificates);
+        $this->vars = Arr::add($this->vars, 'contactUs', $this->contactUs);
         $this->vars = Arr::add($this->vars, 'vacancies', $this->vacancies);
 
         return view($this->template . '.index')->with($this->vars);
@@ -165,7 +168,7 @@ class BaseController extends Controller
     }
 
     private function renderFooter() {
-        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 75]);
+        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 80]);
         $this->footer = view($this->template . '.footer')->with('texts', $texts)->render();
     }
 
@@ -184,6 +187,11 @@ class BaseController extends Controller
         $texts = $this->textsRepository->getInRangeById([66 => 67]);
         $medicalCertificates = $this->medicalCertificatesRepository->getAll();
         $this->medicalCertificates = view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $medicalCertificates])->render();
+    }
+
+    private function renderContactUs() {
+        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 80]);
+        $this->contactUs = view($this->template . '.contact_us')->with('texts', $texts)->render();
     }
 
     private function renderVacancies() {

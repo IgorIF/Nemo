@@ -212,43 +212,10 @@
 
 
 <div class="popup4">
-    <h3>Свяжитесь с нами</h3>
-
-    <div class="phone1">
-        <a href="tel:+79776800261" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">+7(977)680-02-61</a>
-        <address>
-            ул. Кировоградская 36<br>
-            (метро Пражская)
-        </address>
-    </div>
-
-    <div class="phone2">
-        <a href="tel:+79776800262" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;">+7(977)680-02-62</a>
-        <address>
-            ул. Винокурова 24, к4<br>
-            (метро Академическая)
-        </address>
-    </div>
-
-    <div class="phone2">
-        <a href="tel:+79776800263" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">+7(977)680-02-63</a>
-        <address>
-            Мячковский бульвар 16, к1<br>
-            (метро Марьино)
-        </address>
-    </div>
-
-    <div class="phone2">
-        <a href="tel:+79776800266" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">+7(977)680-02-66</a>
-        <address>
-            г.Люберцы, ул.Камова 11/5<br>
-            (метро Некрасовка)
-        </address>
-    </div>
-
-
-    <button type="button" class="close" id="js-close-popup"></button>
+    @yield('contactUs')
 </div>
+
+
 
 <div class="popup5">
     @yield('vacancies')

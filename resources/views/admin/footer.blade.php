@@ -60,39 +60,39 @@
         <div class="footer-hidden" id="contact">
             <div class="footer-hidden-top">
                 <div class="left">
-                    <address id="text_{{ $texts->get(2)->id }}" contenteditable="true">
-                        {!! $texts->get(2)->text !!}
-                        <span class="metro metro1">(метро Пражская)</span>
+                    <address>
+                        <div id="text_{{ $texts->get(2)->id }}" contenteditable="true">{!! $texts->get(2)->text !!}</div>
+                        <span id="text_{{ $texts->get(76)->id }}" contenteditable="true" class="metro metro1">{!! $texts->get(76)->text !!}</span>
                     </address>
                     <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up" id="text_{{ $texts->get(1)->id }}" contenteditable="true">{!! $texts->get(1)->text !!}</a>
                 </div>
 
                 <div class="right">
-                    <address  id="text_{{ $texts->get(5)->id }}" contenteditable="true">
-                        {!! $texts->get(5)->text !!}
-                        <span class="metro metro2">(метро Академическая)</span>
+                    <address >
+                        <div id="text_{{ $texts->get(5)->id }}" contenteditable="true">{!! $texts->get(5)->text !!}</div>
+                        <span id="text_{{ $texts->get(77)->id }}" contenteditable="true" class="metro metro2">{!! $texts->get(77)->text !!}</span>
                     </address>
                     <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(4)->id }}" contenteditable="true">{!! $texts->get(4)->text !!}</a>
                 </div>
 
                 <div class="right">
-                    <address id="text_{{ $texts->get(8)->id }}" contenteditable="true">
-                        {!! $texts->get(8)->text !!}
-                        <span class="metro metro3">(метро Марьино)</span>
+                    <address>
+                        <div id="text_{{ $texts->get(8)->id }}" contenteditable="true">{!! $texts->get(8)->text !!}</div>
+                        <span id="text_{{ $texts->get(78)->id }}" contenteditable="true" class="metro metro3">{!! $texts->get(78)->text !!}</span>
                     </address>
                     <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(7)->id }}" contenteditable="true">{!! $texts->get(7)->text !!}</a>
                 </div>
                 <div class="right">
-                    <address id="text_{{ $texts->get(11)->id }}" contenteditable="true">
-                        {!! $texts->get(11)->text !!}
-                        <span class="metro metro4">(метро Некрасовка)</span>
+                    <address>
+                        <div id="text_{{ $texts->get(11)->id }}" contenteditable="true">{!! $texts->get(11)->text !!}</div>
+                        <span id="text_{{ $texts->get(79)->id }}" contenteditable="true" class="metro metro4">{!! $texts->get(79)->text !!}</span>
                     </address>
                     <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
                 </div>
                 <div class="left">
-                    <address id="text_{{ $texts->get(75)->id }}" contenteditable="true">
-                        {!! $texts->get(75)->text !!}
-                        <span class="metro metro1">(метро Речной вокзал)</span>
+                    <address>
+                        <div id="text_{{ $texts->get(75)->id }}" contenteditable="true">{!! $texts->get(75)->text !!}</div>
+                        <span id="text_{{ $texts->get(80)->id }}" contenteditable="true" class="metro metro1">{!! $texts->get(80)->text !!}</span>
                     </address>
                     <a href="tel:{{ $texts->get(74)->text }}" id="text_{{ $texts->get(74)->id }}" contenteditable="true">{!! $texts->get(74)->text !!}</a>
                 </div>
