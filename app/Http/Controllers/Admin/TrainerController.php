@@ -98,10 +98,10 @@ class TrainerController extends IndexController
             case 'videoAdd':
                 $video = $this->trainersRepository->videoAdd($data, $id);
                 return response()->json(['video' => $video]);
-                break;
+            case '':
         }
 
-        return $request;
+
         $imageName = $this->trainersRepository->update($request, $id);
         return response()->json(['image' => $imageName]);
     }

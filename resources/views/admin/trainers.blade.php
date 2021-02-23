@@ -22,8 +22,10 @@
 
                         @if(!empty($trainer->video))
                             <div><a data-fancybox href="https://www.youtube.com/watch?v={{ $trainer->video }}">Смотреть занятие</a></div>
+                            <div><a id="trainerVideoEditBtn" href="#">Изменить видео</a></div>
+                            <div><a id="trainerVideoDeleteBtn" href="#">Удалить видео</a></div>
                         @else
-                            <div><a id="trainerVideoAddBtn" class="video-control" href="#">Добавить видео</a></div>
+                            <div><a id="trainerVideoAddBtn" href="#">Добавить видео</a></div>
                         @endif
 
 
