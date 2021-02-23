@@ -384,18 +384,20 @@ font-weight: 400;
 
 .header .container .header-bottom p span
 {
-  color: white;
-  font-weight: 900;
-  font-size: 30px;
-  font-family: 'SummerFontBold';
-  background-color: rgba(255, 13, 13, 0.9);
-  margin-right: 6px;
-  padding-left: 10px;
-  margin-top: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  letter-spacing: 2px;
-  line-height: 1.6;
+    color: white;
+    font-weight: 900;
+    font-size: 30px;
+    font-family: 'SummerFontBold';
+    background-color: rgba(255, 13, 13, 0.9);
+    margin-right: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+    line-height: 1.6;
 }
 
 .header .container .header-bottom a
