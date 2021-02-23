@@ -15,7 +15,7 @@
                 <address data-aos="fade-up" id="text_{{ $texts->get(5)->id }}" contenteditable="true">{!! $texts->get(5)->text !!}</address>
                 <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(7)->id }}" contenteditable="true">{!! $texts->get(7)->text !!}</a>
                 <address id="text_{{ $texts->get(8)->id }}" contenteditable="true">{!! $texts->get(8)->text !!}</address>
-                <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+                <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
                 <address id="text_{{ $texts->get(11)->id }}" contenteditable="true">{!! $texts->get(11)->text !!}</address>
                 <a href="tel:{{ $texts->get(74)->text }}" data-aos="fade-up" id="text_{{ $texts->get(74)->id }}" contenteditable="true">{!! $texts->get(74)->text !!}</a>
                 <address id="text_{{ $texts->get(75)->id }}" contenteditable="true">{!! $texts->get(75)->text !!}</address>
@@ -87,7 +87,7 @@
                         <div id="text_{{ $texts->get(11)->id }}" contenteditable="true">{!! $texts->get(11)->text !!}</div>
                         <span id="text_{{ $texts->get(79)->id }}" contenteditable="true" class="metro metro4">{!! $texts->get(79)->text !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+                    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
                 </div>
                 <div class="left">
                     <address>

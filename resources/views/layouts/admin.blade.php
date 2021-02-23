@@ -204,7 +204,7 @@
 
 <section class="map" id="contact1">
     <div class="map-yandex" data-aos="fade-up">
-        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1eb73f371df03d148a17461897ad4dfa673f0e2bd02b182d72f76bce2b38e239&amp;width=100%25&amp;height=500&amp;lang=ru_UA&amp;scroll=true"></script>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A093e661b11df50466b0ca833b22fd1a834444e50f8bca892350fad2f8da5ac37&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
     </div>
 </section>
 

@@ -25,7 +25,7 @@
 </div>
 
 <div class="phone2">
-    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
     <address>
         <div id="text_{{ $texts->get(11)->id }}" contenteditable="true">{!! $texts->get(11)->text !!}</div>
         <div id="text_{{ $texts->get(79)->id }}" contenteditable="true">{!! $texts->get(79)->text !!}</div>

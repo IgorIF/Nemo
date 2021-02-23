@@ -15,7 +15,7 @@
                 <address data-aos="fade-up">{!! $texts->get(5)->text !!}</address>
                 <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $texts->get(7)->text !!}</a>
                 <address>{!! $texts->get(8)->text !!}</address>
-                <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $texts->get(10)->text !!}</a>
+                <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up">{!! $texts->get(10)->text !!}</a>
                 <address>{!! $texts->get(11)->text !!}</address>
                 <a href="tel:{{ $texts->get(74)->text }}" data-aos="fade-up">{!! $texts->get(74)->text !!}</a>
                 <address>{!! $texts->get(75)->text !!}</address>
@@ -88,7 +88,7 @@
                         <div>{!! $texts->get(11)->text !!}</div>
                         <span class="metro metro4">{!! $texts->get(79)->text !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+                    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
                 </div>
                 <div class="left">
                     <address>
