@@ -14,7 +14,7 @@
                         <p>{{ $trainer->description }}</p>
 
                         @if(!empty($trainer->video))
-                            <div><a data-fancybox href="{{ $trainer->video }}">Смотреть занятие</a></div>
+                            <div><a data-fancybox href="https://www.youtube.com/watch?v={{ $trainer->video }}">Смотреть занятие</a></div>
                         @endif
 
                     </div>

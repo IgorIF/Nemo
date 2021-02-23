@@ -31,6 +31,7 @@
                     <div class="form-group">
                         <label for="video">Видео</label>
                         <input type="text" class="form-control" id="video" name="video" aria-describedby="emailHelp" placeholder="Ссылка на видео">
+                        <small id="emailHelp" class="form-text text-muted">(Ссылка вида: https://www.youtube.com/watch?v=XXXXXXXXXXX или https://youtu.be/XXXXXXXXXXX)</small>
                         <div class="invalid-feedback"></div>
                     </div>
                 </form>
