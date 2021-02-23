@@ -66,4 +66,16 @@ class TrainersRepository extends Repository
         $this->deleteImage('public/' . $this->imagePath . $trainer->image);
         $trainer->delete();
     }
+
+    public function videoAdd(array $data, int $id)
+    {
+        $trainer = $this->model::find($id);
+
+        if ($trainer->video == null) {
+            $trainer->video = $this->getLinkFromUrl($data['video']);
+            $trainer->update();
+        }
+
+        return $trainer->video;
+    }
 }

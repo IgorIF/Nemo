@@ -103,4 +103,20 @@ class Repository
     {
         $this->model::find($id)->delete();
     }
+
+    protected function getLinkFromUrl($url): string
+    {
+        $link = null;
+
+        $arr = explode('/', $url);
+        $linkCase = $arr[count($arr) - 1];
+
+        if (count(explode('=', $linkCase)) < 2) {
+            $link = $linkCase;
+        } else {
+            $arr = explode('=', $linkCase);
+            $link = $arr[count($arr) - 1];
+        }
+        return $link;
+    }
 }

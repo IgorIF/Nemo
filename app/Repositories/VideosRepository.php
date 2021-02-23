@@ -35,7 +35,7 @@ class VideosRepository extends Repository
         $fileName = $this->cropAndSaveImage($data['image'], $data['image-data'], 'storage/' . $this->imagePath);
 
         return $this->model::create([
-            'url' => $this->getLink($data['url']),
+            'url' => $this->getLinkFromUrl($data['url']),
             'image' => $fileName
         ]);
     }
@@ -56,7 +56,7 @@ class VideosRepository extends Repository
             $fill['image'] = $imageName;
         }
 
-        $fill['url'] = $this->getLink($request['url']);
+        $fill['url'] = $this->getLinkFromUrl($request['url']);
         $video->fill($fill);
 
         $video->update();
@@ -72,21 +72,5 @@ class VideosRepository extends Repository
         $video = $this->model::find($id);
         $this->deleteImage('public/' . $this->imagePath . $video->image);
         $video->delete();
-    }
-
-    private function getLink($data): string
-    {
-        $link = null;
-
-        $arr = explode('/', $data);
-        $linkCase = $arr[count($arr) - 1];
-
-        if (count(explode('=', $linkCase)) < 2) {
-            $link = $linkCase;
-        } else {
-            $arr = explode('=', $linkCase);
-            $link = $arr[count($arr) - 1];
-        }
-        return $link;
     }
 }

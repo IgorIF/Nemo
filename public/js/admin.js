@@ -457,7 +457,10 @@ $(document).ready(function () {
         let url = 'admin/trainers/' + trainerId;
 
         ajax('POST', url, data, function (response) {
-            console.log(response);
+            let remove = $('div[id="trainer_' + trainerId + '"]').find('a[id="trainerVideoAddBtn"]').parent();
+            let container = $(remove).parent();
+            $(remove).remove();
+            $(container).append('<div><a data-fancybox href="https://www.youtube.com/watch?v=' + response.video + '">Смотреть занятие</a></div>');
         }, function (error) {
             console.log(error);
         }, true);
