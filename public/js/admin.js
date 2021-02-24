@@ -464,8 +464,14 @@ $(document).ready(function () {
             let container = $(remove).parent();
             $(remove).remove();
             $(container).append('<div><a data-fancybox href="https://www.youtube.com/watch?v=' + response.video + '">Смотреть занятие</a></div>');
+            $modalTrainerVideo.modal('hide');
+            clearFields($modalTrainerVideo);
+            toast('Видео добавлено', {type: 'success'});
         }, function (error) {
-            console.log(error);
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalTrainerVideo, errors);
+            }
         }, true);
     }
 
@@ -478,8 +484,14 @@ $(document).ready(function () {
 
         ajax('POST', url, data, function (response) {
             $('div[id="trainer_' + trainerId + '"]').find('a[id="trainerVideoPlayBtn"]').attr('href', 'https://www.youtube.com/watch?v=' + response.video);
+            $modalTrainerVideo.modal('hide');
+            clearFields($modalTrainerVideo);
+            toast('Видео изменено', {type: 'success'});
         }, function (error) {
-
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalTrainerVideo, errors);
+            }
         }, true);
     }
 

@@ -95,6 +95,10 @@ class TrainerController extends IndexController
         $data = $request->except(['_method', 'action']);
 
         if ($action == 'videoAdd' || $action = 'videoUpdate') {
+            $request->validate([
+                'video' => 'url'
+            ]);
+
             $video = null;
             switch ($action) {
                 case 'videoAdd':
