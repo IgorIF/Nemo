@@ -78,4 +78,16 @@ class TrainersRepository extends Repository
 
         return $trainer->video;
     }
+
+    public function videoUpdate(array $data, int $id)
+    {
+        $trainer = $this->model::find($id);
+
+        if ($trainer->video != null) {
+            $trainer->video = $this->getLinkFromUrl($data['video']);
+            $trainer->update();
+        }
+
+        return $trainer->video;
+    }
 }

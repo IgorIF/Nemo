@@ -94,11 +94,16 @@ class TrainerController extends IndexController
         $action = $request->get('action');
         $data = $request->except(['_method', 'action']);
 
-        switch ($action) {
-            case 'videoAdd':
-                $video = $this->trainersRepository->videoAdd($data, $id);
-                return response()->json(['video' => $video]);
-            case '':
+        if ($action == 'videoAdd' || $action = 'videoUpdate') {
+            $video = null;
+            switch ($action) {
+                case 'videoAdd':
+                    $video = $this->trainersRepository->videoAdd($data, $id);
+                    break;
+                case 'videoUpdate':
+                    $video = $this->trainersRepository->videoUpdate($data, $id);
+            }
+            return response()->json(['video' => $video]);
         }
 
 

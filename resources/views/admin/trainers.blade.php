@@ -21,8 +21,8 @@
                         <p id="trainer_description" contenteditable="true">{!! $trainer->description !!}</p>
 
                         @if(!empty($trainer->video))
-                            <div><a data-fancybox href="https://www.youtube.com/watch?v={{ $trainer->video }}">Смотреть занятие</a></div>
-                            <div><a id="trainerVideoEditBtn" href="#">Изменить видео</a></div>
+                            <div><a id="trainerVideoPlayBtn" data-fancybox href="https://www.youtube.com/watch?v={{ $trainer->video }}">Смотреть занятие</a></div>
+                            <div><a id="trainer_video_edit_btn" href="#">Изменить видео</a></div>
                             <div><a id="trainerVideoDeleteBtn" href="#">Удалить видео</a></div>
                         @else
                             <div><a id="trainerVideoAddBtn" href="#">Добавить видео</a></div>

@@ -372,7 +372,7 @@ label.image-edit-area {
     background: url("../images/icon_add.png") no-repeat;
 }
 
-.trainer_caption a#trainerVideoEditBtn {
+.trainer_caption a#trainer_video_edit_btn {
     background: url("../images/icon_edit.png") no-repeat;
 }
 
