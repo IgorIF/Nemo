@@ -1,4 +1,4 @@
-<h2 data-aos="fade-up" id="text_{{ $texts->get(46)->id }}" contenteditable="true">{!! $texts->get(46)->text !!}</h2>
+<h2 data-aos="fade-up" id="text_{{ $texts->get(38)->id }}" contenteditable="true">{!! $texts->get(38)->text !!}</h2>
 <div class="right">
     <div class="tabs2" data-aos="fade-up">
         @foreach($securityCategories as $securityCategory)
@@ -43,7 +43,7 @@
                     @endforeach
                 </ul>
                 @if($securityCategory->id == 2)
-                    <p id="text_{{ $texts->get(47)->id }}" contenteditable="true">{!! $texts->get(47)->text !!}</p>
+                    <p id="text_{{ $texts->get(39)->id }}" contenteditable="true">{!! $texts->get(39)->text !!}</p>
                 @endif
 
                 <div style="max-width: 90%; width: 100%; margin: auto; height: 100px">

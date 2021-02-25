@@ -1,4 +1,4 @@
-<h2 data-aos="fade-up">{!! $texts->get(43)->text !!}</h2>
+<h2 data-aos="fade-up">{!! $texts->get(35)->text !!}</h2>
 <form>
     <div class="prices-block">
         <div class="prices-item prices-item-1" data-aos="fade-up">

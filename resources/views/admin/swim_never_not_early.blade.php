@@ -6,8 +6,8 @@
 </div>
 
 <div class="left">
-    <h2 data-aos="fade-up" id="text_{{ $texts->get(44)->id }}" contenteditable="true">{!! $texts->get(44)->text !!}</h2>
-    <p data-aos="fade-up" id="text_{{ $texts->get(45)->id }}" contenteditable="true">{!! $texts->get(45)->text !!}<span class="discount-sum"></span>
+    <h2 data-aos="fade-up" id="text_{{ $texts->get(36)->id }}" contenteditable="true">{!! $texts->get(36)->text !!}</h2>
+    <p data-aos="fade-up" id="text_{{ $texts->get(37)->id }}" contenteditable="true">{!! $texts->get(37)->text !!}<span class="discount-sum"></span>
     </p>
     <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="#" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
 </div>

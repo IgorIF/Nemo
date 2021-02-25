@@ -138,37 +138,37 @@ class BaseController extends Controller
     }
 
     private function renderTrainers() {
-        $texts = $this->textsRepository->getInRangeById([41 => 42]);
+        $texts = $this->textsRepository->getInRangeById([33 => 34]);
         $trainers = $this->trainersRepository->getAll();
         $this->trainers = view($this->template . '.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
     }
 
     private function renderPrices() {
-        $texts = $this->textsRepository->getInRangeById([43 => 43]);
+        $texts = $this->textsRepository->getInRangeById([35 => 35]);
         $this->prices = view($this->template . '.prices')->with('texts', $texts)->render();
     }
 
     private function renderSwimNeverNotEarly() {
-        $texts = $this->textsRepository->getInRangeById([44 => 45]);
+        $texts = $this->textsRepository->getInRangeById([36 => 37]);
         $images = $this->imagesRepository->getInRangeById([6 => 6]);
         $this->swimNeverNotEarly = view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderSecurity() {
-        $texts = $this->textsRepository->getInRangeById([46 => 47]);
+        $texts = $this->textsRepository->getInRangeById([38 => 39]);
         $securityCategories = $this->securityCategoriesRepository->getAll();
         $images = $this->imagesRepository->getInRangeById([7 => 9]);
         $this->security = view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories, 'images' => $images])->render();
     }
 
     private function renderReviews() {
-        $texts = $this->textsRepository->getInRangeById([48 => 48]);
+        $texts = $this->textsRepository->getInRangeById([40 => 40]);
         $videos = $this->videosRepository->getAllReviewsVideos();
         $this->reviews = view($this->template . '.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
     private function renderSwimmingPool() {
-        $texts = $this->textsRepository->getInRangeById([49 => 54]);
+        $texts = $this->textsRepository->getInRangeById([41 => 46]);
         $this->swimmingPool = view($this->template . '.swimming_pool')->with('texts', $texts)->render();
     }
 

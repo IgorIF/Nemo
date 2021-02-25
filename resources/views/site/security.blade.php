@@ -1,4 +1,4 @@
-<h2 data-aos="fade-up">{!! $texts->get(46)->text !!}</h2>
+<h2 data-aos="fade-up">{!! $texts->get(38)->text !!}</h2>
 <div class="right">
     <div class="tabs2" data-aos="fade-up">
         @foreach($securityCategories as $securityCategory)
@@ -22,7 +22,7 @@
                     @endforeach
                 </ul>
                 @if($securityCategory->id == 2)
-                    <p>{!! $texts->get(47)->text !!}</p>
+                    <p>{!! $texts->get(39)->text !!}</p>
                 @endif
             </div>
         @endforeach

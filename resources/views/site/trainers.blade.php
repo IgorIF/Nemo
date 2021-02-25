@@ -1,5 +1,5 @@
-<h2 data-aos="fade-up">{!! $texts->get(41)->text !!}</h2>
-<p data-aos="fade-up">{!! $texts->get(42)->text !!}</p>
+<h2 data-aos="fade-up">{!! $texts->get(33)->text !!}</h2>
+<p data-aos="fade-up">{!! $texts->get(34)->text !!}</p>
 
 <div class="flexslider" id="f1" data-aos="fade-up">
     <div class="slides">

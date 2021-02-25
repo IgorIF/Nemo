@@ -1,4 +1,4 @@
-<h2 data-aos="fade-up">{!! $texts->get(48)->text !!}</h2>
+<h2 data-aos="fade-up">{!! $texts->get(40)->text !!}</h2>
 
 <section class="slider3" data-aos="fade-up">
     <div class="slider-slick">
