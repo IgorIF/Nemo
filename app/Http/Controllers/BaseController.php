@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\FilialBranchesRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\RuleCategoriesRepository;
@@ -19,18 +20,19 @@ use Illuminate\Support\Arr;
 class BaseController extends Controller
 {
     protected $template;        //шаблон
-    protected $vars = [];       //массив с данными которые передаюся в шаблон
+    protected array $vars = [];       //массив с данными которые передаюся в шаблон
 
-    protected $textsRepository;
-    protected $trainersRepository;
-    protected $securityCategoriesRepository;
-    protected $securityItemsRepository;
-    protected $videosRepository;
-    protected $ruleCategoriesRepository;
-    protected $ruleItemsRepository;
-    protected $medicalCertificatesRepository;
-    protected $vacanciesRepository;
-    protected $imagesRepository;
+    protected TextsRepository $textsRepository;
+    protected TrainersRepository $trainersRepository;
+    protected SecurityCategoriesRepository $securityCategoriesRepository;
+    protected SecurityItemsRepository $securityItemsRepository;
+    protected VideosRepository $videosRepository;
+    protected RuleCategoriesRepository $ruleCategoriesRepository;
+    protected RuleItemsRepository $ruleItemsRepository;
+    protected MedicalCertificatesRepository $medicalCertificatesRepository;
+    protected VacanciesRepository $vacanciesRepository;
+    protected ImagesRepository $imagesRepository;
+    protected FilialBranchesRepository $filialBranchesRepository;
 
     protected $header;
     protected $aboutUs;
@@ -51,7 +53,8 @@ class BaseController extends Controller
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository, ImagesRepository $imagesRepository) {
+                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
+                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository) {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
@@ -62,6 +65,7 @@ class BaseController extends Controller
         $this->medicalCertificatesRepository = $medicalCertificatesRepository;
         $this->vacanciesRepository = $vacanciesRepository;
         $this->imagesRepository = $imagesRepository;
+        $this->filialBranchesRepository = $filialBranchesRepository;
     }
 
     public function __invoke(Request $request) {
@@ -111,7 +115,8 @@ class BaseController extends Controller
     private function renderHeader() {
         $texts = $this->textsRepository->getInRangeById([1 => 15]);
         $images = $this->imagesRepository->getInRangeById([1 => 1]);
-        $this->header = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images])->render();
+        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
+        $this->header = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranches' => $filialBranches])->render();
     }
 
     private function renderAboutUs() {
@@ -169,7 +174,8 @@ class BaseController extends Controller
 
     private function renderFooter() {
         $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 80]);
-        $this->footer = view($this->template . '.footer')->with('texts', $texts)->render();
+        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
+        $this->footer = view($this->template . '.footer')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
     }
 
     private function renderTrialLesson() {
@@ -191,7 +197,8 @@ class BaseController extends Controller
 
     private function renderContactUs() {
         $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 80]);
-        $this->contactUs = view($this->template . '.contact_us')->with('texts', $texts)->render();
+        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
+        $this->contactUs = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
     }
 
     private function renderVacancies() {

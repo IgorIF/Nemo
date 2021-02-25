@@ -15,66 +15,6 @@ class TextSeeder extends Seeder
     public function run()
     {
         DB::table('texts')->insert([
-            'id' => 1,
-            'text' => '+7(977)680-02-61'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 2,
-            'text' => 'ул. Кировоградская 36'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 3,
-            'text' => 'Пражская<i>800м</i>'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 4,
-            'text' => '+7(977)680-02-62'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 5,
-            'text' => 'ул. Винокурова 24, к4'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 6,
-            'text' => 'Академическая<i>1,7км</i>'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 7,
-            'text' => '+7(977)680-02-63'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 8,
-            'text' => 'Мячковский бульвар 16, к1'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 9,
-            'text' => 'Марьино<i>1,1км</i>'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 10,
-            'text' => '+7(977)680-02-66'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 11,
-            'text' => 'г.Люберцы, ул. Камова 11/5'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 12,
-            'text' => 'Некрасовка<i>2,5 км</i>'
-        ]);
-
-        DB::table('texts')->insert([
             'id' => 13,
             'text' => 'Плавать раньше, чем ходить!'
         ]);
@@ -387,49 +327,5 @@ class TextSeeder extends Seeder
             'id' => 73,
             'text' => 'Приглашаем на работу в наш дружный коллектив'
         ]);
-
-        ////
-        DB::table('texts')->insert([
-            'id' => 74,
-            'text' => '+7(977)680-02-77'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 75,
-            'text' => 'ул. Петрозаводская 11, к2 (скоро открытие)'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 76,
-            'text' => '(метро Пражская)'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 77,
-            'text' => '(метро Академическая)'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 78,
-            'text' => '(метро Марьино)'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 79,
-            'text' => '(метро Некрасовка)'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 80,
-            'text' => '(метро Речной вокзал)'
-        ]);
-
-        DB::table('texts')->insert([
-            'id' => 81,
-            'text' => ''
-        ]);
-
-
-
     }
 }

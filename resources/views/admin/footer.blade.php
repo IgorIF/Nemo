@@ -9,16 +9,21 @@
 
             </div><div class="center1" data-aos="fade-up">
                 <h3 data-aos="fade-up" id="text_{{ $texts->get(55)->id }}" contenteditable="true">{!! $texts->get(55)->text !!}</h3>
-                <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up" id="text_{{ $texts->get(1)->id }}" contenteditable="true">{!! $texts->get(1)->text !!}</a>
-                <address data-aos="fade-up" id="text_{{ $texts->get(2)->id }}" contenteditable="true">{!! $texts->get(2)->text !!}</address>
-                <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(4)->id }}" contenteditable="true">{!! $texts->get(4)->text !!}</a>
-                <address data-aos="fade-up" id="text_{{ $texts->get(5)->id }}" contenteditable="true">{!! $texts->get(5)->text !!}</address>
-                <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(7)->id }}" contenteditable="true">{!! $texts->get(7)->text !!}</a>
-                <address id="text_{{ $texts->get(8)->id }}" contenteditable="true">{!! $texts->get(8)->text !!}</address>
-                <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
-                <address id="text_{{ $texts->get(11)->id }}" contenteditable="true">{!! $texts->get(11)->text !!}</address>
-                <a href="tel:{{ $texts->get(74)->text }}" data-aos="fade-up" id="text_{{ $texts->get(74)->id }}" contenteditable="true">{!! $texts->get(74)->text !!}</a>
-                <address id="text_{{ $texts->get(75)->id }}" contenteditable="true">{!! $texts->get(75)->text !!}</address>
+
+                <a id="filialBranch_phone_{{ $filialBranches->get(1)->id }}" href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(1)->phone !!}</a>
+                <address id="filialBranch_address_{{ $filialBranches->get(1)->id }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(1)->address !!}</address>
+
+                <a id="filialBranch_phone_{{ $filialBranches->get(2)->id }}" href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(2)->phone !!}</a>
+                <address id="filialBranch_address_{{ $filialBranches->get(2)->id }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(2)->address !!}</address>
+
+                <a id="filialBranch_phone_{{ $filialBranches->get(3)->id }}" href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(3)->phone !!}</a>
+                <address id="filialBranch_address_{{ $filialBranches->get(3)->id }}" contenteditable="true">{!! $filialBranches->get(3)->address !!}</address>
+
+                <a id="filialBranch_phone_{{ $filialBranches->get(4)->id }}" href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(4)->phone !!}</a>
+                <address id="filialBranch_address_{{ $filialBranches->get(4)->id }}" contenteditable="true">{!! $filialBranches->get(4)->address !!}</address>
+
+                <a id="filialBranch_phone_{{ $filialBranches->get(5)->id }}" href="tel:{{ $filialBranches->get(5)->phone }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(5)->phone !!}</a>
+                <address id="filialBranch_address_{{ $filialBranches->get(5)->id }}" contenteditable="true">{!! $filialBranches->get(5)->address !!}</address>
 
             </div><div class="center2">
                 <h3 id="text_{{ $texts->get(56)->id }}" contenteditable="true">{!! $texts->get(56)->text !!}</h3>
@@ -61,40 +66,40 @@
             <div class="footer-hidden-top">
                 <div class="left">
                     <address>
-                        <div id="text_{{ $texts->get(2)->id }}" contenteditable="true">{!! $texts->get(2)->text !!}</div>
-                        <span id="text_{{ $texts->get(76)->id }}" contenteditable="true" class="metro metro1">{!! $texts->get(76)->text !!}</span>
+                        <div id="filialBranch_address_{{ $filialBranches->get(1)->id }}" contenteditable="true">{!! $filialBranches->get(1)->address !!}</div>
+                        <span id="filialBranch_metro_{{ $filialBranches->get(1)->id }}" contenteditable="true" class="metro metro1">{!! $filialBranches->get(1)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up" id="text_{{ $texts->get(1)->id }}" contenteditable="true">{!! $texts->get(1)->text !!}</a>
+                    <a id="filialBranch_phone_{{ $filialBranches->get(1)->id }}" href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(1)->phone !!}</a>
                 </div>
 
                 <div class="right">
                     <address >
-                        <div id="text_{{ $texts->get(5)->id }}" contenteditable="true">{!! $texts->get(5)->text !!}</div>
-                        <span id="text_{{ $texts->get(77)->id }}" contenteditable="true" class="metro metro2">{!! $texts->get(77)->text !!}</span>
+                        <div id="filialBranch_address_{{ $filialBranches->get(2)->id }}" contenteditable="true">{!! $filialBranches->get(2)->address !!}</div>
+                        <span id="filialBranch_metro_{{ $filialBranches->get(2)->id }}" contenteditable="true" class="metro metro2">{!! $filialBranches->get(2)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(4)->id }}" contenteditable="true">{!! $texts->get(4)->text !!}</a>
+                    <a id="filialBranch_phone_{{ $filialBranches->get(2)->id }}" href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(2)->phone !!}</a>
                 </div>
 
                 <div class="right">
                     <address>
-                        <div id="text_{{ $texts->get(8)->id }}" contenteditable="true">{!! $texts->get(8)->text !!}</div>
-                        <span id="text_{{ $texts->get(78)->id }}" contenteditable="true" class="metro metro3">{!! $texts->get(78)->text !!}</span>
+                        <div id="filialBranch_address_{{ $filialBranches->get(3)->id }}" contenteditable="true">{!! $filialBranches->get(3)->address !!}</div>
+                        <span id="filialBranch_metro_{{ $filialBranches->get(3)->id }}" contenteditable="true" class="metro metro3">{!! $filialBranches->get(3)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(7)->id }}" contenteditable="true">{!! $texts->get(7)->text !!}</a>
+                    <a id="filialBranch_phone_{{ $filialBranches->get(3)->id }}" href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(3)->phone !!}</a>
                 </div>
                 <div class="right">
                     <address>
-                        <div id="text_{{ $texts->get(11)->id }}" contenteditable="true">{!! $texts->get(11)->text !!}</div>
-                        <span id="text_{{ $texts->get(79)->id }}" contenteditable="true" class="metro metro4">{!! $texts->get(79)->text !!}</span>
+                        <div id="filialBranch_address_{{ $filialBranches->get(4)->id }}" contenteditable="true">{!! $filialBranches->get(4)->address !!}</div>
+                        <span id="filialBranch_metro_{{ $filialBranches->get(4)->id }}" contenteditable="true" class="metro metro4">{!! $filialBranches->get(4)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+                    <a id="filialBranch_phone_{{ $filialBranches->get(4)->id }}" href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(4)->phone !!}</a>
                 </div>
                 <div class="left">
                     <address>
-                        <div id="text_{{ $texts->get(75)->id }}" contenteditable="true">{!! $texts->get(75)->text !!}</div>
-                        <span id="text_{{ $texts->get(80)->id }}" contenteditable="true" class="metro metro1">{!! $texts->get(80)->text !!}</span>
+                        <div id="filialBranch_address_{{ $filialBranches->get(5)->id }}" contenteditable="true">{!! $filialBranches->get(5)->address !!}</div>
+                        <span id="filialBranch_metro_{{ $filialBranches->get(5)->id }}" contenteditable="true" class="metro metro1">{!! $filialBranches->get(5)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(74)->text }}" id="text_{{ $texts->get(74)->id }}" contenteditable="true">{!! $texts->get(74)->text !!}</a>
+                    <a id="filialBranch_phone_{{ $filialBranches->get(5)->id }}" href="tel:{{ $filialBranches->get(5)->phone }}" contenteditable="true">{!! $filialBranches->get(5)->phone !!}</a>
                 </div>
             </div>
 

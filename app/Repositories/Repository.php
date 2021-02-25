@@ -39,6 +39,20 @@ class Repository
         return $this->model->all();
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getAllWithIdAsKey() {
+        $result = $this->model->all();
+
+        $result = $result->mapWithKeys(function ($item) {
+            return [$item->id => $item];
+        });
+
+        return $result;
+    }
+
     /**
      * @param array $imageData
      * @return array

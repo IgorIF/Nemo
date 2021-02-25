@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\BaseController;
 use App\Mail\TrialLesson;
+use App\Repositories\FilialBranchesRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\RuleCategoriesRepository;
@@ -21,9 +22,9 @@ class IndexController extends BaseController
 {
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository, ImagesRepository $imagesRepository)
+                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository, ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository)
     {
-        parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository, $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository);
+        parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository, $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository, $filialBranchesRepository);
         $this->template = 'site';
     }
 
