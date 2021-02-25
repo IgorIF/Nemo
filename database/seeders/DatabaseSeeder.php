@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             RuleItemSeeder::class,
             MedicalCertificateSeeder::class,
             VacancySeeder::class,
-            ImageSeeder::class
+            ImageSeeder::class,
+            FilialSeeder::class
         ]);
     }
 }
