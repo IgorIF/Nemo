@@ -120,13 +120,13 @@ class BaseController extends Controller
     }
 
     private function renderAboutUs() {
-        $texts = $this->textsRepository->getInRangeById([16 => 17]);
+        $texts = $this->textsRepository->getInRangeById([8 => 9]);
         $video = $this->videosRepository->getAboutUsVideo();
         $this->aboutUs = view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
-        $texts = $this->textsRepository->getInRangeById([18 => 30]);
+        $texts = $this->textsRepository->getInRangeById([10 => 22]);
         $images = $this->imagesRepository->getInRangeById([2 => 2]);
         $this->theBenefitsOfEarlySwimming = view($this->template . '.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
     }
