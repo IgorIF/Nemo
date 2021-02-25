@@ -84,7 +84,7 @@ nav.fixed.snow{
 }
 
 div.delete-tooltip {
-    display: none;
+    display: block;
     position: absolute;
     width: 200px;
     height: 75px;
@@ -112,14 +112,44 @@ div.delete-trainer:before {
     border-color: #FF680D #FF680D transparent transparent;
 }
 
+.trainer_caption div.delete-tooltip a {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    color: #ff680d;
+    line-height: 18px;
+    border: 2px solid #ffffff;
+    padding: 7px 13px 9px 13px;
+    border-radius: 10px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    transition: 0.3s;
+    background-color: #ffffff;
+    background-repeat: unset;
+    background-image: unset;
+    margin-top: 0;
+}
+
 div.delete-security-item:before {
     left: 15px;
     border-color: #FF680D transparent transparent #FF680D;
 }
 
 div.delete-trainer {
-    right: 140px;
+    right: 130px;
     top: -70px;
+}
+
+div.delete-trainer-video {
+    left: 10px;
+    bottom: 55px;
+}
+
+div.delete-trainer-video:before {
+    left: 15px;
+    border-color: #FF680D transparent transparent #FF680D;
 }
 
 div.delete-security-item {
@@ -174,6 +204,10 @@ div.delete-vacancy {
 .delete-tooltip a {
     border-radius: 10px;
     cursor: pointer;
+}
+
+.delete-tooltip a:hover {
+    opacity: 0.8;
 }
 
 div.trainer-delete-container {
@@ -376,7 +410,7 @@ label.image-edit-area {
     background: url("../images/icon_edit.png") no-repeat;
 }
 
-.trainer_caption a#trainerVideoDeleteBtn {
+.trainer_caption a#trainerVideo_delete_btn {
     background: url("../images/icon_delete.png") no-repeat;
 }
 
@@ -427,6 +461,13 @@ label.image-edit-area {
 
     .header-image-edit-area {
         height: 582px;
+    }
+}
+
+@media all and (max-width: 510px){
+    div.delete-trainer {
+        right: 69px;
+        top: -70px;
     }
 }
 

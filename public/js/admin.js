@@ -844,9 +844,12 @@ $(document).ready(function () {
         initialText = null;
     }
 
-    function onDeleteBtnClickListener() {
+    function onDeleteBtnClickListener(e) {
+        e.preventDefault();
         let id = $(this).attr('id').split('_')[0];
         let tooltip = $(this).next('div[id="deleteTooltip"]');
+
+        console.log(tooltip);
 
         $(tooltip).fadeIn(300);
 
@@ -966,7 +969,8 @@ $(document).ready(function () {
         $modalTrainerVideo.modal('show');
     }
 
-    function onTrainerVideoEditBtnClickListener() {
+    function onTrainerVideoEditBtnClickListener(e) {
+        e.preventDefault();
         saveTrainerVideoBtnMode = 'update';
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let currentUrl = $(this).parent().prev('div').children('a').attr('href');

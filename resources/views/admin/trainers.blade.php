@@ -16,14 +16,20 @@
                         </label>
                     </div>
 
-                    <div class="trainer_caption">
+                    <div class="trainer_caption" style="position: relative">
                         <h4 id="trainer_name" contenteditable="true">{!! $trainer->name !!}</h4>
                         <p id="trainer_description" contenteditable="true">{!! $trainer->description !!}</p>
 
                         @if(!empty($trainer->video))
                             <div><a id="trainerVideoPlayBtn" data-fancybox href="https://www.youtube.com/watch?v={{ $trainer->video }}">Смотреть занятие</a></div>
                             <div><a id="trainer_video_edit_btn" href="#">Изменить видео</a></div>
-                            <div><a id="trainerVideoDeleteBtn" href="#">Удалить видео</a></div>
+                            <div>
+                                <a id="trainerVideo_delete_btn" href="#">Удалить видео</a>
+                                <div id="deleteTooltip" class="delete-tooltip delete-trainer-video" tabindex="1">
+                                    Удалить видео?
+                                    <a class="button--border">Да</a>
+                                </div>
+                            </div>
                         @else
                             <div><a id="trainerVideoAddBtn" href="#">Добавить видео</a></div>
                         @endif
