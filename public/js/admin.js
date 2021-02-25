@@ -122,7 +122,6 @@ $(document).ready(function () {
     ///
     setBackgroundImageChangeAreaDimensions();
 
-
     $modalAddTrainer.find('input[id="input"]').change(onCreateTrainerImageChangeListener);
 
     $modalAddVideo.find('input[id="input"]').change(onVideoPreviewChangeListener);
