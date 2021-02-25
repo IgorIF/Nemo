@@ -1,4 +1,4 @@
-<h3>{!! $texts->get(72)->text !!}</h3>
+<h3>{!! $texts->get(56)->text !!}</h3>
 
 <form {{--class="main-form"--}} action="{{ route('sendmail') }}" method="POST">
     {{ csrf_field() }}

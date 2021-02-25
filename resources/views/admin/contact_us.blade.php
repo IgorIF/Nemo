@@ -1,4 +1,4 @@
-<h3>Свяжитесь с нами</h3>
+<h3 id="text_{{ $texts->get(66)->id }}" contenteditable="true">{!! $texts->get(66)->text !!}</h3>
 
 <div class="phone1">
     <a id="filialBranch_phone_{{ $filialBranches->get(1)->id }}" href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" contenteditable="true">{!! $filialBranches->get(1)->phone !!}</a>

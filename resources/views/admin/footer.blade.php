@@ -8,7 +8,7 @@
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
             </div><div class="center1" data-aos="fade-up">
-                <h3 data-aos="fade-up" id="text_{{ $texts->get(55)->id }}" contenteditable="true">{!! $texts->get(55)->text !!}</h3>
+                <h3 data-aos="fade-up" id="text_{{ $texts->get(47)->id }}" contenteditable="true">{!! $texts->get(47)->text !!}</h3>
 
                 <a id="filialBranch_phone_{{ $filialBranches->get(1)->id }}" href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(1)->phone !!}</a>
                 <address id="filialBranch_address_{{ $filialBranches->get(1)->id }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(1)->address !!}</address>
@@ -17,21 +17,21 @@
                 <address id="filialBranch_address_{{ $filialBranches->get(2)->id }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(2)->address !!}</address>
 
                 <a id="filialBranch_phone_{{ $filialBranches->get(3)->id }}" href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(3)->phone !!}</a>
-                <address id="filialBranch_address_{{ $filialBranches->get(3)->id }}" contenteditable="true">{!! $filialBranches->get(3)->address !!}</address>
+                <address id="filialBranch_address_{{ $filialBranches->get(3)->id }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(3)->address !!}</address>
 
                 <a id="filialBranch_phone_{{ $filialBranches->get(4)->id }}" href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(4)->phone !!}</a>
-                <address id="filialBranch_address_{{ $filialBranches->get(4)->id }}" contenteditable="true">{!! $filialBranches->get(4)->address !!}</address>
+                <address id="filialBranch_address_{{ $filialBranches->get(4)->id }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(4)->address !!}</address>
 
                 <a id="filialBranch_phone_{{ $filialBranches->get(5)->id }}" href="tel:{{ $filialBranches->get(5)->phone }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(5)->phone !!}</a>
-                <address id="filialBranch_address_{{ $filialBranches->get(5)->id }}" contenteditable="true">{!! $filialBranches->get(5)->address !!}</address>
+                <address id="filialBranch_address_{{ $filialBranches->get(5)->id }}" data-aos="fade-up" contenteditable="true">{!! $filialBranches->get(5)->address !!}</address>
 
             </div><div class="center2">
-                <h3 id="text_{{ $texts->get(56)->id }}" contenteditable="true">{!! $texts->get(56)->text !!}</h3>
-                <p id="text_{{ $texts->get(57)->id }}" contenteditable="true">{!! $texts->get(57)->text !!}</p>
-                <span id="text_{{ $texts->get(58)->id }}" contenteditable="true">{!! $texts->get(58)->text !!}</span>
+                <h3 id="text_{{ $texts->get(48)->id }}" contenteditable="true">{!! $texts->get(48)->text !!}</h3>
+                <p id="text_{{ $texts->get(49)->id }}" contenteditable="true">{!! $texts->get(49)->text !!}</p>
+                <span id="text_{{ $texts->get(50)->id }}" contenteditable="true">{!! $texts->get(50)->text !!}</span>
 
             </div><div class="right">
-                <h3 id="text_{{ $texts->get(59)->id }}" contenteditable="true">{!! $texts->get(59)->text !!}</h3>
+                <h3 id="text_{{ $texts->get(51)->id }}" contenteditable="true">{!! $texts->get(51)->text !!}</h3>
                 <div class="social-link">
                     <a href="#">
                         <picture>
@@ -52,13 +52,13 @@
                         </picture>
                     </a>
                 </div>
-                <p id="text_{{ $texts->get(60)->id }}" contenteditable="true">{!! $texts->get(60)->text !!}</p>
-                <a class="mail" href="mailto:{{ $texts->get(61)->text }}" id="text_{{ $texts->get(61)->id }}" contenteditable="true">{!! $texts->get(61)->text !!}</a>
+                <p id="text_{{ $texts->get(52)->id }}" contenteditable="true">{!! $texts->get(52)->text !!}</p>
+                <a class="mail" href="mailto:{{ $texts->get(53)->text }}" id="text_{{ $texts->get(53)->id }}" contenteditable="true">{!! $texts->get(53)->text !!}</a>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p id="text_{{ $texts->get(62)->id }}" contenteditable="true">{!! $texts->get(62)->text !!}</p>
+            <p id="text_{{ $texts->get(54)->id }}" contenteditable="true">{!! $texts->get(54)->text !!}</p>
         </div>
 
         <!-- fh -->
@@ -104,18 +104,18 @@
             </div>
 
             <div class="footer-hidden-operating-mode-pool">
-                <h3 id="text_{{ $texts->get(56)->id }}" contenteditable="true">{!! $texts->get(56)->text !!}</h3>
-                <p id="text_{{ $texts->get(57)->id }}" contenteditable="true">{!! $texts->get(57)->text !!}</p>
-                <span id="text_{{ $texts->get(58)->id }}" contenteditable="true">{!! $texts->get(58)->text !!}</span>
+                <h3 id="text_{{ $texts->get(48)->id }}" contenteditable="true">{!! $texts->get(48)->text !!}</h3>
+                <p id="text_{{ $texts->get(49)->id }}" contenteditable="true">{!! $texts->get(49)->text !!}</p>
+                <span id="text_{{ $texts->get(50)->id }}" contenteditable="true">{!! $texts->get(50)->text !!}</span>
             </div>
 
             <div class="footer-hidden-questions">
                 <div class="left">
-                    <p id="text_{{ $texts->get(60)->id }}" contenteditable="true">{!! $texts->get(60)->text !!}</p>
-                    <a class="mail" href="mailto:{{ $texts->get(61)->text }}" id="text_{{ $texts->get(61)->id }}" contenteditable="true">{!! $texts->get(61)->text !!}</a>
+                    <p id="text_{{ $texts->get(52)->id }}" contenteditable="true">{!! $texts->get(52)->text !!}</p>
+                    <a class="mail" href="mailto:{{ $texts->get(53)->text }}" id="text_{{ $texts->get(53)->id }}" contenteditable="true">{!! $texts->get(53)->text !!}</a>
                 </div>
                 <div class="right">
-                    <h3 id="text_{{ $texts->get(59)->id }}" contenteditable="true">{!! $texts->get(59)->text !!}</h3>
+                    <h3 id="text_{{ $texts->get(51)->id }}" contenteditable="true">{!! $texts->get(51)->text !!}</h3>
                     <div class="social-link">
                         <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
                             <picture>
@@ -146,7 +146,7 @@
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
                 <div class="footer-hidden-bottom">
-                    <p id="text_{{ $texts->get(62)->id }}" contenteditable="true">{!! $texts->get(62)->text !!}</p>
+                    <p id="text_{{ $texts->get(54)->id }}" contenteditable="true">{!! $texts->get(54)->text !!}</p>
                 </div>
             </div>
         </div>
@@ -155,7 +155,7 @@
 
 <div class="block-bottom">
     <div class="container">
-        <span id="text_{{ $texts->get(73)->id }}" contenteditable="true">{!! $texts->get(73)->text !!}</span>
+        <span id="text_{{ $texts->get(55)->id }}" contenteditable="true">{!! $texts->get(55)->text !!}</span>
         <a href="" class="js-popup5 button--border">вакансии</a>
     </div>
 </div>

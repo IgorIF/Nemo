@@ -173,36 +173,36 @@ class BaseController extends Controller
     }
 
     private function renderFooter() {
-        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 80]);
+        $texts = $this->textsRepository->getInRangeById([47 => 55]);
         $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
         $this->footer = view($this->template . '.footer')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
     }
 
     private function renderTrialLesson() {
-        $texts = $this->textsRepository->getInRangeById([72 => 72]);
+        $texts = $this->textsRepository->getInRangeById([56 => 56]);
         $this->trialLesson = view($this->template . '.trial_lesson')->with('texts' , $texts)->render();
     }
 
     private function renderRules() {
-        $texts = $this->textsRepository->getInRangeById([63 => 65]);
+        $texts = $this->textsRepository->getInRangeById([57 => 59]);
         $ruleCategories = $this->ruleCategoriesRepository->getAll();
         $this->rules = view($this->template . '.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
     }
 
     private function renderMedicalCertificates() {
-        $texts = $this->textsRepository->getInRangeById([66 => 67]);
+        $texts = $this->textsRepository->getInRangeById([60 => 61]);
         $medicalCertificates = $this->medicalCertificatesRepository->getAll();
         $this->medicalCertificates = view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $medicalCertificates])->render();
     }
 
     private function renderContactUs() {
-        $texts = $this->textsRepository->getInRangeById([55 => 62, 1 => 2, 4 => 5, 7 => 8, 10 => 11, 73 => 80]);
+        $texts = $this->textsRepository->getInRangeById([66 => 66]);
         $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
         $this->contactUs = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
     }
 
     private function renderVacancies() {
-        $texts = $this->textsRepository->getInRangeById([68 => 71]);
+        $texts = $this->textsRepository->getInRangeById([62 => 65]);
         $vacancies = $this->vacanciesRepository->getAll();
         $this->vacancies = view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $vacancies])->render();
     }

@@ -1,4 +1,4 @@
-<h3 id="text_{{ $texts->get(63)->id }}" contenteditable="true">{!! $texts->get(63)->text !!}</h3>
+<h3 id="text_{{ $texts->get(57)->id }}" contenteditable="true">{!! $texts->get(57)->text !!}</h3>
 
 <div class="all-rules">
     <div id="ruleCategory_{{ $ruleCategories[0]->id }}" class="rule1">
@@ -35,7 +35,7 @@
 
     </div>
 
-    <p id="text_{{ $texts->get(64)->id }}" contenteditable="true">{!! $texts->get(64)->text !!}</p>
+    <p id="text_{{ $texts->get(58)->id }}" contenteditable="true">{!! $texts->get(58)->text !!}</p>
     <div id="ruleCategory_{{ $ruleCategories[1]->id }}" class="rule2">
         <ul>
             @foreach($ruleCategories[1]->ruleItems as $rule)
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    <p id="text_{{ $texts->get(65)->id }}" contenteditable="true">{!! $texts->get(65)->text !!}</p>
+    <p id="text_{{ $texts->get(59)->id }}" contenteditable="true">{!! $texts->get(59)->text !!}</p>
     <div id="ruleCategory_{{ $ruleCategories[2]->id }}" class="rule2">
         <ul>
             @foreach($ruleCategories[2]->ruleItems as $rule)

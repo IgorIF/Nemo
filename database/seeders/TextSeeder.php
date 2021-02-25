@@ -245,121 +245,114 @@ class TextSeeder extends Seeder
             'text' => 'Прийти с малышом на занятие'
         ]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         DB::table('texts')->insert([
-            'id' => 55,
+            'id' => 47,
             'text' => 'Контакты'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 56,
+            'id' => 48,
             'text' => 'Режим работы бассейнов'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 57,
+            'id' => 49,
             'text' => '09:00–21:00'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 58,
+            'id' => 50,
             'text' => 'без выходных'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 59,
+            'id' => 51,
             'text' => 'Присоединяйтесь'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 60,
+            'id' => 52,
             'text' => 'Есть что написать?'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 61,
+            'id' => 53,
             'text' => 'aquanemo@yandex.ru'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 62,
+            'id' => 54,
             'text' => 'ООО "Акваклуб". ИНН: 7726432268 ОГРН: 118774650808 (ул. Кировоградская 36,ул. Винокурова 24, к4)'
         ]);
 
+        DB::table('texts')->insert([
+            'id' => 55,
+            'text' => 'Приглашаем на работу в наш дружный коллектив'
+        ]);
+
+        /// trial lesson
+        DB::table('texts')->insert([
+            'id' => 56,
+            'text' => 'Запись на занятие'
+        ]);
 
         /// rules
         DB::table('texts')->insert([
-            'id' => 63,
+            'id' => 57,
             'text' => 'Правила посещения Акваклуба Немо'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 64,
+            'id' => 58,
             'text' => 'Для занятий необходимо:'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 65,
+            'id' => 59,
             'text' => 'Техника безопасности Акваклуба Немо'
         ]);
 
-
         /// medicineCertificates
         DB::table('texts')->insert([
-            'id' => 66,
+            'id' => 60,
             'text' => 'Справки для занятий в бассейне:'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 67,
+            'id' => 61,
             'text' => '* Для детей до 1 года результаты анализа на энтеробиоз и кала на яйца глист не требуются, необходима только справка от педиатра.'
         ]);
 
-
         ///vacancies
         DB::table('texts')->insert([
-            'id' => 68,
+            'id' => 62,
             'text' => 'вакансии'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 69,
+            'id' => 63,
             'text' => 'Сеть детских бассейнов <span>“Акваклуб Немо”</span> приглашает на работу:'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 70,
+            'id' => 64,
             'text' => 'Резюме:'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 71,
+            'id' => 65,
             'text' => 'aquanemo@yandex.ru'
         ]);
 
-
-        /// trial lesson
-
+        ///contact us
         DB::table('texts')->insert([
-            'id' => 72,
-            'text' => 'Запись на занятие'
+            'id' => 66,
+            'text' => 'Свяжитесь с нами'
         ]);
 
-        DB::table('texts')->insert([
-            'id' => 73,
-            'text' => 'Приглашаем на работу в наш дружный коллектив'
-        ]);
+
+
+
+
     }
 }

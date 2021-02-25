@@ -1,41 +1,41 @@
-<h3>Свяжитесь с нами</h3>
+<h3>{!! $texts->get(66)->text !!}</h3>
 
 <div class="phone1">
-    <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">{!! $texts->get(1)->text !!}</a>
+    <a href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">{!! $filialBranches->get(1)->phone !!}</a>
     <address>
-        <div>{!! $texts->get(2)->text !!}</div>
-        <div>{!! $texts->get(76)->text !!}</div>
+        <div>{!! $filialBranches->get(1)->address !!}</div>
+        <div>{!! $filialBranches->get(1)->metro !!}</div>
     </address>
 </div>
 
 <div class="phone2">
-    <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;">{!! $texts->get(4)->text !!}</a>
+    <a href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;">{!! $filialBranches->get(2)->phone !!}</a>
     <address>
-        <div>{!! $texts->get(5)->text !!}</div>
-        <div>{!! $texts->get(77)->text !!}</div>
+        <div>{!! $filialBranches->get(2)->address !!}</div>
+        <div>{!! $filialBranches->get(2)->metro !!}</div>
     </address>
 </div>
 
 <div class="phone2">
-    <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">{!! $texts->get(7)->text !!}</a>
+    <a href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">{!! $filialBranches->get(3)->phone !!}</a>
     <address>
-        <div>{!! $texts->get(8)->text !!}</div>
-        <div>{!! $texts->get(78)->text !!}</div>
+        <div>{!! $filialBranches->get(3)->address !!}</div>
+        <div>{!! $filialBranches->get(3)->metro !!}</div>
     </address>
 </div>
 
 <div class="phone2">
-    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;">{!! $texts->get(10)->text !!}</a>
+    <a href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;">{!! $filialBranches->get(4)->phone !!}</a>
     <address>
-        <div>{!! $texts->get(11)->text !!}</div>
-        <div>{!! $texts->get(79)->text !!}</div>
+        <div>{!! $filialBranches->get(4)->address !!}</div>
+        <div>{!! $filialBranches->get(4)->metro !!}</div>
     </address>
 </div>
 <div class="phone2">
-    <a href="tel:{{ $texts->get(74)->text }}">{!! $texts->get(74)->text !!}</a>
+    <a href="tel:{{ $filialBranches->get(5)->phone }}">{!! $filialBranches->get(5)->phone !!}</a>
     <address>
-        <div>{!! $texts->get(75)->text !!}</div>
-        <div>{!! $texts->get(80)->text !!}</div>
+        <div>{!! $filialBranches->get(5)->address !!}</div>
+        <div>{!! $filialBranches->get(5)->metro !!}</div>
     </address>
 </div>
 

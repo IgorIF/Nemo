@@ -1,4 +1,4 @@
-<h3 id="text_{{ $texts->get(66)->id }}" contenteditable="true">{!! $texts->get(66)->text !!}</h3>
+<h3 id="text_{{ $texts->get(60)->id }}" contenteditable="true">{!! $texts->get(60)->text !!}</h3>
 
 <div class="all-rules">
     <ul id="medicalCertificates">
@@ -33,7 +33,7 @@
     </div>
 
     <p style="font-weight: bolder">
-        <div id="text_{{ $texts->get(67)->id }}" contenteditable="true">{!! $texts->get(67)->text !!}</div>
+        <div id="text_{{ $texts->get(61)->id }}" contenteditable="true">{!! $texts->get(61)->text !!}</div>
     </p>
 </div>
 <button type="button" class="close" id="js-close-popup"></button>

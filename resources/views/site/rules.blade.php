@@ -1,4 +1,4 @@
-<h3>{!! $texts->get(63)->text !!}</h3>
+<h3>{!! $texts->get(57)->text !!}</h3>
 
 <div class="all-rules">
     <div class="rule1">
@@ -9,7 +9,7 @@
         </ul>
     </div>
 
-    <p>{!! $texts->get(64)->text !!}</p>
+    <p>{!! $texts->get(58)->text !!}</p>
 
     <div class="rule2">
         <ul>
@@ -19,7 +19,7 @@
         </ul>
     </div>
 
-    <p>{!! $texts->get(65)->text !!}</p>
+    <p>{!! $texts->get(59)->text !!}</p>
     <div class="rule2">
         <ul>
             @foreach($ruleCategories[2]->ruleItems as $rule)

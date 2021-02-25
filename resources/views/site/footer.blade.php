@@ -8,26 +8,31 @@
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="{{ route('site') }}" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
             </div><div class="center1" data-aos="fade-up">
-                <h3 data-aos="fade-up">{!! $texts->get(55)->text !!}</h3>
-                <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up">{!! $texts->get(1)->text !!}</a>
-                <address data-aos="fade-up">{!! $texts->get(2)->text !!}</address>
-                <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up">{!! $texts->get(4)->text !!}</a>
-                <address data-aos="fade-up">{!! $texts->get(5)->text !!}</address>
-                <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $texts->get(7)->text !!}</a>
-                <address>{!! $texts->get(8)->text !!}</address>
-                <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up">{!! $texts->get(10)->text !!}</a>
-                <address>{!! $texts->get(11)->text !!}</address>
-                <a href="tel:{{ $texts->get(74)->text }}" data-aos="fade-up">{!! $texts->get(74)->text !!}</a>
-                <address>{!! $texts->get(75)->text !!}</address>
+                <h3 data-aos="fade-up">{!! $texts->get(47)->text !!}</h3>
+
+                <a href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up">{!! $filialBranches->get(1)->phone !!}</a>
+                <address data-aos="fade-up">{!! $filialBranches->get(1)->address !!}</address>
+
+                <a href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up">{!! $filialBranches->get(2)->phone !!}</a>
+                <address data-aos="fade-up">{!! $filialBranches->get(2)->address !!}</address>
+
+                <a href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $filialBranches->get(3)->phone !!}</a>
+                <address data-aos="fade-up">{!! $filialBranches->get(3)->address !!}</address>
+
+                <a href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up">{!! $filialBranches->get(4)->phone !!}</a>
+                <address data-aos="fade-up">{!! $filialBranches->get(4)->address !!}</address>
+
+                <a href="tel:{{ $filialBranches->get(5)->phone }}" data-aos="fade-up">{!! $filialBranches->get(5)->phone !!}</a>
+                <address data-aos="fade-up">{!! $filialBranches->get(5)->address !!}</address>
 
             </div><div class="center2">
-                <h3>{!! $texts->get(56)->text !!}</h3>
-                <p>{!! $texts->get(57)->text !!}</p>
-                <span>{!! $texts->get(58)->text !!}</span>
+                <h3>{!! $texts->get(48)->text !!}</h3>
+                <p>{!! $texts->get(49)->text !!}</p>
+                <span>{!! $texts->get(50)->text !!}</span>
 
 
             </div><div class="right">
-                <h3>{!! $texts->get(59)->text !!}</h3>
+                <h3>{!! $texts->get(51)->text !!}</h3>
                 <div class="social-link">
                     <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
                         <picture>
@@ -48,13 +53,13 @@
                         </picture>
                     </a>
                 </div>
-                <p>{!! $texts->get(60)->text !!}</p>
-                <a class="mail" href="mailto:{{ $texts->get(61)->text }}">{!! $texts->get(61)->text !!}</a>
+                <p>{!! $texts->get(52)->text !!}</p>
+                <a class="mail" href="mailto:{{ $texts->get(53)->text }}">{!! $texts->get(53)->text !!}</a>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>{!! $texts->get(62)->text !!}</p>
+            <p>{!! $texts->get(54)->text !!}</p>
         </div>
 
         <!-- fh -->
@@ -62,56 +67,56 @@
             <div class="footer-hidden-top">
                 <div class="left">
                     <address>
-                        <div>{!! $texts->get(2)->text !!}</div>
-                        <span class="metro metro1">{!! $texts->get(76)->text !!}</span>
+                        <div>{!! $filialBranches->get(1)->address !!}</div>
+                        <span class="metro metro1">{!! $filialBranches->get(1)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up" id="text_{{ $texts->get(1)->id }}" contenteditable="true">{!! $texts->get(1)->text !!}</a>
+                    <a href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up">{!! $filialBranches->get(1)->phone !!}</a>
                 </div>
 
                 <div class="right">
                     <address >
-                        <div>{!! $texts->get(5)->text !!}</div>
-                        <span class="metro metro2">{!! $texts->get(77)->text !!}</span>
+                        <div>{!! $filialBranches->get(2)->address !!}</div>
+                        <span class="metro metro2">{!! $filialBranches->get(2)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(4)->id }}" contenteditable="true">{!! $texts->get(4)->text !!}</a>
+                    <a href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up">{!! $filialBranches->get(2)->phone !!}</a>
                 </div>
 
                 <div class="right">
                     <address>
-                        <div>{!! $texts->get(8)->text !!}</div>
-                        <span class="metro metro3">{!! $texts->get(78)->text !!}</span>
+                        <div>{!! $filialBranches->get(3)->address !!}</div>
+                        <span class="metro metro3">{!! $filialBranches->get(3)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up" id="text_{{ $texts->get(7)->id }}" contenteditable="true">{!! $texts->get(7)->text !!}</a>
+                    <a href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $filialBranches->get(3)->phone !!}</a>
                 </div>
                 <div class="right">
                     <address>
-                        <div>{!! $texts->get(11)->text !!}</div>
-                        <span class="metro metro4">{!! $texts->get(79)->text !!}</span>
+                        <div>{!! $filialBranches->get(4)->address !!}</div>
+                        <span class="metro metro4">{!! $filialBranches->get(4)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up" id="text_{{ $texts->get(10)->id }}" contenteditable="true">{!! $texts->get(10)->text !!}</a>
+                    <a href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up">{!! $filialBranches->get(4)->phone !!}</a>
                 </div>
                 <div class="left">
                     <address>
-                        <div>{!! $texts->get(75)->text !!}</div>
-                        <span class="metro metro1">{!! $texts->get(80)->text !!}</span>
+                        <div contenteditable="true">{!! $filialBranches->get(5)->address !!}</div>
+                        <span class="metro metro1">{!! $filialBranches->get(5)->metro !!}</span>
                     </address>
-                    <a href="tel:{{ $texts->get(74)->text }}" id="text_{{ $texts->get(74)->id }}" contenteditable="true">{!! $texts->get(74)->text !!}</a>
+                    <a href="tel:{{ $filialBranches->get(5)->phone }}">{!! $filialBranches->get(5)->phone !!}</a>
                 </div>
             </div>
 
             <div class="footer-hidden-operating-mode-pool">
-                <h3>{!! $texts->get(56)->text !!}</h3>
-                <p>{!! $texts->get(57)->text !!}</p>
-                <span>{!! $texts->get(58)->text !!}</span>
+                <h3>{!! $texts->get(48)->text !!}</h3>
+                <p>{!! $texts->get(49)->text !!}</p>
+                <span>{!! $texts->get(50)->text !!}</span>
             </div>
 
             <div class="footer-hidden-questions">
                 <div class="left">
-                    <p>{!! $texts->get(60)->text !!}</p>
-                    <a class="mail" href="mailto:{{ $texts->get(61)->text }}">{!! $texts->get(61)->text !!}</a>
+                    <p>{!! $texts->get(52)->text !!}</p>
+                    <a class="mail" href="mailto:{{ $texts->get(53)->text }}">{!! $texts->get(53)->text !!}</a>
                 </div>
                 <div class="right">
-                    <h3>{!! $texts->get(59)->text !!}</h3>
+                    <h3>{!! $texts->get(51)->text !!}</h3>
                     <div class="social-link">
                         <a href="https://www.instagram.com/aquaclubnemo/" target="_blank">
                             <picture>
@@ -142,7 +147,7 @@
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="{{ route('site') }}">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
                 <div class="footer-hidden-bottom">
-                    <p>{!! $texts->get(62)->text !!}</p>
+                    <p>{!! $texts->get(54)->text !!}</p>
                 </div>
             </div>
         </div>
@@ -151,7 +156,7 @@
 
 <div class="block-bottom">
     <div class="container">
-        <span>{!! $texts->get(73)->text !!}</span>
+        <span>{!! $texts->get(55)->text !!}</span>
         <a href="" class="js-popup5 button--border">вакансии</a>
     </div>
 </div>

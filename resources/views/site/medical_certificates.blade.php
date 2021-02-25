@@ -1,4 +1,4 @@
-<h3>{!! $texts->get(66)->text !!}</h3>
+<h3>{!! $texts->get(60)->text !!}</h3>
 
 <div class="all-rules">
     <ul>
@@ -9,7 +9,7 @@
 
     <p>
         <strong>
-            {!! $texts->get(67)->text !!}
+            {!! $texts->get(61)->text !!}
         </strong>
     </p>
 </div>
