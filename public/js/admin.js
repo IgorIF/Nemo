@@ -122,6 +122,10 @@ $(document).ready(function () {
     ///
     setBackgroundImageChangeAreaDimensions();
 
+    $modalTrainerVideo.on('hidden.bs.modal', function () {
+        clearFields($modalTrainerVideo);
+    })
+
     $modalAddTrainer.find('input[id="input"]').change(onCreateTrainerImageChangeListener);
 
     $modalAddVideo.find('input[id="input"]').change(onVideoPreviewChangeListener);
@@ -503,7 +507,6 @@ $(document).ready(function () {
             $(container).append(trainerVideoDeleteBtn);
 
             $modalTrainerVideo.modal('hide');
-            clearFields($modalTrainerVideo);
             toast('Видео добавлено', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
@@ -523,7 +526,6 @@ $(document).ready(function () {
         ajax('POST', url, data, function (response) {
             $('div[id="trainer_' + trainerId + '"]').find('a[id="trainerVideoPlayBtn"]').attr('href', 'https://www.youtube.com/watch?v=' + response.video);
             $modalTrainerVideo.modal('hide');
-            clearFields($modalTrainerVideo);
             toast('Видео изменено', {type: 'success'});
         }, function (error) {
             if (error.status === 422) {
@@ -1003,7 +1005,8 @@ $(document).ready(function () {
         $modalAboutUsEditVideo.modal('show');
     }
 
-    function onTrainerVideoAddBtnClickListener() {
+    function onTrainerVideoAddBtnClickListener(e) {
+        e.preventDefault();
         saveTrainerVideoBtnMode = 'create';
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         $modalTrainerVideo.find('#modalLabel').html('Добавить видео');
@@ -1016,7 +1019,7 @@ $(document).ready(function () {
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let currentUrl = $(this).parent().prev('div').children('a').attr('href');
         $modalTrainerVideo.find('#modalLabel').html('Изменить видео');
-        $modalTrainerVideo.find('input').attr('value', currentUrl);
+        $modalTrainerVideo.find('input').val(currentUrl);
         $modalTrainerVideo.modal('show');
     }
 
@@ -1195,6 +1198,7 @@ function clearFields(modal) {
         }
 
         if (modalId === 'modal_add_trainer' || modalId === 'modal_add_item' || modalId === 'modal_add_video' || 'modalTrainerVideo')
+            console.log(e);
             $(e).val('');
 
         if ($(e).attr('type') === 'file') {
