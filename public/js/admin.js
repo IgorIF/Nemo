@@ -491,6 +491,8 @@ $(document).ready(function () {
             $(container).find('a[id="trainerVideoAddBtn"]').parent().remove();
 
             let trainerVideoPlayBtn = $('<div><a id="trainerVideoPlayBtn" data-fancybox href="https://www.youtube.com/watch?v=' + response.video + '">Смотреть занятие</a></div>');
+            $(container).append(trainerVideoPlayBtn);
+
             let trainerVideoEditBtn = $('<div><a id="trainer_video_edit_btn" href="#">Изменить видео</a></div>');
             let trainerVideoDeleteBtn = $('<div>' +
                                             '<a id="trainerVideo_delete_btn" href="#">Удалить видео</a>' +
@@ -500,9 +502,8 @@ $(document).ready(function () {
                                             '</div>' +
                                         '</div>');
 
-            $(trainerVideoEditBtn).click(onTrainerVideoEditBtnClickListener);
+            $(trainerVideoEditBtn).find('a').click(onTrainerVideoEditBtnClickListener);
 
-            $(container).append(trainerVideoPlayBtn);
             $(container).append(trainerVideoEditBtn);
             $(container).append(trainerVideoDeleteBtn);
 
