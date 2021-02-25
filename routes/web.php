@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\FilialBranchController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MedicalCertificateController;
 use App\Http\Controllers\Admin\VacancyController;
@@ -39,7 +40,8 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
     Route::resource('rules', RuleItemController::class)->only(['store', 'update', 'destroy']);
     Route::resource('medicalCertificates', MedicalCertificateController::class)->only(['store', 'update', 'destroy']);
     Route::resource('vacancies', VacancyController::class)->only(['store', 'update', 'destroy']);
-    Route::resource('images', ImageController::class)->only(['update']);
+    Route::resource('images', ImageController::class)->only('update');
+    Route::resource('filialBranches', FilialBranchController::class)->only('update');
 
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 

@@ -154,11 +154,29 @@ $(document).ready(function () {
         if (text !== initialText) {
             let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
             let fieldName = $(element).attr('id').split('_')[1];
-            let url = 'admin/trainers/' + trainerId;
             let data = {'field': fieldName, 'text': text};
+
+            let url = 'admin/trainers/' + trainerId;
 
             ajax('PUT', url, data, function () {
                 toast('Тренер обновлен', {type: 'success'});
+            });
+        }
+    }
+
+    function saveFilialBranchText(element) {
+        let text = $(element).html();
+
+        if (text !== initialText) {
+            let idArr = $(element).attr('id').split('_');
+            let filialBranchId = idArr[2];
+            let fieldName = idArr[1];
+            let data = {'field': fieldName, 'text': text};
+
+            let url = 'admin/filialBranches/' + filialBranchId;
+
+            ajax('PUT', url, data, function () {
+                toast('Текст обновлен', {type: 'success'});
             });
         }
     }
@@ -880,6 +898,10 @@ $(document).ready(function () {
                 break;
             case 'vacancy':
                 savaVacancyText(this);
+                break;
+            case 'filialBranch':
+                saveFilialBranchText(this);
+
         }
 
         initialText = null;

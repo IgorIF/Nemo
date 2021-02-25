@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class FilialBranch extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'address',
+        'phone',
+        'metro'
+    ];
 }
