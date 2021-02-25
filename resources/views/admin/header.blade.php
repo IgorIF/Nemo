@@ -37,22 +37,34 @@
                         <div class="first-phone">
                             <a id="filialBranch_phone_{{ $filialBranches->get(1)->id }}" href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" contenteditable="true">{!! $filialBranches->get(1)->phone !!}</a>
                             <p id="filialBranch_address_{{ $filialBranches->get(1)->id }}" contenteditable="true">{!! $filialBranches->get(1)->address !!}</p>
-                            <span id="filialBranch_metro_{{ $filialBranches->get(1)->id }}" contenteditable="true">{!! $filialBranches->get(1)->metro !!}<i>800м</i></span>
+                            <div>
+                                <span id="filialBranch_metro_{{ $filialBranches->get(1)->id }}" contenteditable="true">{!! $filialBranches->get(1)->metro !!}</span>
+                                <i id="text_{{ $texts->get(1)->id }}" contenteditable="true">{!! $texts->get(1)->text !!}</i>
+                            </div>
                         </div>
                         <div class="second-phone">
                             <a id="filialBranch_phone_{{ $filialBranches->get(2)->id }}" href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" contenteditable="true">{!! $filialBranches->get(2)->phone !!}</a>
                             <p id="filialBranch_address_{{ $filialBranches->get(2)->id }}" contenteditable="true">{!! $filialBranches->get(2)->address !!}</p>
-                            <span id="filialBranch_metro_{{ $filialBranches->get(2)->id }}" contenteditable="true">{!! $filialBranches->get(2)->metro !!}<i>1,7км</i></span>
+                            <div>
+                                <span id="filialBranch_metro_{{ $filialBranches->get(2)->id }}" contenteditable="true">{!! $filialBranches->get(2)->metro !!}</span>
+                                <i id="text_{{ $texts->get(2)->id }}" contenteditable="true">{!! $texts->get(2)->text !!}</i>
+                            </div>
                         </div>
                         <div class="third-phone">
                             <a id="filialBranch_phone_{{ $filialBranches->get(3)->id }}" href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" contenteditable="true">{!! $filialBranches->get(3)->phone !!}</a>
                             <p id="filialBranch_address_{{ $filialBranches->get(3)->id }}" contenteditable="true">{!! $filialBranches->get(3)->address !!}</p>
-                            <span id="filialBranch_metro_{{ $filialBranches->get(3)->id }}" contenteditable="true">{!! $filialBranches->get(3)->metro !!}<i>1,1км</i></span>
+                            <div>
+                                <span id="filialBranch_metro_{{ $filialBranches->get(3)->id }}" contenteditable="true">{!! $filialBranches->get(3)->metro !!}</span>
+                                <i id="text_{{ $texts->get(3)->id }}" contenteditable="true">{!! $texts->get(3)->text !!}</i>
+                            </div>
                         </div>
                         <div class="fourth-phone">
                             <a id="filialBranch_phone_{{ $filialBranches->get(4)->id }}" href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" contenteditable="true">{!! $filialBranches->get(4)->phone !!}</a>
                             <p id="filialBranch_address_{{ $filialBranches->get(4)->id }}" contenteditable="true">{!! $filialBranches->get(4)->address !!}</p>
-                            <span id="filialBranch_metro_{{ $filialBranches->get(4)->id }}" contenteditable="true">{!! $filialBranches->get(4)->metro !!}<i>2,5 км</i></span>
+                            <div>
+                                <span id="filialBranch_metro_{{ $filialBranches->get(4)->id }}" contenteditable="true">{!! $filialBranches->get(4)->metro !!}</span>
+                                <i id="text_{{ $texts->get(4)->id }}" contenteditable="true">{!! $texts->get(4)->text !!}</i>
+                            </div>
                         </div>
 
                     </div>
@@ -93,12 +105,12 @@
     </label>
     <div class="container">
         <div class="header-bottom">
-            <h1 data-aos="fade-up" id="text_{{ $texts->get(13)->id }}" contenteditable="true">
-                {!! $texts->get(13)->text !!}
+            <h1 data-aos="fade-up" id="text_{{ $texts->get(5)->id }}" contenteditable="true">
+                {!! $texts->get(5)->text !!}
             </h1>
-            <p data-aos="fade-up" id="text_{{ $texts->get(14)->id }}" contenteditable="true">{!! $texts->get(14)->text !!}</p>
+            <p data-aos="fade-up" id="text_{{ $texts->get(6)->id }}" contenteditable="true">{!! $texts->get(6)->text !!}</p>
             <p data-aos="fade-up">
-                <span id="text_{{ $texts->get(15)->id }}" contenteditable="true">{!! $texts->get(15)->text !!}</span>
+                <span id="text_{{ $texts->get(7)->id }}" contenteditable="true">{!! $texts->get(7)->text !!}</span>
             </p>
             <p>
                 <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="{{ route('admin.') }}" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>

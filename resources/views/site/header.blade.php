@@ -1,4 +1,4 @@
-<header class="header" style="background-image: url({{ asset('storage/images/images/' . $images->get(1)->image) }})">
+<header class="header image_{{ $images->get(1)->id }}" style="background-image: url({{ asset('storage/images/images/' . $images->get(1)->image) }})">
     <div class="header-top clearfix">
         <div class="container">
             <div class="menu-mobile_div visible-mobile">
@@ -22,7 +22,7 @@
             </div>
             <div class="adcdsc">
                 <div class="header-logo" id="logos">
-                    <a href="{{ route('site') }}">
+                    <a href="{{ route('admin.') }}">
                         <picture>
                             <source srcset="{{ asset('images/logo.svg') }}">
                             <img src="{{ asset('images/logo.png') }}" alt="Акваклуб Nemo" width="135" height="72">
@@ -35,30 +35,42 @@
                 <address>
                     <div class="flex jcsb">
                         <div class="first-phone">
-                            <a href="tel:{{ $texts->get(1)->text }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">{!! $texts->get(1)->text !!}</a>
-                            <p>{!! $texts->get(2)->text !!}</p>
-                            <span>{!! $texts->get(3)->text !!}</span>
+                            <a href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">{!! $filialBranches->get(1)->phone !!}</a>
+                            <p>{!! $filialBranches->get(1)->address !!}</p>
+                            <span>
+                                {!! $filialBranches->get(1)->metro !!}
+                                <i>{!! $texts->get(1)->text !!}</i>
+                            </span>
                         </div>
                         <div class="second-phone">
-                            <a href="tel:{{ $texts->get(4)->text }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;">{!! $texts->get(4)->text !!}</a>
-                            <p>{!! $texts->get(5)->text !!}</p>
-                            <span>{!! $texts->get(6)->text !!}</span>
+                            <a href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;">{!! $filialBranches->get(2)->phone !!}</a>
+                            <p>{!! $filialBranches->get(2)->address !!}</p>
+                            <span>
+                                {!! $filialBranches->get(2)->metro !!}
+                                <i>{!! $texts->get(2)->text !!}</i>
+                            </span>
                         </div>
                         <div class="third-phone">
-                            <a href="tel:{{ $texts->get(7)->text }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">{!! $texts->get(7)->text !!}</a>
-                            <p>{!! $texts->get(8)->text !!}</p>
-                            <span>{!! $texts->get(9)->text !!}</span>
+                            <a href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;">{!! $filialBranches->get(3)->phone !!}</a>
+                            <p>{!! $filialBranches->get(3)->address !!}</p>
+                            <span>
+                                {!! $filialBranches->get(3)->metro !!}
+                                <i>{!! $texts->get(3)->text !!}</i>
+                            </span>
                         </div>
                         <div class="fourth-phone">
-                            <a href="tel:{{ $texts->get(10)->text }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;">{!! $texts->get(10)->text !!}</a>
-                            <p>{!! $texts->get(11)->text !!}</p>
-                            <span>{!! $texts->get(12)->text !!}</span>
+                            <a href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;">{!! $filialBranches->get(4)->phone !!}</a>
+                            <p>{!! $filialBranches->get(4)->address !!}</p>
+                            <span>
+                                {!! $filialBranches->get(4)->metro !!}
+                                <i>{!! $texts->get(4)->text !!}</i>
+                            </span>
                         </div>
 
                     </div>
                 </address>
                 <div class="header-phone-hidden">
-                    <a class="js-popup4" href="tel:{{ $texts->get(1)->text }}"></a>
+                    <a class="js-popup4" href="tel:{{ $filialBranches->get(1)->phone }}"></a>
                 </div>
             </div>
         </div>
@@ -77,9 +89,9 @@
                     </ul>
                 </div>
                 <div class="soc flex jcsb aic">
-                    <a href="https://vk.com/aquaclubnemo" target="_blank"><img src="{{ asset('images/vk_red_copy.png') }}"></a>
-                    <a href="https://www.facebook.com/aquaclubnemo" target="_blank"><img src="{{ asset('images/fb_red copy.svg') }}"></a>
-                    <a href="https://www.instagram.com/aquaclubnemo/" target="_blank"><img src="{{ asset('images/insta_red copy.png') }}"></a>
+                    <a href="#"><img src="{{ asset('images/vk_red_copy.png') }}"></a>
+                    <a href="#"><img src="{{ asset('images/fb_red copy.svg') }}"></a>
+                    <a href="#"><img src="{{ asset('images/insta_red copy.png') }}"></a>
                     <a href="" data-type="ПРОБНОЕ ЗАНЯТИЕ" class="js-popup button--border">Пробное занятие</a>
                 </div>
             </div>
@@ -90,13 +102,13 @@
     </nav>
     <div class="container">
         <div class="header-bottom">
-            <h1 data-aos="fade-up">{!! $texts->get(13)->text !!}</h1>
-            <p data-aos="fade-up">{!! $texts->get(14)->text !!}</p>
+            <h1 data-aos="fade-up">{!! $texts->get(5)->text !!}</h1>
+            <p data-aos="fade-up">{!! $texts->get(6)->text !!}</p>
             <p data-aos="fade-up">
-                <span>{!! $texts->get(15)->text !!}</span>
+                <span>{!! $texts->get(7)->text !!}</span>
             </p>
             <p>
-                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="{{ route('site') }}" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
+                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="{{ route('admin.') }}" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
         </div>
     </div>
 </header>

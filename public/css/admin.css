@@ -239,6 +239,48 @@ a#trainer_delete_btn {
     box-shadow: none;
 }
 
+.header .header-top .header-phones address div i {
+    font-family: 'Comfortaa', cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.7px;
+    display: inline-block;
+}
+
+.header .header-top .header-phones address .first-phone div i {
+    background: url(../images/man1.png) no-repeat 0 center;
+    padding-left: 12px;
+    margin-left: 6px;
+    color: #BDBDBD;
+    padding-top: 1px;
+}
+
+.header .header-top .header-phones address .second-phone div i {
+    background: url(../images/man2.png) no-repeat 0 center;
+    padding-left: 12px;
+    margin-left: 6px;
+    color: #FF680D;
+    padding-top: 1px;
+}
+
+.header .header-top .header-phones address .third-phone div i {
+    background: url(../images/man3.png) no-repeat 0 center;
+    padding-left: 12px;
+    margin-left: 6px;
+    color: #10E425;
+    padding-top: 1px;
+}
+
+.header .header-top .header-phones address .fourth-phone div i {
+    background: url(../images/man4.png) no-repeat 0 center;
+    padding-left: 12px;
+    margin-left: 6px;
+    color: #DE64A1;
+    padding-top: 1px;
+}
+
 .about .right h2 {
     padding-bottom: 0;
     margin-bottom: 25px;

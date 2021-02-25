@@ -14,20 +14,57 @@ class TextSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('texts')->insert([
-            'id' => 13,
+            'id' => 1,
+            'text' => '800м'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 2,
+            'text' => '1,7км'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 3,
+            'text' => '1,1км'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 4,
+            'text' => '2,5 км'
+        ]);
+
+        DB::table('texts')->insert([
+            'id' => 5,
             'text' => 'Плавать раньше, чем ходить!'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 14,
+            'id' => 6,
             'text' => 'Индивидуальные занятия плаванием для детей от 1,5 месяцев до 7 лет в Люберцах, Чертаново, Марьино и Академическом районах'
         ]);
 
         DB::table('texts')->insert([
-            'id' => 15,
+            'id' => 7,
             'text' => 'Cкидка -30% на первое занятие'
         ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         DB::table('texts')->insert([
             'id' => 16,
