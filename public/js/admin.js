@@ -230,6 +230,30 @@ $(document).ready(function () {
         });
     }
 
+    function deleteTrainerVideo(element) {
+        let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+        let data = {
+            'action': 'videoDelete'
+        };
+
+        let url = 'admin/trainers/' + trainerId;
+
+        ajax('PUT', url, data, function (response) {
+            let container = $('div[id="trainer_' + trainerId + '"]').find('div[class="trainer_caption"]');
+            $(container).find('a[id="trainerVideoPlayBtn"]').parent().remove();
+            $(container).find('a[id="trainer_video_edit_btn"]').parent().remove();
+            $(container).find('a[id="trainerVideo_delete_btn"]').parent().remove();
+
+            let trainerVideoAddBtn = $('<div><a id="trainerVideoAddBtn" href="#">Добавить видео</a></div>');
+
+            $(trainerVideoAddBtn).click(onTrainerVideoAddBtnClickListener);
+
+            $(container).append(trainerVideoAddBtn);
+
+            toast('Видео удалено', {type: 'success'});
+        });
+    }
+
     function deleteSecurityItem(element) {
         let securityItemId = $(element).parents('[id^="securityItem"]').attr('id').split('_')[1];
         let url = 'admin/security/items/' + securityItemId;
@@ -460,10 +484,25 @@ $(document).ready(function () {
         let url = 'admin/trainers/' + trainerId;
 
         ajax('POST', url, data, function (response) {
-            let remove = $('div[id="trainer_' + trainerId + '"]').find('a[id="trainerVideoAddBtn"]').parent();
-            let container = $(remove).parent();
-            $(remove).remove();
-            $(container).append('<div><a data-fancybox href="https://www.youtube.com/watch?v=' + response.video + '">Смотреть занятие</a></div>');
+            let container = $('div[id="trainer_' + trainerId + '"]').find('div[class="trainer_caption"]');
+            $(container).find('a[id="trainerVideoAddBtn"]').parent().remove();
+
+            let trainerVideoPlayBtn = $('<div><a id="trainerVideoPlayBtn" data-fancybox href="https://www.youtube.com/watch?v=' + response.video + '">Смотреть занятие</a></div>');
+            let trainerVideoEditBtn = $('<div><a id="trainer_video_edit_btn" href="#">Изменить видео</a></div>');
+            let trainerVideoDeleteBtn = $('<div>' +
+                                            '<a id="trainerVideo_delete_btn" href="#">Удалить видео</a>' +
+                                            '<div id="deleteTooltip" class="delete-tooltip delete-trainer-video" tabindex="1">' +
+                                                'Удалить видео?' +
+                                                '<a class="button--border">Да</a>' +
+                                            '</div>' +
+                                        '</div>');
+
+            $(trainerVideoEditBtn).click(onTrainerVideoEditBtnClickListener);
+
+            $(container).append(trainerVideoPlayBtn);
+            $(container).append(trainerVideoEditBtn);
+            $(container).append(trainerVideoDeleteBtn);
+
             $modalTrainerVideo.modal('hide');
             clearFields($modalTrainerVideo);
             toast('Видео добавлено', {type: 'success'});
@@ -864,6 +903,9 @@ $(document).ready(function () {
                 case 'trainer':
                     deleteTrainer(this);
                     break;
+                case 'trainerVideo':
+                    deleteTrainerVideo(this);
+                    break;
                 case 'securityItem':
                     deleteSecurityItem(this);
                     break;
@@ -1153,7 +1195,7 @@ function clearFields(modal) {
             $(e).parent().find('div[class="invalid-feedback"]').text('');
         }
 
-        if (modalId === 'modal_add_trainer' || modalId === 'modal_add_item' || modalId === 'modal_add_video')
+        if (modalId === 'modal_add_trainer' || modalId === 'modal_add_item' || modalId === 'modal_add_video' || 'modalTrainerVideo')
             $(e).val('');
 
         if ($(e).attr('type') === 'file') {

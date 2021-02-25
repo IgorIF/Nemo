@@ -90,4 +90,16 @@ class TrainersRepository extends Repository
 
         return $trainer->video;
     }
+
+    public function videoDelete(int $id)
+    {
+        $trainer = $this->model::find($id);
+
+        if ($trainer->video != null) {
+            $trainer->video = null;
+            $trainer->update();
+        }
+
+        return $trainer->video;
+    }
 }
