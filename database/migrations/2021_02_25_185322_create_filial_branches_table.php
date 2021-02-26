@@ -18,6 +18,7 @@ class CreateFilialBranchesTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('metro');
+
             $table->timestamps();
         });
     }
