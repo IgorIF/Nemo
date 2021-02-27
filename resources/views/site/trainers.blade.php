@@ -10,8 +10,8 @@
                 <div class="flex jcsb">
                     <div class="trainer_foto"><img src="{{ asset('storage/images/trainers/' . $trainer->image) }}" /></div>
                     <div class="trainer_caption">
-                        <h4>{{ $trainer->name }}</h4>
-                        <p>{{ $trainer->description }}</p>
+                        <h4>{!! $trainer->name !!}</h4>
+                        <p>{!! $trainer->description !!}</p>
 
                         @if(!empty($trainer->video))
                             <div><a data-fancybox href="https://www.youtube.com/watch?v={{ $trainer->video }}">Смотреть занятие</a></div>

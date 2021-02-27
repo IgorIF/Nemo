@@ -22,8 +22,15 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 
     /// Update text
-    $('[contenteditable="true"]').focusin(onTextFocusinListener)
-        .focusout(onTextFocusoutListener);
+    $('[contenteditable="true"]').on('focusin', onTextFocusinListener)
+        .on('focusout', onTextFocusoutListener)
+        .on('paste', function (e) {
+            e.preventDefault();
+            let clipboard = (e.originalEvent || e).clipboardData;
+            let text = clipboard.getData('text');
+
+            insertTextAtCaret(text);
+        });
 
     /// Delete item
     $(document).on('click', '[id$="_delete_btn"]', onDeleteBtnClickListener);
@@ -1241,4 +1248,18 @@ function bgSize($el, cb){
     $('<img />')
         .load(function(){ cb(this.width, this.height); })
         .attr('src', $el.css('background-image').match(/^url\("?(.+?)"?\)$/)[1]);
+}
+
+function insertTextAtCaret(text) {
+    let sel, range;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(document.createTextNode(text));
+        }
+    } else if (document.selection && document.selection.createRange) {
+        document.selection.createRange().text = text;
+    }
 }
