@@ -6,12 +6,11 @@ $(document).ready(function () {
         let oldPrice = getOldPrice(prices);
 
         singleBlockStretch(e);
-        abc(e, checkedFieldsValues, prices, oldPrice);
+        initCalculator(e, checkedFieldsValues, prices, oldPrice);
 
         $(e).find('input').click(function () {
             checkedFieldsValues = initCheckedFields();
-            abc(e, checkedFieldsValues, prices);
-            hideBlocks(e, prices);
+            initCalculator(e, checkedFieldsValues, prices);
             singleBlockStretch(e);
         });
 
@@ -29,21 +28,42 @@ $(document).ready(function () {
 
 });
 
-function abc (filial, chFields, prices, oldPrice) {
-    let fields = chFields;
+function initCalculator (filial, chFields, prices, oldPrice) {
+    let quantity = $(filial).find('div[id="quantity"]');
+    let swimmingPool = $(filial).find('div[id="swimming_pool"]');
+    let typeOfSubscription = $(filial).find('div[id="type_of_subscription"]');
 
-    for (let key in prices) {
+    let quantityVal = $(quantity).find('input:checked').val();
+    let swimmingPoolVal = $(swimmingPool).find('input:checked').val();
+    let typeOfSubscriptionVal = $(typeOfSubscription).find('input:checked').val();
 
-        if (fields.indexOf(key) !== -1) {
-            $(filial).find('input[value="' + key + '"]').parents('div[class="section"]').show();
+    let price = prices[quantityVal];
 
-            fields = fields.splice(fields.indexOf(key));
+    if (Number.isInteger(price)) {
+        $(swimmingPool).hide();
+        $(typeOfSubscription).hide();
+        showAndHidePrices(filial, price, oldPrice);
+    } else {
+        $(swimmingPool).show();
+        $(typeOfSubscription).show();
 
-            if (Number.isInteger(prices[key])) {
-                showAndHidePrices(filial, prices[key], oldPrice);
+        price = prices[quantityVal][swimmingPoolVal];
 
+        if (Number.isInteger(price)) {
+            $(typeOfSubscription).hide();
+            showAndHidePrices(filial, price, oldPrice);
+        } else {
+            price = prices[quantityVal][typeOfSubscriptionVal];
+
+            if (Number.isInteger(price)) {
+                $(swimmingPool).hide();
+                showAndHidePrices(filial, price, oldPrice);
             } else {
-                abc(filial, fields, prices[key]);
+                price = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal];
+
+                if (Number.isInteger(price)) {
+                    showAndHidePrices(filial, price, oldPrice);
+                }
             }
         }
     }
@@ -65,25 +85,6 @@ function getOldPrice(prices) {
         return prices['oneoff'];
     else
         return prices['oneoff']['small_pool'];
-}
-
-function hideBlocks(filial, prices) {
-    let quantity = $(filial).find('div[id="quantity"]')
-    let swimmingPool = $(filial).find('div[id="swimming_pool"]')
-    let typeOfSubscription = $(filial).find('div[id="type_of_subscription"]')
-
-    let quantityVal = $(quantity).find('input:checked').val();
-    let swimmingPoolVal = $(swimmingPool).find('input:checked').val();
-    let typeOfSubscriptionVal = $(typeOfSubscription).find('input:checked').val();
-
-    if (Number.isInteger(prices[quantityVal])) {
-        $(swimmingPool).hide();
-        $(typeOfSubscription).hide();
-    } else if (Number.isInteger(prices[quantityVal][swimmingPoolVal])) {
-        $(typeOfSubscription).hide();
-    }
-
-
 }
 
 function singleBlockStretch(filial) {
