@@ -36,9 +36,17 @@ $(document).ready(function () {
            fillSignUpBtn(e, this, l);
         });
 
+        $(e).find('a[class="bt-3"]').click(function (l) {
+            fillSignUpBtn(e, this, l);
+        });
+
         $(e).find('a[class="bt-2"]').click(function (l) {
             fillPayOnlineBtn(e, this, l)
         });
+
+
+        if (i === 0)
+            $(e).find('div[class*="top"]').click();
     });
 
 });
@@ -58,7 +66,6 @@ function initCalculator (filial, prices, oldPrice) {
         $(swimmingPool).hide();
         $(typeOfSubscription).hide();
         showPrices(filial, price, oldPrice);
-        //fillLinks(filial, price);
     } else {
         $(swimmingPool).css('max-width', '303px').css('width', '49%');
         $(typeOfSubscription).css('max-width', '303px').css('width', '49%');
@@ -71,7 +78,6 @@ function initCalculator (filial, prices, oldPrice) {
             $(swimmingPool).css('max-width', 'unset').css('width', '100%');
             $(typeOfSubscription).hide();
             showPrices(filial, price, oldPrice);
-            //fillLinks(filial, price);
         } else {
             price = prices[quantityVal][typeOfSubscriptionVal];
 
@@ -79,13 +85,11 @@ function initCalculator (filial, prices, oldPrice) {
                 $(typeOfSubscription).css('max-width', 'unset').css('width', '100%');
                 $(swimmingPool).hide();
                 showPrices(filial, price, oldPrice);
-                //fillLinks(filial, price);
             } else {
                 price = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal];
 
                 if (Number.isInteger(price)) {
                     showPrices(filial, price, oldPrice);
-                    //fillLinks(filial, price);
                 }
             }
         }
@@ -121,6 +125,7 @@ function getOldPrice(prices) {
 }
 
 function fillSignUpBtn(filial, button, element) {
+    console.log(1);
     let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
 
     let yclientsCode;

@@ -16,6 +16,7 @@
                         <li><a href="#price">Стоимость занятий</a></li>
                         <li><a href="#trainer">Тренеры</a></li>
                         <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#akcii">Акции</a></li>
                         <li><a href="#contact">Контакты</a></li>
                     </ul>
                 </div>
@@ -84,7 +85,7 @@
                         <li><a href="#price">Стоимость</a></li>
                         <li><a href="#trainer">Тренеры</a></li>
                         <li><a href="#reviews">Отзывы</a></li>
-
+                        <li><a href="#akcii">Акции</a></li>
                         <li><a href="#contact1">Контакты</a></li>
                     </ul>
                 </div>

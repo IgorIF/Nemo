@@ -3,18 +3,18 @@ var data = {
     "kirovograd": {
         "trial": 980,
         "oneoff": {
-            "large_pool": 1800,
-            "small_pool": 1400
+            "large_pool": 1850,
+            "small_pool": 1500
         },
         "4": {
             "individual": {
                 "standard": {
-                    "large_pool": 6000,
-                    "small_pool": 5000
+                    "large_pool": 6800,
+                    "small_pool": 5600
                 },
                 "loyal": {
-                    "large_pool": 7200,
-                    "small_pool": 6000
+                    "large_pool": 8000,
+                    "small_pool": 6800
                 }
             },
             "group": {
@@ -26,12 +26,12 @@ var data = {
         "8": {
             "individual": {
                 "standard": {
-                    "large_pool": 10500,
-                    "small_pool": 8800
+                    "large_pool": 11800,
+                    "small_pool": 9900
                 },
                 "loyal": {
-                    "large_pool": 12600,
-                    "small_pool": 10500
+                    "large_pool": 14000,
+                    "small_pool": 11800
                 }
             },
             "group": {
@@ -43,12 +43,12 @@ var data = {
         "12": {
             "individual": {
                 "standard": {
-                    "large_pool": 14400,
-                    "small_pool": 12000
+                    "large_pool": 16200,
+                    "small_pool": 13500
                 },
                 "loyal": {
-                    "large_pool": 17200,
-                    "small_pool": 14400
+                    "large_pool": 19200,
+                    "small_pool": 16200
                 }
             },
             "group": {
@@ -59,21 +59,22 @@ var data = {
         },
     },
 
+
     "vinokurova": {
         "trial": 980,
         "oneoff": {
-            "large_pool": 1800,
-            "small_pool": 1400
+             "large_pool": 1850,
+            "small_pool": 1500
         },
         "4": {
             "individual": {
                 "standard": {
-                    "large_pool": 6000,
-                    "small_pool": 5000
+                   "large_pool": 6800,
+                    "small_pool": 5600
                 },
                 "loyal": {
-                    "large_pool": 7200,
-                    "small_pool": 6000
+                     "large_pool": 8000,
+                    "small_pool": 6800
                 }
             },
             "group": {
@@ -85,12 +86,12 @@ var data = {
         "8": {
             "individual": {
                 "standard": {
-                    "large_pool": 10500,
-                    "small_pool": 8800
+                    "large_pool": 11800,
+                    "small_pool": 9900
                 },
                 "loyal": {
-                    "large_pool": 12600,
-                    "small_pool": 10500
+                    "large_pool": 14000,
+                    "small_pool": 11800
                 }
             },
             "group": {
@@ -102,12 +103,12 @@ var data = {
         "12": {
             "individual": {
                 "standard": {
-                    "large_pool": 14400,
-                    "small_pool": 12000
+                    "large_pool": 16200,
+                    "small_pool": 13500
                 },
                 "loyal": {
-                    "large_pool": 17200,
-                    "small_pool": 14400
+                    "large_pool": 19200,
+                    "small_pool": 16200
                 }
             },
             "group": {
@@ -120,37 +121,37 @@ var data = {
 
     "myachkovsky_boulevard": {
         "trial": 980,
-        "oneoff": 1400,
+        "oneoff": 1500,
         "4": {
-            "standard": 5000,
-            "loyal": 6000
+            "standard": 5600,
+            "loyal": 6800
         },
         "8": {
-            "standard": 8800,
-            "loyal": 10500
+            "standard": 9900,
+            "loyal": 11800
         },
         "12": {
-            "standard": 12000,
-            "loyal": 14400
+            "standard": 13500,
+            "loyal": 16200
         }
     },
 
     "lubertci": {
         "trial": 980,
-        "oneoff": 1400,
+        "oneoff": 1500,
         "4": {
-            "standard": 5000,
-            "loyal": 6000
+            "standard": 5600,
+            "loyal": 6800
         },
         "8": {
-            "standard": 8800,
-            "loyal": 10500
+            "standard": 9900,
+            "loyal": 11800
         },
         "12": {
-            "standard": 12000,
-            "loyal": 14400
+            "standard": 13500,
+            "loyal": 16200
         }
-    }
+    },
 };
 
 var descriptions = {
@@ -481,7 +482,7 @@ var Payment = {
                             case 'trial':
                                 var price = data[street_name][quantity_checked_name];
                                 $(new_price_case).text(price);
-                                $(price_case).append("<div class=\"old-price\">1400 ₽</div>");
+                                $(price_case).append("<div class=\"old-price\">1500 ₽</div>");
                                 break;
                             case 'oneoff':
                                 var price = data[street_name][quantity_checked_name][swimming_pool_checked_name];
@@ -544,7 +545,7 @@ var Payment = {
                             case 'trial':
                                 var price = data[street_name][quantity_checked_name];
                                 $(new_price_case).text(price);
-                                $(price_case).append("<div class=\"old-price\">1400 ₽</div>");
+                                $(price_case).append("<div class=\"old-price\">1500 ₽</div>");
                                 break;
                             case 'oneoff':
                                 var price = data[street_name][quantity_checked_name];
@@ -597,7 +598,7 @@ var Payment = {
                                             var price = data[street_name][target_value];
                                             $(new_price_case).text(price);
                                             if (old_price.length === 0) {
-                                                $(price_case).append("<div class=\"old-price\">1400 ₽</div>");
+                                                $(price_case).append("<div class=\"old-price\">1500 ₽</div>");
                                             }
                                             break;
                                         case 'oneoff':
@@ -742,7 +743,7 @@ var Payment = {
                                             var price = data[street_name][target_value];
                                             $(new_price_case).text(price);
                                             if (old_price.length === 0) {
-                                                $(price_case).append("<div class=\"old-price\">1400 ₽</div>");
+                                                $(price_case).append("<div class=\"old-price\">1500 ₽</div>");
                                             }
                                             break;
                                         case 'oneoff':

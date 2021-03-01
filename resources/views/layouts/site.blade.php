@@ -41,7 +41,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=21') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=23') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
@@ -137,6 +137,30 @@
         @yield('prices')
 
     </div>
+</section>
+
+<section class="akcii-new-block" id="akcii">
+	<div class="container">
+		<h2 data-aos="fade-up" class="aos-init aos-animate">Акции</h2>
+		<div class="akcii-new-block__wrapper">
+			<div class="akcii-new-block__item akcii-new-block__item_1" data-aos="fade-up">
+				<div class="akcii-new-block__item__title">В день пробного <br>занятия</div>
+				<div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
+			</div>
+			<div class="akcii-new-block__item akcii-new-block__item_2" data-aos="fade-up">
+				<div class="akcii-new-block__item__title">За приведенного <br>друга</div>
+				<div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
+			</div>
+			<div class="akcii-new-block__item akcii-new-block__item_3" data-aos="fade-up">
+				<div class="akcii-new-block__item__title">На второго ребенка</div>
+				<div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
+			</div>
+			<div class="akcii-new-block__item akcii-new-block__item_4" data-aos="fade-up">
+				<div class="akcii-new-block__item__title">Особенным <br>деткам</div>
+				<div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
+			</div>
+			</div>
+		</div>
 </section>
 
 <section class="submit-your-application">
@@ -343,7 +367,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=21') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
+{{--<script src="{{ asset('js/script.js') }}"></script>--}}
 <script src="{{ asset('js/prices.js') }}"></script>
 <script src="{{ asset('js/snow.js?vr=21') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>

@@ -14,4 +14,8 @@ class FilialBranch extends Model
         'phone',
         'metro'
     ];
+
+    /*protected $casts = [
+        'prices' => 'array'
+    ];*/
 }

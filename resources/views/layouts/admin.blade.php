@@ -367,7 +367,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=21') }}"></script>
-<script src="{{ asset('js/script.js?vr=21') }}"></script>
+<script src="{{ asset('js/script.js?vr=22') }}"></script>
 <script src="{{ asset('js/snow.js?vr=21') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
@@ -431,7 +431,7 @@
 </script>
 <!-- Модальное окно закрытие клуба -->
 
-<script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/admin.js?vr=1') }}"></script>
 
 </body>
 

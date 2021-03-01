@@ -145,7 +145,8 @@ class BaseController extends Controller
 
     private function renderPrices() {
         $texts = $this->textsRepository->getInRangeById([35 => 35]);
-        $this->prices = view($this->template . '.prices')->with('texts', $texts)->render();
+        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
+        $this->prices = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
     }
 
     private function renderSwimNeverNotEarly() {

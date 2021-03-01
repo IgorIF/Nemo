@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFilialBranchesTable extends Migration
+class AddDestinationToFilialBranchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateFilialBranchesTable extends Migration
      */
     public function up()
     {
-        Schema::create('filial_branches', function (Blueprint $table) {
-            $table->id();
-            $table->string('address');
-            $table->string('phone');
-            $table->string('metro');
-            $table->timestamps();
+        Schema::table('filial_branches', function (Blueprint $table) {
+            $table->string('alias')->after('id');
+            $table->json('prices')->nullable()->after('metro');
         });
     }
 
@@ -29,6 +26,8 @@ class CreateFilialBranchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filial_branches');
+        Schema::table('filial_branches', function (Blueprint $table) {
+            //
+        });
     }
 }

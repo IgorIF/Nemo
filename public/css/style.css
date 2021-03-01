@@ -2130,16 +2130,16 @@ font-weight: 400;
   background-color: #7AECFF;
 }
 
-.lubertci-bt-1
+.bt-3
 {
-  border-radius: 0 0 15px 15px;
-  color: #FC7717;
+    border-radius: 0 0 15px 15px;
+    color: #fff;
+    background: #FC7717;
 }
 
-.lubertci-bt-1:hover
+.bt-3:hover
 {
-  border-radius: 0 0 15px 15px;
-  background-color: #7AECFF;
+    background: #FF8832;
 }
 
 .buttons-row .bt-2
@@ -5291,6 +5291,18 @@ font-weight: 300;
   }
 }
 
+div.list-hidden div.flex-row div#type_of_occupation {
+    display: none;
+}
+
+div.list-hidden div.flex-row div#swimming_pool {
+    display: none;
+}
+
+div.list-hidden div.flex-row div#type_of_subscription {
+    display: none;
+}
+
 
 
 
@@ -5474,4 +5486,96 @@ border-radius: 15px;
 
 /* Страница 404 конец*/
 
+/*Акции 28.02.20.2021*/
+@font-face {
+  font-family: "Rotonda";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Rotonda"), url("../fonts/RotondaC.woff2") format("woff2"); }
+
+@font-face {
+  font-family: "Rotonda";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Rotonda"), url("../fonts/RotondaC-Bold.woff2") format("woff2"); }
+
+.akcii-new-block {
+  padding-top: 50px; padding-bottom: 50px; }
+  .akcii-new-block h2 {
+    font-family: 'SummerFontBold';
+    font-size: 60px;
+    color: #06c5b2;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    padding: 70px 0 30px 0; }
+
+.akcii-new-block__wrapper {
+  font-family: 'Rotonda';
+  color: #313839;
+  margin-left: -54px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.akcii-new-block__item {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(6, 197, 178, 0.8);
+  padding: 36px 45px;
+  font-size: 30px;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 364px;
+  margin: 0 0 40px 54px;
+  width: calc(50% - 54px);
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: cover; }
+
+.akcii-new-block__item_1 {
+  background-image: url(../images/dist/akcii__1.png); }
+
+.akcii-new-block__item_2 {
+  background-image: url(../images/dist/akcii__2.png); }
+
+.akcii-new-block__item_3 {
+  background-image: url(../images/dist/akcii__3.png); }
+
+.akcii-new-block__item_4 {
+  background-image: url(../images/dist/akcii__4.png); }
+
+.akcii-new-block__sale {
+  color: #FF680D;
+  font-size: 20px;
+  letter-spacing: 1px;
+  line-height: 1.15;
+  text-transform: uppercase; }
+  .akcii-new-block__sale span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 0.76; }
+
+@media only screen and (max-width: 992px) {
+  .akcii-new-block__wrapper {
+    margin-left: -44px; }
+  .akcii-new-block__item {
+    width: calc(50% - 44px);
+    margin: 0 0 30px 44px;
+    min-height: 300px;
+    padding: 30px 36px; } }
 
