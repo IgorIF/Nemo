@@ -24,13 +24,21 @@ $(document).ready(function () {
 
         initDescriptions(e);
         initCalculator(e, prices, oldPrice);
+        hidePayOnlineBtn(e);
 
         $(e).find('input').click(function () {
             initDescriptions(e);
             initCalculator(e, prices, oldPrice);
+            hidePayOnlineBtn(e);
         });
 
-        $(e).find('')
+        $(e).find('a[class="bt-1"]').click(function (l) {
+           fillSignUpBtn(e, this, l);
+        });
+
+        $(e).find('a[class="bt-2"]').click(function (l) {
+            fillPayOnlineBtn(e, this, l)
+        });
     });
 
 });
@@ -50,7 +58,7 @@ function initCalculator (filial, prices, oldPrice) {
         $(swimmingPool).hide();
         $(typeOfSubscription).hide();
         showPrices(filial, price, oldPrice);
-        fillLinks(filial, price);
+        //fillLinks(filial, price);
     } else {
         $(swimmingPool).css('max-width', '303px').css('width', '49%');
         $(typeOfSubscription).css('max-width', '303px').css('width', '49%');
@@ -63,7 +71,7 @@ function initCalculator (filial, prices, oldPrice) {
             $(swimmingPool).css('max-width', 'unset').css('width', '100%');
             $(typeOfSubscription).hide();
             showPrices(filial, price, oldPrice);
-            fillLinks(filial, price);
+            //fillLinks(filial, price);
         } else {
             price = prices[quantityVal][typeOfSubscriptionVal];
 
@@ -71,13 +79,13 @@ function initCalculator (filial, prices, oldPrice) {
                 $(typeOfSubscription).css('max-width', 'unset').css('width', '100%');
                 $(swimmingPool).hide();
                 showPrices(filial, price, oldPrice);
-                fillLinks(filial, price);
+                //fillLinks(filial, price);
             } else {
                 price = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal];
 
                 if (Number.isInteger(price)) {
                     showPrices(filial, price, oldPrice);
-                    fillLinks(filial, price);
+                    //fillLinks(filial, price);
                 }
             }
         }
@@ -112,87 +120,126 @@ function getOldPrice(prices) {
         return prices['oneoff']['small_pool'];
 }
 
-function fillLinks(filial, price) {
-    let signUpBtn = $(filial).find('a[class="bt-1"]');
-    let payOnlineBtn = $(filial).find('a[class="bt-2"]');
+function fillSignUpBtn(filial, button, element) {
     let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
 
-    let signUpBtnLink;
-    let payOnlineBtnLink;
-
-    let massageString = '';
-    let partOfMessage;
     let yclientsCode;
-    let rfiBankKey = false;
     let activePopupValue;
-
-    console.log($(filial).find("div[id='quantity']:visible").length);
-
-    partOfMessage = $(filial).find('input[name="quantity"]:checked:visible');
-    if (partOfMessage.length > 0)
-        massageString = massageString + 'Количестово занятий: ' + $(partOfMessage).next("span:first").text().toLowerCase();
-
-    partOfMessage = $(filial).find('input[name="swimming_pool"]:checked:visible');
-    if (partOfMessage.length > 0)
-        massageString = massageString + ', Бассейн: ' + $(partOfMessage).next("span:first").text().toLowerCase();
-
-    partOfMessage = $(filial).find('input[name="type_of_subscription"]:checked:visible');
-    if (partOfMessage.length > 0)
-        massageString = massageString + ', Вид абонемента: ' + $(partOfMessage).next("span:first").text().toLowerCase();
-
-
-    console.log(massageString);
 
     switch ($(filial).attr('id')) {
         case 'prazhskaya':
-            activePopupValue = 1;
             yclientsCode = '60559';
-            rfiBankKey = 'G%2FncjmNEBe84x4lEfgf3dyIqwGWQVDf7HKlnEBr0Dgc%3D';
+            activePopupValue = 1;
             break;
         case 'akademicheskaya':
-            activePopupValue = 2;
             yclientsCode = '124032';
-            rfiBankKey = 'Wy4g8yADEp%2FmSFHDKbbHqGOrWnEzE8kDIrSrapVc0Z8%3D';
+            activePopupValue = 2;
             break;
         case 'maryino':
-            activePopupValue = 3;
             yclientsCode = '228760';
-            rfiBankKey = 'TOJugDeSdrrhNrSj8vsHLughHsNGQFliUmq8X4yCPkE%3D';
+            activePopupValue = 3;
             break;
         case 'nekrasovka':
-            activePopupValue = 4;
             yclientsCode = null;
-            rfiBankKey = 'LX21USWpnEKqvvVyPmda5tammqzcCmeoOV6NnCYfQ8k=';
+            activePopupValue = 4;
     }
 
     if (quantityVal === 'trial' || quantityVal === 'oneoff') {
-        signUpBtnLink = 'https://n' + yclientsCode + '.yclients.com/';
-        payOnlineBtnLink = signUpBtnLink;
-
-        //$(signUpBtn).unbind('click');
+        if (yclientsCode !== null) {
+            let link = 'https://n' + yclientsCode + '.yclients.com/';
+            $(button).attr('href', link);
+        } else {
+            element.preventDefault();
+            let message = generateMessage(filial);
+            showSingUpPopup(activePopupValue, message);
+        }
     } else {
-        payOnlineBtnLink = 'https://partner.rficb.ru/alba/input/?name=' + massageString +'&cost=' + price + '&key=' + rfiBankKey + '&default_email=&order_id=0';
-
-        //$('.popup').find("option[value=" + value + "]").prop("selected", true);
-        //$(signUpBtn).unbind('click').bind('click', showTrialPopup);
+        element.preventDefault();
+        let message = generateMessage(filial);
+        showSingUpPopup(activePopupValue, message);
     }
+}
 
-    $(signUpBtn).attr('href', signUpBtnLink);
-    $(payOnlineBtn).attr('href', payOnlineBtnLink);
+function fillPayOnlineBtn(filial, button, element) {
+    let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
 
-    function showTrialPopup(e) {
-        e.preventDefault();
+    if (quantityVal === 'trial' || quantityVal === 'oneoff') {
+        fillSignUpBtn(filial, button, element);
+    } else {
+        let rfiBankKey;
+        let price = $(filial).find('div[class="new-price"]').find('span').text();
+        let message = generateMessage(filial);
 
-        $('.hidden-form').attr('value', massageString);
+        switch ($(filial).attr('id')) {
+            case 'prazhskaya':
+                rfiBankKey = 'G%2FncjmNEBe84x4lEfgf3dyIqwGWQVDf7HKlnEBr0Dgc%3D';
+                break;
+            case 'akademicheskaya':
+                rfiBankKey = 'Wy4g8yADEp%2FmSFHDKbbHqGOrWnEzE8kDIrSrapVc0Z8%3D';
+                break;
+            case 'maryino':
+                rfiBankKey = 'TOJugDeSdrrhNrSj8vsHLughHsNGQFliUmq8X4yCPkE%3D';
+                break;
+            case 'nekrasovka':
+                rfiBankKey = 'LX21USWpnEKqvvVyPmda5tammqzcCmeoOV6NnCYfQ8k=';
+        }
 
-        $('.popup').slideDown();
-        $('.popup-overlay').css('display', 'block');
+        let link = 'https://partner.rficb.ru/alba/input/?name=' + message +'&cost=' + price + '&key=' + rfiBankKey + '&default_email=&order_id=0';
+        $(button).attr('href', link);
+    }
+}
 
-        $('#js-close-popup, .popup-overlay').on('click', function (e) {
-            $('.popup').find("option[value='1']").prop("selected", true);
-            $('.hidden-form').attr('value', 'Аноним');
-            $('.popup').slideUp();
-            $('.popup-overlay').css('display', 'none');
-        });
+function generateMessage(filial) {
+    let message = '';
+    let partOfMessage;
+
+    partOfMessage = $(filial).find('input[name="quantity"]:checked:visible');
+    if (partOfMessage.length > 0)
+        message = message + 'Количестово занятий: ' + $(partOfMessage).next("span:first").text().toLowerCase();
+
+    partOfMessage = $(filial).find('input[name="swimming_pool"]:checked:visible');
+    if (partOfMessage.length > 0)
+        message = message + ', Бассейн: ' + $(partOfMessage).next("span:first").text().toLowerCase();
+
+    partOfMessage = $(filial).find('input[name="type_of_subscription"]:checked:visible');
+    if (partOfMessage.length > 0)
+        message = message + ', Вид абонемента: ' + $(partOfMessage).next("span:first").text().toLowerCase();
+
+    return message;
+}
+
+function showSingUpPopup(activeValue, message) {
+    $('.popup').find("option[value=" + activeValue + "]").prop("selected", true);
+    $('.hidden-form').attr('value', message);
+
+    $('.popup').slideDown();
+    $('.popup-overlay').css('display', 'block');
+
+    $('#js-close-popup, .popup-overlay').on('click', function (e) {
+        $('.popup').find("option[value='1']").prop("selected", true);
+        $('.hidden-form').attr('value', 'Аноним');
+        $('.popup').slideUp();
+        $('.popup-overlay').css('display', 'none');
+    });
+}
+
+function hidePayOnlineBtn(filial) {
+    let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
+
+    let signUpBtn;
+    let payOnlineBtn = $(filial).find('a[class="bt-2"]');
+
+    if (quantityVal === 'trial' || quantityVal === 'oneoff') {
+        signUpBtn = $(filial).find('a[class="bt-1"]');
+        $(payOnlineBtn).hide();
+        $(signUpBtn).removeClass('bt-1');
+        $(signUpBtn).addClass('bt-3');
+        $(signUpBtn).css("width", "100%");
+    } else {
+        signUpBtn = $(filial).find('a[class="bt-3"]');
+        $(signUpBtn).removeClass('bt-3');
+        $(signUpBtn).addClass('bt-1');
+        $(signUpBtn).css("width", "50%");
+        $(payOnlineBtn).show()
     }
 }
