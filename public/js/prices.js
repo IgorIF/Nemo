@@ -29,6 +29,8 @@ $(document).ready(function () {
             initDescriptions(e);
             initCalculator(e, prices, oldPrice);
         });
+
+        $(e).find('')
     });
 
 });
@@ -113,93 +115,84 @@ function getOldPrice(prices) {
 function fillLinks(filial, price) {
     let signUpBtn = $(filial).find('a[class="bt-1"]');
     let payOnlineBtn = $(filial).find('a[class="bt-2"]');
+    let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
 
     let signUpBtnLink;
     let payOnlineBtnLink;
 
-    let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
-
-    /////////////////////// signUpBtn
+    let massageString = '';
+    let partOfMessage;
     let yclientsCode;
+    let rfiBankKey = false;
+    let activePopupValue;
 
-    if ($(filial).attr('id') === 'nekrasovka') {
-        // TODO ссылка некрасова
-    } else {
-        switch ($(filial).attr('id')) {
-            case 'prazhskaya':
-                yclientsCode = '60559';
-                break;
-            case 'akademicheskaya':
-                yclientsCode = '124032';
-                break;
-            case 'maryino':
-                yclientsCode = '228760';
-        }
+    console.log($(filial).find("div[id='quantity']:visible").length);
 
-        signUpBtnLink = 'https://n' + yclientsCode + '.yclients.com/';
+    partOfMessage = $(filial).find('input[name="quantity"]:checked:visible');
+    if (partOfMessage.length > 0)
+        massageString = massageString + 'Количестово занятий: ' + $(partOfMessage).next("span:first").text().toLowerCase();
 
-        $(signUpBtn).attr('href', signUpBtnLink);
+    partOfMessage = $(filial).find('input[name="swimming_pool"]:checked:visible');
+    if (partOfMessage.length > 0)
+        massageString = massageString + ', Бассейн: ' + $(partOfMessage).next("span:first").text().toLowerCase();
 
-        if (quantityVal !== 'trial' && quantityVal !== 'oneoff') {
-            $(signUpBtn).unbind('click').bind('click', showTrialPopup);
-        } else {
-            $(signUpBtn).unbind('click');
-        }
+    partOfMessage = $(filial).find('input[name="type_of_subscription"]:checked:visible');
+    if (partOfMessage.length > 0)
+        massageString = massageString + ', Вид абонемента: ' + $(partOfMessage).next("span:first").text().toLowerCase();
 
-    }
 
-    /////////////////////// payOnlineBtn
-    let serviceName = '';
-    let add;
-
-    add = $(filial).find('input[name="quantity"]:checked:visible');
-    if (add.length > 0)
-        serviceName = serviceName + 'Количестово занятий: ' + $(add).next("span:first").text().toLowerCase();
-
-    add = $(filial).find('input[name="swimming_pool"]:checked:visible');
-    if (add.length > 0)
-        serviceName = serviceName + ', Бассейн: ' + $(add).next("span:first").text().toLowerCase();
-
-    add = $(filial).find('input[name="type_of_subscription"]:checked:visible');
-    if (add.length > 0)
-        serviceName = serviceName + ', Вид абонемента: ' + $(add).next("span:first").text().toLowerCase();
-
-    let key = false;
+    console.log(massageString);
 
     switch ($(filial).attr('id')) {
         case 'prazhskaya':
-            key = 'G%2FncjmNEBe84x4lEfgf3dyIqwGWQVDf7HKlnEBr0Dgc%3D';
+            activePopupValue = 1;
+            yclientsCode = '60559';
+            rfiBankKey = 'G%2FncjmNEBe84x4lEfgf3dyIqwGWQVDf7HKlnEBr0Dgc%3D';
             break;
         case 'akademicheskaya':
-            key = 'Wy4g8yADEp%2FmSFHDKbbHqGOrWnEzE8kDIrSrapVc0Z8%3D';
+            activePopupValue = 2;
+            yclientsCode = '124032';
+            rfiBankKey = 'Wy4g8yADEp%2FmSFHDKbbHqGOrWnEzE8kDIrSrapVc0Z8%3D';
             break;
         case 'maryino':
-            key = 'TOJugDeSdrrhNrSj8vsHLughHsNGQFliUmq8X4yCPkE%3D';
+            activePopupValue = 3;
+            yclientsCode = '228760';
+            rfiBankKey = 'TOJugDeSdrrhNrSj8vsHLughHsNGQFliUmq8X4yCPkE%3D';
             break;
         case 'nekrasovka':
-            key = 'LX21USWpnEKqvvVyPmda5tammqzcCmeoOV6NnCYfQ8k=';
-            break;
+            activePopupValue = 4;
+            yclientsCode = null;
+            rfiBankKey = 'LX21USWpnEKqvvVyPmda5tammqzcCmeoOV6NnCYfQ8k=';
     }
 
     if (quantityVal === 'trial' || quantityVal === 'oneoff') {
+        signUpBtnLink = 'https://n' + yclientsCode + '.yclients.com/';
         payOnlineBtnLink = signUpBtnLink;
+
+        //$(signUpBtn).unbind('click');
     } else {
-        payOnlineBtnLink = 'https://partner.rficb.ru/alba/input/?name=' + serviceName +'&cost=' + price + '&key=' + key + '&default_email=&order_id=0';
+        payOnlineBtnLink = 'https://partner.rficb.ru/alba/input/?name=' + massageString +'&cost=' + price + '&key=' + rfiBankKey + '&default_email=&order_id=0';
+
+        //$('.popup').find("option[value=" + value + "]").prop("selected", true);
+        //$(signUpBtn).unbind('click').bind('click', showTrialPopup);
     }
 
+    $(signUpBtn).attr('href', signUpBtnLink);
     $(payOnlineBtn).attr('href', payOnlineBtnLink);
-}
 
-function showTrialPopup(e) {
-    e.preventDefault();
+    function showTrialPopup(e) {
+        e.preventDefault();
 
-    $('.hidden-form').attr('value', $(this).attr('data-type'));
+        $('.hidden-form').attr('value', massageString);
 
-    $('.popup').slideDown();
-    $('.popup-overlay').css('display', 'block');
+        $('.popup').slideDown();
+        $('.popup-overlay').css('display', 'block');
 
-    $('#js-close-popup, .popup-overlay').on('click', function(e) {
-        $('.popup').slideUp();
-        $('.popup-overlay').css('display', 'none');
-    });
+        $('#js-close-popup, .popup-overlay').on('click', function (e) {
+            $('.popup').find("option[value='1']").prop("selected", true);
+            $('.hidden-form').attr('value', 'Аноним');
+            $('.popup').slideUp();
+            $('.popup-overlay').css('display', 'none');
+        });
+    }
 }
