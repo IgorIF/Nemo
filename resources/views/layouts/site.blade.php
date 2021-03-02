@@ -121,13 +121,13 @@
     </div>
 </section>
 
-<section class="how-we-swim">
+{{--<section class="how-we-swim">
     <div class="container">
 
         @yield('howWeSwim')
 
     </div>
-</section>
+</section>--}}
 
 <section class="security">
     <div class="container">
