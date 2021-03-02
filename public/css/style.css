@@ -2826,6 +2826,12 @@ font-weight: 300;
   background: url('../images/metro-grey.svg') 0 0 no-repeat;
 }
 
+.calc-single-block
+{
+    max-width: unset;
+    width: 100%;
+}
+
 .popup form select option:nth-child(3) span
 {
   text-indent: 10px;
@@ -4334,6 +4340,18 @@ font-weight: 300;
   {
     width: 400px;
   }
+}
+
+@media (max-width: 758px)
+{
+    .prices-item .list-hidden .flex-row {
+        align-content: center;
+    }
+
+    .prices-item .list-hidden .flex-row .item-radio {
+        width: 100%;
+        margin: 11px 0 0 0;
+    }
 }
 
 @media all and (max-width: 810px)

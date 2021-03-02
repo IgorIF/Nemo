@@ -67,22 +67,22 @@ function initCalculator (filial, prices, oldPrice) {
         $(typeOfSubscription).hide();
         showPrices(filial, price, oldPrice);
     } else {
-        $(swimmingPool).css('max-width', '303px').css('width', '49%');
-        $(typeOfSubscription).css('max-width', '303px').css('width', '49%');
+        $(swimmingPool).removeClass('calc-single-block')
+        $(typeOfSubscription).removeClass('calc-single-block');
         $(swimmingPool).show();
         $(typeOfSubscription).show();
 
         price = prices[quantityVal][swimmingPoolVal];
 
         if (Number.isInteger(price)) {
-            $(swimmingPool).css('max-width', 'unset').css('width', '100%');
+            $(swimmingPool).addClass('calc-single-block');
             $(typeOfSubscription).hide();
             showPrices(filial, price, oldPrice);
         } else {
             price = prices[quantityVal][typeOfSubscriptionVal];
 
             if (Number.isInteger(price)) {
-                $(typeOfSubscription).css('max-width', 'unset').css('width', '100%');
+                $(typeOfSubscription).addClass('calc-single-block');
                 $(swimmingPool).hide();
                 showPrices(filial, price, oldPrice);
             } else {
@@ -100,7 +100,7 @@ function initDescriptions (filial) {
     let inputsChecked = $(filial).find('input:checked');
 
     $(inputsChecked).each(function (i, e) {
-        let descriptionContainer = $(e).parents('div[class="section"]').find('p[class="note"]');
+        let descriptionContainer = $(e).parents('div[class*="section"]').find('p[class="note"]');
         $(descriptionContainer).html(descriptions[$(e).attr('name')][$(e).attr('value')]);
     });
 

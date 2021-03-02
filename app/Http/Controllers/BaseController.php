@@ -41,7 +41,8 @@ class BaseController extends Controller
     protected string $theBenefitsOfEarlySwimming;
     protected string $whoSwimsWithUs;
     protected string $trainersView;
-    protected string $prices;
+    protected string $pricesView;
+    protected string $promotionsView;
     protected string $swimNeverNotEarly;
     protected string $security;
     protected string $reviews;
@@ -97,6 +98,7 @@ class BaseController extends Controller
         $this->renderWhoSwimsWithUs();
         $this->renderTrainers();
         $this->renderPrices();
+        $this->renderPromotions();
         $this->renderSwimNeverNotEarly();
         $this->renderSecurity();
         $this->renderReviews();
@@ -118,7 +120,8 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
         $this->vars = Arr::add($this->vars, 'trainers', $this->trainersView);
-        $this->vars = Arr::add($this->vars, 'prices', $this->prices);
+        $this->vars = Arr::add($this->vars, 'prices', $this->pricesView);
+        $this->vars = Arr::add($this->vars, 'promotions', $this->promotionsView);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
         $this->vars = Arr::add($this->vars, 'security', $this->security);
@@ -165,7 +168,11 @@ class BaseController extends Controller
 
     private function renderPrices() {
         $texts = $this->getFromCollection($this->texts, [35 => 35]);
-        $this->prices = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
+        $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
+    }
+
+    private function renderPromotions() {
+        $this->promotionsView = view($this->template . '.promotions')->render();
     }
 
     private function renderSwimNeverNotEarly() {

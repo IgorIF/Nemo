@@ -48,6 +48,10 @@
     {!! $prices !!}
 @endsection
 
+@section('promotions')
+    {!! $promotions !!}
+@endsection
+
 @section('swimNeverNotEarly')
     {!! $swimNeverNotEarly !!}
 @endsection

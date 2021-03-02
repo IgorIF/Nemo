@@ -163,6 +163,14 @@
     </div>
 </section>
 
+<section class="akcii-new-block" id="akcii">
+    <div class="container">
+
+        @yield('promotions')
+
+    </div>
+</section>
+
 <section class="submit-your-application">
     <div class="container clearfix">
 
