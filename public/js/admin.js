@@ -171,6 +171,22 @@ $(document).ready(function () {
         }
     }
 
+    function savePromotionText(element) {
+        let text = $(element).html();
+
+        if (text !== initialText) {
+            let promotionId = $(element).parents('div[id^="promotion_"]').attr('id').split('_')[1];
+            let fieldName = $(element).attr('id').split('_')[1];;
+            let data = {'action': 'textUpdate', 'field': fieldName, 'text': text};
+
+            let url = 'admin/promotions/' + promotionId;
+
+            ajax('PUT', url, data, function () {
+                toast('Акция обновлена', {type: 'success'});
+            });
+        }
+    }
+
     function saveFilialBranchText(element) {
         let text = $(element).html();
 
@@ -258,6 +274,16 @@ $(document).ready(function () {
         });
     }
 
+    function deletePromotion(element) {
+        let promotionId = $(element).parents('div[id^="promotion_"]').attr('id').split('_')[1];
+        let url = 'admin/promotions/' + promotionId;
+
+        ajax('DELETE', url, null, function () {
+            $(element).parents('div[id^="promotion_"]').first().remove();
+            toast('Акция удалена', {type: 'success'});
+        })
+    }
+
     function deleteTrainerVideo(element) {
         let trainerId = $(element).parents('div[id^="trainer_"]').attr('id').split('_')[1];
         let data = {
@@ -266,7 +292,7 @@ $(document).ready(function () {
 
         let url = 'admin/trainers/' + trainerId;
 
-        ajax('PUT', url, data, function (response) {
+        ajax('PUT', url, data, function () {
             let container = $('div[id="trainer_' + trainerId + '"]').find('div[class="trainer_caption"]');
             $(container).find('a[id="trainerVideoPlayBtn"]').parent().remove();
             $(container).find('a[id="trainer_video_edit_btn"]').parent().remove();
@@ -892,7 +918,10 @@ $(document).ready(function () {
                 break
             case 'trainer':
                 saveTrainerText(this);
-                break
+                break;
+            case 'promotion':
+                savePromotionText(this);
+                break;
             case 'securityCategory':
             case 'securityItem':
                 saveSecurityText(this, id);
@@ -919,8 +948,6 @@ $(document).ready(function () {
         let id = $(this).attr('id').split('_')[0];
         let tooltip = $(this).next('div[id="deleteTooltip"]');
 
-        console.log(tooltip);
-
         $(tooltip).fadeIn(300);
 
         $(tooltip).unbind('focusout').bind('focusout', function () {
@@ -930,9 +957,13 @@ $(document).ready(function () {
         $(tooltip).focus();
 
         $(tooltip).find('a').unbind('click').bind('click', function () {
+
             switch (id) {
                 case 'trainer':
                     deleteTrainer(this);
+                    break;
+                case 'promotion':
+                    deletePromotion(this);
                     break;
                 case 'trainerVideo':
                     deleteTrainerVideo(this);

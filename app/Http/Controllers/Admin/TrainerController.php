@@ -89,7 +89,7 @@ class TrainerController extends IndexController
      * @param int $id
      * @return JsonResponse
      */
-    public function update(Request $request, int $id) : JsonResponse
+    public function update(Request $request, int $id): JsonResponse
     {
         $action = $request->get('action');
         $data = $request->except(['_method', 'action']);

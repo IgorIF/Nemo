@@ -17,6 +17,14 @@
     cursor: pointer;
 }
 
+.promotionDeleteBtn {
+    cursor: pointer;
+}
+
+.promotionDeleteBtn:hover {
+    opacity: 0.8;
+}
+
 nav.fixed.snow{
     top: 50px;
 }
@@ -35,6 +43,11 @@ nav.fixed.snow{
     background: #3b3b3b;
     color: #FFFFFF;
     z-index: 1002;
+}
+
+.akcii-new-block h2 {
+    padding: 0;
+    margin: 70px 0 30px 0;
 }
 
 .admin-nav div {
@@ -132,6 +145,14 @@ div.delete-trainer:before {
     margin-top: 0;
 }
 
+.akcii-new-block__item .delete-tooltip {
+    font-family: 'Comfortaa', cursive;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 300;
+    font-style: normal;
+}
+
 div.delete-security-item:before {
     left: 15px;
     border-color: #FF680D transparent transparent #FF680D;
@@ -166,6 +187,19 @@ div.delete-video:before {
 div.delete-video {
     left: 69px;
     top: -98px;
+}
+
+div.delete-promotion:before {
+    border: 15px solid;
+    right: 15px;
+    top: unset;
+    bottom: 75px;
+    border-color: transparent #FF680D #FF680D transparent;
+}
+
+div.delete-promotion {
+    right: 0;
+    top: 60px;
 }
 
 div.delete-rule-item:before {
@@ -232,6 +266,12 @@ div.item-delete-container {
 div.video-delete-container {
     text-align: center;
     position: relative
+}
+
+div.promotion-delete-container {
+    position: absolute;
+    right: 10px;
+    top: 10px
 }
 
 a#trainer_delete_btn {

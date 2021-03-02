@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\FilialBranchController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MedicalCertificateController;
+use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\VacancyController;
 use App\Http\Controllers\Site\IndexController as SiteController;
 
@@ -42,6 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
     Route::resource('vacancies', VacancyController::class)->only(['store', 'update', 'destroy']);
     Route::resource('images', ImageController::class)->only('update');
     Route::resource('filialBranches', FilialBranchController::class)->only('update');
+    Route::resource('promotions', PromotionController::class)->only(['update', 'destroy']);
 
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 

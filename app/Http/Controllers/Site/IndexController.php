@@ -7,6 +7,7 @@ use App\Mail\TrialLesson;
 use App\Repositories\FilialBranchesRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
+use App\Repositories\PromotionsRepository;
 use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
@@ -22,9 +23,12 @@ class IndexController extends BaseController
 {
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository, ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository)
+                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
+                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository)
     {
-        parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository, $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository, $filialBranchesRepository);
+        parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
+                            $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
+                            $filialBranchesRepository, $promotionsRepository);
         $this->template = 'site';
     }
 
