@@ -30,6 +30,9 @@ class TrialLesson extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.trial_lesson')->with('data', $this->data);
+        return $this
+            ->subject('Данные клиента')
+            ->view('emails.trial_lesson')
+            ->with('data', $this->data);
     }
 }
