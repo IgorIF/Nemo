@@ -2,28 +2,28 @@
     <div class="container">
         <div class="footer-top">
             <div class="left">
-                <a href="{{ route('site') }}" data-aos="fade-up">
+                <a href="{{ route('site') }}" >
                     <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
-                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="{{ route('site') }}" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
+                <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="{{ route('site') }}" >ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
 
-            </div><div class="center1" data-aos="fade-up">
-                <h3 data-aos="fade-up">{!! $texts->get(47)->text !!}</h3>
+            </div><div class="center1" >
+                <h3 >{!! $texts->get(47)->text !!}</h3>
 
-                <a href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" data-aos="fade-up">{!! $filialBranches->get(1)->phone !!}</a>
-                <address data-aos="fade-up">{!! $filialBranches->get(1)->address !!}</address>
+                <a href="tel:{{ $filialBranches->get(1)->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;" >{!! $filialBranches->get(1)->phone !!}</a>
+                <address >{!! $filialBranches->get(1)->address !!}</address>
 
-                <a href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" data-aos="fade-up">{!! $filialBranches->get(2)->phone !!}</a>
-                <address data-aos="fade-up">{!! $filialBranches->get(2)->address !!}</address>
+                <a href="tel:{{ $filialBranches->get(2)->phone }}" onclick="yaCounter45529422.reachGoal('vinokurova'); return true;" >{!! $filialBranches->get(2)->phone !!}</a>
+                <address >{!! $filialBranches->get(2)->address !!}</address>
 
-                <a href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" data-aos="fade-up">{!! $filialBranches->get(3)->phone !!}</a>
-                <address data-aos="fade-up">{!! $filialBranches->get(3)->address !!}</address>
+                <a href="tel:{{ $filialBranches->get(3)->phone }}" onclick="yaCounter45529422.reachGoal('myachkovsky'); return true;" >{!! $filialBranches->get(3)->phone !!}</a>
+                <address >{!! $filialBranches->get(3)->address !!}</address>
 
-                <a href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" data-aos="fade-up">{!! $filialBranches->get(4)->phone !!}</a>
-                <address data-aos="fade-up">{!! $filialBranches->get(4)->address !!}</address>
+                <a href="tel:{{ $filialBranches->get(4)->phone }}" onclick="yaCounter45529422.reachGoal('kamova'); return true;" >{!! $filialBranches->get(4)->phone !!}</a>
+                <address >{!! $filialBranches->get(4)->address !!}</address>
 
-                <a href="tel:{{ $filialBranches->get(5)->phone }}" data-aos="fade-up">{!! $filialBranches->get(5)->phone !!}</a>
-                <address data-aos="fade-up">{!! $filialBranches->get(5)->address !!}</address>
+                <a href="tel:{{ $filialBranches->get(5)->phone }}" >{!! $filialBranches->get(5)->phone !!}</a>
+                <address >{!! $filialBranches->get(5)->address !!}</address>
 
             </div><div class="center2">
                 <h3>{!! $texts->get(48)->text !!}</h3>

@@ -15,11 +15,13 @@ use App\Repositories\VacanciesRepository;
 use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 
 class BaseController extends Controller
 {
-    protected $template;        //шаблон
+    protected string $template;        //шаблон
     protected array $vars = [];       //массив с данными которые передаюся в шаблон
 
     protected TextsRepository $textsRepository;
@@ -34,22 +36,32 @@ class BaseController extends Controller
     protected ImagesRepository $imagesRepository;
     protected FilialBranchesRepository $filialBranchesRepository;
 
-    protected $header;
-    protected $aboutUs;
-    protected $theBenefitsOfEarlySwimming;
-    protected $whoSwimsWithUs;
-    protected $trainers;
-    protected $prices;
-    protected $swimNeverNotEarly;
-    protected $security;
-    protected $reviews;
-    protected $swimmingPool;
-    protected $footer;
-    protected $trialLesson;
-    protected $rules;
-    protected $medicalCertificates;
-    protected $contactUs;
-    protected $vacancies;
+    protected string $headerView;
+    protected string $aboutUs;
+    protected string $theBenefitsOfEarlySwimming;
+    protected string $whoSwimsWithUs;
+    protected string $trainersView;
+    protected string $prices;
+    protected string $swimNeverNotEarly;
+    protected string $security;
+    protected string $reviews;
+    protected string $swimmingPool;
+    protected string $footer;
+    protected string $trialLesson;
+    protected string $rules;
+    protected string $medicalCertificatesView;
+    protected string $contactUs;
+    protected string $vacanciesView;
+
+    private Collection $texts;
+    private Collection $images;
+    protected Collection $videos;
+    private Collection $filialBranches;
+    private Collection $trainers;
+    private Collection $securityCategories;
+    private Collection $ruleCategories;
+    private Collection $medicalCertificates;
+    private Collection $vacancies;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
@@ -66,6 +78,16 @@ class BaseController extends Controller
         $this->vacanciesRepository = $vacanciesRepository;
         $this->imagesRepository = $imagesRepository;
         $this->filialBranchesRepository = $filialBranchesRepository;
+
+        $this->texts = $textsRepository->getAllWithIdAsKey();
+        $this->images = $imagesRepository->getAllWithIdAsKey();
+        $this->videos = $videosRepository->getAllWithIdAsKey();
+        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
+        $this->trainers = $this->trainersRepository->getAll();
+        $this->securityCategories = $this->securityCategoriesRepository->getAll();
+        $this->ruleCategories = $this->ruleCategoriesRepository->getAll();
+        $this->medicalCertificates = $this->medicalCertificatesRepository->getAll();
+        $this->vacancies = $this->vacanciesRepository->getAll();
     }
 
     public function __invoke(Request $request) {
@@ -91,11 +113,11 @@ class BaseController extends Controller
 
         $howWeSwim = view($this->template . '.how_we_swim')->render();
 
-        $this->vars = Arr::add($this->vars, 'header', $this->header);
+        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
         $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUs);
-        $this->vars = Arr::add($this->vars, 'trainers', $this->trainers);
+        $this->vars = Arr::add($this->vars, 'trainers', $this->trainersView);
         $this->vars = Arr::add($this->vars, 'prices', $this->prices);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
         $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
@@ -105,106 +127,110 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'footer', $this->footer);
         $this->vars = Arr::add($this->vars, 'trialLesson', $this->trialLesson);
         $this->vars = Arr::add($this->vars, 'rules', $this->rules);
-        $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificates);
+        $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificatesView);
         $this->vars = Arr::add($this->vars, 'contactUs', $this->contactUs);
-        $this->vars = Arr::add($this->vars, 'vacancies', $this->vacancies);
+        $this->vars = Arr::add($this->vars, 'vacancies', $this->vacanciesView);
 
         return view($this->template . '.index')->with($this->vars);
     }
 
     private function renderHeader() {
-        $texts = $this->textsRepository->getInRangeById([1 => 7]);
-        $images = $this->imagesRepository->getInRangeById([1 => 1]);
-        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
-        $this->header = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranches' => $filialBranches])->render();
+        $texts = $this->getFromCollection($this->texts, [1 => 7]);
+        $images = $this->getFromCollection($this->images, [1 => 1]);
+        $this->headerView = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranches' => $this->filialBranches])->render();
     }
 
     private function renderAboutUs() {
-        $texts = $this->textsRepository->getInRangeById([8 => 9]);
-        $video = $this->videosRepository->getAboutUsVideo();
+        $texts = $this->getFromCollection($this->texts, [8 => 9]);
+        $video = $this->getFromCollection($this->videos, [1 => 1])->first();
         $this->aboutUs = view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
     private function renderTheBenefitsOfEarlySwimming() {
-        $texts = $this->textsRepository->getInRangeById([10 => 22]);
-        $images = $this->imagesRepository->getInRangeById([2 => 2]);
+        $texts = $this->getFromCollection($this->texts, [10 => 22]);
+        $images = $this->getFromCollection($this->images, [2 => 2]);
         $this->theBenefitsOfEarlySwimming = view($this->template . '.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderWhoSwimsWithUs() {
-        $texts = $this->textsRepository->getInRangeById([23 => 32]);
-        $images = $this->imagesRepository->getInRangeById([3 => 5]);
+        $texts = $this->getFromCollection($this->texts, [23 => 32]);
+        $images = $this->getFromCollection($this->images, [3 => 5]);
         $this->whoSwimsWithUs = view($this->template . '.who_swims_with_us')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderTrainers() {
-        $texts = $this->textsRepository->getInRangeById([33 => 34]);
-        $trainers = $this->trainersRepository->getAll();
-        $this->trainers = view($this->template . '.trainers')->with(['trainers' => $trainers, 'texts' => $texts ])->render();
+        $texts = $this->getFromCollection($this->texts, [33 => 34]);
+        $this->trainersView = view($this->template . '.trainers')->with(['trainers' => $this->trainers, 'texts' => $texts])->render();
     }
 
     private function renderPrices() {
-        $texts = $this->textsRepository->getInRangeById([35 => 35]);
-        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
-        $this->prices = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
+        $texts = $this->getFromCollection($this->texts, [35 => 35]);
+        $this->prices = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
     }
 
     private function renderSwimNeverNotEarly() {
-        $texts = $this->textsRepository->getInRangeById([36 => 37]);
-        $images = $this->imagesRepository->getInRangeById([6 => 6]);
+        $texts = $this->getFromCollection($this->texts, [36 => 37]);
+        $images = $this->getFromCollection($this->images, [6 => 6]);
         $this->swimNeverNotEarly = view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
     private function renderSecurity() {
-        $texts = $this->textsRepository->getInRangeById([38 => 39]);
-        $securityCategories = $this->securityCategoriesRepository->getAll();
-        $images = $this->imagesRepository->getInRangeById([7 => 9]);
-        $this->security = view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $securityCategories, 'images' => $images])->render();
+        $texts = $this->getFromCollection($this->texts, [38 => 39]);
+        $images = $this->getFromCollection($this->images, [7 => 9]);
+        $this->security = view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $this->securityCategories, 'images' => $images])->render();
     }
 
     private function renderReviews() {
-        $texts = $this->textsRepository->getInRangeById([40 => 40]);
-        $videos = $this->videosRepository->getAllReviewsVideos();
+        $texts = $this->getFromCollection($this->texts, [40 => 40]);
+        $videos = $this->getFromCollection($this->videos, [2 => count($this->videos)-1]);
         $this->reviews = view($this->template . '.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
     private function renderSwimmingPool() {
-        $texts = $this->textsRepository->getInRangeById([41 => 46]);
+        $texts = $this->getFromCollection($this->texts, [41 => 46]);
         $this->swimmingPool = view($this->template . '.swimming_pool')->with('texts', $texts)->render();
     }
 
     private function renderFooter() {
-        $texts = $this->textsRepository->getInRangeById([47 => 55]);
-        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
-        $this->footer = view($this->template . '.footer')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
+        $texts = $this->getFromCollection($this->texts, [47 => 55]);
+        $this->footer = view($this->template . '.footer')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
     }
 
     private function renderTrialLesson() {
-        $texts = $this->textsRepository->getInRangeById([56 => 56]);
+        $texts = $this->getFromCollection($this->texts, [56 => 56]);
         $this->trialLesson = view($this->template . '.trial_lesson')->with('texts' , $texts)->render();
     }
 
     private function renderRules() {
-        $texts = $this->textsRepository->getInRangeById([57 => 59]);
-        $ruleCategories = $this->ruleCategoriesRepository->getAll();
-        $this->rules = view($this->template . '.rules')->with(['texts' => $texts, 'ruleCategories' => $ruleCategories])->render();
+        $texts = $this->getFromCollection($this->texts, [57 => 59]);
+        $this->rules = view($this->template . '.rules')->with(['texts' => $texts, 'ruleCategories' => $this->ruleCategories])->render();
     }
 
     private function renderMedicalCertificates() {
-        $texts = $this->textsRepository->getInRangeById([60 => 61]);
-        $medicalCertificates = $this->medicalCertificatesRepository->getAll();
-        $this->medicalCertificates = view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $medicalCertificates])->render();
+        $texts = $this->getFromCollection($this->texts, [60 => 61]);
+        $this->medicalCertificatesView = view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $this->medicalCertificates])->render();
     }
 
     private function renderContactUs() {
-        $texts = $this->textsRepository->getInRangeById([66 => 66]);
-        $filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
-        $this->contactUs = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $filialBranches])->render();
+        $texts = $this->getFromCollection($this->texts, [66 => 66]);
+        $this->contactUs = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
     }
 
     private function renderVacancies() {
-        $texts = $this->textsRepository->getInRangeById([62 => 65]);
-        $vacancies = $this->vacanciesRepository->getAll();
-        $this->vacancies = view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $vacancies])->render();
+        $texts = $this->getFromCollection($this->texts, [62 => 65]);
+        $this->vacanciesView = view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $this->vacancies])->render();
+    }
+
+    protected function getFromCollection(Collection $collection, array $interval): Collection
+    {
+        $result = collect();
+
+        foreach ($interval as $from => $to) {
+            for ($i = $from; $i <= $to; $i++) {
+                $result->put($i, $collection->get($i));
+            }
+        }
+
+        return $result;
     }
 }

@@ -39,7 +39,6 @@ class Repository
         return $this->model->all();
     }
 
-
     /**
      * @return mixed
      */

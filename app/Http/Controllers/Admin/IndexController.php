@@ -57,7 +57,7 @@ class IndexController extends BaseController
     }
 
     private function renderModalAboutUsEditVideo() {
-        $video = $this->videosRepository->getAboutUsVideo();
+        $video = $this->getFromCollection($this->videos, [1 => 1])->first();
         $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
     }
 
