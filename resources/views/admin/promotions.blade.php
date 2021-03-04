@@ -1,6 +1,6 @@
 <h2 id="text_{{ $texts->get(67)->id }}" contenteditable="true" data-aos="fade-up" class="aos-init aos-animate">{!! $texts->get(67)->text !!}</h2>
 
-<div class="akcii-new-block__wrapper">
+<div id="promotions_container" class="akcii-new-block__wrapper">
     @foreach($promotions as $promotion)
         <div id="promotion_{{ $promotion->id }}" class="akcii-new-block__item" data-aos="fade-up" style="background-image: url({{ asset('storage/images/promotions/' . $promotion->image) }})">
             <div class="promotion-delete-container">
@@ -17,4 +17,8 @@
             <div class="akcii-new-block__sale"><span>-<span id="promotion_percent" contenteditable="true" style="display: unset">{!! $promotion->percent !!}</span>%</span> Скидка</div>
         </div>
     @endforeach
+</div>
+
+<div style="text-align: center; height: 100px" data-aos="fade-up">
+    <a id="promotion_add_btn" class="btn" style="display: inline-block; padding: 20px 30px">Добавить акцию</a>
 </div>

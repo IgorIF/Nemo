@@ -5564,18 +5564,6 @@ border-radius: 15px;
     background-position: right bottom;
     background-size: cover; }
 
-.akcii-new-block__item_1 {
-    background-image: url(../images/dist/akcii__1.png); }
-
-.akcii-new-block__item_2 {
-    background-image: url(../images/dist/akcii__2.png); }
-
-.akcii-new-block__item_3 {
-    background-image: url(../images/dist/akcii__3.png); }
-
-.akcii-new-block__item_4 {
-    background-image: url(../images/dist/akcii__4.png); }
-
 .akcii-new-block__sale {
     color: #FF680D;
     font-size: 20px;
@@ -5646,14 +5634,6 @@ border-radius: 15px;
         padding: 18px 22px;
         margin-bottom: 20px;
         min-height: 184px;
-        padding-right: 116px;
-        background-size: initial; }
-    .akcii-new-block__item_1 {
-        background-image: url(../images/dist/akcii__1m.png); }
-    .akcii-new-block__item_2 {
-        background-image: url(../images/dist/akcii__2m.png); }
-    .akcii-new-block__item_3 {
-        background-image: url(../images/dist/akcii__3m.png); }
-    .akcii-new-block__item_4 {
-        background-image: url(../images/dist/akcii__4m.png); } }
+        padding-right: 116px;}
+}
 /*Акции 28.02.20.2021*/

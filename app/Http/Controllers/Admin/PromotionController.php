@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Promotion;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -33,11 +34,17 @@ class PromotionController extends IndexController
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return Promotion
      */
-    public function store(Request $request): Response
+    public function store(Request $request): Promotion
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'percent' => 'required',
+            'image' => 'required',
+        ]);
+
+        return $this->promotionsRepository->create($request);
     }
 
     /**

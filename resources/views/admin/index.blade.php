@@ -12,6 +12,10 @@
     {!! $modalAddTrainer !!}
 @endsection
 
+@section('modalAddPromotion')
+    {!! $modalAddPromotion !!}
+@endsection
+
 @section('modalTrainerVideo')
     {!! $modalTrainerVideo !!}
 @endsection

@@ -2,6 +2,7 @@ $(document).ready(function () {
     let initialText;
     let $modalCropper = $('#modal_cropper');
     let $modalAddTrainer = $('#modal_add_trainer');
+    let $modalAddPromotion = $('#modal_add_promotion');
     let $modalTrainerVideo = $('#modalTrainerVideo');
     let $modalAddItem = $('#modal_add_item');
     let $modalAddVideo = $('#modal_add_video');
@@ -14,7 +15,7 @@ $(document).ready(function () {
     let securityCategoryId;
     let ruleCategoryId;
     let imageFile;
-    let cropBtnMode;                // trainer_create, trainer_update, video_create, about_us_video_update, image_update
+    let cropBtnMode;                // trainer_create, promotion_create, trainer_update, video_create, about_us_video_update, image_update
     let saveItemBtnMode;            // security, rule, medicalCertificate, vacancy
     let saveTrainerVideoBtnMode;    // create, update
     let aspectRatio;
@@ -44,6 +45,9 @@ $(document).ready(function () {
             case 'trainer_create':
             case 'trainer_update':
                 params.aspectRatio = 1;
+                break;
+            case 'promotion_create':
+                params.aspectRatio = 1.488;
                 break;
             case 'video_create':
             case 'about_us_video_update':
@@ -87,6 +91,9 @@ $(document).ready(function () {
     /// Show add trainer modal
     $('#trainer_add_btn').click(onTrainerAddBtnClickListener);
 
+    /// Show add promotion modal
+    $('#promotion_add_btn').click(onPromotionAddBtnClickListener);
+
     /// Show add securityItem modal
     $('[id="securityItem_add_btn"]').click(onSecurityItemAddBtnClickListener);
 
@@ -114,6 +121,9 @@ $(document).ready(function () {
     /// Save new trainer
     $('#trainer_save_btn').click(onTrainerSaveBtnClickListener);
 
+    /// Save new promotion
+    $('#promotion_save_btn').click(onPromotionSaveBtnClickListener);
+
     /// Save new item
     $('#item_save_btn').click(onItemSaveBtnClickListener);
 
@@ -134,6 +144,8 @@ $(document).ready(function () {
     })
 
     $modalAddTrainer.find('input[id="input"]').change(onCreateTrainerImageChangeListener);
+
+    $modalAddPromotion.find('input[id="input"]').change(onCreatePromotionImageChangeListener);
 
     $modalAddVideo.find('input[id="input"]').change(onVideoPreviewChangeListener);
 
@@ -441,6 +453,23 @@ $(document).ready(function () {
         },true);
     }
 
+    function saveNewPromotion() {
+        let data = new FormData($modalAddPromotion.find('form')[0]);
+        data.append('image-data', JSON.stringify(cropperData));
+        let url = 'admin/promotions';
+        ajax('POST', url, data, function (promotion) {
+            promotionAdd(promotion);
+            $modalAddPromotion.modal('hide');
+            clearFields($modalAddPromotion);
+            toast('Акция добавлена', {type: 'success'});
+        }, function (error) {
+            if (error.status === 422) {
+                let errors = error.responseJSON.errors;
+                addInvalidFeedback($modalAddPromotion, errors);
+            }
+        }, true);
+    }
+
     function saveNewSecurityItem() {
         let data = new FormData($modalAddItem.find('form')[0]);
         data.append('securityCategoryId', securityCategoryId);
@@ -722,6 +751,34 @@ $(document).ready(function () {
         $('.slides').slick('slickAdd', slide);
     }
 
+    function promotionAdd(promotion) {
+        let container = $('#promotions_container');
+
+        let content = $('<div id="promotion_' + promotion.id + '" class="akcii-new-block__item" data-aos="fade-up" style="background-image: url(../storage/images/promotions/' + promotion.image + ');">' +
+                            '<div class="promotion-delete-container">' +
+                                '<svg id="promotion_delete_btn" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash promotionDeleteBtn" viewBox="0 0 16 16">' +
+                                    '<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>' +
+                                    '<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>' +
+                                '</svg>' +
+                                '<div id="deleteTooltip" class="delete-tooltip delete-promotion" tabindex="1">' +
+                                    'Удалить акцию?' +
+                                    '<a class="button--border">Да</a>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div id="promotion_name" contenteditable="true" class="akcii-new-block__item__title">' + promotion.name + '</div>' +
+                            '<div class="akcii-new-block__sale"><span>-<span id="promotion_percent" contenteditable="true" style="display: unset">' + promotion.percent + '</span>%</span> Скидка</div>' +
+                        '</div>');
+
+
+        content.find('#promotion_name').focusin(onTextFocusinListener)
+            .focusout(onTextFocusoutListener);
+
+        content.find('#promotion_percent').focusin(onTextFocusinListener)
+            .focusout(onTextFocusoutListener);
+
+        container.append(content);
+    }
+
     function videoSlickAdd(video) {
         let slide = $('<div class="slider video_' + video.id + '">' +
                         '<div class="review_block">' +
@@ -991,6 +1048,11 @@ $(document).ready(function () {
         showCropperImage(this);
     }
 
+    function onCreatePromotionImageChangeListener() {
+        cropBtnMode = 'promotion_create';
+        showCropperImage(this);
+    }
+
     function onUpdateTrainerImageChangeListener() {
         cropBtnMode = 'trainer_update';
         trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
@@ -1017,6 +1079,9 @@ $(document).ready(function () {
             case 'trainer_create':
                 updatePreview($modalAddTrainer);
                 break;
+            case 'promotion_create':
+                updatePreview($modalAddPromotion);
+                break;
             case 'video_create':
                 updatePreview($modalAddVideo);
                 break;
@@ -1034,6 +1099,10 @@ $(document).ready(function () {
 
     function onTrainerAddBtnClickListener() {
         $modalAddTrainer.modal('show');
+    }
+
+    function onPromotionAddBtnClickListener() {
+        $modalAddPromotion.modal('show');
     }
 
     function onSecurityItemAddBtnClickListener() {
@@ -1086,6 +1155,10 @@ $(document).ready(function () {
 
     function onTrainerSaveBtnClickListener() {
         saveNewTrainer();
+    }
+
+    function onPromotionSaveBtnClickListener() {
+        saveNewPromotion();
     }
 
     function onItemSaveBtnClickListener() {

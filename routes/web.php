@@ -43,7 +43,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
     Route::resource('vacancies', VacancyController::class)->only(['store', 'update', 'destroy']);
     Route::resource('images', ImageController::class)->only('update');
     Route::resource('filialBranches', FilialBranchController::class)->only('update');
-    Route::resource('promotions', PromotionController::class)->only(['update', 'destroy']);
+    Route::resource('promotions', PromotionController::class)->only(['store', 'update', 'destroy']);
 
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
 

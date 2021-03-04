@@ -43,6 +43,7 @@ class IndexController extends BaseController
     protected function renderOutput() {
 
         $modalAddTrainer = view('admin.modals.modal_add_trainer')->render();
+        $modalAddPromotion = view('admin.modals.modal_add_promotion')->render();
         $modalTrainerVideo = view('admin.modals.modal_trainer_video')->render();
         $modalAddSecurityItem = view('admin.modals.modal_add_item')->render();
         $modalAddVideo = view('admin.modals.modal_add_video')->render();
@@ -51,6 +52,7 @@ class IndexController extends BaseController
 
         $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideo);
         $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
+        $this->vars = Arr::add($this->vars, 'modalAddPromotion', $modalAddPromotion);
         $this->vars = Arr::add($this->vars, 'modalTrainerVideo', $modalTrainerVideo);
         $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
         $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
