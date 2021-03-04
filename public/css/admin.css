@@ -22,7 +22,7 @@
 }
 
 .promotionDeleteBtn:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 nav.fixed.snow{
@@ -482,6 +482,17 @@ label.image-edit-area {
     width: 100%;
     bottom: 0;
     cursor: pointer;
+}
+
+.akcii-new-block__item {
+    cursor: pointer;
+}
+
+.akcii-new-block__item .akcii-new-block__item__title {
+    cursor: text;
+}
+.akcii-new-block__item .akcii-new-block__sale #promotion_percent {
+    cursor: text;
 }
 
 .trainer_caption a#trainerVideoAddBtn {

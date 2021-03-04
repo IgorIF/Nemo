@@ -31,7 +31,15 @@ $(document).ready(function () {
             let text = clipboard.getData('text');
 
             insertTextAtCaret(text);
+        })
+        .on('click', function (e) {
+            e.stopPropagation();
         });
+
+    /// Update promotion image
+    $(document).find('#promotions_container').children('div[id^="promotion"]').click(function (e) {
+        console.log(123);
+    });
 
     /// Delete item
     $(document).on('click', '[id$="_delete_btn"]', onDeleteBtnClickListener);
@@ -1001,6 +1009,7 @@ $(document).ready(function () {
     }
 
     function onDeleteBtnClickListener(e) {
+        e.stopImmediatePropagation();
         e.preventDefault();
         let id = $(this).attr('id').split('_')[0];
         let tooltip = $(this).next('div[id="deleteTooltip"]');
