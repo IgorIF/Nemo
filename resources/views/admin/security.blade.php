@@ -50,7 +50,7 @@
                     <a id="securityItem_add_btn" class="btn" style="padding: 20px 30px; float: right; box-shadow: none">Добавить запись</a>
                 </div>
 
-                <label class="image-edit-area label" data-toggle="tooltip" title="Изменить">
+                <label id="image" class="image-edit-area label" data-toggle="tooltip" title="Изменить">
                     <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
                 </label>
 

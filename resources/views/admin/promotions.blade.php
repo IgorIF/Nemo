@@ -3,6 +3,9 @@
 <div id="promotions_container" class="akcii-new-block__wrapper">
     @foreach($promotions as $promotion)
         <div id="promotion_{{ $promotion->id }}" class="akcii-new-block__item" data-aos="fade-up" style="background-image: url({{ asset('storage/images/promotions/' . $promotion->image) }})">
+            <label id="promotion_image" data-toggle="tooltip" title="Изменить фон">
+                <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
+            </label>
             <div class="promotion-delete-container">
                 <svg id="promotion_delete_btn" xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-trash promotionDeleteBtn" viewBox="0 0 16 16">
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>

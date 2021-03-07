@@ -1,20 +1,10 @@
 <h2 data-aos="fade-up" class="aos-init aos-animate">{!! $texts->get(67)->text !!}</h2>
 
-<div class="akcii-new-block__wrapper">
-    <div class="akcii-new-block__item akcii-new-block__item_1" data-aos="fade-up">
-        <div class="akcii-new-block__item__title">В день пробного <br>занятия</div>
-        <div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
-    </div>
-    <div class="akcii-new-block__item akcii-new-block__item_2" data-aos="fade-up">
-        <div class="akcii-new-block__item__title">За приведенного <br>друга</div>
-        <div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
-    </div>
-    <div class="akcii-new-block__item akcii-new-block__item_3" data-aos="fade-up">
-        <div class="akcii-new-block__item__title">На второго ребенка</div>
-        <div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
-    </div>
-    <div class="akcii-new-block__item akcii-new-block__item_4" data-aos="fade-up">
-        <div class="akcii-new-block__item__title">Особенным <br>деткам</div>
-        <div class="akcii-new-block__sale"><span>-10%</span> Скидка</div>
-    </div>
+<div id="promotions_container" class="akcii-new-block__wrapper">
+    @foreach($promotions as $promotion)
+        <div id="promotion_{{ $promotion->id }}" class="akcii-new-block__item" data-aos="fade-up" style="background-image: url({{ asset('storage/images/promotions/' . $promotion->image) }})">
+            <div id="promotion_name" class="akcii-new-block__item__title">{!! $promotion->name !!}</div>
+            <div class="akcii-new-block__sale"><span>-<span id="promotion_percent" style="display: unset">{!! $promotion->percent !!}</span>%</span> Скидка</div>
+        </div>
+    @endforeach
 </div>

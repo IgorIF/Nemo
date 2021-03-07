@@ -10,9 +10,9 @@
                 <div class="flex jcsb">
 
                     <div class="trainer_foto">
-                        <label class="label" data-toggle="tooltip" title="Загрузить фото">
+                        <label id="trainer_image" data-toggle="tooltip" title="Загрузить фото">
                             <img src="{{ asset('storage/images/trainers/' . $trainer->image) }}" />
-                            <input style="display: none" type="file" class="sr-only" id="trainer_image" name="image" accept="image/*">
+                            <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
                         </label>
                     </div>
 

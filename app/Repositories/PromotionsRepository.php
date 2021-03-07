@@ -41,4 +41,14 @@ class PromotionsRepository extends Repository
             'image' => $fileName
         ]);
     }
+
+    public function imageUpdate(array $data, int $id)
+    {
+        $promotion = $this->model::find($id);
+
+        $imageName = $this->updateImage($data, $promotion);
+        $promotion->fill(['image' => $imageName])->update();
+
+        return $imageName;
+    }
 }

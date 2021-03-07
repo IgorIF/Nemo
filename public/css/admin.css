@@ -484,15 +484,20 @@ label.image-edit-area {
     cursor: pointer;
 }
 
-.akcii-new-block__item {
-    cursor: pointer;
-}
-
 .akcii-new-block__item .akcii-new-block__item__title {
     cursor: text;
 }
 .akcii-new-block__item .akcii-new-block__sale #promotion_percent {
     cursor: text;
+}
+.akcii-new-block__item label {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1
 }
 
 .trainer_caption a#trainerVideoAddBtn {

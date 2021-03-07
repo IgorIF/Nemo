@@ -100,7 +100,7 @@
             <div class="progress-bar" id="myBar"></div>
         </div>
     </nav>
-    <label class="header-image-edit-area label">
+    <label id="image" class="header-image-edit-area label">
         <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
     </label>
     <div class="container">

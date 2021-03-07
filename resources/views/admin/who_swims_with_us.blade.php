@@ -30,7 +30,7 @@
             <h3 id="text_{{ $texts->get(27)->id }}" contenteditable="true">{!! $texts->get(27)->text !!}</h3>
             <p id="text_{{ $texts->get(28)->id }}" contenteditable="true">{!! $texts->get(28)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
-            <label class="image-edit-area label" data-toggle="tooltip" title="Изменить">
+            <label id="image" class="image-edit-area" data-toggle="tooltip" title="Изменить">
                 <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
             </label>
         </div>
@@ -38,7 +38,7 @@
             <h3 id="text_{{ $texts->get(29)->id }}" contenteditable="true">{!! $texts->get(29)->text !!}</h3>
             <p id="text_{{ $texts->get(30)->id }}" contenteditable="true">{!! $texts->get(30)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
-            <label class="image-edit-area label" data-toggle="tooltip" title="Изменить">
+            <label id="image" class="image-edit-area" data-toggle="tooltip" title="Изменить">
                 <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
             </label>
         </div>
@@ -46,7 +46,7 @@
             <h3 id="text_{{ $texts->get(31)->id }}" contenteditable="true">{!! $texts->get(31)->text !!}</h3>
             <p id="text_{{ $texts->get(32)->id }}" contenteditable="true">{!! $texts->get(32)->text !!}</p>
             <a class="js-popup btn" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="#" data-aos="zoom-in">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
-            <label class="image-edit-area label" data-toggle="tooltip" title="Изменить">
+            <label id="image" class="image-edit-area" data-toggle="tooltip" title="Изменить">
                 <input style="display: none" type="file" class="sr-only" id="image" name="image" accept="image/*">
             </label>
         </div>

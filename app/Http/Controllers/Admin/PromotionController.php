@@ -69,14 +69,13 @@ class PromotionController extends IndexController
         //
     }
 
+
     /**
-     * Update the specified resource in storage.
-     *
      * @param Request $request
-     * @param  int  $id
-     * @return JsonResponse|null
+     * @param int $id
+     * @return string|null
      */
-    public function update(Request $request, int $id): ?JsonResponse
+    public function update(Request $request, int $id): ?string
     {
         $action = $request->get('action');
         $data = $request->except(['_method', 'action']);
@@ -85,6 +84,9 @@ class PromotionController extends IndexController
             case 'textUpdate':
                 $this->promotionsRepository->textUpdate($data, $id);
                 return null;
+            case 'imageUpdate':
+                return $this->promotionsRepository->imageUpdate($data, $id);
+
         }
     }
 

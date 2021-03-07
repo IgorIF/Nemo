@@ -11,16 +11,17 @@ $(document).ready(function () {
     let cropperObj;
     let cropperData;
     let trainerId;
+    let promotionId;
     let imageId;
     let securityCategoryId;
     let ruleCategoryId;
     let imageFile;
-    let cropBtnMode;                // trainer_create, promotion_create, trainer_update, video_create, about_us_video_update, image_update
+    let cropBtnMode;                // trainer_create, promotion_create, trainer_update, video_create, about_us_video_update, image_update, promotion_update
     let saveItemBtnMode;            // security, rule, medicalCertificate, vacancy
     let saveTrainerVideoBtnMode;    // create, update
     let aspectRatio;
 
-    $('[data-toggle="tooltip"]').tooltip();
+    //$('[data-toggle="tooltip"]').tooltip();
 
     /// Update text
     $('[contenteditable="true"]').on('focusin', onTextFocusinListener)
@@ -35,11 +36,6 @@ $(document).ready(function () {
         .on('click', function (e) {
             e.stopPropagation();
         });
-
-    /// Update promotion image
-    $(document).find('#promotions_container').children('div[id^="promotion"]').click(function (e) {
-        console.log(123);
-    });
 
     /// Delete item
     $(document).on('click', '[id$="_delete_btn"]', onDeleteBtnClickListener);
@@ -62,6 +58,7 @@ $(document).ready(function () {
                 params.aspectRatio = 1.454;
                 break;
             case 'image_update':
+            case 'promotion_update':
                 if (aspectRatio != null)
                     params.aspectRatio = aspectRatio;
 
@@ -86,9 +83,6 @@ $(document).ready(function () {
        ruleCategoryId = null;
        saveItemBtnMode = null;
     });
-
-    /// Trainer image edit cropper show
-    $('[id^="trainer_image"]').change(onUpdateTrainerImageChangeListener);
 
     /// Image edit cropper show
     $('input[id="image"]').change(onUpdateImageChangeListener);
@@ -415,6 +409,22 @@ $(document).ready(function () {
         ajax('POST', url, data, function (response) {
             $('div[id="trainer_' + trainerId + '"]').find('img').attr('src', '../storage/images/trainers/' + response.image);
             toast('Тренер обновлен', {type: 'success'});
+        }, null, true);
+    }
+
+    function savePromotionImage() {
+        let data = new FormData();
+        let imageData = JSON.stringify(cropperData);
+        data.append('_method', 'PUT');
+        data.append('action', 'imageUpdate');
+        data.append('image', imageFile);
+        data.append('image-data', imageData);
+
+        let url = 'admin/promotions/' + promotionId;
+
+        ajax('POST', url, data, function (image) {
+            $('div[id="promotion_' + promotionId + '"]').attr('style', 'background-image: url(../storage/images/promotions/' + image + ')');
+            toast('Акция обновлена', {type: 'success'});
         }, null, true);
     }
 
@@ -1062,12 +1072,6 @@ $(document).ready(function () {
         showCropperImage(this);
     }
 
-    function onUpdateTrainerImageChangeListener() {
-        cropBtnMode = 'trainer_update';
-        trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
-        showCropperImage(this);
-    }
-
     function onVideoPreviewChangeListener() {
         cropBtnMode = 'video_create';
         showCropperImage(this);
@@ -1090,6 +1094,9 @@ $(document).ready(function () {
                 break;
             case 'promotion_create':
                 updatePreview($modalAddPromotion);
+                break;
+            case 'promotion_update':
+                savePromotionImage();
                 break;
             case 'video_create':
                 updatePreview($modalAddVideo);
@@ -1205,28 +1212,44 @@ $(document).ready(function () {
     }
 
     function onUpdateImageChangeListener() {
-        cropBtnMode = 'image_update';
+        let label = $(this).parent('label')
+        let imageType = $(label).attr('id');
 
-        let imageContainer;
+        switch (imageType) {
+            case 'image':
+                cropBtnMode = 'image_update';
+                let imageContainer;
 
-        if($(this).siblings('[class*="image_"]').length) {
-            imageContainer = $(this).siblings('[class*="image_"]');
-            aspectRatio = imageContainer.width() / imageContainer.height();
-        }else {
-            imageContainer = $(this).parents('[class*="image_"]');
+                if($(this).siblings('[class*="image_"]').length) {
+                    imageContainer = $(this).siblings('[class*="image_"]');
+                    aspectRatio = imageContainer.width() / imageContainer.height();
+                }else {
+                    imageContainer = $(this).parents('[class*="image_"]');
 
-            if ($(imageContainer)[0].tagName !== 'HEADER') {
-                let label = $(imageContainer).find('label');
+                    if ($(imageContainer)[0].tagName !== 'HEADER') {
+                        aspectRatio = label.width() / label.height();
+                    }
+                }
+
+                $(imageContainer).attr('class').split(' ').some(function (e) {
+                    if (e.split('_')[0] === 'image') {
+                        imageId = e.split('_')[1];
+                        return true;
+                    }
+                })
+                break;
+            case 'trainer_image':
+                cropBtnMode = 'trainer_update';
+                trainerId = $(this).parents('div[id^="trainer_"]').attr('id').split('_')[1];
+                break;
+            case 'promotion_image':
+                cropBtnMode = 'promotion_update';
                 aspectRatio = label.width() / label.height();
-            }
-        }
+                console.log(aspectRatio);
+                promotionId = $(this).parents('div[id^="promotion_"]').attr('id').split('_')[1];
+                break;
 
-        $(imageContainer).attr('class').split(' ').some(function (e) {
-            if (e.split('_')[0] === 'image') {
-                imageId = e.split('_')[1];
-                return true;
-            }
-        })
+        }
 
         showCropperImage(this);
     }
