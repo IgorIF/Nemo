@@ -84,8 +84,8 @@ function initDescriptions (filial, descriptions) {
     let inputsChecked = $(filial).find('input:checked');
 
     $(inputsChecked).each(function (i, e) {
-        let title = $(e).parents('div[class*="section"]').find('span[id="title"]');
-        let body = $(e).parents('div[class*="section"]').find('div[id="body"]');
+        let title = $(e).parents('div[class*="section"]').find('span[id="calculatorDescription_title"]');
+        let body = $(e).parents('div[class*="section"]').find('div[id="calculatorDescription_body"]');
 
         $(title).html(descriptions[$(e).attr('name')][$(e).attr('value')]['title']);
         $(body).html(descriptions[$(e).attr('name')][$(e).attr('value')]['body']);

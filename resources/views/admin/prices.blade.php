@@ -37,8 +37,8 @@
                                 </div>
                                 <div class="description">
                                     <p class="note">
-                                        <span id="title" class="medium" contenteditable="true"></span>
-                                        <div id="body" contenteditable="true"></div>
+                                        <span id="calculatorDescription_title" class="medium" contenteditable="true"></span>
+                                        <div id="calculatorDescription_body" contenteditable="true"></div>
                                     </p>
                                 </div>
                             </div>
@@ -58,8 +58,8 @@
                                         </div>
                                         <div class="description">
                                             <p class="note">
-                                                <span id="title" class="medium" contenteditable="true"></span>
-                                                <div id="body" contenteditable="true"></div>
+                                                <span id="calculatorDescription_title" class="medium" contenteditable="true"></span>
+                                                <div id="calculatorDescription_body" contenteditable="true"></div>
                                             </p>
                                         </div>
                                     </div>
@@ -76,8 +76,8 @@
                                         </div>
                                         <div class="description">
                                             <p class="note">
-                                                <span id="title" class="medium" contenteditable="true"></span>
-                                                <div id="body" contenteditable="true"></div>
+                                                <span id="calculatorDescription_title" class="medium" contenteditable="true"></span>
+                                                <div id="calculatorDescription_body" contenteditable="true"></div>
                                             </p>
                                         </div>
                                     </div>

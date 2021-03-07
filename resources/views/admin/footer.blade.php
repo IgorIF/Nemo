@@ -2,7 +2,7 @@
     <div class="container">
         <div class="footer-top">
             <div class="left">
-                <a href="{{ route('admin.') }}" data-aos="fade-up">
+                <a href="{{ route('admin.index') }}" data-aos="fade-up">
                     <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html" data-aos="fade-up">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
@@ -140,7 +140,7 @@
             </div>
 
             <div class="footer-hidden-logo">
-                <a class="footer-logo" href="{{ route('admin.') }}">
+                <a class="footer-logo" href="{{ route('admin.index') }}">
                     <img src="{{ asset('images/logo-footer.png') }}" alt="Акваклуб Nemo" width="222" height="117">
                 </a>
                 <a class="js-popup btn btn-invert" data-type="ЗАПИСАТЬСЯ НА ЗАНЯТИЕ" href="index.html">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>

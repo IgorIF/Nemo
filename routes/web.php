@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CalculatorDescriptionController;
 use App\Http\Controllers\Admin\FilialBranchController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MedicalCertificateController;
@@ -32,7 +33,9 @@ Route::get('/', SiteController::class)->name('site');
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
-    Route::get('/', AdminController::class);
+    Route::get('/', AdminController::class)->name('index');
+    Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
+    Route::put('calculatorDescriptions/{formName}/{fieldName}', [CalculatorDescriptionController::class, 'update']);
 
     Route::resource('trainers', TrainerController::class)->only(['store', 'update', 'destroy']);
     Route::resource('security/categories', SecurityCategoryController::class)->only('update');
@@ -44,9 +47,6 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
     Route::resource('images', ImageController::class)->only('update');
     Route::resource('filialBranches', FilialBranchController::class)->only('update');
     Route::resource('promotions', PromotionController::class)->only(['store', 'update', 'destroy']);
-
-    Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
-
 });
 
 Route::post('/sendmail', [SiteController::class, 'sendMail'])->name('sendmail');

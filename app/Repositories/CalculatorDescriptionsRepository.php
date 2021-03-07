@@ -23,4 +23,17 @@ class CalculatorDescriptionsRepository extends Repository
 
         return json_encode($arr);
     }
+
+    public function update(array $data, string $formName, string $fieldName): CalculatorDescription
+    {
+        $calculatorDescription = $this->model->where('form_name', $formName)->where('field_name', $fieldName)->first();
+
+        foreach ($data as $key => $value) {
+            $calculatorDescription->fill([$key => $value]);
+        }
+
+        $calculatorDescription->update();
+
+        return $calculatorDescription;
+    }
 }

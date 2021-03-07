@@ -185,6 +185,25 @@ $(document).ready(function () {
         }
     }
 
+    function saveCalculatorDescriptionText(element) {
+        let text = $(element).html();
+
+        if (text !== initialText) {
+            let input = $(element).parents('div[class*="section"]').find('input:checked');
+            let formName = input.attr('name');
+            let fieldName = input.attr('value');
+            let name = $(element).attr('id').split('_')[1];
+            let data = {[name] : text};
+
+            let url = 'admin/calculatorDescriptions/' + formName + '/' + fieldName;
+
+            ajax('PUT', url, data, function () {
+                toast('Текст обновлен', {type: 'success'});
+            });
+
+        }
+    }
+
     function savePromotionText(element) {
         let text = $(element).html();
 
@@ -1016,6 +1035,9 @@ $(document).ready(function () {
                 break;
             case 'filialBranch':
                 saveFilialBranchText(this);
+                break;
+            case 'calculatorDescription':
+                saveCalculatorDescriptionText(this);
 
         }
 
