@@ -350,6 +350,12 @@ class TextSeeder extends Seeder
             'text' => 'Свяжитесь с нами'
         ]);
 
+        ///Prices
+        DB::table('texts')->insert([
+            'id' => 67,
+            'text' => 'Акции'
+        ]);
+
 
 
 

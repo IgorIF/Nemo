@@ -1,5 +1,7 @@
 <h2 data-aos="fade-up" id="text_{{ $texts->get(35)->id }}" contenteditable="true">{!! $texts->get(35)->text !!}</h2>
 
+<input type="hidden" name="calculatorDescriptions" data-descriptions="{{ $calculatorDescriptions }}">
+
 @foreach($filialBranches as $filialBranch)
     @if(!empty($filialBranch->prices))
 
@@ -34,7 +36,10 @@
                                     </div>
                                 </div>
                                 <div class="description">
-                                    <p class="note"></p>
+                                    <p class="note">
+                                        <span id="title" class="medium" contenteditable="true"></span>
+                                        <div id="body" contenteditable="true"></div>
+                                    </p>
                                 </div>
                             </div>
 
@@ -52,7 +57,10 @@
                                             </div>
                                         </div>
                                         <div class="description">
-                                            <p class="note"></p>
+                                            <p class="note">
+                                                <span id="title" class="medium" contenteditable="true"></span>
+                                                <div id="body" contenteditable="true"></div>
+                                            </p>
                                         </div>
                                     </div>
 
@@ -67,7 +75,10 @@
                                             </div>
                                         </div>
                                         <div class="description">
-                                            <p class="note"></p>
+                                            <p class="note">
+                                                <span id="title" class="medium" contenteditable="true"></span>
+                                                <div id="body" contenteditable="true"></div>
+                                            </p>
                                         </div>
                                     </div>
 

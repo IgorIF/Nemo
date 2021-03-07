@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CalculatorDescriptionsRepository;
 use App\Repositories\FilialBranchesRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
@@ -36,6 +37,7 @@ class BaseController extends Controller
     protected ImagesRepository $imagesRepository;
     protected FilialBranchesRepository $filialBranchesRepository;
     protected PromotionsRepository $promotionsRepository;
+    protected CalculatorDescriptionsRepository $calculatorDescriptionsRepository;
 
     protected string $headerView;
     protected string $aboutUs;
@@ -65,11 +67,12 @@ class BaseController extends Controller
     private Collection $medicalCertificates;
     private Collection $vacancies;
     private Collection $promotions;
+    private string $calculatorDescriptions;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository) {
+                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository) {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
@@ -82,6 +85,7 @@ class BaseController extends Controller
         $this->imagesRepository = $imagesRepository;
         $this->filialBranchesRepository = $filialBranchesRepository;
         $this->promotionsRepository = $promotionsRepository;
+        $this->calculatorDescriptionsRepository = $calculatorDescriptionsRepository;
 
         $this->texts = $textsRepository->getAllWithIdAsKey();
         $this->images = $imagesRepository->getAllWithIdAsKey();
@@ -93,6 +97,7 @@ class BaseController extends Controller
         $this->medicalCertificates = $this->medicalCertificatesRepository->getAll();
         $this->vacancies = $this->vacanciesRepository->getAll();
         $this->promotions = $this->promotionsRepository->getAll();
+        $this->calculatorDescriptions = $this->calculatorDescriptionsRepository->getAllInJson();
     }
 
     public function __invoke(Request $request) {
@@ -117,7 +122,7 @@ class BaseController extends Controller
 
     protected function renderOutput() {
 
-        //$howWeSwim = view($this->template . '.how_we_swim')->render();
+        $howWeSwim = view($this->template . '.how_we_swim')->render();
 
         $this->vars = Arr::add($this->vars, 'header', $this->headerView);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
@@ -127,7 +132,7 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'prices', $this->pricesView);
         $this->vars = Arr::add($this->vars, 'promotions', $this->promotionsView);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
-        //$this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
+        $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
         $this->vars = Arr::add($this->vars, 'security', $this->security);
         $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
@@ -172,7 +177,8 @@ class BaseController extends Controller
 
     private function renderPrices() {
         $texts = $this->getFromCollection($this->texts, [35 => 35]);
-        $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
+        //dd($this->calculatorDescriptions);
+        $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
     }
 
     private function renderPromotions() {

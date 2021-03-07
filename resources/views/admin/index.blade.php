@@ -60,9 +60,9 @@
     {!! $swimNeverNotEarly !!}
 @endsection
 
-{{--@section('howWeSwim')
+@section('howWeSwim')
     {!! $howWeSwim !!}
-@endsection--}}
+@endsection
 
 @section('security')
     {!! $security !!}

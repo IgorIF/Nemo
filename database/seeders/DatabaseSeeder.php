@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             ImageSeeder::class,
             FilialBranchSeeder::class,
             PromotionSeeder::class,
-            TextSeeder2::class
+            CalculatorDescriptionSeeder::class
         ]);
     }
 }

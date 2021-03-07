@@ -10,7 +10,7 @@ use Intervention\Image\Facades\Image;
 class Repository
 {
     protected $model = false;
-    protected $imagePath;
+    protected string $imagePath;
 
     /**
      * @param array $intervals

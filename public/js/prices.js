@@ -1,33 +1,17 @@
-let descriptions = {
-    "quantity": {
-        "trial": '<span class=\"medium\">Пробное занятие</span> предусмотрено для всех новых посетителей нашего акваклуба. Длительность занятия составляет: 30 минут. Проходит индивидуально с тренером.',
-        "oneoff": '<span class=\"medium\">Разовое занятие</span> предусмотрено для тех, кто уже посещал занятия. Отмена и перенос занятия до 18:00 предыдущего дня. Уведомление о смене тренера не предусмотрено',
-        "4": '<span class=\"medium\">Абонемент на 4 занятия</span> предусматривает 1 занятие в неделю.',
-        "8": '<span class=\"medium\">Абонемент на 8 занятий</span> предусматривает 2 занятия в неделю.',
-        "12": '<span class=\"medium\">Абонемент на 12 занятий</span> предусматривает 3 занятия в неделю.'
-    },
-    "swimming_pool": {
-        "small_pool": '<span class=\"medium\">Маленький бассейн </span> предназначен для индивидуальных занятий. Представляет собой круглый каркасный бассейн, диаметром - 3м, глубиной - 1,2м.',
-        "large_pool": '<span class=\"medium\">Большой бассейн</span> предназначен для групповых и индивидуальных занятий. Представляет собой прямоугольный бассейн, размерами: длина и ширина - 6х3м, глубина - 1,2м.'
-    },
-    "type_of_subscription": {
-        "standard": '<span class=\"medium\">Абонемент “Стандарт”</span> предусматривает отмену занятия до 18.00 предыдущего дня. Срок действия абонемента: 4 недели + 2 недели заморозки. Уведомление о смене тренера не предусмотрено.',
-        "loyal": '<span class=\"medium\">Абонемент “Лояльный”</span> позволяет получать уведомление о смене тренера и отменять занятие день в день без потери занятия. Срок действия абонемента: 4 недели + 2 недели заморозки.'
-    }
-};
-
 $(document).ready(function () {
+
+    let descriptions = $('input[name="calculatorDescriptions"]').data('descriptions');
 
     $('form[class="calculator"]').each(function (i, e) {
         let prices = $(e).data('prices');
         let oldPrice = getOldPrice(prices);
 
-        initDescriptions(e);
+        initDescriptions(e, descriptions);
         initCalculator(e, prices, oldPrice);
         hidePayOnlineBtn(e);
 
         $(e).find('input').click(function () {
-            initDescriptions(e);
+            initDescriptions(e, descriptions);
             initCalculator(e, prices, oldPrice);
             hidePayOnlineBtn(e);
         });
@@ -96,12 +80,15 @@ function initCalculator (filial, prices, oldPrice) {
     }
 }
 
-function initDescriptions (filial) {
+function initDescriptions (filial, descriptions) {
     let inputsChecked = $(filial).find('input:checked');
 
     $(inputsChecked).each(function (i, e) {
-        let descriptionContainer = $(e).parents('div[class*="section"]').find('p[class="note"]');
-        $(descriptionContainer).html(descriptions[$(e).attr('name')][$(e).attr('value')]);
+        let title = $(e).parents('div[class*="section"]').find('span[id="title"]');
+        let body = $(e).parents('div[class*="section"]').find('div[id="body"]');
+
+        $(title).html(descriptions[$(e).attr('name')][$(e).attr('value')]['title']);
+        $(body).html(descriptions[$(e).attr('name')][$(e).attr('value')]['body']);
     });
 
 }
