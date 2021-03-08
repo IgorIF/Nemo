@@ -23,7 +23,7 @@
             </div>
             <div class="adcdsc">
                 <div class="header-logo" id="logos">
-                    <a href="{{ route('admin.') }}">
+                    <a href="{{ route('site') }}">
                         <picture>
                             <source srcset="{{ asset('images/logo.svg') }}">
                             <img src="{{ asset('images/logo.png') }}" alt="Акваклуб Nemo" width="135" height="72">
@@ -109,7 +109,7 @@
                 <span>{!! $texts->get(7)->text !!}</span>
             </p>
             <p>
-                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="{{ route('admin.') }}" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
+                <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="{{ route('site') }}" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>
         </div>
     </div>
 </header>

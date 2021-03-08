@@ -1,5 +1,6 @@
 <h2 data-aos="fade-up">{!! $texts->get(35)->text !!}</h2>
 
+<input type="hidden" name="calculatorDescriptions" data-descriptions="{{ $calculatorDescriptions }}">
 
 @foreach($filialBranches as $filialBranch)
     @if(!empty($filialBranch->prices))
@@ -35,7 +36,10 @@
                                     </div>
                                 </div>
                                 <div class="description">
-                                    <p class="note"></p>
+                                    <p class="note">
+                                        <span id="calculatorDescription_title" class="medium"></span>
+                                        <span id="calculatorDescription_body"></span>
+                                    </p>
                                 </div>
                             </div>
 
@@ -53,7 +57,10 @@
                                             </div>
                                         </div>
                                         <div class="description">
-                                            <p class="note"></p>
+                                            <p class="note">
+                                                <span id="calculatorDescription_title" class="medium"></span>
+                                                <span id="calculatorDescription_body"></span>
+                                            </p>
                                         </div>
                                     </div>
 
@@ -68,7 +75,10 @@
                                             </div>
                                         </div>
                                         <div class="description">
-                                            <p class="note"></p>
+                                            <p class="note">
+                                                <span id="calculatorDescription_title" class="medium"></span>
+                                                <span id="calculatorDescription_body"></span>
+                                            </p>
                                         </div>
                                     </div>
 
