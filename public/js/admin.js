@@ -198,6 +198,16 @@ $(document).ready(function () {
             let url = 'admin/calculatorDescriptions/' + formName + '/' + fieldName;
 
             ajax('PUT', url, data, function () {
+                let descriptions = $('input[name="calculatorDescriptions"]');
+                let dataObj = descriptions.data('descriptions');
+                dataObj[formName][fieldName][name] = text;
+
+                let inputs = $('input[name="' + formName + '"][value="' + fieldName + '"]:checked').not(input);
+
+                $(inputs).each(function (i, e) {
+                    $(e).parents('div[class*="section"]').find('[id="calculatorDescription_' + name + '"]').html(text);
+                });
+
                 toast('Текст обновлен', {type: 'success'});
             });
 
