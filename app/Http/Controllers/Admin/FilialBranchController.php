@@ -68,7 +68,15 @@ class FilialBranchController extends IndexController
      */
     public function update(Request $request, int $id)
     {
-        $this->filialBranchesRepository->update($request, $id);
+        $action = $request->get('action');
+        $data = $request->except(['_method', 'action']);
+
+        switch ($action) {
+            case 'priceUpdate':
+                return $this->filialBranchesRepository->priceUpdate($data, $id);
+            case 'textUpdate':
+                $this->filialBranchesRepository->textUpdate($data, $id);
+        }
     }
 
     /**

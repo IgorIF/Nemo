@@ -5,7 +5,7 @@
 @foreach($filialBranches as $filialBranch)
     @if(!empty($filialBranch->prices))
 
-        <form class="calculator" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->prices }}">
+        <form class="calculator_{{ $filialBranch->id }}" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->prices }}">
             <div class="prices-block" @if($loop->iteration > 1) data-aos="fade-up" @endif>
                 <div class="prices-item prices-item-{{ $loop->iteration }}" @if($loop->iteration == 1) data-aos="fade-up" @endif>
                     <div class="top">
@@ -87,7 +87,7 @@
 
                             <div class="price-row">
                                 <p>Стоимость:</p>
-                                <div class="new-price"><span></span> ₽</div>
+                                <div class="new-price"><span id="price" contenteditable="true"></span> ₽</div>
                                 <div class="old-price"><span></span> ₽</div>
                             </div>
 

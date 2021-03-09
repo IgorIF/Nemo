@@ -12,10 +12,7 @@ class FilialBranch extends Model
     protected $fillable = [
         'address',
         'phone',
-        'metro'
+        'metro',
+        'prices'
     ];
-
-    /*protected $casts = [
-        'prices' => 'array'
-    ];*/
 }

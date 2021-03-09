@@ -2,17 +2,14 @@ $(document).ready(function () {
 
     let descriptions = $('input[name="calculatorDescriptions"]').data('descriptions');
 
-    $('form[class="calculator"]').each(function (i, e) {
-        let prices = $(e).data('prices');
-        let oldPrice = getOldPrice(prices);
-
+    $('form[class^="calculator_"]').each(function (i, e) {
         initDescriptions(e, descriptions);
-        initCalculator(e, prices, oldPrice);
+        initCalculator(e);
         hidePayOnlineBtn(e);
 
         $(e).find('input').click(function () {
             initDescriptions(e, descriptions);
-            initCalculator(e, prices, oldPrice);
+            initCalculator(e);
             hidePayOnlineBtn(e);
         });
 
@@ -35,7 +32,10 @@ $(document).ready(function () {
 
 });
 
-function initCalculator (filial, prices, oldPrice) {
+function initCalculator (filial) {
+    let prices = JSON.parse($(filial).attr('data-prices'));
+    let oldPrice = getOldPrice(prices);
+
     let quantity = $(filial).find('div[id="quantity"]');
     let swimmingPool = $(filial).find('div[id="swimming_pool"]');
     let typeOfSubscription = $(filial).find('div[id="type_of_subscription"]');

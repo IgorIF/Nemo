@@ -214,6 +214,31 @@ $(document).ready(function () {
         }
     }
 
+    function savePriceText(element) {
+        let text = $(element).html();
+
+        if (text !== initialText) {
+            let form = $(element).parents('form');
+            let filialBranchId = $(form).attr('class').split('_')[1];
+            let activeInputs = $(form).find('input:checked:visible');
+            let data = {};
+            data.data = [];
+            $(activeInputs).each(function (i, e) {
+                data['data'].push($(e).attr('value'));
+            })
+            data['action'] = 'priceUpdate';
+            data['price'] = text;
+
+            let url = 'admin/filialBranches/' + filialBranchId;
+
+            ajax('PUT', url, data, function (prices) {
+                form.attr('data-prices', prices);
+                toast('Цена обновлена', {type: 'success'});
+            });
+
+        }
+    }
+
     function savePromotionText(element) {
         let text = $(element).html();
 
@@ -237,7 +262,7 @@ $(document).ready(function () {
             let idArr = $(element).attr('id').split('_');
             let filialBranchId = idArr[2];
             let fieldName = idArr[1];
-            let data = {'field': fieldName, 'text': text};
+            let data = {'action': 'textUpdate', 'field': fieldName, 'text': text};
 
             let url = 'admin/filialBranches/' + filialBranchId;
 
@@ -1048,6 +1073,9 @@ $(document).ready(function () {
                 break;
             case 'calculatorDescription':
                 saveCalculatorDescriptionText(this);
+                break;
+            case 'price':
+                savePriceText(this);
 
         }
 
