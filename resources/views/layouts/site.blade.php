@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=23') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=24') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
@@ -317,7 +317,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=21') }}"></script>
-<script src="{{ asset('js/prices.js') }}"></script>
+<script src="{{ asset('js/prices.js?vr=1') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

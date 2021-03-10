@@ -2828,8 +2828,8 @@ font-weight: 300;
 
 .calc-single-block
 {
-    max-width: unset;
-    width: 100%;
+    max-width: unset !important;
+    width: 100% !important;
 }
 
 .popup form select option:nth-child(3) span

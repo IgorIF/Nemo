@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=2') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=24') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css?vr=13') }}">
 
 
@@ -376,7 +376,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=21') }}"></script>
-<script src="{{ asset('js/prices.js') }}"></script>
+<script src="{{ asset('js/prices.js?vr=1') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 <!-- Yclients -->
@@ -422,16 +422,7 @@
 <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script type="text/javascript" src="{{ asset('js/app-aos.js') }}"></script>
 <!-- Animation. -->
-<script>
-    Payment.hide_items_checked();
-    Payment.hide_items_click();
-    Payment.descriptions();
-    Payment.calculate_price_checked();
-    Payment.calculate_price_click();
-    Payment.fill_link();
-    Payment.sign_up();
-    Payment.load();
-</script>
+
 <!-- Модальное окно закрытие клуба -->
 <script type="text/javascript">
     var delay_popup = 1000;
@@ -439,7 +430,7 @@
 </script>
 <!-- Модальное окно закрытие клуба -->
 
-<script type="text/javascript" src="{{ asset('js/admin.js?vr=1') }}"></script>
+<script type="text/javascript" src="{{ asset('js/admin.js?vr=2') }}"></script>
 
 </body>
 
