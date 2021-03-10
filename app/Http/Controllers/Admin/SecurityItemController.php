@@ -2,69 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\JsonResponse;
+use App\Models\SecurityItem;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class SecurityItemController extends IndexController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(): Response
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create(): Response
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
      * @param Request $request
-     * @return JsonResponse
+     * @return SecurityItem
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): SecurityItem
     {
         $request->validate([
             'text' => 'required'
         ]);
 
-        $securityItem = $this->securityItemsRepository->create($request);
-
-        return response()->json(['securityItem' => $securityItem]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show(int $id): Response
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit(int $id): Response
-    {
-        //
+        return $this->securityItemsRepository->create($request);
     }
 
     /**

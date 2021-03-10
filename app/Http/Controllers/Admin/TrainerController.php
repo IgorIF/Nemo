@@ -2,51 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Repositories\TrainersRepository;
+use App\Models\Image;
+use App\Models\Trainer;
+use App\Models\Video;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class TrainerController extends IndexController
 {
 
     /**
-     * IndexController constructor.
-     * @param TrainersRepository $trainersRepository
-     */
-    public function __construct(TrainersRepository $trainersRepository)
-    {
-        $this->template = 'admin.index';
-        $this->trainersRepository = $trainersRepository;
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(): Response
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create(): Response
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
      * @param Request $request
-     * @return JsonResponse
+     * @return Trainer
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): Trainer
     {
         $request->validate([
             'name' => 'required',
@@ -55,31 +24,7 @@ class TrainerController extends IndexController
             'video' => 'url|nullable',
         ]);
 
-        $trainer = $this->trainersRepository->create($request);
-
-        return response()->json(['trainer' => $trainer]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show(int $id): Response
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit(int $id): Response
-    {
-        //
+        return $this->trainersRepository->create($request);
     }
 
     /**

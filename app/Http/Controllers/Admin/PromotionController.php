@@ -2,34 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Promotion;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class PromotionController extends IndexController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index(): Response
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create(): Response
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -48,29 +25,6 @@ class PromotionController extends IndexController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show(int $id): Response
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit(int $id): Response
-    {
-        //
-    }
-
-
-    /**
      * @param Request $request
      * @param int $id
      * @return string|null
@@ -86,7 +40,6 @@ class PromotionController extends IndexController
                 return null;
             case 'imageUpdate':
                 return $this->promotionsRepository->imageUpdate($data, $id);
-
         }
     }
 

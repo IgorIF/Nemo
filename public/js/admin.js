@@ -491,15 +491,15 @@ $(document).ready(function () {
 
         let url = 'admin/images/' + imageId;
 
-        ajax('POST', url, data, function (response) {
+        ajax('POST', url, data, function (image) {
 
             let imgElement = $('[class*="image_' + imageId + '"]');
             let tagName = $(imgElement)[0].tagName;
 
             if (tagName === "IMG") {
-                $(imgElement).attr('src', '../storage/images/images/' + response.image);
+                $(imgElement).attr('src', '../storage/images/images/' + image);
             } else {
-                $(imgElement).attr('style', 'background-image: url(../storage/images/images/' + response.image + ')');
+                $(imgElement).attr('style', 'background-image: url(../storage/images/images/' + image + ')');
             }
 
             toast('Изображение обновлено', {type: 'success'});
@@ -510,8 +510,7 @@ $(document).ready(function () {
         let data = new FormData($modalAddTrainer.find('form')[0]);
         data.append('image-data', JSON.stringify(cropperData));
         let url = 'admin/trainers';
-        ajax('POST', url, data, function (response) {
-            let trainer = response.trainer;
+        ajax('POST', url, data, function (trainer) {
             trainerSlickAdd(trainer);
             trainersSlickRefresh();
             $modalAddTrainer.modal('hide');
@@ -546,8 +545,7 @@ $(document).ready(function () {
         let data = new FormData($modalAddItem.find('form')[0]);
         data.append('securityCategoryId', securityCategoryId);
         let url = 'admin/security/items';
-        ajax('POST', url, data, function (response) {
-            let securityItem = response.securityItem;
+        ajax('POST', url, data, function (securityItem) {
             securityItemAdd(securityItem);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem);
@@ -564,8 +562,7 @@ $(document).ready(function () {
         let data = new FormData($modalAddItem.find('form')[0]);
         data.append('ruleCategoryId', ruleCategoryId);
         let url = 'admin/rules';
-        ajax('POST', url, data, function (response) {
-            let ruleItem = response.ruleItem;
+        ajax('POST', url, data, function (ruleItem) {
             ruleItemAdd(ruleItem);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem)
@@ -581,8 +578,7 @@ $(document).ready(function () {
     function saveNewMedicalCertificate() {
         let data = new FormData($modalAddItem.find('form')[0]);
         let url = 'admin/medicalCertificates';
-        ajax('POST', url, data, function (response) {
-            let medicalCertificate = response.medicalCertificate;
+        ajax('POST', url, data, function (medicalCertificate) {
             medicalCertificateAdd(medicalCertificate);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem);
@@ -598,8 +594,7 @@ $(document).ready(function () {
     function saveNewVacancy() {
         let data = new FormData($modalAddItem.find('form')[0]);
         let url = 'admin/vacancies';
-        ajax('POST', url, data, function (response) {
-            let vacancy = response.vacancy;
+        ajax('POST', url, data, function (vacancy) {
             vacancyAdd(vacancy);
             $modalAddItem.modal('hide');
             clearFields($modalAddItem);
@@ -803,7 +798,7 @@ $(document).ready(function () {
         let description = $('<p id="trainer_description" contenteditable="true">' + trainer.description + '</p>');
 
 
-        imgInput.change(onUpdateTrainerImageChangeListener);
+        imgInput.change(onUpdateImageChangeListener);
 
         name.focusin(onTextFocusinListener)
             .focusout(onTextFocusoutListener);
@@ -1309,7 +1304,6 @@ $(document).ready(function () {
             case 'promotion_image':
                 cropBtnMode = 'promotion_update';
                 aspectRatio = label.width() / label.height();
-                console.log(aspectRatio);
                 promotionId = $(this).parents('div[id^="promotion_"]').attr('id').split('_')[1];
                 break;
 
@@ -1428,7 +1422,6 @@ function clearFields(modal) {
         }
 
         if (modalId === 'modal_add_trainer' || modalId === 'modal_add_item' || modalId === 'modal_add_video' || 'modalTrainerVideo')
-            console.log(e);
             $(e).val('');
 
         if ($(e).attr('type') === 'file') {
