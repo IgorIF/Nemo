@@ -67,6 +67,9 @@ class IndexController extends BaseController
                 $data['select_pool'] = 'Некрасовка';
                 $address = 'aquaclubnemo.l@yandex.ru';
                 break;
+            case 5:
+                $data['select_pool'] = 'Речной вокзал';
+                $address = 'aquaclubnemo.h@yandex.ru';
         }
 
         Mail::to($address)->send(new TrialLesson($data));

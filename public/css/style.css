@@ -1904,6 +1904,11 @@ font-weight: 500;
   background: #DE64A1;
 }
 
+.prices-item-5 .top:before
+{
+    background: #e0e760;
+}
+
 .prices-item .top:after
 {
   content: '';

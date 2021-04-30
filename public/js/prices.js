@@ -112,7 +112,6 @@ function getOldPrice(prices) {
 }
 
 function fillSignUpBtn(filial, button, element) {
-    console.log(1);
     let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
 
     let yclientsCode;
@@ -134,6 +133,10 @@ function fillSignUpBtn(filial, button, element) {
         case 'nekrasovka':
             yclientsCode = null;
             activePopupValue = 4;
+            break;
+        case 'rechnoy_vokzal':
+            yclientsCode = null;
+            activePopupValue = 5;
     }
 
     if (quantityVal === 'trial' || quantityVal === 'oneoff') {
@@ -174,6 +177,9 @@ function fillPayOnlineBtn(filial, button, element) {
                 break;
             case 'nekrasovka':
                 rfiBankKey = 'LX21USWpnEKqvvVyPmda5tammqzcCmeoOV6NnCYfQ8k=';
+                break;
+            case 'rechnoy_vokzal':
+                rfiBankKey = 'DYcs4LJ0bwqb+lsBn0//SJX5ek1sX2CVJ9ztI46UnaI=';
         }
 
         let link = 'https://partner.rficb.ru/alba/input/?name=' + message +'&cost=' + price + '&key=' + rfiBankKey + '&default_email=&order_id=0';

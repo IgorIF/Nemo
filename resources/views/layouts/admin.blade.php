@@ -55,8 +55,8 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=24') }}">
-    <link rel="stylesheet" href="{{ asset('css/admin.css?vr=13') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=25') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css?vr=14') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -376,7 +376,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=21') }}"></script>
-<script src="{{ asset('js/prices.js?vr=1') }}"></script>
+<script src="{{ asset('js/prices.js?vr=2') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 <!-- Yclients -->
@@ -430,7 +430,7 @@
 </script>
 <!-- Модальное окно закрытие клуба -->
 
-<script type="text/javascript" src="{{ asset('js/admin.js?vr=3') }}"></script>
+<script type="text/javascript" src="{{ asset('js/admin.js?vr=4') }}"></script>
 
 </body>
 

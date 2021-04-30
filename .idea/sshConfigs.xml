@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="192.168.0.101" id="36ed98ae-0f97-4ad2-a2cf-6e1431d5e190" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+      <sshConfig connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="88.212.240.52" id="ff262d3d-10c1-4f5e-9785-c9ffd3445b71" keyPath="$USER_HOME$/.ssh/_home_aquanemo_.ssh_id_rsa_aquanemo" port="22" nameFormat="DESCRIPTIVE" username="aquanemo" />
+    </configs>
+  </component>
+</project>

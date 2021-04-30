@@ -8,6 +8,7 @@
         <option value="2">ул. Винокурова 24, к4 (метро - Академическая)</option>
         <option value="3">Мячковский бульвар 16, к1 (метро Марьино)</option>
         <option value="4">г. Люберцы, ул. Камова 11/5 (метро - Некрасовка)</option>
+        <option value="5">ул. Петрозаводская 11, к2 (метро - Речной вокзал)</option>
     </select>
     <input type="text" id="name1" name="user_name" placeholder="Ваше Имя" required>
     <input type="text" id="tel1" name="user_phone" placeholder="Телефон" required>

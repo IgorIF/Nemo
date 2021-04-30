@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="aqua-nemo.ru" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="aqua-nemo.ru">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/database/seeders/UserSeeder.php" />
+            <excludedPath path="/vendor" />
+            <excludedPath path="/.env" />
+            <excludedPath path="/.htaccess" />
+            <excludedPath path="/config" />
+            <excludedPath path="/webpack.mix.js" />
+            <excludedPath path="/webpack.config.js" />
+            <excludedPath path="/tailwind.config.js" />
+            <excludedPath path="/server.php" />
+            <excludedPath path="/README.md" />
+            <excludedPath path="/phpunit.xml" />
+            <excludedPath path="/package.json" />
+            <excludedPath path="/package-lock.json" />
+            <excludedPath path="/composer.lock" />
+            <excludedPath path="/composer.json" />
+            <excludedPath path="/artisan" />
+            <excludedPath path="/.styleci.yml" />
+            <excludedPath path="/.gitignore" />
+            <excludedPath path="/.gitattributes" />
+            <excludedPath path="/.env.example" />
+            <excludedPath path="/.editorconfig" />
+            <excludedPath path="/tests" />
+            <excludedPath path="/bootstrap" />
+            <excludedPath path="/storage" />
+            <excludedPath path="/public/storage" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
