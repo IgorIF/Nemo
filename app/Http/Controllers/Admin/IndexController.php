@@ -36,6 +36,7 @@ class IndexController extends BaseController
 
     public function __invoke(Request $request)
     {
+        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
         parent::__invoke($request);
         $this->renderModalAboutUsEditVideo();
         return $this->renderOutput();

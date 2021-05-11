@@ -8,14 +8,12 @@ use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\VacancyController;
 use App\Http\Controllers\Site\FilialController;
 use App\Http\Controllers\Site\IndexController as SiteController;
-
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\RuleItemController;
 use App\Http\Controllers\Admin\SecurityCategoryController;
 use App\Http\Controllers\Admin\SecurityItemController;
 use App\Http\Controllers\Admin\TrainerController;
 use App\Http\Controllers\Admin\VideoController;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get( '/', SiteController::class)->name('site');
-Route::get('/filial/{alias}', FilialController::class);
+Route::get('/filial/{alias}', [FilialController::class, 'index']);
 
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {

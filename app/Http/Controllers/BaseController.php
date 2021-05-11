@@ -18,7 +18,6 @@ use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use function Symfony\Component\Translation\t;
 
 
 class BaseController extends Controller
@@ -58,17 +57,17 @@ class BaseController extends Controller
     protected string $contactUs;
     protected string $vacanciesView;
 
-    private Collection $texts;
-    private Collection $images;
+    protected Collection $texts;
+    protected Collection $images;
     protected Collection $videos;
-    private Collection $filialBranches;
+    protected Collection $filialBranches;
     private Collection $trainers;
     private Collection $securityCategories;
     private Collection $ruleCategories;
     private Collection $medicalCertificates;
     private Collection $vacancies;
     private Collection $promotions;
-    private string $calculatorDescriptions;
+    protected string $calculatorDescriptions;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
@@ -87,11 +86,11 @@ class BaseController extends Controller
         $this->filialBranchesRepository = $filialBranchesRepository;
         $this->promotionsRepository = $promotionsRepository;
         $this->calculatorDescriptionsRepository = $calculatorDescriptionsRepository;
-
-        $this->getData();
     }
 
     public function __invoke(Request $request) {
+        $this->getData();
+
         $this->renderHeader();
         $this->renderAboutUs();
         $this->renderTheBenefitsOfEarlySwimming();
@@ -111,11 +110,10 @@ class BaseController extends Controller
         $this->renderVacancies();
     }
 
-    private function getData() {
+    protected function getData() {
         $this->texts = $this->textsRepository->getAllWithIdAsKey();
         $this->images = $this->imagesRepository->getAllWithIdAsKey();
         $this->videos = $this->videosRepository->getAllWithIdAsKey();
-        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
         $this->trainers = $this->trainersRepository->getAll();
         $this->securityCategories = $this->securityCategoriesRepository->getAll();
         $this->ruleCategories = $this->ruleCategoriesRepository->getAll();
@@ -151,7 +149,7 @@ class BaseController extends Controller
         return view($this->template . '.index')->with($this->vars);
     }
 
-    private function renderHeader() {
+    protected function renderHeader() {
         $texts = $this->getFromCollection($this->texts, [1 => 7]);
         $images = $this->getFromCollection($this->images, [1 => 1]);
         $this->headerView = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranches' => $this->filialBranches])->render();
@@ -180,7 +178,7 @@ class BaseController extends Controller
         $this->trainersView = view($this->template . '.trainers')->with(['trainers' => $this->trainers, 'texts' => $texts])->render();
     }
 
-    private function renderPrices() {
+    protected function renderPrices() {
         $texts = $this->getFromCollection($this->texts, [35 => 35]);
         $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
     }
@@ -213,7 +211,7 @@ class BaseController extends Controller
         $this->swimmingPool = view($this->template . '.swimming_pool')->with('texts', $texts)->render();
     }
 
-    private function renderFooter() {
+    protected function renderFooter() {
         $texts = $this->getFromCollection($this->texts, [47 => 55]);
         $this->footer = view($this->template . '.footer')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
     }
@@ -233,7 +231,7 @@ class BaseController extends Controller
         $this->medicalCertificatesView = view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $this->medicalCertificates])->render();
     }
 
-    private function renderContactUs() {
+    protected function renderContactUs() {
         $texts = $this->getFromCollection($this->texts, [66 => 66]);
         $this->contactUs = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
     }

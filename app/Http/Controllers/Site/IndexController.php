@@ -18,6 +18,7 @@ use App\Repositories\TrainersRepository;
 use App\Repositories\VacanciesRepository;
 use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 
 class IndexController extends BaseController
@@ -35,6 +36,7 @@ class IndexController extends BaseController
 
     public function __invoke(Request $request)
     {
+        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
         parent::__invoke($request);
         return $this->renderOutput();
     }

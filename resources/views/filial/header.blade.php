@@ -32,11 +32,11 @@
                 </div>
             </div>
             <address class="header-adres">
-                <p>Петрозаводская 11, к2</p>
-                <span class="green">(метро «Речной вокзал»)</span>
+                <p>{!! $filialBranch->address !!}</p>
+                <span class="green">(метро {!! $filialBranch->metro !!})</span>
             </address>
             <div class="header-phones">
-                <a href="tel:+79776800263" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">+7(977)680-02-63</a>
+                <a href="tel:{{ $filialBranch->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">{!! $filialBranch->phone !!}</a>
                 <div class="header-phone-hidden">
                     <a class="js-popup4" href="tel:+79776800263"></a>
                 </div>
@@ -52,6 +52,7 @@
                         <li><a href="#price">Стоимость</a></li>
                         <li><a href="#trainer">Тренеры</a></li>
                         <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="#akcii">Акции</a></li>
                         <li><a href="#contact1">Контакты</a></li>
                     </ul>
                 </div>
