@@ -12,7 +12,7 @@
                     <p>(метро {!! $filialBranch->metro !!})</p>
                 </div>
 
-                <div class="content">
+                <div class="content" style="display: block">
                     <div class="content__wrapper">
 
                         <div class="section" id="quantity">

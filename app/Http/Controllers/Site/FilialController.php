@@ -42,6 +42,9 @@ class FilialController extends BaseController
         if ($this->filialBranch == null)
             abort(404);
 
+        if ($this->filialBranch->alias != "nekrasovka" && $this->filialBranch->alias != "rechnoy_vokzal")
+            abort(404);
+
         //dd($this->filialBranch);
 
         parent::__invoke($request);

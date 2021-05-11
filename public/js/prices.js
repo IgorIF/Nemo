@@ -25,8 +25,7 @@ $(document).ready(function () {
             fillPayOnlineBtn(e, this, l)
         });
 
-
-        if (i === 0)
+        if (i === 0 && $('form[class^="calculator_"]').length > 1)
             $(e).find('div[class*="top"]').click();
     });
 
