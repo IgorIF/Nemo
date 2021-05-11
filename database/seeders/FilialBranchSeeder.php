@@ -159,5 +159,7 @@ class FilialBranchSeeder extends Seeder
             'phone' => '+7(977)680-02-77',
             'metro' => 'Речной вокзал'
         ]);
+
+
     }
 }

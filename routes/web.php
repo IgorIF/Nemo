@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\MedicalCertificateController;
 use App\Http\Controllers\Admin\PromotionController;
 use App\Http\Controllers\Admin\VacancyController;
+use App\Http\Controllers\Site\FilialController;
 use App\Http\Controllers\Site\IndexController as SiteController;
 
 use App\Http\Controllers\Admin\IndexController as AdminController;
@@ -29,7 +30,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', SiteController::class)->name('site');
+Route::get( '/', SiteController::class)->name('site');
+Route::get('/filial/{alias}', FilialController::class);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 

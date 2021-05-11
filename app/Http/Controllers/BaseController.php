@@ -18,6 +18,7 @@ use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use function Symfony\Component\Translation\t;
 
 
 class BaseController extends Controller
@@ -87,17 +88,7 @@ class BaseController extends Controller
         $this->promotionsRepository = $promotionsRepository;
         $this->calculatorDescriptionsRepository = $calculatorDescriptionsRepository;
 
-        $this->texts = $textsRepository->getAllWithIdAsKey();
-        $this->images = $imagesRepository->getAllWithIdAsKey();
-        $this->videos = $videosRepository->getAllWithIdAsKey();
-        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
-        $this->trainers = $this->trainersRepository->getAll();
-        $this->securityCategories = $this->securityCategoriesRepository->getAll();
-        $this->ruleCategories = $this->ruleCategoriesRepository->getAll();
-        $this->medicalCertificates = $this->medicalCertificatesRepository->getAll();
-        $this->vacancies = $this->vacanciesRepository->getAll();
-        $this->promotions = $this->promotionsRepository->getAll();
-        $this->calculatorDescriptions = $this->calculatorDescriptionsRepository->getAllInJson();
+        $this->getData();
     }
 
     public function __invoke(Request $request) {
@@ -118,6 +109,20 @@ class BaseController extends Controller
         $this->renderMedicalCertificates();
         $this->renderContactUs();
         $this->renderVacancies();
+    }
+
+    private function getData() {
+        $this->texts = $this->textsRepository->getAllWithIdAsKey();
+        $this->images = $this->imagesRepository->getAllWithIdAsKey();
+        $this->videos = $this->videosRepository->getAllWithIdAsKey();
+        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
+        $this->trainers = $this->trainersRepository->getAll();
+        $this->securityCategories = $this->securityCategoriesRepository->getAll();
+        $this->ruleCategories = $this->ruleCategoriesRepository->getAll();
+        $this->medicalCertificates = $this->medicalCertificatesRepository->getAll();
+        $this->vacancies = $this->vacanciesRepository->getAll();
+        $this->promotions = $this->promotionsRepository->getAll();
+        $this->calculatorDescriptions = $this->calculatorDescriptionsRepository->getAllInJson();
     }
 
     protected function renderOutput() {
@@ -177,7 +182,6 @@ class BaseController extends Controller
 
     private function renderPrices() {
         $texts = $this->getFromCollection($this->texts, [35 => 35]);
-        //dd($this->calculatorDescriptions);
         $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
     }
 

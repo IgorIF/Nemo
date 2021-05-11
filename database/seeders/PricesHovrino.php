@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\FilialBranch;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PricesHovrino extends Seeder
 {
@@ -14,7 +15,16 @@ class PricesHovrino extends Seeder
      */
     public function run()
     {
-        $filial = FilialBranch::find(5);
+
+        DB::table('filial_branches')->insert([
+            'id' => 5,
+            'alias' => 'rechnoy_vokzal',
+            'address' => 'ул. Петрозаводская 11, к2 (скоро открытие)',
+            'phone' => '+7(977)680-02-77',
+            'metro' => 'Речной вокзал',
+        ]);
+
+        /*$filial = FilialBranch::c(5);
         $filial->fill(['prices' => json_encode([
         'trial' => 980,
         'oneoff' => 1500,
@@ -31,6 +41,6 @@ class PricesHovrino extends Seeder
             'loyal' => 16200
         ],
     ])]);
-        $filial->update();
+        $filial->update();*/
     }
 }

@@ -5642,3 +5642,64 @@ border-radius: 15px;
         padding-right: 116px;}
 }
 /*Акции 28.02.20.2021*/
+
+
+/*Новая шапка*/
+
+.header-top-castom .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .header-top-castom .header-phones {
+    width: auto;
+    padding: 0;
+}
+
+.header-top-castom .header-adres {
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+}
+
+.header-top-castom .header-adres p {
+    background: url(../img/icon_nav.png) 0 50% no-repeat;
+    padding-left: 31px;
+    font-size: 20px;
+    line-height: 1.15;
+    letter-spacing: 0.7px;
+    margin: 0;
+}
+
+.header-top-castom .header-adres span {
+    color: #4F4F4F;
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: 31px;
+}
+
+.header-top-castom .header-adres .green::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #49B85C;
+    margin-right: 4px;
+}
+
+.header-top-castom .header-phones a {
+    color: #06C5B2;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+}
+
+@media only screen and (max-width: 760px) {
+    .header-top-castom .header-adres, .header-top-castom .header-phones > a {
+        display: none;
+    }
+}
+
+/*Новая шапка*/

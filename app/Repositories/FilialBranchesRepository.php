@@ -54,4 +54,9 @@ class FilialBranchesRepository extends Repository
 
         return $prices;
     }
+
+    public function getFilialByAlias(string $alias): ?FilialBranch
+    {
+         return $this->model->where('alias', $alias)->first();
+    }
 }
