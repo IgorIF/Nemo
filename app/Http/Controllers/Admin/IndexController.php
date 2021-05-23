@@ -21,8 +21,8 @@ use Illuminate\Support\Arr;
 
 class IndexController extends BaseController
 {
-    private $modalAboutUsEditVideo;
-    private $adminNav;
+    private string $modalAboutUsEditVideoView;
+    protected string $adminNavView;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
@@ -37,8 +37,36 @@ class IndexController extends BaseController
 
     public function __invoke(Request $request)
     {
-        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
-        parent::__invoke($request);
+        $this->getTextsData();
+        $this->getImagesData();
+        $this->getFilialBranchesData();
+        $this->getVideosData();
+        $this->getTrainersData();
+        $this->getCalculatorDescriptionsData();
+        $this->getPromotionsData();
+        $this->getSecurityCategoriesData();
+        $this->getRuleCategoriesData();
+        $this->getMedicalCertificatesData();
+        $this->getVacanciesData();
+
+        $this->renderHeader();
+        $this->renderAboutUs();
+        $this->renderTheBenefitsOfEarlySwimming();
+        $this->renderWhoSwimsWithUs();
+        $this->renderTrainers();
+        $this->renderPrices();
+        $this->renderPromotions();
+        $this->renderSwimNeverNotEarly();
+        $this->renderHowWeSwim();
+        $this->renderSecurity();
+        $this->renderReviews();
+        $this->renderSwimmingPool();
+        $this->renderFooter();
+        $this->renderTrialLesson();
+        $this->renderRules();
+        $this->renderMedicalCertificates();
+        $this->renderContactUs();
+        $this->renderVacancies();
         $this->renderModalAboutUsEditVideo();
         $this->renderAdminNav();
         return $this->renderOutput();
@@ -53,25 +81,25 @@ class IndexController extends BaseController
         $modalAddVideo = view('admin.modals.modal_add_video')->render();
         $modalCropper = view('admin.modals.modal_cropper')->render();
 
-        $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideo);
+        $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideoView);
         $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
         $this->vars = Arr::add($this->vars, 'modalAddPromotion', $modalAddPromotion);
         $this->vars = Arr::add($this->vars, 'modalTrainerVideo', $modalTrainerVideo);
         $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
         $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
         $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
-        $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNav);
+        $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNavView);
 
         return parent::renderOutput();
     }
 
     private function renderModalAboutUsEditVideo() {
         $video = $this->getFromCollection($this->videos, [1 => 1])->first();
-        $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
+        $this->modalAboutUsEditVideoView = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
     }
 
-    private function renderAdminNav() {
-        $this->adminNav = view('admin.admin_nav')->with('filialBranches', $this->filialBranches)->render();
+    protected function renderAdminNav() {
+        $this->adminNavView = view('admin.admin_nav')->with('filialBranches', $this->filialBranches)->render();
     }
 
     /**

@@ -21,8 +21,6 @@ use Illuminate\Http\Request;
 
 class FilialController extends BaseController
 {
-
-    private const TEMPLATE = 'filial';
     private ?FilialBranch $filialBranch;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
@@ -37,7 +35,39 @@ class FilialController extends BaseController
     }
 
     public function index(Request $request, $alias) {
-        $this->filialBranch = $this->filialBranchesRepository->getFilialByAlias($alias);
+
+        $this->getTextsData();
+        $this->getImagesData();
+        $this->getFilialBranchData($alias);
+        $this->getVideosData();
+        $this->getTrainersData();
+        $this->getCalculatorDescriptionsData();
+        $this->getPromotionsData();
+        $this->getSecurityCategoriesData();
+        $this->getRuleCategoriesData();
+        $this->getMedicalCertificatesData();
+        $this->getVacanciesData();
+
+        $this->renderAboutUs();
+        $this->renderTheBenefitsOfEarlySwimming();
+        $this->renderWhoSwimsWithUs();
+        $this->renderTrainers();
+        $this->renderPromotions();
+        $this->renderSwimNeverNotEarly();
+        $this->renderHowWeSwim();
+        $this->renderSecurity();
+        $this->renderReviews();
+        $this->renderSwimmingPool();
+        $this->renderTrialLesson();
+        $this->renderRules();
+        $this->renderMedicalCertificates();
+        $this->renderVacancies();
+
+        $this->template = "site.filial";
+        $this->renderHeader();
+        $this->renderPrices();
+        $this->renderFooter();
+        $this->renderContactUs();
 
         if ($this->filialBranch == null)
             abort(404);
@@ -45,36 +75,37 @@ class FilialController extends BaseController
         if ($this->filialBranch->alias != "nekrasovka" && $this->filialBranch->alias != "rechnoy_vokzal")
             abort(404);
 
-        //dd($this->filialBranch);
-
-        parent::__invoke($request);
-        $this->template = 'filial';
         return $this->renderOutput();
+    }
+
+    protected function getFilialBranchData($alias)
+    {
+        $this->filialBranch = $this->filialBranchesRepository->getFilialByAlias($alias);
     }
 
     protected function renderHeader()
     {
         $texts = $this->getFromCollection($this->texts, [5 => 7]);
         $images = $this->getFromCollection($this->images, [1 => 1]);
-        $this->headerView = view( self::TEMPLATE . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranch' => $this->filialBranch])->render();
+        $this->headerView = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranch' => $this->filialBranch])->render();
     }
 
     protected function renderPrices()
     {
         $texts = $this->getFromCollection($this->texts, [35 => 35]);
-        $this->pricesView = view(self::TEMPLATE . '.prices')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
+        $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
     }
 
     protected function renderFooter()
     {
         $texts = $this->getFromCollection($this->texts, [47 => 55]);
-        $this->footer = view(self::TEMPLATE . '.footer')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch])->render();
+        $this->footerView = view($this->template . '.footer')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch])->render();
     }
 
     protected function renderContactUs()
     {
         $texts = $this->getFromCollection($this->texts, [66 => 66]);
-        $this->contactUs = view(self::TEMPLATE . '.contact_us')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch])->render();
+        $this->contactUsView = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch])->render();
     }
 
 }

@@ -36,13 +36,38 @@ class IndexController extends BaseController
 
     public function __invoke(Request $request)
     {
-        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
-        parent::__invoke($request);
-        return $this->renderOutput();
-    }
+        $this->getTextsData();
+        $this->getImagesData();
+        $this->getFilialBranchesData();
+        $this->getVideosData();
+        $this->getTrainersData();
+        $this->getCalculatorDescriptionsData();
+        $this->getPromotionsData();
+        $this->getSecurityCategoriesData();
+        $this->getRuleCategoriesData();
+        $this->getMedicalCertificatesData();
+        $this->getVacanciesData();
 
-    protected function renderOutput() {
-        return parent::renderOutput();
+        $this->renderHeader();
+        $this->renderAboutUs();
+        $this->renderTheBenefitsOfEarlySwimming();
+        $this->renderWhoSwimsWithUs();
+        $this->renderTrainers();
+        $this->renderPrices();
+        $this->renderPromotions();
+        $this->renderSwimNeverNotEarly();
+        $this->renderHowWeSwim();
+        $this->renderSecurity();
+        $this->renderReviews();
+        $this->renderSwimmingPool();
+        $this->renderFooter();
+        $this->renderTrialLesson();
+        $this->renderRules();
+        $this->renderMedicalCertificates();
+        $this->renderContactUs();
+        $this->renderVacancies();
+
+        return $this->renderOutput();
     }
 
 
