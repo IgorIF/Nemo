@@ -317,7 +317,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=21') }}"></script>
-<script src="{{ asset('js/prices.js?vr=2') }}"></script>
+<script src="{{ asset('js/prices.js?vr=3') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -329,7 +329,7 @@
 <!--[if lte IE 8]><script src="http://phpbbex.com/oldies/oldies.js" charset="utf-8"></script><![endif]-->
 
 <!-- Yclients -->
-<script type="text/javascript" src="https://w76658.yclients.com/widgetJS" charset="UTF-8"></script>
+<!--<script type="text/javascript" src="https://w76658.yclients.com/widgetJS" charset="UTF-8"></script>-->
 
 <!-- Facebook Pixel Code -->
 <script>

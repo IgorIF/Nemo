@@ -178,7 +178,7 @@ function fillPayOnlineBtn(filial, button, element) {
                 rfiBankKey = 'LX21USWpnEKqvvVyPmda5tammqzcCmeoOV6NnCYfQ8k=';
                 break;
             case 'rechnoy_vokzal':
-                rfiBankKey = 'DYcs4LJ0bwqb+lsBn0//SJX5ek1sX2CVJ9ztI46UnaI=';
+                rfiBankKey = 'kP9Hi187sL4Nqr1S+Nf3TYZkWDr1UMtCER8pv0neQUw=';
         }
 
         let link = 'https://partner.rficb.ru/alba/input/?name=' + message +'&cost=' + price + '&key=' + rfiBankKey + '&default_email=&order_id=0';

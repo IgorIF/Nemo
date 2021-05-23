@@ -22,6 +22,7 @@ use Illuminate\Support\Arr;
 class IndexController extends BaseController
 {
     private $modalAboutUsEditVideo;
+    private $adminNav;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
@@ -39,6 +40,7 @@ class IndexController extends BaseController
         $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
         parent::__invoke($request);
         $this->renderModalAboutUsEditVideo();
+        $this->renderAdminNav();
         return $this->renderOutput();
     }
 
@@ -50,7 +52,6 @@ class IndexController extends BaseController
         $modalAddSecurityItem = view('admin.modals.modal_add_item')->render();
         $modalAddVideo = view('admin.modals.modal_add_video')->render();
         $modalCropper = view('admin.modals.modal_cropper')->render();
-        $adminNav = view('admin.admin_nav')->render();
 
         $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideo);
         $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
@@ -59,7 +60,7 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
         $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
         $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
-        $this->vars = Arr::add($this->vars, 'adminNav', $adminNav);
+        $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNav);
 
         return parent::renderOutput();
     }
@@ -67,6 +68,10 @@ class IndexController extends BaseController
     private function renderModalAboutUsEditVideo() {
         $video = $this->getFromCollection($this->videos, [1 => 1])->first();
         $this->modalAboutUsEditVideo = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
+    }
+
+    private function renderAdminNav() {
+        $this->adminNav = view('admin.admin_nav')->with('filialBranches', $this->filialBranches)->render();
     }
 
     /**

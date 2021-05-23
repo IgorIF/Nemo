@@ -47,6 +47,7 @@ class BaseController extends Controller
     protected string $pricesView;
     protected string $promotionsView;
     protected string $swimNeverNotEarly;
+    protected string $howWeSwimView;
     protected string $security;
     protected string $reviews;
     protected string $swimmingPool;
@@ -99,6 +100,7 @@ class BaseController extends Controller
         $this->renderPrices();
         $this->renderPromotions();
         $this->renderSwimNeverNotEarly();
+        $this->renderHowWeSwim();
         $this->renderSecurity();
         $this->renderReviews();
         $this->renderSwimmingPool();
@@ -125,8 +127,6 @@ class BaseController extends Controller
 
     protected function renderOutput() {
 
-        $howWeSwim = view($this->template . '.how_we_swim')->render();
-
         $this->vars = Arr::add($this->vars, 'header', $this->headerView);
         $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUs);
         $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimming);
@@ -135,7 +135,7 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'prices', $this->pricesView);
         $this->vars = Arr::add($this->vars, 'promotions', $this->promotionsView);
         $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarly);
-        $this->vars = Arr::add($this->vars, 'howWeSwim', $howWeSwim);
+        $this->vars = Arr::add($this->vars, 'howWeSwim', $this->howWeSwimView);
         $this->vars = Arr::add($this->vars, 'security', $this->security);
         $this->vars = Arr::add($this->vars, 'reviews', $this->reviews);
         $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPool);
@@ -148,6 +148,8 @@ class BaseController extends Controller
 
         return view($this->template . '.index')->with($this->vars);
     }
+
+
 
     protected function renderHeader() {
         $texts = $this->getFromCollection($this->texts, [1 => 7]);
@@ -192,6 +194,10 @@ class BaseController extends Controller
         $texts = $this->getFromCollection($this->texts, [36 => 37]);
         $images = $this->getFromCollection($this->images, [6 => 6]);
         $this->swimNeverNotEarly = view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
+    }
+
+    private function renderHowWeSwim() {
+        $this->howWeSwimView = view($this->template . '.how_we_swim')->render();
     }
 
     private function renderSecurity() {

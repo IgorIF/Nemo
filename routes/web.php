@@ -35,6 +35,9 @@ Route::get('/filial/{alias}', [FilialController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
     Route::get('/', AdminController::class)->name('index');
+
+    Route::get('/filial/{alias}', [\App\Http\Controllers\Admin\Filial\FilialController::class, 'index'])->name('filial');
+
     Route::put('edittext', [AdminController::class, 'editText'])->name('edittext');
     Route::put('calculatorDescriptions/{formName}/{fieldName}', [CalculatorDescriptionController::class, 'update']);
 
