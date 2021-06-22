@@ -13,6 +13,9 @@ class FilialBranch extends Model
         'address',
         'phone',
         'metro',
-        'prices'
+        'prices',
+        'promotion_prices',
+        'header',
+        'swimNeverNotEarly'
     ];
 }

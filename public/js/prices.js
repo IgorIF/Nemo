@@ -212,11 +212,21 @@ function showSingUpPopup(activeValue, message) {
     $('.popup').slideDown();
     $('.popup-overlay').css('display', 'block');
 
-    $('#js-close-popup, .popup-overlay').on('click', function (e) {
-        $('.popup').find("option[value='1']").prop("selected", true);
+   /* $('#js-close-popup, .popup-overlay').on('click', function (e) {
+        /!*$('.popup').find("option[value='1']").prop("selected", true);
         $('.hidden-form').attr('value', 'Аноним');
         $('.popup').slideUp();
+        $('.popup-overlay').css('display', 'none');*!/
+    });*/
+    $('#js-close-popup, .popup-overlay').on('click', function(e) {
+        // $('.popup').css('display', 'none');
+        // $('.popup-overlay').css('display', 'none');
+        // or
+        //$('.popup').find("option[id='select']").prop("selected", true);
+        $('.popup').slideUp();
         $('.popup-overlay').css('display', 'none');
+        $('.popup').find("option[id='select']").prop("selected", true);
+
     });
 }
 

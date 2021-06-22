@@ -1,10 +1,11 @@
 <h2 data-aos="fade-up">{!! $texts->get(35)->text !!}</h2>
+<p data-aos="fade-up" style="color: red">{!! $texts->get(68)->text !!}</p>
 
 <input type="hidden" name="calculatorDescriptions" data-descriptions="{{ $calculatorDescriptions }}">
 
-@if(!empty($filialBranch->prices))
+@if(!empty($filialBranch->promotion_prices))
 
-    <form class="calculator_{{ $filialBranch->id }}" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->prices }}">
+    <form class="calculator_{{ $filialBranch->id }}" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->promotion_prices }}">
         <div class="prices-block" data-aos="fade-up">
             <div class="prices-item prices-item-1" data-aos="fade-up">
                 <div class="top">

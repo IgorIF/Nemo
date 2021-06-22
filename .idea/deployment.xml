@@ -31,7 +31,6 @@
             <excludedPath path="/.editorconfig" />
             <excludedPath path="/tests" />
             <excludedPath path="/bootstrap" />
-            <excludedPath path="/storage" />
             <excludedPath path="/public/storage" />
           </excludedPaths>
         </serverdata>

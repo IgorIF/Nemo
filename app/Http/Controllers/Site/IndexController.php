@@ -31,7 +31,7 @@ class IndexController extends BaseController
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
                             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
                             $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository);
-        $this->template = 'site';
+        $this->template = 'site.main';
     }
 
     public function __invoke(Request $request)

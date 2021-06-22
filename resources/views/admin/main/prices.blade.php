@@ -6,6 +6,7 @@
     @if(!empty($filialBranch->prices))
 
         <form class="calculator_{{ $filialBranch->id }}" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->prices }}">
+            <input type="hidden" name="prices">
             <div class="prices-block" @if($loop->iteration > 1) data-aos="fade-up" @endif>
                 <div class="prices-item prices-item-{{ $loop->iteration }}" @if($loop->iteration == 1) data-aos="fade-up" @endif>
                     <div class="top">

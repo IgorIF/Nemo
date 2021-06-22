@@ -20,6 +20,8 @@ class FilialBranchController extends IndexController
         switch ($action) {
             case 'priceUpdate':
                 return $this->filialBranchesRepository->priceUpdate($data, $id);
+            case 'promotionPriceUpdate':
+                return $this->filialBranchesRepository->promotionPriceUpdate($data, $id);
             case 'textUpdate':
                 $this->filialBranchesRepository->textUpdate($data, $id);
                 return null;

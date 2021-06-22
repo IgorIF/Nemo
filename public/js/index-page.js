@@ -260,8 +260,10 @@ $(function() {
 	    // $('.popup').css('display', 'none');
 	    // $('.popup-overlay').css('display', 'none');
 	    // or
+        //$('.popup').find("option[id='select']").prop("selected", true);
 	    $('.popup').slideUp();
 	    $('.popup-overlay').css('display', 'none');
+	    $('.popup').find("option[id='select']").prop("selected", true);
 	  });
 	});
 

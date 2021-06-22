@@ -38,7 +38,7 @@
             <div class="header-phones">
                 <a href="tel:{{ $filialBranch->phone }}" onclick="yaCounter45529422.reachGoal('kirovogradskaya'); return true;">{!! $filialBranch->phone !!}</a>
                 <div class="header-phone-hidden">
-                    <a class="js-popup4" href="tel:+79776800263"></a>
+                    <a class="js-popup4" href="tel:"></a>
                 </div>
             </div>
         </div>
@@ -71,9 +71,9 @@
     <div class="container">
         <div class="header-bottom">
             <h1 data-aos="fade-up">{!! $texts->get(5)->text !!}</h1>
-            <p data-aos="fade-up">{!! $texts->get(6)->text !!}</p>
+            <p data-aos="fade-up">{!! $filialBranch->header !!}</p>
             <p data-aos="fade-up">
-                <span>{!! $texts->get(7)->text !!}</span>
+                <span>{!! $texts->get(68)->text !!}</span>
             </p>
             <p>
                 <a class="js-popup btn" data-type="ПРОБНОЕ ЗАНЯТИЕ" href="{{ route('site') }}" data-aos="fade-up">ПРОБНОЕ ЗАНЯТИЕ</a>

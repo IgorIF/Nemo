@@ -32,7 +32,7 @@ class IndexController extends BaseController
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
                             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
                             $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository);
-        $this->template = 'admin';
+        $this->template = 'admin.main';
     }
 
     public function __invoke(Request $request)
@@ -69,17 +69,18 @@ class IndexController extends BaseController
         $this->renderVacancies();
         $this->renderModalAboutUsEditVideo();
         $this->renderAdminNav();
+
         return $this->renderOutput();
     }
 
     protected function renderOutput() {
 
-        $modalAddTrainer = view('admin.modals.modal_add_trainer')->render();
-        $modalAddPromotion = view('admin.modals.modal_add_promotion')->render();
-        $modalTrainerVideo = view('admin.modals.modal_trainer_video')->render();
-        $modalAddSecurityItem = view('admin.modals.modal_add_item')->render();
-        $modalAddVideo = view('admin.modals.modal_add_video')->render();
-        $modalCropper = view('admin.modals.modal_cropper')->render();
+        $modalAddTrainer = view($this->template . '.modals.modal_add_trainer')->render();
+        $modalAddPromotion = view($this->template . '.modals.modal_add_promotion')->render();
+        $modalTrainerVideo = view($this->template . '.modals.modal_trainer_video')->render();
+        $modalAddSecurityItem = view($this->template . '.modals.modal_add_item')->render();
+        $modalAddVideo = view($this->template . '.modals.modal_add_video')->render();
+        $modalCropper = view($this->template . '.modals.modal_cropper')->render();
 
         $this->vars = Arr::add($this->vars, 'modalAboutUsEditVideo', $this->modalAboutUsEditVideoView);
         $this->vars = Arr::add($this->vars, 'modalAddTrainer', $modalAddTrainer);
@@ -95,11 +96,11 @@ class IndexController extends BaseController
 
     private function renderModalAboutUsEditVideo() {
         $video = $this->getFromCollection($this->videos, [1 => 1])->first();
-        $this->modalAboutUsEditVideoView = view('admin.modals.modal_about_us_edit_video')->with('video', $video)->render();
+        $this->modalAboutUsEditVideoView = view($this->template . '.modals.modal_about_us_edit_video')->with('video', $video)->render();
     }
 
     protected function renderAdminNav() {
-        $this->adminNavView = view('admin.admin_nav')->with('filialBranches', $this->filialBranches)->render();
+        $this->adminNavView = view($this->template . '.admin_nav')->with('filialBranches', $this->filialBranches)->render();
     }
 
     /**

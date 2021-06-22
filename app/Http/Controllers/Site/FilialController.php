@@ -31,7 +31,7 @@ class FilialController extends BaseController
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
             $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository);
-        $this->template = 'site';
+        $this->template = 'site.main';
     }
 
     public function index(Request $request, $alias) {
@@ -53,12 +53,10 @@ class FilialController extends BaseController
         $this->renderWhoSwimsWithUs();
         $this->renderTrainers();
         $this->renderPromotions();
-        $this->renderSwimNeverNotEarly();
         $this->renderHowWeSwim();
         $this->renderSecurity();
         $this->renderReviews();
         $this->renderSwimmingPool();
-        $this->renderTrialLesson();
         $this->renderRules();
         $this->renderMedicalCertificates();
         $this->renderVacancies();
@@ -68,6 +66,8 @@ class FilialController extends BaseController
         $this->renderPrices();
         $this->renderFooter();
         $this->renderContactUs();
+        $this->renderTrialLesson();
+        $this->renderSwimNeverNotEarly();
 
         if ($this->filialBranch == null)
             abort(404);
@@ -85,14 +85,14 @@ class FilialController extends BaseController
 
     protected function renderHeader()
     {
-        $texts = $this->getFromCollection($this->texts, [5 => 7]);
+        $texts = $this->getFromCollection($this->texts, [5 => 5, 68 => 68]);
         $images = $this->getFromCollection($this->images, [1 => 1]);
         $this->headerView = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranch' => $this->filialBranch])->render();
     }
 
     protected function renderPrices()
     {
-        $texts = $this->getFromCollection($this->texts, [35 => 35]);
+        $texts = $this->getFromCollection($this->texts, [35 => 35, 68 => 68]);
         $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
     }
 
@@ -106,6 +106,13 @@ class FilialController extends BaseController
     {
         $texts = $this->getFromCollection($this->texts, [66 => 66]);
         $this->contactUsView = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch])->render();
+    }
+
+    protected function renderSwimNeverNotEarly()
+    {
+        $texts = $this->getFromCollection($this->texts, [36 => 36]);
+        $images = $this->getFromCollection($this->images, [6 => 6]);
+        $this->swimNeverNotEarlyView = view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images, 'filialBranch' => $this->filialBranch])->render();
     }
 
 }

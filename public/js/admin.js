@@ -160,7 +160,7 @@ $(document).ready(function () {
 
         if (text !== initialText) {
             let textId = $(element).attr('id').split('_')[1];
-            let url = 'admin/edittext';
+            let url = '/admin/edittext';
             let data = {'id': textId, 'text': text};
 
             ajax('PUT', url, data, function () {
@@ -195,7 +195,7 @@ $(document).ready(function () {
             let name = $(element).attr('id').split('_')[1];
             let data = {[name] : text};
 
-            let url = 'admin/calculatorDescriptions/' + formName + '/' + fieldName;
+            let url = '/admin/calculatorDescriptions/' + formName + '/' + fieldName;
 
             ajax('PUT', url, data, function () {
                 let descriptions = $('input[name="calculatorDescriptions"]');
@@ -226,10 +226,16 @@ $(document).ready(function () {
             $(activeInputs).each(function (i, e) {
                 data['data'].push($(e).attr('value'));
             })
-            data['action'] = 'priceUpdate';
+
+            let action = $(form).find('input:hidden').attr('name');
+            if (action === "prices")
+                data['action'] = 'priceUpdate';
+            else if (action === "promotionPrices")
+                data['action'] = 'promotionPriceUpdate'
+
             data['price'] = text;
 
-            let url = 'admin/filialBranches/' + filialBranchId;
+            let url = '/admin/filialBranches/' + filialBranchId;
 
             ajax('PUT', url, data, function (prices) {
                 form.attr('data-prices', prices);
@@ -264,7 +270,9 @@ $(document).ready(function () {
             let fieldName = idArr[1];
             let data = {'action': 'textUpdate', 'field': fieldName, 'text': text};
 
-            let url = 'admin/filialBranches/' + filialBranchId;
+            console.log(filialBranchId)
+
+            let url = '/admin/filialBranches/' + filialBranchId;
 
             ajax('PUT', url, data, function () {
                 toast('Текст обновлен', {type: 'success'});

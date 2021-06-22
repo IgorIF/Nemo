@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=25') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=26') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css?vr=14') }}">
 
 
@@ -111,6 +111,8 @@
 
 <body>
 
+@yield('header')
+
 @yield('adminNav')
 
 
@@ -118,6 +120,14 @@
     <div class="container">
 
         @yield('prices')
+
+    </div>
+</section>
+
+<section class="submit-your-application">
+    <div class="container clearfix">
+
+        @yield('swimNeverNotEarly')
 
     </div>
 </section>
@@ -243,48 +253,10 @@
 <script src="{{ asset('libs/jquery.custom-scroll.js') }}"></script>
 
 
-<script src="{{ asset('js/index-page.js?vr=21') }}"></script>
-<script src="{{ asset('js/prices.js?vr=3') }}"></script>
+<script src="{{ asset('js/index-page.js?vr=23') }}"></script>
+<script src="{{ asset('js/prices.js?vr=6') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-<!-- Yclients -->
-<script type="text/javascript" src="https://w76658.yclients.com/widgetJS" charset="UTF-8"></script>
-
-<!-- Yclients -->
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter45529422 = new Ya.Metrika({
-                    id: 45529422,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true,
-                    webvisor: true
-                });
-            } catch (e) {}
-        });
-
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function() {
-                n.parentNode.insertBefore(s, n);
-            };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript>
-    <div><img src="https://mc.yandex.ru/watch/45529422" style="position:absolute; left:-9999px;" alt="" /></div>
-</noscript>
 <!-- /Yandex.Metrika counter -->
 <!-- Animation. -->
 <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -298,7 +270,7 @@
 </script>
 <!-- Модальное окно закрытие клуба -->
 
-<script type="text/javascript" src="{{ asset('js/admin.js?vr=4') }}"></script>
+<script type="text/javascript" src="{{ asset('js/admin.js?vr=5') }}"></script>
 
 </body>
 

@@ -32,7 +32,7 @@ class FilialController extends IndexController
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
             $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository);
-        $this->template = 'admin';
+        $this->template = 'admin.main';
     }
 
     public function index(Request $request, $alias) {
@@ -41,13 +41,18 @@ class FilialController extends IndexController
         $this->getFilialBranchesData();
         $this->getCalculatorDescriptionsData();
         $this->getFilialBranchData($alias);
+        $this->getImagesData();
 
         $this->renderAdminNav();
 
         $this->template = 'admin.filial';
+        $this->renderHeader();
         $this->renderPrices();
+        $this->renderSwimNeverNotEarly();
+        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
         $this->vars = Arr::add($this->vars, 'prices', $this->pricesView);
         $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNavView);
+        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarlyView);
 
 
         return view($this->template . '.index')->with($this->vars);
@@ -60,7 +65,20 @@ class FilialController extends IndexController
 
     protected function renderPrices()
     {
-        $texts = $this->getFromCollection($this->texts, [35 => 35]);
+        $texts = $this->getFromCollection($this->texts, [35 => 35, 68 => 68]);
         $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
+    }
+
+    protected function renderHeader() {
+        $texts = $this->getFromCollection($this->texts, [68 => 68]);
+        $images = $this->getFromCollection($this->images, [1 => 1]);
+        $this->headerView = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranch' => $this->filialBranch])->render();
+    }
+
+    protected function renderSwimNeverNotEarly()
+    {
+        $texts = $this->getFromCollection($this->texts, [36 => 36]);
+        $images = $this->getFromCollection($this->images, [6 => 6]);
+        $this->swimNeverNotEarlyView = view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images, 'filialBranch' => $this->filialBranch])->render();
     }
 }

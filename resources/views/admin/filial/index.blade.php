@@ -1,6 +1,8 @@
 @extends('layouts.admin.filial')
 
-
+@section('header')
+    {!! $header !!}
+@endsection
 
 @section('prices')
     {!! $prices !!}
@@ -8,4 +10,8 @@
 
 @section('adminNav')
     {!! $adminNav !!}
+@endsection
+
+@section('swimNeverNotEarly')
+    {!! $swimNeverNotEarly !!}
 @endsection

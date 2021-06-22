@@ -1,12 +1,14 @@
 <h2 data-aos="fade-up" id="text_{{ $texts->get(35)->id }}" contenteditable="true">{!! $texts->get(35)->text !!}</h2>
+<p id="text_{{ $texts->get(68)->id }}" contenteditable="true" data-aos="fade-up" style="color: red">{!! $texts->get(68)->text !!}</p>
 
 <input type="hidden" name="calculatorDescriptions" data-descriptions="{{ $calculatorDescriptions }}">
 
-@if(!empty($filialBranch->prices))
+@if(!empty($filialBranch->promotion_prices))
 
-    <form class="calculator_{{ $filialBranch->id }}" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->prices }}">
+    <form class="calculator_{{ $filialBranch->id }}" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->promotion_prices }}">
+        <input type="hidden" name="promotionPrices">
         <div class="prices-block" data-aos="fade-up">
-            <div class="prices-item prices-item-" data-aos="fade-up">
+            <div class="prices-item prices-item-1" data-aos="fade-up">
                 <div class="top">
                     <div class="title">{!! $filialBranch->address !!}</div>
                     <p>(метро {!! $filialBranch->metro !!})</p>
