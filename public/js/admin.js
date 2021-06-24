@@ -227,6 +227,10 @@ $(document).ready(function () {
                 data['data'].push($(e).attr('value'));
             })
 
+            if (parseInt(filialBranchId, 10) === 5) {
+                data['data'].push('large_pool')
+            }
+
             let action = $(form).find('input:hidden').attr('name');
             if (action === "prices")
                 data['action'] = 'priceUpdate';
@@ -237,6 +241,8 @@ $(document).ready(function () {
 
             let url = '/admin/filialBranches/' + filialBranchId;
 
+
+            console.log(data['data'])
             ajax('PUT', url, data, function (prices) {
                 form.attr('data-prices', prices);
                 toast('Цена обновлена', {type: 'success'});

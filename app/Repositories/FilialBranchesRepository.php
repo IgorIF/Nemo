@@ -26,7 +26,7 @@ class FilialBranchesRepository extends Repository
 
         $prices = json_decode($filialBranch->prices, true);
 
-        $price = (int)$data['price'];
+        $price = (int) $data['price'];
         $activeFields = $data['data'];
 
         $pricesIntermediateArr = $prices;
@@ -45,7 +45,7 @@ class FilialBranchesRepository extends Repository
             }
         }
 
-        $linkToPrice = $price;
+        $linkToPrice['price'] = $price;
 
         $prices = json_encode($prices);
 
@@ -79,7 +79,7 @@ class FilialBranchesRepository extends Repository
             }
         }
 
-        $linkToPrice = $price;
+        $linkToPrice['price'] = $price;
 
         $prices = json_encode($prices);
 

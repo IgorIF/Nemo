@@ -96,7 +96,7 @@
 
                     <div class="buttons-row">
                         <a href="" class="bt-1" target="_blank">Записаться</a>
-                        <a href="" class="bt-2" target="_blank">Оплатить онлайн</a>
+                        <a href="" class="bt-2" onclick="(function(e){e.preventDefault();})(event)">Оплатить онлайн</a>
                     </div>
 
                 </div>

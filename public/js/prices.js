@@ -5,35 +5,19 @@ $(document).ready(function () {
     $('form[class^="calculator_"]').each(function (i, e) {
         initDescriptions(e, descriptions);
         initCalculator(e);
-        hidePayOnlineBtn(e);
+        //hidePayOnlineBtn(e);
 
         $(e).find('input').click(function () {
             initDescriptions(e, descriptions);
             initCalculator(e);
-            hidePayOnlineBtn(e);
+            //hidePayOnlineBtn(e);
         });
-
-        $(e).find('a[class="bt-1"]').click(function (l) {
-           fillSignUpBtn(e, this, l);
-        });
-
-        $(e).find('a[class="bt-3"]').click(function (l) {
-            fillSignUpBtn(e, this, l);
-        });
-
-        $(e).find('a[class="bt-2"]').click(function (l) {
-            fillPayOnlineBtn(e, this, l)
-        });
-
-        if (i === 0 && $('form[class^="calculator_"]').length > 1)
-            $(e).find('div[class*="top"]').click();
     });
-
 });
 
 function initCalculator (filial) {
     let prices = JSON.parse($(filial).attr('data-prices'));
-    let oldPrice = getOldPrice(prices);
+    let oldPrice = prices['oneoff']['large_pool']['price'];
 
     let quantity = $(filial).find('div[id="quantity"]');
     let swimmingPool = $(filial).find('div[id="swimming_pool"]');
@@ -43,40 +27,42 @@ function initCalculator (filial) {
     let swimmingPoolVal = $(swimmingPool).find('input:checked').val();
     let typeOfSubscriptionVal = $(typeOfSubscription).find('input:checked').val();
 
-    let price = prices[quantityVal];
+    let isOnlyLargePool = false
+
+    if (prices[quantityVal][swimmingPoolVal] == null) {
+        swimmingPoolVal = "large_pool"
+        isOnlyLargePool = true
+    }
+
+    let price = prices[quantityVal][swimmingPoolVal]['price']
+    let linkId = prices[quantityVal][swimmingPoolVal]['link_id']
 
     if (Number.isInteger(price)) {
-        $(swimmingPool).hide();
+        if (!isOnlyLargePool) {
+            $(swimmingPool).addClass('calc-single-block');
+            $(swimmingPool).show();
+        }
+        $(typeOfSubscription).removeClass('calc-single-block');
         $(typeOfSubscription).hide();
         showPrices(filial, price, oldPrice);
     } else {
-        $(swimmingPool).removeClass('calc-single-block')
-        $(typeOfSubscription).removeClass('calc-single-block');
-        $(swimmingPool).show();
-        $(typeOfSubscription).show();
-
-        price = prices[quantityVal][swimmingPoolVal];
+        price = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal]['price'];
+        linkId = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal]['link_id']
 
         if (Number.isInteger(price)) {
-            $(swimmingPool).addClass('calc-single-block');
-            $(typeOfSubscription).hide();
-            showPrices(filial, price, oldPrice);
-        } else {
-            price = prices[quantityVal][typeOfSubscriptionVal];
-
-            if (Number.isInteger(price)) {
-                $(typeOfSubscription).addClass('calc-single-block');
-                $(swimmingPool).hide();
-                showPrices(filial, price, oldPrice);
+            if (!isOnlyLargePool) {
+                $(swimmingPool).removeClass('calc-single-block')
             } else {
-                price = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal];
-
-                if (Number.isInteger(price)) {
-                    showPrices(filial, price, oldPrice);
-                }
+                $(typeOfSubscription).addClass('calc-single-block');
             }
+            $(typeOfSubscription).show();
+            showPrices(filial, price, oldPrice);
         }
     }
+
+    fillSignUpBtn(filial, $(filial).find('a[class="bt-1"]'))
+    fillPayOnlineBtn(filial, linkId, $(filial).find('a[class="bt-2"]'))
+    fillPayOnlineBtn(filial, linkId, $(filial).find('a[class="bt-3"]'))
 }
 
 function initDescriptions (filial, descriptions) {
@@ -103,87 +89,53 @@ function showPrices(filial, newPrice, oldPrice) {
         $(oldPriceContainer).hide();
 }
 
-function getOldPrice(prices) {
-    if (Number.isInteger(prices['oneoff']))
-        return prices['oneoff'];
-    else
-        return prices['oneoff']['small_pool'];
-}
-
-function fillSignUpBtn(filial, button, element) {
-    let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
-
-    let yclientsCode;
+function fillSignUpBtn(filial, button) {
     let activePopupValue;
-
     switch ($(filial).attr('id')) {
         case 'prazhskaya':
-            yclientsCode = '60559';
             activePopupValue = 1;
             break;
         case 'akademicheskaya':
-            yclientsCode = '124032';
             activePopupValue = 2;
             break;
         case 'maryino':
-            yclientsCode = '228760';
             activePopupValue = 3;
             break;
         case 'nekrasovka':
-            yclientsCode = null;
             activePopupValue = 4;
             break;
         case 'rechnoy_vokzal':
-            yclientsCode = null;
             activePopupValue = 5;
     }
 
-    if (quantityVal === 'trial' || quantityVal === 'oneoff') {
-        if (yclientsCode !== null) {
-            let link = 'https://n' + yclientsCode + '.yclients.com/';
-            $(button).attr('href', link);
-        } else {
-            element.preventDefault();
-            let message = generateMessage(filial);
-            showSingUpPopup(activePopupValue, message);
-        }
-    } else {
-        element.preventDefault();
+    $(button).click(function (e) {
+        e.preventDefault()
         let message = generateMessage(filial);
-        showSingUpPopup(activePopupValue, message);
-    }
+        showSingUpPopup(activePopupValue, message)
+    })
 }
 
-function fillPayOnlineBtn(filial, button, element) {
-    let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
-
-    if (quantityVal === 'trial' || quantityVal === 'oneoff') {
-        fillSignUpBtn(filial, button, element);
-    } else {
-        let rfiBankKey;
-        let price = $(filial).find('div[class="new-price"]').find('span').text();
-        let message = generateMessage(filial);
-
-        switch ($(filial).attr('id')) {
-            case 'prazhskaya':
-                rfiBankKey = 'G%2FncjmNEBe84x4lEfgf3dyIqwGWQVDf7HKlnEBr0Dgc%3D';
-                break;
-            case 'akademicheskaya':
-                rfiBankKey = 'Wy4g8yADEp%2FmSFHDKbbHqGOrWnEzE8kDIrSrapVc0Z8%3D';
-                break;
-            case 'maryino':
-                rfiBankKey = 'TOJugDeSdrrhNrSj8vsHLughHsNGQFliUmq8X4yCPkE%3D';
-                break;
-            case 'nekrasovka':
-                rfiBankKey = 'LX21USWpnEKqvvVyPmda5tammqzcCmeoOV6NnCYfQ8k=';
-                break;
-            case 'rechnoy_vokzal':
-                rfiBankKey = 'kP9Hi187sL4Nqr1S+Nf3TYZkWDr1UMtCER8pv0neQUw=';
-        }
-
-        let link = 'https://partner.rficb.ru/alba/input/?name=' + message +'&cost=' + price + '&key=' + rfiBankKey + '&default_email=&order_id=0';
-        $(button).attr('href', link);
+function fillPayOnlineBtn(filial, link, button) {
+    let clubId;
+    switch ($(filial).attr('id')) {
+        case 'prazhskaya':
+            clubId = '59661dff-c468-11eb-bbf6-0050568342b3';
+            break;
+        case 'akademicheskaya':
+            clubId = '96a1ba8e-c9c8-11eb-bbf6-0050568342b3';
+            break;
+        case 'maryino':
+            clubId = 'b7712ceb-c9c8-11eb-bbf6-0050568342b3';
+            break;
+        case 'nekrasovka':
+            clubId = 'd61c4407-c9c8-11eb-bbf6-0050568342b3';
+            break;
+        case 'rechnoy_vokzal':
+            clubId = 'e8db9d50-c9c8-11eb-bbf6-0050568342b3';
     }
+
+    let href = 'https://aqua-nemo.ru/lc?club_id=' + clubId + '&getShopFormAuth=Y&id=' + link
+    $(button).attr('href', href)
 }
 
 function generateMessage(filial) {
@@ -233,20 +185,20 @@ function showSingUpPopup(activeValue, message) {
 function hidePayOnlineBtn(filial) {
     let quantityVal = $(filial).find('input[name="quantity"]:checked').val();
 
-    let signUpBtn;
-    let payOnlineBtn = $(filial).find('a[class="bt-2"]');
+    let payOnlineBtn;
+    let signUpBtn = $(filial).find('a[class="bt-1"]');
 
     if (quantityVal === 'trial' || quantityVal === 'oneoff') {
-        signUpBtn = $(filial).find('a[class="bt-1"]');
-        $(payOnlineBtn).hide();
-        $(signUpBtn).removeClass('bt-1');
-        $(signUpBtn).addClass('bt-3');
-        $(signUpBtn).css("width", "100%");
+        payOnlineBtn = $(filial).find('a[class="bt-2"]');
+        $(signUpBtn).hide();
+        $(payOnlineBtn).removeClass('bt-2');
+        $(payOnlineBtn).addClass('bt-3');
+        $(payOnlineBtn).css("width", "100%");
     } else {
-        signUpBtn = $(filial).find('a[class="bt-3"]');
-        $(signUpBtn).removeClass('bt-3');
-        $(signUpBtn).addClass('bt-1');
-        $(signUpBtn).css("width", "50%");
-        $(payOnlineBtn).show()
+        payOnlineBtn = $(filial).find('a[class="bt-3"]');
+        $(payOnlineBtn).removeClass('bt-3');
+        $(payOnlineBtn).addClass('bt-2');
+        $(payOnlineBtn).css("width", "50%");
+        $(signUpBtn).show()
     }
 }
