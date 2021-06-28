@@ -1,5 +1,6 @@
 <h2 data-aos="fade-up">{!! $texts->get(35)->text !!}</h2>
 <p data-aos="fade-up" style="color: red">{!! $texts->get(68)->text !!}</p>
+<p><a href="#" id="cardPaymentProcessBtn">Процесс оплаты по картам</a></p>
 
 <input type="hidden" name="calculatorDescriptions" data-descriptions="{{ $calculatorDescriptions }}">
 

@@ -58,7 +58,6 @@
         </div>
 
         <div class="footer-bottom">
-            <p><a href="#" id="cardPaymentProcessBtn">Процесс оплаты по картам</a></p>
             <p id="text_{{ $texts->get(54)->id }}" contenteditable="true">{!! $texts->get(54)->text !!}</p>
         </div>
 
