@@ -69,6 +69,7 @@ class IndexController extends BaseController
         $this->renderVacancies();
         $this->renderModalAboutUsEditVideo();
         $this->renderAdminNav();
+        $this->renderCardPaymentProcess();
 
         return $this->renderOutput();
     }

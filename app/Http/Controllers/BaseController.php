@@ -57,6 +57,7 @@ class BaseController extends Controller
     protected string $medicalCertificatesView;
     protected string $contactUsView;
     protected string $vacanciesView;
+    protected string $cardPaymentProcessView;
 
     protected Collection $texts;
     protected Collection $images;
@@ -229,6 +230,11 @@ class BaseController extends Controller
         $this->vacanciesView = view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $this->vacancies])->render();
     }
 
+    protected function renderCardPaymentProcess() {
+        $texts = $this->getFromCollection($this->texts, [69 => 70]);
+        $this->cardPaymentProcessView = view($this->template . '.card_payment_process')->with('texts', $texts)->render();
+    }
+
     protected function renderOutput() {
 
         $this->vars = Arr::add($this->vars, 'header', $this->headerView);
@@ -249,6 +255,7 @@ class BaseController extends Controller
         $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificatesView);
         $this->vars = Arr::add($this->vars, 'contactUs', $this->contactUsView);
         $this->vars = Arr::add($this->vars, 'vacancies', $this->vacanciesView);
+        $this->vars = Arr::add($this->vars, 'cardPaymentProcess', $this->cardPaymentProcessView);
 
         return view($this->template . '.index')->with($this->vars);
     }

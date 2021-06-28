@@ -3460,6 +3460,119 @@ font-weight: 300;
   background-position: center;
 }
 
+.popup7
+{
+    display: none;
+    max-width: 1020px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    text-align: left;
+    position: fixed;
+    left: 50%;
+    top: 50px;
+    z-index: 1001;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.popup7 h3
+{
+    font-family: SummerFontBold;
+    font-style: normal;
+    #06c5b2
+    line-height: normal;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 8px 0;
+    background: #FF680D;
+    border-radius: 4px 4px 0px 0px;
+}
+
+.popup7__body
+{
+    padding: 25px;
+}
+
+.popup7__text
+{
+    font-family: 'Comfortaa', cursive;
+    font-weight: 300;
+    font-style: normal;
+
+    line-height: 22px;
+    font-size: 19px;
+    color: #828282;
+    margin-bottom: 46px;
+}
+
+.popup7__text span
+{
+    color: #06c5b2;
+
+}
+
+.popup7__block
+{
+    padding: 0 13px;
+    margin-bottom: 67px;
+}
+
+.popup7__item
+{
+    font-family: SummerFontBold;
+    font-style: normal;
+    line-height: normal;
+    font-size: 32px;
+    color: #FF680D;
+    letter-spacing: 1px;
+}
+
+.popup7__item:not(:last-child)
+{
+    margin-bottom: 28px;
+}
+
+.popup7__email
+{
+    font-family: 'Comfortaa', cursive;
+    font-weight: 300;
+    font-style: normal;
+
+    line-height: normal;
+    font-size: 19px;
+    color: #828282;
+}
+
+.popup7__email a
+{
+    color: #828282;
+    text-decoration: underline;
+}
+
+.popup7 .close
+{
+    position: absolute;
+    content: " ";
+    top: 6px;
+    right: 10px;
+    width: 10px;
+    height: 18px;
+    background-image: url('../images/cross.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
 /*-------------------------------------*/
 .flex-caption
 {

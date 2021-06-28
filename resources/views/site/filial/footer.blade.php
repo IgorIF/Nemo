@@ -47,6 +47,7 @@
         </div>
 
         <div class="footer-bottom">
+            <p><a href="#" id="cardPaymentProcessBtn">Процесс оплаты по картам</a></p>
             <p>{!! $texts->get(54)->text !!}</p>
         </div>
 

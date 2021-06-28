@@ -66,6 +66,7 @@ class IndexController extends BaseController
         $this->renderMedicalCertificates();
         $this->renderContactUs();
         $this->renderVacancies();
+        $this->renderCardPaymentProcess();
 
         return $this->renderOutput();
     }

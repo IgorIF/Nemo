@@ -17,7 +17,6 @@ $(document).ready(function () {
 
 function initCalculator (filial) {
     let prices = JSON.parse($(filial).attr('data-prices'));
-    let oldPrice = prices['oneoff']['large_pool']['price'];
 
     let quantity = $(filial).find('div[id="quantity"]');
     let swimmingPool = $(filial).find('div[id="swimming_pool"]');
@@ -27,36 +26,40 @@ function initCalculator (filial) {
     let swimmingPoolVal = $(swimmingPool).find('input:checked').val();
     let typeOfSubscriptionVal = $(typeOfSubscription).find('input:checked').val();
 
-    let isOnlyLargePool = false
-
-    if (prices[quantityVal][swimmingPoolVal] == null) {
-        swimmingPoolVal = "large_pool"
-        isOnlyLargePool = true
-    }
-
-    let price = prices[quantityVal][swimmingPoolVal]['price']
-    let linkId = prices[quantityVal][swimmingPoolVal]['link_id']
+    let price = prices[quantityVal]['price'];
+    let oldPrice = getOldPrice(swimmingPoolVal, prices);
+    let linkId;
 
     if (Number.isInteger(price)) {
-        if (!isOnlyLargePool) {
-            $(swimmingPool).addClass('calc-single-block');
-            $(swimmingPool).show();
-        }
-        $(typeOfSubscription).removeClass('calc-single-block');
-        $(typeOfSubscription).hide();
-        showPrices(filial, price, oldPrice);
+        $(typeOfSubscription).hide()
+        showPrices(filial, price, oldPrice)
+        linkId = prices[quantityVal]['link_id']
     } else {
-        price = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal]['price'];
-        linkId = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal]['link_id']
-
-        if (Number.isInteger(price)) {
-            if (!isOnlyLargePool) {
-                $(swimmingPool).removeClass('calc-single-block')
+        if (typeof prices[quantityVal][swimmingPoolVal] != 'undefined') {
+            price = prices[quantityVal][swimmingPoolVal]['price']
+            if (Number.isInteger(price)) {
+                $(swimmingPool).addClass('calc-single-block')
+                $(typeOfSubscription).hide()
+                $(swimmingPool).show()
+                showPrices(filial, price, oldPrice)
+                linkId = prices[quantityVal][swimmingPoolVal]['link_id']
             } else {
-                $(typeOfSubscription).addClass('calc-single-block');
+                if (typeof prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal] != 'undefined') {
+                    price = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal]['price']
+                    $(swimmingPool).removeClass('calc-single-block')
+                    $(typeOfSubscription).show()
+                    showPrices(filial, price, oldPrice)
+                    linkId = prices[quantityVal][swimmingPoolVal][typeOfSubscriptionVal]['link_id']
+                }
             }
-            $(typeOfSubscription).show();
-            showPrices(filial, price, oldPrice);
+        } else if (typeof prices[quantityVal][typeOfSubscriptionVal] != 'undefined') {
+            price = prices[quantityVal][typeOfSubscriptionVal]['price']
+            if (Number.isInteger(price)) {
+                $(typeOfSubscription).addClass('calc-single-block')
+                $(typeOfSubscription).show()
+                showPrices(filial, price, oldPrice)
+                linkId = prices[quantityVal][typeOfSubscriptionVal]['link_id']
+            }
         }
     }
 
@@ -200,5 +203,13 @@ function hidePayOnlineBtn(filial) {
         $(payOnlineBtn).addClass('bt-2');
         $(payOnlineBtn).css("width", "50%");
         $(signUpBtn).show()
+    }
+}
+
+function getOldPrice(swimmingPool, prices) {
+    if (typeof prices['oneoff'][swimmingPool] != 'undefined') {
+        return prices['oneoff'][swimmingPool]['price']
+    } else {
+        return prices['oneoff']['price'];
     }
 }

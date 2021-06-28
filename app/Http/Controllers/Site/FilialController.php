@@ -60,6 +60,7 @@ class FilialController extends BaseController
         $this->renderRules();
         $this->renderMedicalCertificates();
         $this->renderVacancies();
+        $this->renderCardPaymentProcess();
 
         $this->template = "site.filial";
         $this->renderHeader();

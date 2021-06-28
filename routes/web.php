@@ -29,7 +29,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get( '/', SiteController::class)->name('site');
-Route::view('/lc', 'site.main.lc');
+Route::any('/lc', function () {
+    return view('site.main.lc');
+});
 Route::view('/schedule', 'site.main.schedule');
 Route::get('/filial/{alias}', [FilialController::class, 'index']);
 

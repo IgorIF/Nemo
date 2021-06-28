@@ -71,3 +71,7 @@
 @section('vacancies')
     {!! $vacancies !!}
 @endsection
+
+@section('cardPaymentProcess')
+    {!! $cardPaymentProcess !!}
+@endsection

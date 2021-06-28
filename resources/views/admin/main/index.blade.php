@@ -103,3 +103,7 @@
 @section('adminNav')
     {!! $adminNav !!}
 @endsection
+
+@section('cardPaymentProcess')
+    {!! $cardPaymentProcess !!}
+@endsection

@@ -540,3 +540,19 @@ function onVideoPlayButtonClassClickListener(e) {
     $(this).parent(".play_block").hide(150).siblings("iframe").show(150);
 }
 
+$('#cardPaymentProcessBtn').click(function (e) {
+    e.preventDefault()
+
+    $('.popup7').slideDown();
+    $('.popup-overlay').css('display', 'block');
+
+    // поиск button close popup
+    $('#js-close-popup, .popup-overlay').on('click', function(e) {
+        // $('.popup').css('display', 'none');
+        // $('.popup-overlay').css('display', 'none');
+        // or
+        $('.popup7').slideUp();
+        $('.popup-overlay').css('display', 'none');
+    })
+})
+
