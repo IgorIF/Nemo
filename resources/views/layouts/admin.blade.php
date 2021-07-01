@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=28') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=29') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css?vr=15') }}">
 
 

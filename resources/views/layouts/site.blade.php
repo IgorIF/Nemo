@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700&display=swap&subset=cyrillic,cyrillic-ext" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="{{ asset('css/style.css?vr=29') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css?vr=30') }}">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
@@ -338,7 +338,7 @@
 <!--[if lte IE 8]><script src="http://phpbbex.com/oldies/oldies.js" charset="utf-8"></script><![endif]-->
 
 <!-- Yclients -->
-<script type="text/javascript" src="https://w76658.yclients.com/widgetJS" charset="UTF-8"></script>
+{{--<script type="text/javascript" src="https://w76658.yclients.com/widgetJS" charset="UTF-8"></script>--}}
 
 <!-- Facebook Pixel Code -->
 <script>
