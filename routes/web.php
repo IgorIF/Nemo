@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\SecurityCategoryController;
 use App\Http\Controllers\Admin\SecurityItemController;
 use App\Http\Controllers\Admin\TrainerController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Site\LCController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get( '/', SiteController::class)->name('site');
-Route::any('/lc', function () {
-    return view('site.main.lc');
-});
+Route::any('/lc/{alias}', [LCController::class, 'index']);
 Route::view('/schedule', 'site.main.schedule');
 Route::get('/filial/{alias}', [FilialController::class, 'index']);
 

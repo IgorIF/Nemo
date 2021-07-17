@@ -7,7 +7,7 @@
     </head>
     <body>
         <div data-get-fit-index-lk></div>
-        <script src="https://reservi.ru/widget-fit1c.v2/js/config.js" data-fit-salon-id="1d082817-8779-4910-b34c-854df0248b5c"></script>
+        <script src="https://reservi.ru/widget-fit1c.v2/js/config.js" data-fit-salon-id="{{ $dataFitSalonId }}"></script>
         </body>
     </body>
 </html>

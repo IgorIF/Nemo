@@ -120,7 +120,8 @@ function fillSignUpBtn(filial, button) {
 
 function fillPayOnlineBtn(filial, link, button) {
     let clubId;
-    switch ($(filial).attr('id')) {
+    let alias = $(filial).attr('id');
+    switch (alias) {
         case 'prazhskaya':
             clubId = '59661dff-c468-11eb-bbf6-0050568342b3';
             break;
@@ -137,7 +138,8 @@ function fillPayOnlineBtn(filial, link, button) {
             clubId = 'e8db9d50-c9c8-11eb-bbf6-0050568342b3';
     }
 
-    let href = 'https://aqua-nemo.ru/lc?club_id=' + clubId + '&getShopFormAuth=Y&id=' + link
+    let href = 'https://aqua-nemo.ru/lc/' + alias + '?club_id=' + clubId + '&getShopFormReg=Y&id=' + link
+    //let href = 'http://test1.com/lc/' + alias + '?club_id=' + clubId + '&getShopFormReg=Y&id=' + link
     $(button).attr('href', href)
 }
 
