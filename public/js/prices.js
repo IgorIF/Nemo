@@ -104,10 +104,10 @@ function fillSignUpBtn(filial, button) {
         case 'maryino':
             activePopupValue = 3;
             break;
-        case 'nekrasovka':
+        case 'lyubertsy':
             activePopupValue = 4;
             break;
-        case 'rechnoy_vokzal':
+        case 'hovrino':
             activePopupValue = 5;
     }
 
@@ -131,10 +131,10 @@ function fillPayOnlineBtn(filial, link, button) {
         case 'maryino':
             clubId = 'b7712ceb-c9c8-11eb-bbf6-0050568342b3';
             break;
-        case 'nekrasovka':
+        case 'lyubertsy':
             clubId = 'd61c4407-c9c8-11eb-bbf6-0050568342b3';
             break;
-        case 'rechnoy_vokzal':
+        case 'hovrino':
             clubId = 'e8db9d50-c9c8-11eb-bbf6-0050568342b3';
     }
 

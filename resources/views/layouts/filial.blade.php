@@ -323,7 +323,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=24') }}"></script>
-<script src="{{ asset('js/prices.js?vr=10') }}"></script>
+<script src="{{ asset('js/prices.js?vr=11') }}"></script>
 
 
 {{--Реклама--}}

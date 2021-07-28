@@ -382,7 +382,7 @@
 
 
 <script src="{{ asset('js/index-page.js?vr=24') }}"></script>
-<script src="{{ asset('js/prices.js?vr=10') }}"></script>
+<script src="{{ asset('js/prices.js?vr=11') }}"></script>
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
 <!-- Yclients -->
