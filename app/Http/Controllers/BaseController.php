@@ -142,7 +142,8 @@ class BaseController extends Controller
     }
 
     protected function renderSwimBeforeWalking(): string {
-        return view($this->template . '.swim_before_walking')->render();
+        $texts = $this->getFromCollection($this->texts, [3 => 4]);
+        return view($this->template . '.swim_before_walking')->with('texts', $texts)->render();
     }
 
     protected function renderAboutUs(): string {
