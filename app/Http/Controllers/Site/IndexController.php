@@ -51,6 +51,7 @@ class IndexController extends BaseController
 
         $this->headerView = $this->renderHeader();
         $this->swimBeforeWalkingView = $this->renderSwimBeforeWalking();
+        $this->aboutUsView = $this->renderAboutUs();
 
         return $this->renderOutput();
 
@@ -59,6 +60,7 @@ class IndexController extends BaseController
     protected function renderOutput(): string {
         $this->vars = Arr::add($this->vars, 'header', $this->headerView);
         $this->vars = Arr::add($this->vars, 'swimBeforeWalking', $this->swimBeforeWalkingView);
+        $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUsView);
 
         return view($this->template . '.index')->with($this->vars);
     }

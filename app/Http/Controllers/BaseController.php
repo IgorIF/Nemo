@@ -147,7 +147,7 @@ class BaseController extends Controller
     }
 
     protected function renderAboutUs(): string {
-        $texts = $this->getFromCollection($this->texts, [8 => 9]);
+        $texts = $this->getFromCollection($this->texts, [5 => 6]);
         $video = $this->getFromCollection($this->videos, [1 => 1])->first();
         return view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }

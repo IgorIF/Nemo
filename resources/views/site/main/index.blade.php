@@ -8,9 +8,11 @@
     {!! $swimBeforeWalking !!}
 @endsection
 
-{{--@section('aboutUs')
+@section('aboutUs')
     {!! $aboutUs !!}
 @endsection
+
+{{--
 
 @section('theBenefitsOfEarlySwimming')
     {!! $theBenefitsOfEarlySwimming !!}
