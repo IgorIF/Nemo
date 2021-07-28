@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\BaseController;
 use App\Mail\TrialLesson;
 use App\Repositories\CalculatorDescriptionsRepository;
-use App\Repositories\FilialBranchesRepository;
+use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\PromotionsRepository;
@@ -18,6 +18,7 @@ use App\Repositories\TrainersRepository;
 use App\Repositories\VacanciesRepository;
 use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 
@@ -26,7 +27,7 @@ class IndexController extends BaseController
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository)
+                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository)
     {
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
                             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
@@ -38,7 +39,7 @@ class IndexController extends BaseController
     {
         $this->getTextsData();
         $this->getImagesData();
-        $this->getFilialBranchesData();
+        $this->getFilialsData();
         $this->getVideosData();
         $this->getTrainersData();
         $this->getCalculatorDescriptionsData();
@@ -48,29 +49,19 @@ class IndexController extends BaseController
         $this->getMedicalCertificatesData();
         $this->getVacanciesData();
 
-        $this->renderHeader();
-        $this->renderAboutUs();
-        $this->renderTheBenefitsOfEarlySwimming();
-        $this->renderWhoSwimsWithUs();
-        $this->renderTrainers();
-        $this->renderPrices();
-        $this->renderPromotions();
-        $this->renderSwimNeverNotEarly();
-        $this->renderHowWeSwim();
-        $this->renderSecurity();
-        $this->renderReviews();
-        $this->renderSwimmingPool();
-        $this->renderFooter();
-        $this->renderTrialLesson();
-        $this->renderRules();
-        $this->renderMedicalCertificates();
-        $this->renderContactUs();
-        $this->renderVacancies();
-        $this->renderCardPaymentProcess();
+        $this->headerView = $this->renderHeader();
+        $this->swimBeforeWalkingView = $this->renderSwimBeforeWalking();
 
         return $this->renderOutput();
+
     }
 
+    protected function renderOutput(): string {
+        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
+        $this->vars = Arr::add($this->vars, 'swimBeforeWalking', $this->swimBeforeWalkingView);
+
+        return view($this->template . '.index')->with($this->vars);
+    }
 
     public function sendMail(Request $request){
 

@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Models\FilialBranch;
-use App\Repositories\FilialBranchesRepository;
+use App\Models\Filial;
+use App\Repositories\FilialsRepository;
 use Illuminate\Http\Request;
 
 class LCController extends Controller
 {
 
-    private ?FilialBranch $filialBranch;
+    private ?Filial $filialBranch;
 
-    protected FilialBranchesRepository $filialBranchesRepository;
+    protected FilialsRepository $filialBranchesRepository;
 
     /**
      * LCController constructor.
      */
-    public function __construct(FilialBranchesRepository $filialBranchesRepository)
+    public function __construct(FilialsRepository $filialBranchesRepository)
     {
         $this->filialBranchesRepository = $filialBranchesRepository;
     }

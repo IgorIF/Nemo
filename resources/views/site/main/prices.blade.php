@@ -3,15 +3,15 @@
 
 <input type="hidden" name="calculatorDescriptions" data-descriptions="{{ $calculatorDescriptions }}">
 
-@foreach($filialBranches as $filialBranch)
-    @if(!empty($filialBranch->prices))
+@foreach($filials as $filial)
+    @if(!empty($filial->prices))
 
-        <form class="calculator_{{ $filialBranch->id }}" id="{{ $filialBranch->alias }}" data-prices="{{ $filialBranch->prices }}">
+        <form class="calculator_{{ $filial->id }}" id="{{ $filial->alias }}" data-prices="{{ $filial->prices }}">
             <div class="prices-block" @if($loop->iteration > 1) data-aos="fade-up" @endif>
                 <div class="prices-item prices-item-{{ $loop->iteration }}" @if($loop->iteration == 1) data-aos="fade-up" @endif>
                     <div class="top">
-                        <div class="title">{!! $filialBranch->address !!}</div>
-                        <p>(метро {!! $filialBranch->metro !!})</p>
+                        <div class="title">{!! $filial->address !!}</div>
+                        <p>(метро {!! $filial->metro !!})</p>
                     </div>
 
                     <div class="content">

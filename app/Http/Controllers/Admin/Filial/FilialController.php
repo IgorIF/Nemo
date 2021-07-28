@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin\Filial;
 
 use App\Http\Controllers\Admin\IndexController;
-use App\Models\FilialBranch;
+use App\Models\Filial;
 use App\Repositories\CalculatorDescriptionsRepository;
-use App\Repositories\FilialBranchesRepository;
+use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\PromotionsRepository;
@@ -22,12 +22,12 @@ use Illuminate\Support\Arr;
 
 class FilialController extends IndexController
 {
-    private ?FilialBranch $filialBranch;
+    private ?Filial $filialBranch;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository)
+                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository)
     {
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
@@ -38,7 +38,7 @@ class FilialController extends IndexController
     public function index(Request $request, $alias) {
 
         $this->getTextsData();
-        $this->getFilialBranchesData();
+        $this->getFilialsData();
         $this->getCalculatorDescriptionsData();
         $this->getFilialBranchData($alias);
         $this->getImagesData();
@@ -60,7 +60,7 @@ class FilialController extends IndexController
 
     protected function getFilialBranchData($alias)
     {
-        $this->filialBranch = $this->filialBranchesRepository->getFilialByAlias($alias);
+        $this->filialBranch = $this->filialsRepository->getFilialByAlias($alias);
     }
 
     protected function renderPrices()

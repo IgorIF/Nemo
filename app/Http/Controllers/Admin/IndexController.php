@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
 use App\Repositories\CalculatorDescriptionsRepository;
-use App\Repositories\FilialBranchesRepository;
+use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\PromotionsRepository;
@@ -27,7 +27,7 @@ class IndexController extends BaseController
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository)
+                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository)
     {
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
                             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
@@ -39,7 +39,7 @@ class IndexController extends BaseController
     {
         $this->getTextsData();
         $this->getImagesData();
-        $this->getFilialBranchesData();
+        $this->getFilialsData();
         $this->getVideosData();
         $this->getTrainersData();
         $this->getCalculatorDescriptionsData();
@@ -49,34 +49,19 @@ class IndexController extends BaseController
         $this->getMedicalCertificatesData();
         $this->getVacanciesData();
 
-        $this->renderHeader();
-        $this->renderAboutUs();
-        $this->renderTheBenefitsOfEarlySwimming();
-        $this->renderWhoSwimsWithUs();
-        $this->renderTrainers();
-        $this->renderPrices();
-        $this->renderPromotions();
-        $this->renderSwimNeverNotEarly();
-        $this->renderHowWeSwim();
-        $this->renderSecurity();
-        $this->renderReviews();
-        $this->renderSwimmingPool();
-        $this->renderFooter();
-        $this->renderTrialLesson();
-        $this->renderRules();
-        $this->renderMedicalCertificates();
-        $this->renderContactUs();
-        $this->renderVacancies();
-        $this->renderModalAboutUsEditVideo();
-        $this->renderAdminNav();
-        $this->renderCardPaymentProcess();
+        $this->headerView = $this->renderHeader();
+        $this->swimBeforeWalkingView = $this->renderSwimBeforeWalking();
+
 
         return $this->renderOutput();
     }
 
-    protected function renderOutput() {
+    protected function renderOutput(): string {
 
-        $modalAddTrainer = view($this->template . '.modals.modal_add_trainer')->render();
+        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
+        $this->vars = Arr::add($this->vars, 'swimBeforeWalking', $this->swimBeforeWalkingView);
+
+        /*$modalAddTrainer = view($this->template . '.modals.modal_add_trainer')->render();
         $modalAddPromotion = view($this->template . '.modals.modal_add_promotion')->render();
         $modalTrainerVideo = view($this->template . '.modals.modal_trainer_video')->render();
         $modalAddSecurityItem = view($this->template . '.modals.modal_add_item')->render();
@@ -90,10 +75,12 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'modalAddSecurityItem', $modalAddSecurityItem);
         $this->vars = Arr::add($this->vars, 'modalAddVideo', $modalAddVideo);
         $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
-        $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNavView);
+        $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNavView);*/
 
-        return parent::renderOutput();
+        return view($this->template . '.index')->with($this->vars);
     }
+
+
 
     private function renderModalAboutUsEditVideo() {
         $video = $this->getFromCollection($this->videos, [1 => 1])->first();

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\FilialBranch;
+use App\Models\Filial;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +24,7 @@ class PricesHovrino extends Seeder
             'metro' => 'Речной вокзал',
         ]);
 
-        /*$filial = FilialBranch::c(5);
+        /*$filial = Filial::c(5);
         $filial->fill(['prices' => json_encode([
         'trial' => 980,
         'oneoff' => 1500,

@@ -32,10 +32,10 @@ use Illuminate\Support\Facades\Route;
 Route::get( '/', SiteController::class)->name('site');
 Route::any('/lc/{alias}', [LCController::class, 'index']);
 Route::view('/schedule', 'site.main.schedule');
-Route::get('/filial/{alias}', [FilialController::class, 'index']);
+//Route::get('/filial/{alias}', [FilialController::class, 'index']);
 
 
-Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
+/*Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
     Route::get('/', AdminController::class)->name('index');
 
@@ -54,7 +54,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')
     Route::resource('images', ImageController::class)->only('update');
     Route::resource('filialBranches', FilialBranchController::class)->only('update');
     Route::resource('promotions', PromotionController::class)->only(['store', 'update', 'destroy']);
-});
+});*/
 
 Route::post('/sendmail', [SiteController::class, 'sendMail'])->name('sendmail');
 

@@ -4,7 +4,11 @@
     {!! $header !!}
 @endsection
 
-@section('aboutUs')
+@section('swimBeforeWalking')
+    {!! $swimBeforeWalking !!}
+@endsection
+
+{{--@section('aboutUs')
     {!! $aboutUs !!}
 @endsection
 
@@ -74,4 +78,4 @@
 
 @section('cardPaymentProcess')
     {!! $cardPaymentProcess !!}
-@endsection
+@endsection--}}

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\CalculatorDescriptionsRepository;
-use App\Repositories\FilialBranchesRepository;
+use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\PromotionsRepository;
@@ -35,11 +35,13 @@ class BaseController extends Controller
     protected MedicalCertificatesRepository $medicalCertificatesRepository;
     protected VacanciesRepository $vacanciesRepository;
     protected ImagesRepository $imagesRepository;
-    protected FilialBranchesRepository $filialBranchesRepository;
+    protected FilialsRepository $filialsRepository;
     protected PromotionsRepository $promotionsRepository;
     protected CalculatorDescriptionsRepository $calculatorDescriptionsRepository;
 
     protected string $headerView;
+    protected string $swimBeforeWalkingView;
+
     protected string $aboutUsView;
     protected string $theBenefitsOfEarlySwimmingView;
     protected string $whoSwimsWithUsView;
@@ -62,7 +64,7 @@ class BaseController extends Controller
     protected Collection $texts;
     protected Collection $images;
     protected Collection $videos;
-    protected Collection $filialBranches;
+    protected Collection $filials;
     private Collection $trainers;
     private Collection $securityCategories;
     private Collection $ruleCategories;
@@ -74,7 +76,7 @@ class BaseController extends Controller
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialBranchesRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository) {
+                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository) {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
@@ -85,7 +87,7 @@ class BaseController extends Controller
         $this->medicalCertificatesRepository = $medicalCertificatesRepository;
         $this->vacanciesRepository = $vacanciesRepository;
         $this->imagesRepository = $imagesRepository;
-        $this->filialBranchesRepository = $filialBranchesRepository;
+        $this->filialsRepository = $filialBranchesRepository;
         $this->promotionsRepository = $promotionsRepository;
         $this->calculatorDescriptionsRepository = $calculatorDescriptionsRepository;
     }
@@ -102,8 +104,8 @@ class BaseController extends Controller
         $this->videos = $this->videosRepository->getAllWithIdAsKey();
     }
 
-    protected function getFilialBranchesData() {
-        $this->filialBranches = $this->filialBranchesRepository->getAllWithIdAsKey();
+    protected function getFilialsData() {
+        $this->filials = $this->filialsRepository->getAllWithIdAsKey();
     }
 
     protected function getTrainersData() {
@@ -134,130 +136,108 @@ class BaseController extends Controller
         $this->calculatorDescriptions = $this->calculatorDescriptionsRepository->getAllInJson();
     }
 
-    protected function renderHeader() {
-        $texts = $this->getFromCollection($this->texts, [1 => 7]);
-        $images = $this->getFromCollection($this->images, [1 => 1]);
-        $this->headerView = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranches' => $this->filialBranches])->render();
+    protected function renderHeader(): string {
+        $texts = $this->getFromCollection($this->texts, [1 => 2]);
+        return view( $this->template . '.header')->with(['texts' => $texts, 'filials' => $this->filials])->render();
     }
 
-    protected function renderAboutUs() {
+    protected function renderSwimBeforeWalking(): string {
+        return view($this->template . '.swim_before_walking')->render();
+    }
+
+    protected function renderAboutUs(): string {
         $texts = $this->getFromCollection($this->texts, [8 => 9]);
         $video = $this->getFromCollection($this->videos, [1 => 1])->first();
-        $this->aboutUsView = view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
+        return view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
-    protected function renderTheBenefitsOfEarlySwimming() {
+    protected function renderTheBenefitsOfEarlySwimming(): string {
         $texts = $this->getFromCollection($this->texts, [10 => 22]);
         $images = $this->getFromCollection($this->images, [2 => 2]);
-        $this->theBenefitsOfEarlySwimmingView = view($this->template . '.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
+        return view($this->template . '.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
-    protected function renderWhoSwimsWithUs() {
+    protected function renderWhoSwimsWithUs(): string {
         $texts = $this->getFromCollection($this->texts, [23 => 32]);
         $images = $this->getFromCollection($this->images, [3 => 5]);
-        $this->whoSwimsWithUsView = view($this->template . '.who_swims_with_us')->with(['texts' => $texts, 'images' => $images])->render();
+        return view($this->template . '.who_swims_with_us')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
-    protected function renderTrainers() {
+    protected function renderTrainers(): string {
         $texts = $this->getFromCollection($this->texts, [33 => 34]);
-        $this->trainersView = view($this->template . '.trainers')->with(['trainers' => $this->trainers, 'texts' => $texts])->render();
+        return view($this->template . '.trainers')->with(['trainers' => $this->trainers, 'texts' => $texts])->render();
     }
 
-    protected function renderPrices() {
+    protected function renderPrices(): string {
         $texts = $this->getFromCollection($this->texts, [35 => 35]);
-        $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
+        return view($this->template . '.prices')->with(['texts' => $texts, 'filials' => $this->filials, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
     }
 
-    protected function renderPromotions() {
+    protected function renderPromotions(): string {
         $texts = $this->getFromCollection($this->texts, [67 => 67]);
-        $this->promotionsView = view($this->template . '.promotions')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
+        return view($this->template . '.promotions')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
     }
 
-    protected function renderSwimNeverNotEarly() {
+    protected function renderSwimNeverNotEarly(): string {
         $texts = $this->getFromCollection($this->texts, [36 => 37]);
         $images = $this->getFromCollection($this->images, [6 => 6]);
-        $this->swimNeverNotEarlyView = view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
+        return view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
     }
 
-    protected function renderHowWeSwim() {
-        $this->howWeSwimView = view($this->template . '.how_we_swim')->render();
+    protected function renderHowWeSwim(): string {
+        return view($this->template . '.how_we_swim')->render();
     }
 
-    protected function renderSecurity() {
+    protected function renderSecurity(): string {
         $texts = $this->getFromCollection($this->texts, [38 => 39]);
         $images = $this->getFromCollection($this->images, [7 => 9]);
-        $this->securityView = view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $this->securityCategories, 'images' => $images])->render();
+        return view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $this->securityCategories, 'images' => $images])->render();
     }
 
-    protected function renderReviews() {
+    protected function renderReviews(): string {
         $texts = $this->getFromCollection($this->texts, [40 => 40]);
         $videos = $this->getFromCollection($this->videos, [2 => count($this->videos)-1]);
-        $this->reviewsView = view($this->template . '.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
+        return view($this->template . '.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
     }
 
-    protected function renderSwimmingPool() {
+    protected function renderSwimmingPool(): string {
         $texts = $this->getFromCollection($this->texts, [41 => 46]);
-        $this->swimmingPoolView = view($this->template . '.swimming_pool')->with('texts', $texts)->render();
+        return view($this->template . '.swimming_pool')->with('texts', $texts)->render();
     }
 
-    protected function renderFooter() {
+    protected function renderFooter(): string {
         $texts = $this->getFromCollection($this->texts, [47 => 55]);
-        $this->footerView = view($this->template . '.footer')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
+        return view($this->template . '.footer')->with(['texts' => $texts, 'filials' => $this->filials])->render();
     }
 
-    protected function renderTrialLesson() {
+    protected function renderTrialLesson(): string {
         $texts = $this->getFromCollection($this->texts, [56 => 56]);
-        $this->trialLessonView = view($this->template . '.trial_lesson')->with('texts' , $texts)->render();
+        return view($this->template . '.trial_lesson')->with('texts' , $texts)->render();
     }
 
-    protected function renderRules() {
+    protected function renderRules(): string {
         $texts = $this->getFromCollection($this->texts, [57 => 59]);
-        $this->rulesView = view($this->template . '.rules')->with(['texts' => $texts, 'ruleCategories' => $this->ruleCategories])->render();
+        return view($this->template . '.rules')->with(['texts' => $texts, 'ruleCategories' => $this->ruleCategories])->render();
     }
 
-    protected function renderMedicalCertificates() {
+    protected function renderMedicalCertificates(): string {
         $texts = $this->getFromCollection($this->texts, [60 => 61]);
-        $this->medicalCertificatesView = view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $this->medicalCertificates])->render();
+        return view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $this->medicalCertificates])->render();
     }
 
-    protected function renderContactUs() {
+    protected function renderContactUs(): string {
         $texts = $this->getFromCollection($this->texts, [66 => 66]);
-        $this->contactUsView = view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $this->filialBranches])->render();
+        return view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $this->filials])->render();
     }
 
-    protected function renderVacancies() {
+    protected function renderVacancies(): string {
         $texts = $this->getFromCollection($this->texts, [62 => 65]);
-        $this->vacanciesView = view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $this->vacancies])->render();
+        return view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $this->vacancies])->render();
     }
 
-    protected function renderCardPaymentProcess() {
+    protected function renderCardPaymentProcess(): string {
         $texts = $this->getFromCollection($this->texts, [69 => 70]);
-        $this->cardPaymentProcessView = view($this->template . '.card_payment_process')->with('texts', $texts)->render();
-    }
-
-    protected function renderOutput() {
-
-        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
-        $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUsView);
-        $this->vars = Arr::add($this->vars, 'theBenefitsOfEarlySwimming', $this->theBenefitsOfEarlySwimmingView);
-        $this->vars = Arr::add($this->vars, 'whoSwimsWithUs', $this->whoSwimsWithUsView);
-        $this->vars = Arr::add($this->vars, 'trainers', $this->trainersView);
-        $this->vars = Arr::add($this->vars, 'prices', $this->pricesView);
-        $this->vars = Arr::add($this->vars, 'promotions', $this->promotionsView);
-        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarlyView);
-        $this->vars = Arr::add($this->vars, 'howWeSwim', $this->howWeSwimView);
-        $this->vars = Arr::add($this->vars, 'security', $this->securityView);
-        $this->vars = Arr::add($this->vars, 'reviews', $this->reviewsView);
-        $this->vars = Arr::add($this->vars, 'swimmingPool', $this->swimmingPoolView);
-        $this->vars = Arr::add($this->vars, 'footer', $this->footerView);
-        $this->vars = Arr::add($this->vars, 'trialLesson', $this->trialLessonView);
-        $this->vars = Arr::add($this->vars, 'rules', $this->rulesView);
-        $this->vars = Arr::add($this->vars, 'medicalCertificates', $this->medicalCertificatesView);
-        $this->vars = Arr::add($this->vars, 'contactUs', $this->contactUsView);
-        $this->vars = Arr::add($this->vars, 'vacancies', $this->vacanciesView);
-        $this->vars = Arr::add($this->vars, 'cardPaymentProcess', $this->cardPaymentProcessView);
-
-        return view($this->template . '.index')->with($this->vars);
+        return view($this->template . '.card_payment_process')->with('texts', $texts)->render();
     }
 
     protected function getFromCollection(Collection $collection, array $interval): Collection
