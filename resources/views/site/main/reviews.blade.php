@@ -96,31 +96,3 @@
     <button class="reviews-prev slider-prev slider-3col-prev">Назад</button>
     <button class="reviews-next slider-next slider-3col-next">Вперед</button>
 </div>
-
-
-
-
-
-
-
-
-
-
-{{--
-<h2 data-aos="fade-up">{!! $texts->get(40)->text !!}</h2>
-
-<section class="slider3" data-aos="fade-up">
-    <div class="slider-slick">
-        @foreach($videos as $video)
-            <div class="slider">
-                <div class="review_block">
-                    <div class="play_block">
-                        <img src="{{ asset('storage/images/videos/' . $video->image) }}" />
-                        <a id="play-video-review" class="video-play-button" href="https://www.youtube.com/embed/{{ $video->url }}?autoplay=1"><span></span></a>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
-</section>
---}}

@@ -56,9 +56,6 @@
 
 
 
-
-
-
 {{--
 
 @section('trialLesson')

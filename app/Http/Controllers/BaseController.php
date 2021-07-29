@@ -174,30 +174,6 @@ class BaseController extends Controller
         return view($this->template . '.footer')->render();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    protected function renderSecurity(): string {
-        $texts = $this->getFromCollection($this->texts, [38 => 39]);
-        $images = $this->getFromCollection($this->images, [7 => 9]);
-        return view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $this->securityCategories, 'images' => $images])->render();
-    }
-
-    protected function renderTrialLesson(): string {
-        $texts = $this->getFromCollection($this->texts, [56 => 56]);
-        return view($this->template . '.trial_lesson')->with('texts' , $texts)->render();
-    }
-
     protected function getFromCollection(Collection $collection, array $interval): Collection
     {
         $result = collect();
