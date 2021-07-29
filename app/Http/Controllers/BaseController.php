@@ -39,28 +39,6 @@ class BaseController extends Controller
     protected PromotionsRepository $promotionsRepository;
     protected CalculatorDescriptionsRepository $calculatorDescriptionsRepository;
 
-    protected string $headerView;
-    protected string $swimBeforeWalkingView;
-
-    protected string $aboutUsView;
-    protected string $theBenefitsOfEarlySwimmingView;
-    protected string $whoSwimsWithUsView;
-    protected string $trainersView;
-    protected string $pricesView;
-    protected string $promotionsView;
-    protected string $swimNeverNotEarlyView;
-    protected string $howWeSwimView;
-    protected string $securityView;
-    protected string $reviewsView;
-    protected string $swimmingPoolView;
-    protected string $footerView;
-    protected string $trialLessonView;
-    protected string $rulesView;
-    protected string $medicalCertificatesView;
-    protected string $contactUsView;
-    protected string $vacanciesView;
-    protected string $cardPaymentProcessView;
-
     protected Collection $texts;
     protected Collection $images;
     protected Collection $videos;
@@ -208,23 +186,6 @@ class BaseController extends Controller
 
 
 
-    protected function renderTheBenefitsOfEarlySwimming(): string {
-        $texts = $this->getFromCollection($this->texts, [10 => 22]);
-        $images = $this->getFromCollection($this->images, [2 => 2]);
-        return view($this->template . '.the_benefits_of_early_swimming')->with(['texts' => $texts, 'images' => $images])->render();
-    }
-
-    protected function renderWhoSwimsWithUs(): string {
-        $texts = $this->getFromCollection($this->texts, [23 => 32]);
-        $images = $this->getFromCollection($this->images, [3 => 5]);
-        return view($this->template . '.who_swims_with_us')->with(['texts' => $texts, 'images' => $images])->render();
-    }
-
-    protected function renderSwimNeverNotEarly(): string {
-        $texts = $this->getFromCollection($this->texts, [36 => 37]);
-        $images = $this->getFromCollection($this->images, [6 => 6]);
-        return view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
-    }
 
     protected function renderSecurity(): string {
         $texts = $this->getFromCollection($this->texts, [38 => 39]);
@@ -232,39 +193,9 @@ class BaseController extends Controller
         return view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $this->securityCategories, 'images' => $images])->render();
     }
 
-    protected function renderSwimmingPool(): string {
-        $texts = $this->getFromCollection($this->texts, [41 => 46]);
-        return view($this->template . '.swimming_pool')->with('texts', $texts)->render();
-    }
-
     protected function renderTrialLesson(): string {
         $texts = $this->getFromCollection($this->texts, [56 => 56]);
         return view($this->template . '.trial_lesson')->with('texts' , $texts)->render();
-    }
-
-    protected function renderRules(): string {
-        $texts = $this->getFromCollection($this->texts, [57 => 59]);
-        return view($this->template . '.rules')->with(['texts' => $texts, 'ruleCategories' => $this->ruleCategories])->render();
-    }
-
-    protected function renderMedicalCertificates(): string {
-        $texts = $this->getFromCollection($this->texts, [60 => 61]);
-        return view($this->template . '.medical_certificates')->with(['texts' => $texts, 'medicalCertificates' => $this->medicalCertificates])->render();
-    }
-
-    protected function renderContactUs(): string {
-        $texts = $this->getFromCollection($this->texts, [66 => 66]);
-        return view($this->template . '.contact_us')->with(['texts' => $texts, 'filialBranches' => $this->filials])->render();
-    }
-
-    protected function renderVacancies(): string {
-        $texts = $this->getFromCollection($this->texts, [62 => 65]);
-        return view($this->template . '.vacancies')->with(['texts' => $texts, 'vacancies' => $this->vacancies])->render();
-    }
-
-    protected function renderCardPaymentProcess(): string {
-        $texts = $this->getFromCollection($this->texts, [69 => 70]);
-        return view($this->template . '.card_payment_process')->with('texts', $texts)->render();
     }
 
     protected function getFromCollection(Collection $collection, array $interval): Collection
