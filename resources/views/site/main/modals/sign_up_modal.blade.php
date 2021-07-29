@@ -1,16 +1,15 @@
 <div id="call_me" class="popup popup__form mfp-hide">
     <div class="popup-form__title">Запись на занятие</div>
-    <form>
+    <form action="{{ route('sendmail') }}" method="POST">
+        {{ csrf_field() }}
         <select name="filial" class="select" required>
             <option disabled value="1" >Выберите филиал</option>
-            <option selected value="1" >ул. Кировоградская 36 (Пражская)</option>
-            <option value="2">ул. Винокурова 24, к4 (Академическая)</option>
-            <option value="3">Мячковский бульвар 16, к1 (Марьино)</option>
-            <option value="4">ул. Камова 11/5 (Некрасовка)</option>
-            <option value="5">ул. Петрозаводская 11, к2 (Ховрино)</option>
+            @foreach($filials as $filial)
+                <option {{ $loop->first ? 'selected' : '' }} value="{{ $filial->alias }}">{{ $filial->address }} ({{ $filial->metro }})</option>
+            @endforeach
         </select>
-        <input class="input" type="text" placeholder="Ваше имя">
-        <input class="input phone-input" type="tel" placeholder="Номер телефона" required>
+        <input class="input" type="text" name="name" placeholder="Ваше имя">
+        <input class="input phone-input" name="phone" type="tel" placeholder="Номер телефона" required>
         <button type="submit" class="btn-orange">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</button>
     </form>
     <div class="small">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c <a href="#politica" class="btn-popup">политикой конфиденциальности</a></div>

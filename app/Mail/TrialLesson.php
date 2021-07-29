@@ -11,7 +11,7 @@ class TrialLesson extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $data;
+    private array $data;
 
     /**
      * Create a new message instance.

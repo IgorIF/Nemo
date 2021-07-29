@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\BaseController;
 use App\Mail\TrialLesson;
+use App\Models\Filial;
 use App\Repositories\CalculatorDescriptionsRepository;
 use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
@@ -73,34 +74,11 @@ class IndexController extends BaseController
     }
 
     public function sendMail(Request $request){
-
         $data = $request->except('_token');
+        $filial = $this->filialsRepository->getFilialByAlias($data['filial']);
+        $data['pool'] = $filial->address;
 
-        $address = '';
-
-        switch ($data['select_pool']) {
-            case 1:
-                $data['select_pool'] = 'Пражская';
-                $address = 'aquaclubnemo@yandex.ru';
-                break;
-            case 2:
-                $data['select_pool'] = 'Академическая';
-                $address = 'aquanemoclub@yandex.ru';
-                break;
-            case 3:
-                $data['select_pool'] = 'Марьино';
-                $address = 'aquaclubnemo.m@yandex.ru';
-                break;
-            case 4:
-                $data['select_pool'] = 'Некрасовка';
-                $address = 'aquaclubnemo.l@yandex.ru';
-                break;
-            case 5:
-                $data['select_pool'] = 'Речной вокзал';
-                $address = 'aquaclubnemo.h@yandex.ru';
-        }
-
-        Mail::to($address)->send(new TrialLesson($data));
+        Mail::to($filial->email)->send(new TrialLesson($data));
         return redirect('/');
     }
 }

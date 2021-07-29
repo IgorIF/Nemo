@@ -175,7 +175,7 @@ class BaseController extends Controller
     }
 
     protected function renderSignUpModal(): string {
-        return view($this->template . '.modals.sign_up_modal')->render();
+        return view($this->template . '.modals.sign_up_modal')->with('filials', $this->filials)->render();
     }
 
     protected function renderPaymentRulesModal(): string {
@@ -193,5 +193,11 @@ class BaseController extends Controller
         }
 
         return $result;
+    }
+
+    protected function getOneFromCollectionByField(Collection $collection, $field, $value) {
+       return $collection->filter(function ($item) use ($field, $value) {
+            return $item->$field = $value;
+        })->first();
     }
 }
