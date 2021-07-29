@@ -29,7 +29,7 @@ class LCController extends Controller
         if ($this->filialBranch == null)
             abort(404);
 
-        return view('site.main.lc')->with('dataFitSalonId', $this->filialBranch->dataFitSalonId);
+        return view('site.main.lc.index')->with('dataFitSalonId', $this->filialBranch->dataFitSalonId);
 
     }
 

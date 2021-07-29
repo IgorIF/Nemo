@@ -175,11 +175,11 @@ class BaseController extends Controller
     }
 
     protected function renderSignUpModal(): string {
-        return view($this->template . '.modals.sign_up_modal')->with('filials', $this->filials)->render();
+        return view($this->template . '.sign_up_modal')->with('filials', $this->filials)->render();
     }
 
     protected function renderPaymentRulesModal(): string {
-        return view($this->template . '.modals.payment_rules_modal')->render();
+        return view($this->template . '.payment_rules_modal')->render();
     }
 
     protected function getFromCollection(Collection $collection, array $interval): Collection

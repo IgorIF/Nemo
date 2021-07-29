@@ -24,7 +24,7 @@
                 <div class="user-account__list">
                     <div class="user-account__title">Выберите ваш филиал:</div>
                     @foreach($filials as $filial)
-                        <a href="#" class="filial-link">{{ $filial->address }} <span>({{ $filial->metro }})</span></a>
+                        <a href="{{ route('lc', ['alias' => $filial->alias]) }}" class="filial-link">{{ $filial->address }} <span>({{ $filial->metro }})</span></a>
                     @endforeach
                 </div>
             </div>
@@ -37,20 +37,20 @@
             </div>
             <nav class="mobil-menu__nav">
                 <a href="#" class="mobil-menu__link">Главная</a>
-                <a href="#" class="mobil-menu__link">Тренеры</a>
-                <a href="#" class="mobil-menu__link">Стоимость и оплата</a>
-                <a href="#" class="mobil-menu__link">Расписание</a>
+                <a href="#coaches" class="mobil-menu__link">Тренеры</a>
+                <a href="#payment" class="mobil-menu__link">Стоимость и оплата</a>
+                <a href="{{ route('schedule') }}" class="mobil-menu__link">Расписание</a>
                 <a href="#" class="mobil-menu__link">Первое занятие</a>
-                <a href="#" class="mobil-menu__link">Акции</a>
-                <a href="#" class="mobil-menu__link">Отзывы</a>
-                <a href="#" class="mobil-menu__link">Контакты</a>
+                <a href="#sale" class="mobil-menu__link">Акции</a>
+                <a href="#reviews" class="mobil-menu__link">Отзывы</a>
+                <a href="#addresses" class="mobil-menu__link">Контакты</a>
             </nav>
             <div class="drop mobil-menu__drop">
                 <button type="button" class="drop-btn">Личный кабинет</button>
                 <div class="drop-content">
                     <div class="user-account__title">Выберите ваш филиал:</div>
                     @foreach($filials as $filial)
-                        <a href="#" class="filial-link">{{ $filial->address }} <span>({{ $filial->metro }})</span></a>
+                        <a href="{{ route('lc', ['alias' => $filial->alias]) }}" class="filial-link">{{ $filial->address }} <span>({{ $filial->metro }})</span></a>
                     @endforeach
                 </div>
             </div>

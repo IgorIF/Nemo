@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\BaseController;
 use App\Mail\TrialLesson;
-use App\Models\Filial;
 use App\Repositories\CalculatorDescriptionsRepository;
 use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
@@ -35,8 +34,7 @@ class IndexController extends BaseController
         $this->template = 'site.main';
     }
 
-    public function __invoke(Request $request)
-    {
+    public function __invoke(Request $request): string {
         $this->getTextsData();
         $this->getImagesData();
         $this->getFilialsData();
