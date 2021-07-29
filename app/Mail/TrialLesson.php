@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -28,7 +27,7 @@ class TrialLesson extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): TrialLesson
     {
         return $this
             ->subject('Данные клиента')
