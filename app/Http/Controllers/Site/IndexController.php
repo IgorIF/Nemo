@@ -54,9 +54,9 @@ class IndexController extends BaseController
     protected function renderOutput(): string {
 
         $this->vars = Arr::add($this->vars, 'header', $this->renderHeader());
-        $this->vars = Arr::add($this->vars, 'swimBeforeWalking', $this->renderSwimBeforeWalking());
-        $this->vars = Arr::add($this->vars, 'aboutUs', $this->renderAboutUs());
-        $this->vars = Arr::add($this->vars, 'howWeSwim', $this->renderHowWeSwim());
+        $this->vars = Arr::add($this->vars, 'offer', $this->renderOffer());
+        $this->vars = Arr::add($this->vars, 'about', $this->renderAbout());
+        $this->vars = Arr::add($this->vars, 'gallery', $this->renderGallery());
         $this->vars = Arr::add($this->vars, 'trainers', $this->renderTrainers());
         $this->vars = Arr::add($this->vars, 'prices', $this->renderPrices());
         $this->vars = Arr::add($this->vars, 'promotions', $this->renderPromotions());

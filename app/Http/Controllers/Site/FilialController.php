@@ -48,12 +48,12 @@ class FilialController extends BaseController
         $this->getMedicalCertificatesData();
         $this->getVacanciesData();
 
-        $this->renderAboutUs();
+        $this->renderAbout();
         $this->renderTheBenefitsOfEarlySwimming();
         $this->renderWhoSwimsWithUs();
         $this->renderTrainers();
         $this->renderPromotions();
-        $this->renderHowWeSwim();
+        $this->renderGallery();
         $this->renderSecurity();
         $this->renderReviews();
         $this->renderSwimmingPool();

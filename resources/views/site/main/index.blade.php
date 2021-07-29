@@ -4,16 +4,16 @@
     {!! $header !!}
 @endsection
 
-@section('swimBeforeWalking')
-    {!! $swimBeforeWalking !!}
+@section('offer')
+    {!! $offer !!}
 @endsection
 
-@section('aboutUs')
-    {!! $aboutUs !!}
+@section('about')
+    {!! $about !!}
 @endsection
 
-@section('howWeSwim')
-    {!! $howWeSwim !!}
+@section('gallery')
+    {!! $gallery !!}
 @endsection
 
 @section('trainers')

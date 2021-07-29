@@ -50,7 +50,7 @@ class IndexController extends BaseController
         $this->getVacanciesData();
 
         $this->headerView = $this->renderHeader();
-        $this->swimBeforeWalkingView = $this->renderSwimBeforeWalking();
+        $this->swimBeforeWalkingView = $this->renderOffer();
 
 
         return $this->renderOutput();

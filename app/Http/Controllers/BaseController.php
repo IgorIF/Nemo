@@ -119,20 +119,20 @@ class BaseController extends Controller
         return view( $this->template . '.header')->with(['texts' => $texts, 'filials' => $this->filials])->render();
     }
 
-    protected function renderSwimBeforeWalking(): string {
+    protected function renderOffer(): string {
         $texts = $this->getFromCollection($this->texts, [3 => 4]);
-        return view($this->template . '.swim_before_walking')->with('texts', $texts)->render();
+        return view($this->template . '.offer')->with('texts', $texts)->render();
     }
 
-    protected function renderAboutUs(): string {
+    protected function renderAbout(): string {
         $texts = $this->getFromCollection($this->texts, [5 => 6]);
         $video = $this->getFromCollection($this->videos, [1 => 1])->first();
-        return view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
+        return view( $this->template . '.about')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
-    protected function renderHowWeSwim(): string {
+    protected function renderGallery(): string {
         $texts = $this->getFromCollection($this->texts, [7 => 7]);
-        return view($this->template . '.how_we_swim')->with('texts', $texts)->render();
+        return view($this->template . '.gallery')->with('texts', $texts)->render();
     }
 
     protected function renderTrainers(): string {

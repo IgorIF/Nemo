@@ -15,18 +15,18 @@
 @yield('header')
 
 <section class="offer">
-    @yield('swimBeforeWalking')
+    @yield('offer')
 </section>
 
 <section class="about">
     <div class="container">
-        @yield('aboutUs')
+        @yield('about')
     </div>
 </section>
 
 <section class="gallery">
     <div class="container">
-        @yield('howWeSwim')
+        @yield('gallery')
     </div>
 </section>
 
