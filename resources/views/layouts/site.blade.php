@@ -30,19 +30,19 @@
     </div>
 </section>
 
-<section class="coaches">
+<section class="coaches" id="coaches">
     <div class="container">
         @yield('coaches')
     </div>
 </section>
 
-{{--<section class="payment">
+{{--<section class="payment" id="payment">
     <div class="container">
         @yield('payment')
     </div>
 </section>--}}
 
-<section class="sale">
+<section class="sale" id="sale">
     <div class="container">
         @yield('sale')
     </div>
@@ -60,7 +60,7 @@
     </div>
 </section>
 
-<section class="reviews">
+<section class="reviews" id="reviews">
     <div class="container">
         @yield('reviews')
     </div>
@@ -72,7 +72,7 @@
     </div>
 </section>
 
-<section class="addresses">
+<section class="addresses" id="addresses">
     <div class="container">
         @yield('addresses')
     </div>

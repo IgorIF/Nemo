@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get( '/', SiteController::class)->name('site');
 Route::any('/lc/{alias}', [LCController::class, 'index']);
-Route::view('/schedule', 'site.main.schedule');
+Route::view('/schedule', 'site.main.schedule')->name('schedule');
 //Route::get('/filial/{alias}', [FilialController::class, 'index']);
 
 

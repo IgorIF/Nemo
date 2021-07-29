@@ -3,12 +3,12 @@
         <a href="#" class="header__logo"><img src="{{ asset('images/dist/logo.svg') }}" alt=""></a>
         <nav class="main-menu header__menu">
             <a href="#" class="main-menu__link">Главная</a>
-            <a href="#" class="main-menu__link">Стоимость</a>
-            <a href="#" class="main-menu__link">Тренеры</a>
-            <a href="#" class="main-menu__link">Расписание</a>
-            <a href="#" class="main-menu__link">Отзывы</a>
-            <a href="#" class="main-menu__link">Акции</a>
-            <a href="#" class="main-menu__link">Контакты</a>
+            <a href="#payment" class="main-menu__link">Стоимость</a>
+            <a href="#coaches" class="main-menu__link">Тренеры</a>
+            <a href="{{ route('schedule') }}" class="main-menu__link">Расписание</a>
+            <a href="#reviews" class="main-menu__link">Отзывы</a>
+            <a href="#sale" class="main-menu__link">Акции</a>
+            <a href="#addresses" class="main-menu__link">Контакты</a>
         </nav>
         <div class="header__contacts">
             <a href="https://api.whatsapp.com/send?phone=74951206711" class="header__wa" target="_balnk"><img src="{{ asset('images/dist/icon/whatsApp.svg') }}" alt=""></a>
