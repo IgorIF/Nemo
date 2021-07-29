@@ -20,6 +20,10 @@
     {!! $trainers !!}
 @endsection
 
+{{--@section('prices')
+    {!! $prices !!}
+@endsection--}}
+
 {{--
 
 @section('theBenefitsOfEarlySwimming')
@@ -32,10 +36,6 @@
 
 @section('trainers')
     {!! $trainers !!}
-@endsection
-
-@section('prices')
-    {!! $prices !!}
 @endsection
 
 @section('promotions')

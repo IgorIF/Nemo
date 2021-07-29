@@ -162,7 +162,10 @@ class BaseController extends Controller
         return view($this->template . '.trainers')->with(['texts' => $texts, 'filials' => $this->filials, 'trainers' => $this->trainers])->render();
     }
 
-
+    protected function renderPrices(): string {
+        $texts = $this->getFromCollection($this->texts, [35 => 35]);
+        return view($this->template . '.prices')->with('texts', $texts)->render();
+    }
 
 
 
@@ -181,11 +184,6 @@ class BaseController extends Controller
         $texts = $this->getFromCollection($this->texts, [23 => 32]);
         $images = $this->getFromCollection($this->images, [3 => 5]);
         return view($this->template . '.who_swims_with_us')->with(['texts' => $texts, 'images' => $images])->render();
-    }
-
-    protected function renderPrices(): string {
-        $texts = $this->getFromCollection($this->texts, [35 => 35]);
-        return view($this->template . '.prices')->with(['texts' => $texts, 'filials' => $this->filials, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
     }
 
     protected function renderPromotions(): string {
