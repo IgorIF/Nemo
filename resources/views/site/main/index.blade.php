@@ -12,6 +12,10 @@
     {!! $aboutUs !!}
 @endsection
 
+@section('howWeSwim')
+    {!! $howWeSwim !!}
+@endsection
+
 {{--
 
 @section('theBenefitsOfEarlySwimming')

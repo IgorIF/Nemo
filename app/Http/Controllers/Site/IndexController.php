@@ -19,7 +19,6 @@ use App\Repositories\VacanciesRepository;
 use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
 
 class IndexController extends BaseController
@@ -49,18 +48,15 @@ class IndexController extends BaseController
         $this->getMedicalCertificatesData();
         $this->getVacanciesData();
 
-        $this->headerView = $this->renderHeader();
-        $this->swimBeforeWalkingView = $this->renderSwimBeforeWalking();
-        $this->aboutUsView = $this->renderAboutUs();
-
         return $this->renderOutput();
-
     }
 
     protected function renderOutput(): string {
-        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
-        $this->vars = Arr::add($this->vars, 'swimBeforeWalking', $this->swimBeforeWalkingView);
-        $this->vars = Arr::add($this->vars, 'aboutUs', $this->aboutUsView);
+
+        $this->vars = Arr::add($this->vars, 'header', $this->renderHeader());
+        $this->vars = Arr::add($this->vars, 'swimBeforeWalking', $this->renderSwimBeforeWalking());
+        $this->vars = Arr::add($this->vars, 'aboutUs', $this->renderAboutUs());
+        $this->vars = Arr::add($this->vars, 'howWeSwim', $this->renderHowWeSwim());
 
         return view($this->template . '.index')->with($this->vars);
     }
