@@ -174,6 +174,14 @@ class BaseController extends Controller
         return view($this->template . '.footer')->render();
     }
 
+    protected function renderSignUpModal(): string {
+        return view($this->template . '.modals.sign_up_modal')->render();
+    }
+
+    protected function renderPaymentRulesModal(): string {
+        return view($this->template . '.modals.payment_rules_modal')->render();
+    }
+
     protected function getFromCollection(Collection $collection, array $interval): Collection
     {
         $result = collect();

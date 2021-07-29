@@ -66,6 +66,8 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'questions', $this->renderQuestions());
         $this->vars = Arr::add($this->vars, 'addresses', $this->renderAddresses());
         $this->vars = Arr::add($this->vars, 'footer', $this->renderFooter());
+        $this->vars = Arr::add($this->vars, 'signUpModal', $this->renderSignUpModal());
+        $this->vars = Arr::add($this->vars, 'paymentRulesModal', $this->renderPaymentRulesModal());
 
         return view($this->template . '.index')->with($this->vars);
     }

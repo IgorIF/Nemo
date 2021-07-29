@@ -52,14 +52,12 @@
     {!! $footer !!}
 @endsection
 
+{{----------------------- Modals -----------------------}}
 
-
-
-
-{{--
-
-@section('trialLesson')
-    {!! $trialLesson !!}
+@section('signUpModal')
+    {!! $signUpModal !!}
 @endsection
 
---}}
+{{--@section('paymentRulesModal')
+    {!! $paymentRulesModal !!}
+@endsection--}}
