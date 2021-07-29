@@ -32,25 +32,25 @@
 
 <section class="coaches">
     <div class="container">
-        @yield('trainers')
+        @yield('coaches')
     </div>
 </section>
 
 {{--<section class="payment">
     <div class="container">
-        @yield('prices')
+        @yield('payment')
     </div>
 </section>--}}
 
 <section class="sale">
     <div class="container">
-        @yield('promotions')
+        @yield('sale')
     </div>
 </section>
 
 <section class="what">
     <div class="container">
-        @yield('firstLesson')
+        @yield('what')
     </div>
 </section>
 

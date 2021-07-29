@@ -16,20 +16,20 @@
     {!! $gallery !!}
 @endsection
 
-@section('trainers')
-    {!! $trainers !!}
+@section('coaches')
+    {!! $coaches !!}
 @endsection
 
-{{--@section('prices')
-    {!! $prices !!}
+{{--@section('payment')
+    {!! $payment !!}
 @endsection--}}
 
-@section('promotions')
-    {!! $promotions !!}
+@section('sale')
+    {!! $sale !!}
 @endsection
 
-@section('firstLesson')
-    {!! $firstLesson !!}
+@section('what')
+    {!! $what !!}
 @endsection
 
 @section('waterTreatment')

@@ -51,8 +51,8 @@ class FilialController extends BaseController
         $this->renderAbout();
         $this->renderTheBenefitsOfEarlySwimming();
         $this->renderWhoSwimsWithUs();
-        $this->renderTrainers();
-        $this->renderPromotions();
+        $this->renderCoaches();
+        $this->renderSale();
         $this->renderGallery();
         $this->renderSecurity();
         $this->renderReviews();
@@ -64,7 +64,7 @@ class FilialController extends BaseController
 
         $this->template = "site.filial";
         $this->renderHeader();
-        $this->renderPrices();
+        $this->renderPayment();
         $this->renderFooter();
         $this->renderContactUs();
         $this->renderTrialLesson();
@@ -91,7 +91,7 @@ class FilialController extends BaseController
         $this->headerView = view( $this->template . '.header')->with(['texts' => $texts, 'images' => $images, 'filialBranch' => $this->filialBranch])->render();
     }
 
-    protected function renderPrices()
+    protected function renderPayment()
     {
         $texts = $this->getFromCollection($this->texts, [35 => 35, 68 => 68]);
         $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();

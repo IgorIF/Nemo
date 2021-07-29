@@ -135,23 +135,23 @@ class BaseController extends Controller
         return view($this->template . '.gallery')->with('texts', $texts)->render();
     }
 
-    protected function renderTrainers(): string {
+    protected function renderCoaches(): string {
         $texts = $this->getFromCollection($this->texts, [8 => 9]);
-        return view($this->template . '.trainers')->with(['texts' => $texts, 'filials' => $this->filials, 'trainers' => $this->trainers])->render();
+        return view($this->template . '.coaches')->with(['texts' => $texts, 'filials' => $this->filials, 'trainers' => $this->trainers])->render();
     }
 
-    protected function renderPrices(): string {
+    protected function renderPayment(): string {
         $texts = $this->getFromCollection($this->texts, [10 => 10]);
-        return view($this->template . '.prices')->with('texts', $texts)->render();
+        return view($this->template . '.payment')->with('texts', $texts)->render();
     }
 
-    protected function renderPromotions(): string {
+    protected function renderSale(): string {
         $texts = $this->getFromCollection($this->texts, [11 => 11]);
-        return view($this->template . '.promotions')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
+        return view($this->template . '.sale')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
     }
 
-    protected function renderFirstLesson(): string {
-        return view($this->template . '.first_lesson')->render();
+    protected function renderWhat(): string {
+        return view($this->template . '.what')->render();
     }
 
     protected function renderWaterTreatment(): string {

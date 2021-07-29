@@ -57,10 +57,10 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'offer', $this->renderOffer());
         $this->vars = Arr::add($this->vars, 'about', $this->renderAbout());
         $this->vars = Arr::add($this->vars, 'gallery', $this->renderGallery());
-        $this->vars = Arr::add($this->vars, 'trainers', $this->renderTrainers());
-        $this->vars = Arr::add($this->vars, 'prices', $this->renderPrices());
-        $this->vars = Arr::add($this->vars, 'promotions', $this->renderPromotions());
-        $this->vars = Arr::add($this->vars, 'firstLesson', $this->renderFirstLesson());
+        $this->vars = Arr::add($this->vars, 'coaches', $this->renderCoaches());
+        $this->vars = Arr::add($this->vars, 'payment', $this->renderPayment());
+        $this->vars = Arr::add($this->vars, 'sale', $this->renderSale());
+        $this->vars = Arr::add($this->vars, 'what', $this->renderWhat());
         $this->vars = Arr::add($this->vars, 'waterTreatment', $this->renderWaterTreatment());
         $this->vars = Arr::add($this->vars, 'reviews', $this->renderReviews());
         $this->vars = Arr::add($this->vars, 'questions', $this->renderQuestions());

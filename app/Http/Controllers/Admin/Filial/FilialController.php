@@ -47,7 +47,7 @@ class FilialController extends IndexController
 
         $this->template = 'admin.filial';
         $this->renderHeader();
-        $this->renderPrices();
+        $this->renderPayment();
         $this->renderSwimNeverNotEarly();
         $this->vars = Arr::add($this->vars, 'header', $this->headerView);
         $this->vars = Arr::add($this->vars, 'prices', $this->pricesView);
@@ -63,7 +63,7 @@ class FilialController extends IndexController
         $this->filialBranch = $this->filialsRepository->getFilialByAlias($alias);
     }
 
-    protected function renderPrices()
+    protected function renderPayment()
     {
         $texts = $this->getFromCollection($this->texts, [35 => 35, 68 => 68]);
         $this->pricesView = view($this->template . '.prices')->with(['texts' => $texts, 'filialBranch' => $this->filialBranch, 'calculatorDescriptions' => $this->calculatorDescriptions])->render();
