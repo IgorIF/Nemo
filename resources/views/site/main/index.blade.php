@@ -28,8 +28,29 @@
     {!! $promotions !!}
 @endsection
 
+@section('firstLesson')
+    {!! $firstLesson !!}
+@endsection
 
+@section('waterTreatment')
+    {!! $waterTreatment !!}
+@endsection
 
+@section('reviews')
+    {!! $reviews !!}
+@endsection
+
+@section('questions')
+    {!! $questions !!}
+@endsection
+
+@section('addresses')
+    {!! $addresses !!}
+@endsection
+
+@section('footer')
+    {!! $footer !!}
+@endsection
 
 
 
@@ -52,20 +73,8 @@
     {!! $swimNeverNotEarly !!}
 @endsection
 
-@section('security')
-    {!! $security !!}
-@endsection
-
-@section('reviews')
-    {!! $reviews !!}
-@endsection
-
 @section('swimmingPool')
     {!! $swimmingPool !!}
-@endsection
-
-@section('footer')
-    {!! $footer !!}
 @endsection
 
 @section('trialLesson')

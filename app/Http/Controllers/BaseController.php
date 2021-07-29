@@ -172,6 +172,29 @@ class BaseController extends Controller
         return view($this->template . '.promotions')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
     }
 
+    protected function renderFirstLesson(): string {
+        return view($this->template . '.first_lesson')->render();
+    }
+
+    protected function renderWaterTreatment(): string {
+        return view($this->template . '.water_treatment')->render();
+    }
+
+    protected function renderReviews(): string {
+        return view($this->template . '.reviews')->render();
+    }
+
+    protected function renderQuestions(): string {
+        return view($this->template . '.questions')->render();
+    }
+
+    protected function renderAddresses(): string {
+        return view($this->template . '.addresses')->render();
+    }
+
+    protected function renderFooter(): string {
+        return view($this->template . '.footer')->render();
+    }
 
 
 
@@ -209,20 +232,9 @@ class BaseController extends Controller
         return view($this->template . '.security')->with(['texts' => $texts, 'securityCategories' => $this->securityCategories, 'images' => $images])->render();
     }
 
-    protected function renderReviews(): string {
-        $texts = $this->getFromCollection($this->texts, [40 => 40]);
-        $videos = $this->getFromCollection($this->videos, [2 => count($this->videos)-1]);
-        return view($this->template . '.reviews')->with(['texts' => $texts, 'videos' => $videos])->render();
-    }
-
     protected function renderSwimmingPool(): string {
         $texts = $this->getFromCollection($this->texts, [41 => 46]);
         return view($this->template . '.swimming_pool')->with('texts', $texts)->render();
-    }
-
-    protected function renderFooter(): string {
-        $texts = $this->getFromCollection($this->texts, [47 => 55]);
-        return view($this->template . '.footer')->with(['texts' => $texts, 'filials' => $this->filials])->render();
     }
 
     protected function renderTrialLesson(): string {
