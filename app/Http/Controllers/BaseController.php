@@ -167,7 +167,7 @@ class BaseController extends Controller
     }
 
     protected function renderAddresses(): string {
-        return view($this->template . '.addresses')->render();
+        return view($this->template . '.addresses')->with('filials', $this->filials)->render();
     }
 
     protected function renderFooter(): string {

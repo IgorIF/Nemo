@@ -6,11 +6,9 @@
     </ul>
     <div class="tabs-content addresses__list active">
         <h3 class="addresses-tab__title">Наши бассейны</h3>
-        <div class="addresses__item filial-link">г. Москва, ул. Кировоградская 36 <span>(Пражская)</span></div>
-        <div class="addresses__item filial-link">г. Москва, ул. Винокурова 24, к4 <span>(Академическая)</span></div>
-        <div class="addresses__item filial-link">г. Люберцы, ул. Камова 11/5 <span>(Некрасовка)</span></div>
-        <div class="addresses__item filial-link">г. Москва, ул. Мячковский бульвар 16, к1 <span>(Марьино)</span></div>
-        <div class="addresses__item addresses__item_lc filial-link">г. Москва, ул. Петразоводская 11, к2 <span>(Ховрино)</span></div>
+        @foreach($filials as $filial)
+            <div class="addresses__item filial-link {{ $loop->last? 'addresses__item_lc': '' }}">{{ $filial->address }} <span>({{ $filial->metro }})</span></div>
+        @endforeach
         <button type="button" class="btn-orange addresses__btn btn-popup" data-mfp-src="#call_me">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</button>
     </div>
     <div class="tabs-content addresses__map">
