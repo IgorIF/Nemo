@@ -16,6 +16,10 @@
     {!! $howWeSwim !!}
 @endsection
 
+@section('trainers')
+    {!! $trainers !!}
+@endsection
+
 {{--
 
 @section('theBenefitsOfEarlySwimming')

@@ -1,4 +1,4 @@
-<h2 class="title title_center gallery__title">Как мы плаваем</h2>
+<h2 class="title title_center gallery__title">{{ $texts->get(7)->text }}</h2>
 
 <div class="gallery-slider slider">
     <div class="gallery__grid swiper-wrapper">

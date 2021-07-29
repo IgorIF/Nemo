@@ -105,7 +105,7 @@ class BaseController extends Controller
     }
 
     protected function getFilialsData() {
-        $this->filials = $this->filialsRepository->getAllWithIdAsKey();
+        $this->filials = $this->filialsRepository->getAll();
     }
 
     protected function getTrainersData() {
@@ -152,6 +152,25 @@ class BaseController extends Controller
         return view( $this->template . '.about_us')->with(['texts' => $texts, 'video' => $video])->render();
     }
 
+    protected function renderHowWeSwim(): string {
+        $texts = $this->getFromCollection($this->texts, [7 => 7]);
+        return view($this->template . '.how_we_swim')->with('texts', $texts)->render();
+    }
+
+    protected function renderTrainers(): string {
+        $texts = $this->getFromCollection($this->texts, [8 => 9]);
+        return view($this->template . '.trainers')->with(['texts' => $texts, 'filials' => $this->filials, 'trainers' => $this->trainers])->render();
+    }
+
+
+
+
+
+
+
+
+
+
     protected function renderTheBenefitsOfEarlySwimming(): string {
         $texts = $this->getFromCollection($this->texts, [10 => 22]);
         $images = $this->getFromCollection($this->images, [2 => 2]);
@@ -162,11 +181,6 @@ class BaseController extends Controller
         $texts = $this->getFromCollection($this->texts, [23 => 32]);
         $images = $this->getFromCollection($this->images, [3 => 5]);
         return view($this->template . '.who_swims_with_us')->with(['texts' => $texts, 'images' => $images])->render();
-    }
-
-    protected function renderTrainers(): string {
-        $texts = $this->getFromCollection($this->texts, [33 => 34]);
-        return view($this->template . '.trainers')->with(['trainers' => $this->trainers, 'texts' => $texts])->render();
     }
 
     protected function renderPrices(): string {
@@ -183,10 +197,6 @@ class BaseController extends Controller
         $texts = $this->getFromCollection($this->texts, [36 => 37]);
         $images = $this->getFromCollection($this->images, [6 => 6]);
         return view($this->template . '.swim_never_not_early')->with(['texts' => $texts, 'images' => $images])->render();
-    }
-
-    protected function renderHowWeSwim(): string {
-        return view($this->template . '.how_we_swim')->render();
     }
 
     protected function renderSecurity(): string {

@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Filial extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = "alias";
+    public $incrementing = false;
 
     protected $fillable = [
         'address',
@@ -18,4 +22,8 @@ class Filial extends Model
         'header',
         'swimNeverNotEarly'
     ];
+
+    public function trainers(): BelongsToMany {
+        return $this->belongsToMany(Trainer::class);
+    }
 }
