@@ -59,6 +59,7 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'howWeSwim', $this->renderHowWeSwim());
         $this->vars = Arr::add($this->vars, 'trainers', $this->renderTrainers());
         $this->vars = Arr::add($this->vars, 'prices', $this->renderPrices());
+        $this->vars = Arr::add($this->vars, 'promotions', $this->renderPromotions());
 
         return view($this->template . '.index')->with($this->vars);
     }

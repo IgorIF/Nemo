@@ -44,66 +44,7 @@
 
 <section class="sale">
     <div class="container">
-        <h2 class="title title_center sale__title">Скидки и Акции</h2>
-        <div class="slider-3col__wrapper">
-            <div class="sale-slider slider slider-3col">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide sale-item">
-                        <h3 class="sale-item__title">Для второго и последующего ребенка в семье</h3>
-                        <div class="sale-item__text">
-                            <b>-10%</b>
-                            <span>СКИДКА</span>
-                            на абонемент
-                        </div>
-                        <img src="images/dist/ct1.png" alt="" class="sale-item__img">
-                    </div>
-
-                    <div class="swiper-slide sale-item">
-                        <h3 class="sale-item__title">В день пробного <br>занятия</h3>
-                        <div class="sale-item__text">
-                            <b>-10%</b>
-                            <span>СКИДКА</span>
-                            на абонемент
-                        </div>
-                        <img src="images/dist/ct2.png" alt="" class="sale-item__img">
-                    </div>
-
-                    <div class="swiper-slide sale-item">
-                        <h3 class="sale-item__title">За приведенного <br>друга</h3>
-                        <div class="sale-item__text">
-                            <b>-10%</b>
-                            <span>СКИДКА</span>
-                            на абонемент
-                        </div>
-                        <img src="images/dist/ct3.png" alt="" class="sale-item__img">
-                    </div>
-
-                    <div class="swiper-slide sale-item">
-                        <h3 class="sale-item__title">Особенным деткам</h3>
-                        <div class="sale-item__text">
-                            <b>-10%</b>
-                            <span>СКИДКА</span>
-                            на абонемент
-                        </div>
-                        <img src="images/dist/ct4.png" alt="" class="sale-item__img">
-                    </div>
-
-                    <div class="swiper-slide sale-item">
-                        <h3 class="sale-item__title">Новым посетителям</h3>
-                        <div class="sale-item__text">
-                            <b>-30%</b>
-                            <span>СКИДКА</span>
-                            на первое занятие
-                        </div>
-                        <img src="images/dist/ct5.png" alt="" class="sale-item__img">
-                    </div>
-                </div>
-                <div class="sale-slider-pagination slider-3col-pagination slider-pagination"></div>
-            </div>
-            <button class="sale-prev slider-prev slider-3col-prev">Назад</button>
-            <button class="sale-next slider-next slider-3col-next">Вперед</button>
-        </div>
-
+        @yield('promotions')
     </div>
 </section>
 

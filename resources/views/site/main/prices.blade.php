@@ -1,4 +1,4 @@
-<h2 class="title title_center payment__title">Стоимость и оплата занятий</h2>
+<h2 class="title title_center payment__title">{{ $texts->get(10)->text }}</h2>
 <div class="row">
     <div class="col-lg-4">
         <div class="payment__item">

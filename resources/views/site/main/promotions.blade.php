@@ -1,10 +1,22 @@
-<h2 data-aos="fade-up" class="aos-init aos-animate">{!! $texts->get(67)->text !!}</h2>
+<h2 class="title title_center sale__title">{{ $texts->get(11)->text }}</h2>
+<div class="slider-3col__wrapper">
+    <div class="sale-slider slider slider-3col">
+        <div class="swiper-wrapper">
 
-<div id="promotions_container" class="akcii-new-block__wrapper">
-    @foreach($promotions as $promotion)
-        <div id="promotion_{{ $promotion->id }}" class="akcii-new-block__item" data-aos="fade-up" style="background-image: url({{ asset('storage/images/promotions/' . $promotion->image) }})">
-            <div id="promotion_name" class="akcii-new-block__item__title">{!! $promotion->name !!}</div>
-            <div class="akcii-new-block__sale"><span>-<span id="promotion_percent" style="display: unset">{!! $promotion->percent !!}</span>%</span> Скидка</div>
+            @foreach($promotions as $promotion)
+                <div class="swiper-slide sale-item">
+                    <h3 class="sale-item__title">{!! $promotion->name !!}</h3>
+                    <div class="sale-item__text">
+                        <b>-{{ $promotion->percent }}%</b>
+                        <span>СКИДКА</span>
+                        {{ $promotion->target }}
+                    </div>
+                    <img src="{{ asset('storage/images/promotions/' . $promotion->image) }}" alt="{{ $promotion->name }}" class="sale-item__img">
+                </div>
+            @endforeach
         </div>
-    @endforeach
+        <div class="sale-slider-pagination slider-3col-pagination slider-pagination"></div>
+    </div>
+    <button class="sale-prev slider-prev slider-3col-prev">Назад</button>
+    <button class="sale-next slider-next slider-3col-next">Вперед</button>
 </div>

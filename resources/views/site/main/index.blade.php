@@ -24,6 +24,20 @@
     {!! $prices !!}
 @endsection--}}
 
+@section('promotions')
+    {!! $promotions !!}
+@endsection
+
+
+
+
+
+
+
+
+
+
+
 {{--
 
 @section('theBenefitsOfEarlySwimming')
@@ -34,20 +48,8 @@
     {!! $whoSwimsWithUs !!}
 @endsection
 
-@section('trainers')
-    {!! $trainers !!}
-@endsection
-
-@section('promotions')
-    {!! $promotions !!}
-@endsection
-
 @section('swimNeverNotEarly')
     {!! $swimNeverNotEarly !!}
-@endsection
-
-@section('howWeSwim')
-    {!! $howWeSwim !!}
 @endsection
 
 @section('security')
