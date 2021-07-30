@@ -91,8 +91,9 @@
 @yield('paymentRulesModal')
 
 
-<script src="js/app.min.js?v3"></script>
-<script src="js/vendor/jquery.maskedinput.js?v3"></script>
+<script src="{{ asset('js/app.min.js?v3') }}"></script>
+<script src="{{ asset('js/vendor/jquery.maskedinput.js?v3') }}"></script>
+<script src="{{ asset('js/site.js') }}"></script>
 
 </body>
 </html>
