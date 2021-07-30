@@ -36,11 +36,11 @@
     </div>
 </section>
 
-{{--<section class="payment" id="payment">
+<section class="payment" id="payment">
     <div class="container">
         @yield('payment')
     </div>
-</section>--}}
+</section>
 
 <section class="sale" id="sale">
     <div class="container">

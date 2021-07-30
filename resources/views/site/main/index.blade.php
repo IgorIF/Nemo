@@ -20,9 +20,9 @@
     {!! $coaches !!}
 @endsection
 
-{{--@section('payment')
+@section('payment')
     {!! $payment !!}
-@endsection--}}
+@endsection
 
 @section('sale')
     {!! $sale !!}
@@ -58,6 +58,6 @@
     {!! $signUpModal !!}
 @endsection
 
-{{--@section('paymentRulesModal')
+@section('paymentRulesModal')
     {!! $paymentRulesModal !!}
-@endsection--}}
+@endsection

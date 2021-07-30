@@ -4,6 +4,227 @@
         <div class="payment__item">
             <div class="payment__label">Выберите филиал:</div>
             <select name="filial" class="select">
+                @foreach($filials as $filial)
+                    <option {{ $loop->first ? 'disabled' : '' }} value="{{ $filial->alias }}">{{ $filial->address }} ({{ $filial->metro }})</option>
+                    @if($loop->first)
+                        <option selected value="{{ $filial->alias }}">{{ $filial->address }} ({{ $filial->metro }})</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="payment__item">
+            <div class="payment__label">
+                Бассейн:
+                <div class="payment__i info">
+                    <div class="info__i">i</div>
+                    <div class="info__text">
+                        <div class="info__title">Бассейны</div>
+                        <b>Малая чаша:</b>
+                        <div class="info__item">
+                            <span>3х3м</span>
+                            Круглый каркасный бассейн, диаметром - 3м, глубиной - 1,2м
+                        </div>
+                        <b>Большая чаша:</b>
+                        <div class="info__item">
+                            <span>6х3х1,2м</span>
+                            Прямоугольный бассейн, размерами: длина и ширина - 6х3м, глубина - 1,2м.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-group">
+                <label>
+                    <input type="radio" name="basin"><span>Малая чаша</span>
+                </label>
+                <label>
+                    <input type="radio" name="basin" checked><span>Большая чаша</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="payment__item">
+            <div class="payment__label">
+                Вид абонемента:
+                <div class="payment__i info">
+                    <div class="info__i">i</div>
+                    <div class="info__text">
+                        <div class="info__title">Виды абонементов</div>
+                        <b>Абонемент «Стандарт»</b>
+                        <ul class="info__list">
+                            <li>Предусматривает отмену занятия до 18.00 предыдущего дня;</li>
+                            <li>Срок действия абонемента: 4 недели + 2 недели заморозки;</li>
+                            <li>Уведомление о смене тренера не предусмотрено;</li>
+                        </ul>
+                        <b>Абонемент «Лояльный»</b>
+                        <ul class="info__list">
+                            <li>Возможность отменять занятие день в день без потери занятия</li>
+                            <li>Позволяет получать уведомление о смене тренера</li>
+                            <li>Срок действия абонемента: 4 недели + 2 недели заморозки.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-group">
+                <label>
+                    <input type="radio" name="subscription"><span>Стандарт</span>
+                </label>
+                <label>
+                    <input type="radio" name="subscription" checked><span>Лояльный</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 col-6">
+        <div class="payment__item">
+            <div class="payment__label">Разовые занятия:</div>
+            <label class="payment-option">
+                <input type="radio" name="one-time" checked>
+                <div class="payment-option__info">
+                    <header class="payment-option__header">
+                        Пробное занятие
+                        <span class="payment-option__sale">СКИДКА -30%</span>
+                    </header>
+                    <div class="payment-option__price">
+                        <div class="payment-option__pr">980 <i>₽</i></div>
+                        <del>1 500 ₽</del>
+                    </div>
+                    <footer class="payment-option__footer">
+                        <div class="payment-option__day">1 день</div>
+                        <div class="payment-option__time">30 мин</div>
+                    </footer>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-4 col-6">
+        <label class="payment-option">
+            <input type="radio" name="one-time">
+            <div class="payment-option__info">
+                <header class="payment-option__header">
+                    Разовое занятие
+                </header>
+                <div class="payment-option__price">
+                    <div class="payment-option__pr">1 500 <i>₽</i></div>
+                </div>
+                <footer class="payment-option__footer">
+                    <div class="payment-option__day">1 день</div>
+                    <div class="payment-option__time">30 мин</div>
+                </footer>
+            </div>
+        </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="payment__item">
+            <div class="payment__label">Абонементы:</div>
+            <label class="payment-option">
+                <input type="radio" name="one-time">
+                <div class="payment-option__info">
+                    <header class="payment-option__header">
+                        Стандарт на <span class="orange" style="color: #FF1F0D;">4</span> занятий
+                    </header>
+                    <div class="payment-option__price">
+                        <div class="payment-option__pr">9 900 <i>₽</i></div>
+                        <del>1 100 ₽/занятие</del>
+                    </div>
+                    <footer class="payment-option__footer">
+                        <div class="payment-option__day">1 месяц 14 дней</div>
+                        <div class="payment-option__time">30 мин</div>
+                    </footer>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="payment__item">
+            <label class="payment-option">
+                <input type="radio" name="one-time">
+                <div class="payment-option__info">
+                    <header class="payment-option__header">
+                        Стандарт на <span class="orange" style="color: #FF1F0D;">8</span> занятия
+                    </header>
+                    <div class="payment-option__price">
+                        <div class="payment-option__pr">9 900 <i>₽</i></div>
+                        <del>1 100 ₽/занятие</del>
+                    </div>
+                    <footer class="payment-option__footer">
+                        <div class="payment-option__day">1 месяц 14 дней</div>
+                        <div class="payment-option__time">30 мин</div>
+                    </footer>
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="payment__item">
+            <label class="payment-option">
+                <input type="radio" name="one-time">
+                <div class="payment-option__info">
+                    <header class="payment-option__header">
+                        Стандарт на <span class="orange" style="color: #FF1F0D;">12</span> занятия
+                    </header>
+                    <div class="payment-option__price">
+                        <div class="payment-option__pr">9 900 <i>₽</i></div>
+                        <del>1 100 ₽/занятие</del>
+                    </div>
+                    <footer class="payment-option__footer">
+                        <div class="payment-option__day">1 месяц 14 дней</div>
+                        <div class="payment-option__time">30 мин</div>
+                    </footer>
+                </div>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="row payment__bottom">
+    <div class="col-md-6">
+        <div class="all-price">Стоимость: <span>980 <i>₽</i></span></div>
+    </div>
+    <div class="col-md-6">
+        <a href="#" class="btn-orange payment__btn">ОПЛАТИТЬ И ЗАПИСАТЬСЯ</a>
+        <a href="#pay-popup" class="btn-popup">Процесс оплаты и возврата по картам</a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{--
+<h2 class="title title_center payment__title">{{ $texts->get(10)->text }}</h2>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="payment__item">
+            <div class="payment__label">Выберите филиал:</div>
+            <select name="filial" class="select">
                 <option disabled value="1" >ул. Кировоградская 36 (Пражская)</option>
                 <option selected value="1" >ул. Кировоградская 36 (Пражская)</option>
                 <option value="2">ул. Винокурова 24, к4 (Академическая)</option>
@@ -194,3 +415,4 @@
         <a href="#pay-popup" class="btn-popup">Процесс оплаты и возврата по картам</a>
     </div>
 </div>
+--}}

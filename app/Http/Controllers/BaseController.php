@@ -142,7 +142,7 @@ class BaseController extends Controller
 
     protected function renderPayment(): string {
         $texts = $this->getFromCollection($this->texts, [10 => 10]);
-        return view($this->template . '.payment')->with('texts', $texts)->render();
+        return view($this->template . '.payment')->with(['texts' => $texts, 'filials' => $this->filials])->render();
     }
 
     protected function renderSale(): string {
