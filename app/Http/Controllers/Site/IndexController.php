@@ -8,11 +8,14 @@ use App\Repositories\CalculatorDescriptionsRepository;
 use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
+use App\Repositories\NumberOfLessonsRepository;
+use App\Repositories\PoolsRepository;
 use App\Repositories\PromotionsRepository;
 use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\SecurityItemsRepository;
+use App\Repositories\SubscriptionsRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use App\Repositories\VacanciesRepository;
@@ -26,11 +29,12 @@ class IndexController extends BaseController
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository)
+                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository,
+                                PoolsRepository $poolsRepository, SubscriptionsRepository $subscriptionsRepository, NumberOfLessonsRepository $numberOfLessonsRepository)
     {
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
                             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
-                            $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository);
+                            $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository, $poolsRepository, $subscriptionsRepository, $numberOfLessonsRepository);
         $this->template = 'site.main';
     }
 
@@ -46,6 +50,9 @@ class IndexController extends BaseController
         $this->getRuleCategoriesData();
         $this->getMedicalCertificatesData();
         $this->getVacanciesData();
+        $this->getPoolsData();
+        $this->getSubscriptionsData();
+        $this->getNumberOfLessonsData();
 
         return $this->renderOutput();
     }

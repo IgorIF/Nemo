@@ -35,12 +35,11 @@
                 </div>
             </div>
             <div class="payment-group">
-                <label>
-                    <input type="radio" name="basin"><span>Малая чаша</span>
-                </label>
-                <label>
-                    <input type="radio" name="basin" checked><span>Большая чаша</span>
-                </label>
+                @foreach($pools as $pool)
+                    <label>
+                        <input type="radio" name="pool" value="{{ $pool->id }}" {{ $loop->first ? 'checked' : '' }}><span>{{ $pool->name }}</span>
+                    </label>
+                @endforeach
             </div>
         </div>
     </div>
@@ -68,122 +67,76 @@
                 </div>
             </div>
             <div class="payment-group">
-                <label>
-                    <input type="radio" name="subscription"><span>Стандарт</span>
-                </label>
-                <label>
-                    <input type="radio" name="subscription" checked><span>Лояльный</span>
-                </label>
+                @foreach($subscriptions as $subscription)
+                    <label>
+                        <input type="radio" name="subscription" value="{{ $subscription->id }}" {{ $loop->first ? 'checked' : '' }}><span>{{ $subscription->name }}</span>
+                    </label>
+                @endforeach
             </div>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-4 col-6">
-        <div class="payment__item">
-            <div class="payment__label">Разовые занятия:</div>
-            <label class="payment-option">
-                <input type="radio" name="one-time" checked>
-                <div class="payment-option__info">
-                    <header class="payment-option__header">
-                        Пробное занятие
-                        <span class="payment-option__sale">СКИДКА -30%</span>
-                    </header>
-                    <div class="payment-option__price">
-                        <div class="payment-option__pr">980 <i>₽</i></div>
-                        <del>1 500 ₽</del>
+@if($hasOnceNumbersOfLessons)
+    <div class="row">
+        @foreach($numbersOfLessons as $numberOfLessons)
+            @if($numberOfLessons->is_once)
+                <div class="col-lg-4 col-6">
+                    <div class="payment__item">
+                        @if($loop->first) <div class="payment__label">Разовые занятия:</div> @endif
+                        <label class="payment-option">
+                            <input type="radio" name="one-time" checked>
+                            <div class="payment-option__info">
+                                <header class="payment-option__header">
+                                    {{ $numberOfLessons->name }}
+                                    @if($numberOfLessons->discount != 0) <span class="payment-option__sale">СКИДКА -{{ $numberOfLessons->discount }}%</span> @endif
+                                </header>
+                                <div class="payment-option__price">
+                                    <div class="payment-option__pr">980 <i>₽</i></div>
+                                    <del>1 500 ₽</del>
+                                </div>
+                                <footer class="payment-option__footer">
+                                    <div class="payment-option__day">1 день</div>
+                                    <div class="payment-option__time">30 мин</div>
+                                </footer>
+                            </div>
+                        </label>
                     </div>
-                    <footer class="payment-option__footer">
-                        <div class="payment-option__day">1 день</div>
-                        <div class="payment-option__time">30 мин</div>
-                    </footer>
                 </div>
-            </label>
-        </div>
+            @endif
+        @endforeach
     </div>
-    <div class="col-lg-4 col-6">
-        <label class="payment-option">
-            <input type="radio" name="one-time">
-            <div class="payment-option__info">
-                <header class="payment-option__header">
-                    Разовое занятие
-                </header>
-                <div class="payment-option__price">
-                    <div class="payment-option__pr">1 500 <i>₽</i></div>
-                </div>
-                <footer class="payment-option__footer">
-                    <div class="payment-option__day">1 день</div>
-                    <div class="payment-option__time">30 мин</div>
-                </footer>
-            </div>
-        </label>
-    </div>
-</div>
+@endif
 
-<div class="row">
-    <div class="col-lg-4">
-        <div class="payment__item">
-            <div class="payment__label">Абонементы:</div>
-            <label class="payment-option">
-                <input type="radio" name="one-time">
-                <div class="payment-option__info">
-                    <header class="payment-option__header">
-                        Стандарт на <span class="orange" style="color: #FF1F0D;">4</span> занятий
-                    </header>
-                    <div class="payment-option__price">
-                        <div class="payment-option__pr">9 900 <i>₽</i></div>
-                        <del>1 100 ₽/занятие</del>
+@if($hasManyNumbersOfLessons)
+    <div class="row">
+        @foreach($numbersOfLessons as $numberOfLessons)
+            @if(!$numberOfLessons->is_once)
+                <div class="col-lg-4">
+                    <div class="payment__item">
+                        @if($loop->first) <div class="payment__label">Абонементы:</div> @endif
+                        <label class="payment-option">
+                            <input type="radio" name="one-time">
+                            <div class="payment-option__info">
+                                <header class="payment-option__header">
+                                    Стандарт на <span class="orange" style="color: #FF1F0D;">{{ $numberOfLessons->name }}</span> занятий
+                                </header>
+                                <div class="payment-option__price">
+                                    <div class="payment-option__pr">9 900 <i>₽</i></div>
+                                    <del>1 100 ₽/занятие</del>
+                                </div>
+                                <footer class="payment-option__footer">
+                                    <div class="payment-option__day">1 месяц 14 дней</div>
+                                    <div class="payment-option__time">30 мин</div>
+                                </footer>
+                            </div>
+                        </label>
                     </div>
-                    <footer class="payment-option__footer">
-                        <div class="payment-option__day">1 месяц 14 дней</div>
-                        <div class="payment-option__time">30 мин</div>
-                    </footer>
                 </div>
-            </label>
-        </div>
+            @endif
+        @endforeach
     </div>
-    <div class="col-lg-4">
-        <div class="payment__item">
-            <label class="payment-option">
-                <input type="radio" name="one-time">
-                <div class="payment-option__info">
-                    <header class="payment-option__header">
-                        Стандарт на <span class="orange" style="color: #FF1F0D;">8</span> занятия
-                    </header>
-                    <div class="payment-option__price">
-                        <div class="payment-option__pr">9 900 <i>₽</i></div>
-                        <del>1 100 ₽/занятие</del>
-                    </div>
-                    <footer class="payment-option__footer">
-                        <div class="payment-option__day">1 месяц 14 дней</div>
-                        <div class="payment-option__time">30 мин</div>
-                    </footer>
-                </div>
-            </label>
-        </div>
-    </div>
-    <div class="col-lg-4">
-        <div class="payment__item">
-            <label class="payment-option">
-                <input type="radio" name="one-time">
-                <div class="payment-option__info">
-                    <header class="payment-option__header">
-                        Стандарт на <span class="orange" style="color: #FF1F0D;">12</span> занятия
-                    </header>
-                    <div class="payment-option__price">
-                        <div class="payment-option__pr">9 900 <i>₽</i></div>
-                        <del>1 100 ₽/занятие</del>
-                    </div>
-                    <footer class="payment-option__footer">
-                        <div class="payment-option__day">1 месяц 14 дней</div>
-                        <div class="payment-option__time">30 мин</div>
-                    </footer>
-                </div>
-            </label>
-        </div>
-    </div>
-</div>
+@endif
 
 <div class="row payment__bottom">
     <div class="col-md-6">

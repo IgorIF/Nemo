@@ -6,11 +6,14 @@ use App\Repositories\CalculatorDescriptionsRepository;
 use App\Repositories\FilialsRepository;
 use App\Repositories\ImagesRepository;
 use App\Repositories\MedicalCertificatesRepository;
+use App\Repositories\NumberOfLessonsRepository;
+use App\Repositories\PoolsRepository;
 use App\Repositories\PromotionsRepository;
 use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
 use App\Repositories\SecurityItemsRepository;
+use App\Repositories\SubscriptionsRepository;
 use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use App\Repositories\VacanciesRepository;
@@ -38,6 +41,9 @@ class BaseController extends Controller
     protected FilialsRepository $filialsRepository;
     protected PromotionsRepository $promotionsRepository;
     protected CalculatorDescriptionsRepository $calculatorDescriptionsRepository;
+    protected PoolsRepository $poolsRepository;
+    protected SubscriptionsRepository $subscriptionsRepository;
+    protected NumberOfLessonsRepository $numberOfLessonsRepository;
 
     protected Collection $texts;
     protected Collection $images;
@@ -50,11 +56,15 @@ class BaseController extends Controller
     private Collection $vacancies;
     private Collection $promotions;
     protected string $calculatorDescriptions;
+    private Collection $pools;
+    private Collection $subscriptions;
+    private Collection $numbersOfLessons;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository) {
+                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository,
+                                PoolsRepository $poolsRepository, SubscriptionsRepository $subscriptionsRepository, NumberOfLessonsRepository $numberOfLessonsRepository) {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
@@ -68,6 +78,9 @@ class BaseController extends Controller
         $this->filialsRepository = $filialBranchesRepository;
         $this->promotionsRepository = $promotionsRepository;
         $this->calculatorDescriptionsRepository = $calculatorDescriptionsRepository;
+        $this->poolsRepository = $poolsRepository;
+        $this->subscriptionsRepository = $subscriptionsRepository;
+        $this->numberOfLessonsRepository = $numberOfLessonsRepository;
     }
 
     protected function getTextsData() {
@@ -114,6 +127,18 @@ class BaseController extends Controller
         $this->calculatorDescriptions = $this->calculatorDescriptionsRepository->getAllInJson();
     }
 
+    protected function getPoolsData() {
+        $this->pools = $this->poolsRepository->getAll();
+    }
+
+    protected function getSubscriptionsData() {
+        $this->subscriptions = $this->subscriptionsRepository->getAll();
+    }
+
+    protected function getNumberOfLessonsData() {
+        $this->numbersOfLessons = $this->numberOfLessonsRepository->getAll();
+    }
+
     protected function renderHeader(): string {
         $texts = $this->getFromCollection($this->texts, [1 => 2]);
         return view( $this->template . '.header')->with(['texts' => $texts, 'filials' => $this->filials])->render();
@@ -142,7 +167,30 @@ class BaseController extends Controller
 
     protected function renderPayment(): string {
         $texts = $this->getFromCollection($this->texts, [10 => 10]);
-        return view($this->template . '.payment')->with(['texts' => $texts, 'filials' => $this->filials])->render();
+
+        $currentFilial = $this->filials[0];
+
+        $hasOnceNumbersOfLessons = false;
+        $hasManyNumbersOfLessons = false;
+        foreach ($this->numbersOfLessons as $item) {
+            if ($item->is_once) {
+                $hasOnceNumbersOfLessons = true;
+                if ($hasManyNumbersOfLessons)
+                    break;
+            } else {
+                $hasManyNumbersOfLessons = true;
+                if ($hasOnceNumbersOfLessons)
+                    break;
+            }
+        }
+
+        return view($this->template . '.payment')->with([  'texts' => $texts,
+                                                                'filials' => $this->filials,
+                                                                'pools' => $this->pools,
+                                                                'subscriptions' => $this->subscriptions,
+                                                                'numbersOfLessons' => $this->numbersOfLessons,
+                                                                'hasOnceNumbersOfLessons' => $hasOnceNumbersOfLessons,
+                                                                'hasManyNumbersOfLessons' => $hasManyNumbersOfLessons])->render();
     }
 
     protected function renderSale(): string {
