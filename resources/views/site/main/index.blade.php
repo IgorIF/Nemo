@@ -61,3 +61,7 @@
 @section('paymentRulesModal')
     {!! $paymentRulesModal !!}
 @endsection
+
+@section('vacanciesModal')
+    {!! $vacanciesModal !!}
+@endsection

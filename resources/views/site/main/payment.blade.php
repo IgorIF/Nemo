@@ -124,7 +124,7 @@
                             <input type="radio" name="number-of-lessons" value="{{ $numberOfLessons->id }}">
                             <div class="payment-option__info">
                                 <header class="payment-option__header">
-                                    Стандарт на <span class="orange" style="color: #FF1F0D;">{{ $numberOfLessons->name }}</span> занятий
+                                    <span>Стандарт на</span><span class="orange" style="color: #FF1F0D;">{{ $numberOfLessons->name }}</span> занятий
                                 </header>
                                 <div class="payment-option__price">
                                     <div class="payment-option__pr">9 900 <i>₽</i></div>

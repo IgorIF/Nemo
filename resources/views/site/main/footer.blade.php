@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-12">
         <div class="footer-mobil__title">Контакты</div>
-        <div class="footer__logo"><img src="images/dist/logo-f.svg" alt=""></div>
+        <div class="footer__logo"><img src="{{ asset('images/dist/logo-f.svg') }}" alt=""></div>
     </div>
 </div>
 <div class="row">
@@ -23,9 +23,9 @@
         <div class="footer__item">
             <div class="footer__title">Присоединяйтесь</div>
             <div class="soc">
-                <a href="#" class="soc-link" target="_blank"><img src="images/dist/icon/instagram.svg" alt=""></a>
-                <a href="#" class="soc-link" target="_blank"><img src="images/dist/icon/fa.svg" alt=""></a>
-                <a href="#" class="soc-link" target="_blank"><img src="images/dist/icon/vk.svg" alt=""></a>
+                <a href="https://www.instagram.com/aquaclubnemo/" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/instagram.svg') }}" alt=""></a>
+                <a href="https://www.facebook.com/aquaclubnemo" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/fa.svg') }}" alt=""></a>
+                <a href="https://vk.com/aquaclubnemo" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/vk.svg') }}" alt=""></a>
             </div>
         </div>
     </div>
@@ -39,6 +39,6 @@
 <div class="row">
     <div class="col-12 flex">
         <div class="copir">ООО "Акваклуб". ИНН: 7726432268 ОГРН: 118774650808 Юридический адрес: г. Москва, ул. Кировоградская 36 пом.XVIII тел. +7(977)680-02-61</div>
-        <div class="vacans">Приглашаем на работу в наш дружный коллектив <a href="#" class="btn-white">ВАКАНСИИ</a></div>
+        <div class="vacans">Приглашаем на работу в наш дружный коллектив <a href="#vacancies-popup" class="btn-white btn-popup">ВАКАНСИИ</a></div>
     </div>
 </div>
