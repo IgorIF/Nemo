@@ -94,6 +94,7 @@
 <script src="{{ asset('js/app.min.js?v3') }}"></script>
 <script src="{{ asset('js/vendor/jquery.maskedinput.js?v3') }}"></script>
 <script src="{{ asset('js/site.js') }}"></script>
+<script src="{{ asset('js/payment.js') }}"></script>
 
 </body>
 </html>

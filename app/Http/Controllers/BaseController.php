@@ -168,8 +168,6 @@ class BaseController extends Controller
     protected function renderPayment(): string {
         $texts = $this->getFromCollection($this->texts, [10 => 10]);
 
-        $currentFilial = $this->filials[0];
-
         $hasOnceNumbersOfLessons = false;
         $hasManyNumbersOfLessons = false;
         foreach ($this->numbersOfLessons as $item) {
@@ -184,13 +182,24 @@ class BaseController extends Controller
             }
         }
 
+        $dataFilials = [];
+        foreach ($this->filials as $filial) {
+            foreach ($filial->pries as $price) {
+                if ($price->subscription_id != null)
+                    $dataFilials[$filial->alias][$price->number_of_lessons_id][$price->pool_id][$price->subscription_id] = $price->price;
+                else
+                    $dataFilials[$filial->alias][$price->number_of_lessons_id][$price->pool_id] = $price->price;
+            }
+        }
+
         return view($this->template . '.payment')->with([  'texts' => $texts,
                                                                 'filials' => $this->filials,
                                                                 'pools' => $this->pools,
                                                                 'subscriptions' => $this->subscriptions,
                                                                 'numbersOfLessons' => $this->numbersOfLessons,
                                                                 'hasOnceNumbersOfLessons' => $hasOnceNumbersOfLessons,
-                                                                'hasManyNumbersOfLessons' => $hasManyNumbersOfLessons])->render();
+                                                                'hasManyNumbersOfLessons' => $hasManyNumbersOfLessons,
+                                                                'dataFilials' => json_encode($dataFilials)])->render();
     }
 
     protected function renderSale(): string {

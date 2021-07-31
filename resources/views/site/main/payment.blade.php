@@ -1,4 +1,4 @@
-<h2 class="title title_center payment__title">{{ $texts->get(10)->text }}</h2>
+<h2 class="title title_center payment__title" data-filials="{{ $dataFilials }}">{{ $texts->get(10)->text }}</h2>
 <div class="row">
     <div class="col-lg-4">
         <div class="payment__item">
@@ -85,7 +85,7 @@
                     <div class="payment__item">
                         @if($loop->first) <div class="payment__label">Разовые занятия:</div> @endif
                         <label class="payment-option">
-                            <input type="radio" name="one-time" checked>
+                            <input type="radio" name="number-of-lessons" {{ $loop->first ? 'checked' : '' }} value="{{ $numberOfLessons->id }}">
                             <div class="payment-option__info">
                                 <header class="payment-option__header">
                                     {{ $numberOfLessons->name }}
@@ -110,13 +110,18 @@
 
 @if($hasManyNumbersOfLessons)
     <div class="row">
+        @php($i = null)
         @foreach($numbersOfLessons as $numberOfLessons)
             @if(!$numberOfLessons->is_once)
+                @if($i == null) @php($i = true) @endif
                 <div class="col-lg-4">
                     <div class="payment__item">
-                        @if($loop->first) <div class="payment__label">Абонементы:</div> @endif
+                        @if($i = true)
+                            <div class="payment__label">Абонементы:</div>
+                            @php($i = false)
+                        @endif
                         <label class="payment-option">
-                            <input type="radio" name="one-time">
+                            <input type="radio" name="number-of-lessons" value="{{ $numberOfLessons->id }}">
                             <div class="payment-option__info">
                                 <header class="payment-option__header">
                                     Стандарт на <span class="orange" style="color: #FF1F0D;">{{ $numberOfLessons->name }}</span> занятий
