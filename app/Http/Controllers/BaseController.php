@@ -182,13 +182,13 @@ class BaseController extends Controller
             }
         }
 
-        $dataFilials = [];
+        $filialsData = [];
         foreach ($this->filials as $filial) {
             foreach ($filial->pries as $price) {
                 if ($price->subscription_id != null)
-                    $dataFilials[$filial->alias][$price->number_of_lessons_id][$price->pool_id][$price->subscription_id] = $price->price;
+                    $filialsData[$filial->alias][$price->number_of_lessons_id][$price->pool_id][$price->subscription_id] = $price->price;
                 else
-                    $dataFilials[$filial->alias][$price->number_of_lessons_id][$price->pool_id] = $price->price;
+                    $filialsData[$filial->alias][$price->number_of_lessons_id][$price->pool_id] = $price->price;
             }
         }
 
@@ -199,7 +199,7 @@ class BaseController extends Controller
                                                                 'numbersOfLessons' => $this->numbersOfLessons,
                                                                 'hasOnceNumbersOfLessons' => $hasOnceNumbersOfLessons,
                                                                 'hasManyNumbersOfLessons' => $hasManyNumbersOfLessons,
-                                                                'dataFilials' => json_encode($dataFilials)])->render();
+                                                                'filialsData' => json_encode($filialsData)])->render();
     }
 
     protected function renderSale(): string {
