@@ -9,6 +9,7 @@ use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\NumberOfLessonsRepository;
 use App\Repositories\PoolsRepository;
 use App\Repositories\PromotionsRepository;
+use App\Repositories\ReviewsRepository;
 use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
@@ -44,6 +45,7 @@ class BaseController extends Controller
     protected PoolsRepository $poolsRepository;
     protected SubscriptionsRepository $subscriptionsRepository;
     protected NumberOfLessonsRepository $numberOfLessonsRepository;
+    protected ReviewsRepository $reviewsRepository;
 
     protected Collection $texts;
     protected Collection $images;
@@ -59,12 +61,13 @@ class BaseController extends Controller
     private Collection $pools;
     private Collection $subscriptions;
     private Collection $numbersOfLessons;
+    private Collection $reviews;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
                                 ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository,
-                                PoolsRepository $poolsRepository, SubscriptionsRepository $subscriptionsRepository, NumberOfLessonsRepository $numberOfLessonsRepository) {
+                                PoolsRepository $poolsRepository, SubscriptionsRepository $subscriptionsRepository, NumberOfLessonsRepository $numberOfLessonsRepository, ReviewsRepository $reviewsRepository) {
         $this->textsRepository = $textsRepository;
         $this->trainersRepository = $trainersRepository;
         $this->securityCategoriesRepository = $securityCategoriesRepository;
@@ -81,6 +84,7 @@ class BaseController extends Controller
         $this->poolsRepository = $poolsRepository;
         $this->subscriptionsRepository = $subscriptionsRepository;
         $this->numberOfLessonsRepository = $numberOfLessonsRepository;
+        $this->reviewsRepository = $reviewsRepository;
     }
 
     protected function getTextsData() {
@@ -137,6 +141,10 @@ class BaseController extends Controller
 
     protected function getNumberOfLessonsData() {
         $this->numbersOfLessons = $this->numberOfLessonsRepository->getAll();
+    }
+
+    protected function getReviewsData() {
+        $this->reviews = $this->reviewsRepository->getAll();
     }
 
     protected function renderHeader(): string {
@@ -216,7 +224,7 @@ class BaseController extends Controller
     }
 
     protected function renderReviews(): string {
-        return view($this->template . '.reviews')->render();
+        return view($this->template . '.reviews')->with('reviews', $this->reviews)->render();
     }
 
     protected function renderQuestions(): string {

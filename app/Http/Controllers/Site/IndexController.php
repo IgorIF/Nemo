@@ -11,6 +11,7 @@ use App\Repositories\MedicalCertificatesRepository;
 use App\Repositories\NumberOfLessonsRepository;
 use App\Repositories\PoolsRepository;
 use App\Repositories\PromotionsRepository;
+use App\Repositories\ReviewsRepository;
 use App\Repositories\RuleCategoriesRepository;
 use App\Repositories\RuleItemsRepository;
 use App\Repositories\SecurityCategoriesRepository;
@@ -30,11 +31,11 @@ class IndexController extends BaseController
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
                                 RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
                                 ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository,
-                                PoolsRepository $poolsRepository, SubscriptionsRepository $subscriptionsRepository, NumberOfLessonsRepository $numberOfLessonsRepository)
+                                PoolsRepository $poolsRepository, SubscriptionsRepository $subscriptionsRepository, NumberOfLessonsRepository $numberOfLessonsRepository, ReviewsRepository $reviewsRepository)
     {
         parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
                             $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
-                            $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository, $poolsRepository, $subscriptionsRepository, $numberOfLessonsRepository);
+                            $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository, $poolsRepository, $subscriptionsRepository, $numberOfLessonsRepository, $reviewsRepository);
         $this->template = 'site.main';
     }
 
@@ -53,7 +54,7 @@ class IndexController extends BaseController
         $this->getPoolsData();
         $this->getSubscriptionsData();
         $this->getNumberOfLessonsData();
-
+        $this->getReviewsData();
         return $this->renderOutput();
     }
 
