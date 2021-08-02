@@ -6,7 +6,7 @@
     <title>Акваклуб Немо</title>
     <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus commodi ipsam, cum, pariatur">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('css/app.min.css?v4') }}">
 </head>
 
