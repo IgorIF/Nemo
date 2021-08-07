@@ -77,6 +77,7 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'signUpModal', $this->renderSignUpModal());
         $this->vars = Arr::add($this->vars, 'paymentRulesModal', $this->renderPaymentRulesModal());
         $this->vars = Arr::add($this->vars, 'vacanciesModal', $this->renderVacanciesModal());
+        $this->vars = Arr::add($this->vars, 'paymentModal', $this->renderPaymentModal());
 
         return view($this->template . '.index')->with($this->vars);
     }
@@ -84,7 +85,7 @@ class IndexController extends BaseController
     public function sendMail(Request $request){
         $data = $request->except('_token');
         $filial = $this->filialsRepository->getFilialByAlias($data['filial']);
-        $data['pool'] = $filial->address;
+        $data['filial'] = $filial->address;
 
         Mail::to($filial->email)->send(new TrialLesson($data));
         return redirect('/');

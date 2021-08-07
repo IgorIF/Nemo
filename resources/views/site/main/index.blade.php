@@ -65,3 +65,7 @@
 @section('vacanciesModal')
     {!! $vacanciesModal !!}
 @endsection
+
+@section('paymentModal')
+    {!! $paymentModal !!}
+@endsection

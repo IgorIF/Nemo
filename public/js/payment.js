@@ -17,6 +17,10 @@ $(document).ready(function () {
         })
     });
 
+    $(payment).find('a.payment__btn').click(function () {
+        fillPopupForm();
+    })
+
 });
 
 function initCalculator(filialVal = null) {
@@ -93,6 +97,22 @@ function initCalculator(filialVal = null) {
 
     let price =  $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().substr(0, $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().length - 2)
     $('div[class="all-price"]').find('span:first').html(price + ' <i>₽</i>')
+}
+
+function fillPopupForm() {
+    let popup = $('#payment_popup');
+    let filial = $(payment).find('select[name="filial"] option:selected');
+    let pool = $(payment).find('input[name="pool"]:checked');
+    let subscription = $(payment).find('input[name="subscription"]:checked');
+    let price = $(payment).find('div[class="all-price"] span')
+
+    $(popup).find('input[name="filial-name"]').val(filial.text());
+    $(popup).find('input[name="filial"]').val(filial.val());
+    $(popup).find('input[name="pool-name"]').val($(pool).next('span').text());
+    $(popup).find('input[name="pool"]').val($(pool).next('span').text());
+    $(popup).find('input[name="subscription-name"]').val($(subscription).next('span').text());
+    $(popup).find('input[name="subscription"]').val($(subscription).next('span').text());
+    $(popup).find('input[name="price"]').val($(price).text());
 }
 
 function numberWithSpaces(x) {

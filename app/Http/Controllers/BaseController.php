@@ -251,6 +251,10 @@ class BaseController extends Controller
         return view($this->template . '.modal_vacancies')->render();
     }
 
+    protected function renderPaymentModal(): string {
+        return view($this->template . '.modal_payment')->render();
+    }
+
     protected function getFromCollection(Collection $collection, array $interval): Collection
     {
         $result = collect();

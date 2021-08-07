@@ -145,7 +145,7 @@
         <div class="all-price">Стоимость: <span>980 <i>₽</i></span></div>
     </div>
     <div class="col-md-6">
-        <a href="#" class="btn-orange payment__btn">ОПЛАТИТЬ И ЗАПИСАТЬСЯ</a>
+        <a href="#payment_popup" class="btn-orange payment__btn btn-popup" style="color: #FFFFFF; border-bottom: none">ЗАПИСАТЬСЯ</a>
         <a href="#pay-popup" class="btn-popup">Процесс оплаты и возврата по картам</a>
     </div>
 </div>
