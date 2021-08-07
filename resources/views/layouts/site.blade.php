@@ -48,7 +48,7 @@
     </div>
 </section>
 
-<section class="what">
+<section class="what" id="what">
     <div class="container">
         @yield('what')
     </div>

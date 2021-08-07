@@ -35,18 +35,15 @@ function initCalculator(filialVal = null) {
     //hide/show pool
     $(payment).find('input[name="pool"]').each(function (i, el) {
         if (!Object.keys(prices[numberOfLessonsVal]).includes($(el).val())) {
-            //$(el).prop('checked', false);
             $(el).parent().hide();
             let field = $(payment).find('input[name="pool"]').parent('label:visible:first').children('input');
-            //console.log(field)
-            //let field = $(payment).find('input[name="pool"]').parent('label:visible:first').children('input');
             $(field).prop('checked', true);
         } else {
             $(el).parent().show();
-            let field = $(payment).find('input[name="pool"]').parent('label:visible:first').children('input');
-            console.log($(payment).find('input[name="pool"]').parent('label:visible').length)
-            console.log(field)
-            //$(field).prop('checked', true);
+            if ($(payment).find('.payment-group:first label:visible').length === 1) {
+                let field = $(payment).find('input[name="pool"]').parent('label:visible:first').children('input');
+                $(field).prop('checked', true);
+            }
         }
     });
     ////////////////////
@@ -69,11 +66,39 @@ function initCalculator(filialVal = null) {
             price = prices[$(el).val()][poolVal][subscriptionVal];
         }
 
+        price = numberWithSpaces(price);
+
         $(el).next().find('div[class="payment-option__pr"]').html(price + ' <i>₽</i>')
         $(el).next().find('header span:first:not(".payment-option__sale")').text($(subscription).next('span').text() + ' на')
     })
 
-    $('div[class="all-price"]').find('span:first').text($(numberOfLessons).find('div[class="payment-option__pr"]'))
+    $(cards).each(function (i, el) {
+        let del = $(el).parent().find('del');
 
+        if (del[0]) {
+            if (i === 0) {
+                let price = $(cards[1]).parent().find('.payment-option__pr').text().substr(0, $(cards[1]).parent().find('.payment-option__pr').text().length - 2);
 
+                $(del).text(price);
+            } else {
+                let price = $(el).next().find('div[class="payment-option__pr"]').text().substr(0, $(el).next().find('div[class="payment-option__pr"]').text().length - 2);
+                price = numberNotSpaces(price)
+                let numberOfLessons = $(el).parent().find('#numberOfLessons').text()
+                price = Math.round(price / numberOfLessons);
+                price = numberWithSpaces(price);
+                $(del).text(price + ' ₽/занятие')
+            }
+        }
+    })
+
+    let price =  $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().substr(0, $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().length - 2)
+    $('div[class="all-price"]').find('span:first').html(price + ' <i>₽</i>')
+}
+
+function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
+function numberNotSpaces(x) {
+    return parseInt(x.replace(/ /g,''));
 }

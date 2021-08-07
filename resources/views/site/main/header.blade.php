@@ -40,7 +40,7 @@
                 <a href="#coaches" class="mobil-menu__link">Тренеры</a>
                 <a href="#payment" class="mobil-menu__link">Стоимость и оплата</a>
                 <a href="{{ route('schedule') }}" class="mobil-menu__link">Расписание</a>
-                <a href="#" class="mobil-menu__link">Первое занятие</a>
+                <a href="#what" class="mobil-menu__link">Первое занятие</a>
                 <a href="#sale" class="mobil-menu__link">Акции</a>
                 <a href="#reviews" class="mobil-menu__link">Отзывы</a>
                 <a href="#addresses" class="mobil-menu__link">Контакты</a>
@@ -57,9 +57,9 @@
             <div class="mobil-menu-soc">
                 <div class="mobil-menu-soc__title">Мы в соц. сетях</div>
                 <div class="soc">
-                    <a href="#" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/instagram.svg') }}" alt=""></a>
-                    <a href="#" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/fa.svg') }}" alt=""></a>
-                    <a href="#" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/vk.svg') }}" alt=""></a>
+                    <a href="https://www.instagram.com/aquaclubnemo/" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/instagram.svg') }}" alt=""></a>
+                    <a href="https://www.facebook.com/aquaclubnemo" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/fa.svg') }}" alt=""></a>
+                    <a href="https://vk.com/aquaclubnemo" class="soc-link" target="_blank"><img src="{{ asset('images/dist/icon/vk.svg') }}" alt=""></a>
                 </div>
             </div>
         </div>

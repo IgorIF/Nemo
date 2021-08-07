@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="48653363-b26f-4768-b094-b372d2071e54" name="aqua-nemo.ru test" url="http://test.aquaclub.pro">
+        <fileTransfer rootFolder="/home/aquanemo/test.aquaclub.pro" accessType="SFTP" host="88.212.240.52" port="22" sshConfigId="ff262d3d-10c1-4f5e-9785-c9ffd3445b71" sshConfig="aquanemo@88.212.240.52:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

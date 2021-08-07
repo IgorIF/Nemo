@@ -23,6 +23,7 @@ use App\Repositories\VacanciesRepository;
 use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class IndexController extends BaseController

@@ -93,7 +93,7 @@
                                 </header>
                                 <div class="payment-option__price">
                                     <div class="payment-option__pr">980 <i>₽</i></div>
-                                    <del>1 500 ₽</del>
+                                    @if($numberOfLessons->id == 1) <del>1 500 ₽</del> @endif
                                 </div>
                                 <footer class="payment-option__footer">
                                     <div class="payment-option__day">1 день</div>
@@ -110,21 +110,18 @@
 
 @if($hasManyNumbersOfLessons)
     <div class="row">
-        @php($i = null)
         @foreach($numbersOfLessons as $numberOfLessons)
             @if(!$numberOfLessons->is_once)
-                @if($i == null) @php($i = true) @endif
                 <div class="col-lg-4">
                     <div class="payment__item">
-                        @if($i = true)
+                        @if($loop->iteration == 3)
                             <div class="payment__label">Абонементы:</div>
-                            @php($i = false)
                         @endif
                         <label class="payment-option">
                             <input type="radio" name="number-of-lessons" value="{{ $numberOfLessons->id }}">
                             <div class="payment-option__info">
                                 <header class="payment-option__header">
-                                    <span>Стандарт на</span><span class="orange" style="color: #FF1F0D;">{{ $numberOfLessons->name }}</span> занятий
+                                    <span>Стандарт на</span><span class="orange" style="color: #FF1F0D;" id="numberOfLessons">{{ $numberOfLessons->name }}</span> занятий
                                 </header>
                                 <div class="payment-option__price">
                                     <div class="payment-option__pr">9 900 <i>₽</i></div>
