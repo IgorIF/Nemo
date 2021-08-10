@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
-class ThanksController extends SiteController
+class OfferController extends SiteController
 {
-    private string $template = 'site.thanks';
+    private string $template = 'site.offer';
 
     public function __invoke(): string
     {
@@ -20,10 +20,10 @@ class ThanksController extends SiteController
     protected function renderOutput(): string
     {
         $root = $this->rootView();
-        return $root->with('content', $this->renderThanks())->render();
+        return $root->with('content', $this->renderOffer())->render();
     }
 
-    private function renderThanks(): string
+    protected function renderOffer(): string
     {
         return view( $this->template . '.index')->render();
     }

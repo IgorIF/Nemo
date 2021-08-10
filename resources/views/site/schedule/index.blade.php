@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <!-- Start 1C Fitness JS Code Insert after jQuery. DO NOT CHANGE! -->
-        <script src="https://reservi.ru/widget-fit1c.v2/js/config.js" data-fit-salon-id="5fc6b89b-0beb-4e83-9b13-f51e0b53dafa"></script>
-        <title>Расписание</title>
-
-    </head>
-    <body>
-        <!-- Start 1C Fitness BLOCK Code Insert in place for schedule. DO NOT CHANGE! -->
-        <div data-fit1c-calendar><a href="https://www.fitness1c.ru/schedule?token=axEh6u8xUnV3FnQjXMSAeyA1"></a></div>
-        <!-- End 1C Fitness BLOCK Code do not change! -->
-    </body>
-</html>
+<div class="page">
+    <div class="container">
+        <div class="schedule">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 offset-lg-1">
+                    <h1>Расписание занятий в кармане</h1>
+                    <p>Выбирайте удобное для вас время и дату занятий. Записывайтесь к любимым тренерам с помощью мобильного приложения.</p>
+                    <img src="{{ asset('images/dist/phone-m.png') }}" alt="" class="mobil-block">
+                    <p>Установите приложение по ссылкам ниже</p>
+                    <div class="application">
+                        <a href="#"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('images/dist/icon/as.svg') }}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 mobil-hidden">
+                    <img src="{{ asset('images/dist/phone-d.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

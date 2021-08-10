@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\SecurityItemController;
 use App\Http\Controllers\Admin\TrainerController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Site\LCController;
+use App\Http\Controllers\Site\OfferController;
+use App\Http\Controllers\Site\ScheduleController;
 use App\Http\Controllers\Site\ThanksController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,10 +34,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get( '/', SiteController::class)->name('site');
 Route::get('/thanks', ThanksController::class)->name('thanks');
+Route::get('/schedule', ScheduleController::class)->name('schedule');
+Route::get('/offer', OfferController::class)->name('offer');
 
 
 Route::any('/lc/{alias}', [LCController::class, 'index'])->name('lc');
-Route::view('/schedule', 'site.main.schedule.index')->name('schedule');
 //Route::get('/filial/{alias}', [FilialController::class, 'index']);
 
 

@@ -3,27 +3,18 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\BaseController;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 abstract class SiteController extends BaseController
 {
     private string $template = 'site';
-    protected array $siteVars = [];
 
-    protected function renderRoot()
+    protected function rootView()
     {
         $vars = [];
         $vars = Arr::add($vars, 'header', $this->renderHeader());
         $vars = Arr::add($vars, 'footer', $this->renderFooter());
         return view('site' . '.index')->with($vars);
-    }
-
-    protected function renderOutput(): string
-    {
-        // TODO: Implement renderOutput() method.
-        return "";
     }
 
     protected function renderHeader(): string {

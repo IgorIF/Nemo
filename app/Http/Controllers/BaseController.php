@@ -19,8 +19,6 @@ use App\Repositories\TextsRepository;
 use App\Repositories\TrainersRepository;
 use App\Repositories\VacanciesRepository;
 use App\Repositories\VideosRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 
