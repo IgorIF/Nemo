@@ -24,8 +24,6 @@ use Illuminate\Support\Collection;
 
 abstract class BaseController extends Controller
 {
-    protected array $baseVars = [];       //массив с данными которые передаюся в шаблон
-
     protected TextsRepository $textsRepository;
     protected TrainersRepository $trainersRepository;
     protected SecurityCategoriesRepository $securityCategoriesRepository;
@@ -48,17 +46,17 @@ abstract class BaseController extends Controller
     protected Collection $images;
     protected Collection $videos;
     protected Collection $filials;
-    private Collection $trainers;
+    protected Collection $trainers;
     private Collection $securityCategories;
     private Collection $ruleCategories;
     private Collection $medicalCertificates;
     private Collection $vacancies;
-    private Collection $promotions;
+    protected Collection $promotions;
     protected string $calculatorDescriptions;
-    private Collection $pools;
-    private Collection $subscriptions;
-    private Collection $numbersOfLessons;
-    private Collection $reviews;
+    protected Collection $pools;
+    protected Collection $subscriptions;
+    protected Collection $numbersOfLessons;
+    protected Collection $reviews;
 
     public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
                                 SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
@@ -142,101 +140,6 @@ abstract class BaseController extends Controller
 
     protected function getReviewsData() {
         $this->reviews = $this->reviewsRepository->getAll();
-    }
-
-    protected function renderOffer(): string {
-        $texts = $this->getFromCollection($this->texts, [3 => 4]);
-        return view($this->template . '.offer')->with('texts', $texts)->render();
-    }
-
-    protected function renderAbout(): string {
-        $texts = $this->getFromCollection($this->texts, [5 => 6]);
-        $video = $this->getFromCollection($this->videos, [1 => 1])->first();
-        return view( $this->template . '.about')->with(['texts' => $texts, 'video' => $video])->render();
-    }
-
-    protected function renderGallery(): string {
-        $texts = $this->getFromCollection($this->texts, [7 => 7]);
-        return view($this->template . '.gallery')->with('texts', $texts)->render();
-    }
-
-    protected function renderCoaches(): string {
-        $texts = $this->getFromCollection($this->texts, [8 => 9]);
-        return view($this->template . '.coaches')->with(['texts' => $texts, 'filials' => $this->filials, 'trainers' => $this->trainers])->render();
-    }
-
-    protected function renderPayment(): string {
-        $texts = $this->getFromCollection($this->texts, [10 => 10]);
-
-        $hasOnceNumbersOfLessons = false;
-        $hasManyNumbersOfLessons = false;
-        foreach ($this->numbersOfLessons as $item) {
-            if ($item->is_once) {
-                $hasOnceNumbersOfLessons = true;
-                if ($hasManyNumbersOfLessons)
-                    break;
-            } else {
-                $hasManyNumbersOfLessons = true;
-                if ($hasOnceNumbersOfLessons)
-                    break;
-            }
-        }
-
-        $filialsData = [];
-        foreach ($this->filials as $filial) {
-            foreach ($filial->pries as $price) {
-                if ($price->subscription_id != null)
-                    $filialsData[$filial->alias][$price->number_of_lessons_id][$price->pool_id][$price->subscription_id] = $price->price;
-                else
-                    $filialsData[$filial->alias][$price->number_of_lessons_id][$price->pool_id] = $price->price;
-            }
-        }
-
-        return view($this->template . '.payment')->with([  'texts' => $texts,
-                                                                'filials' => $this->filials,
-                                                                'pools' => $this->pools,
-                                                                'subscriptions' => $this->subscriptions,
-                                                                'numbersOfLessons' => $this->numbersOfLessons,
-                                                                'hasOnceNumbersOfLessons' => $hasOnceNumbersOfLessons,
-                                                                'hasManyNumbersOfLessons' => $hasManyNumbersOfLessons,
-                                                                'filialsData' => json_encode($filialsData)])->render();
-    }
-
-    protected function renderSale(): string {
-        $texts = $this->getFromCollection($this->texts, [11 => 11]);
-        return view($this->template . '.sale')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
-    }
-
-    protected function renderWhat(): string {
-        return view($this->template . '.what')->render();
-    }
-
-    protected function renderWaterTreatment(): string {
-        return view($this->template . '.water_treatment')->render();
-    }
-
-    protected function renderReviews(): string {
-        return view($this->template . '.reviews')->with('reviews', $this->reviews)->render();
-    }
-
-    protected function renderQuestions(): string {
-        return view($this->template . '.questions')->render();
-    }
-
-    protected function renderAddresses(): string {
-        return view($this->template . '.addresses')->with('filials', $this->filials)->render();
-    }
-
-    protected function renderPaymentRulesModal(): string {
-        return view($this->template . '.modal_payment_rules')->render();
-    }
-
-    protected function renderVacanciesModal(): string {
-        return view($this->template . '.modal_vacancies')->render();
-    }
-
-    protected function renderPaymentModal(): string {
-        return view($this->template . '.modal_payment')->with('filials', $this->filials)->render();
     }
 
     protected function getFromCollection(Collection $collection, array $interval): Collection

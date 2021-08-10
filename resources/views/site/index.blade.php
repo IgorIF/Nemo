@@ -12,22 +12,12 @@
     {!! $footer !!}
 @endsection
 
-@section('signUpModal')
-    {!! $signUpModal !!}
-@endsection
-
 {{----------------------- Modals -----------------------}}
 
-{{--
-
-@section('paymentRulesModal')
-    {!! $paymentRulesModal !!}
+@section('signUpModal')
+    {!! $signUpModal !!}
 @endsection
 
 @section('vacanciesModal')
     {!! $vacanciesModal !!}
 @endsection
-
-@section('paymentModal')
-    {!! $paymentModal !!}
-@endsection--}}

@@ -20,8 +20,8 @@
 
 @yield('addresses')
 
-    @yield('paymentRulesModal')
+{{----------------------- Modals -----------------------}}
 
-    @yield('vacanciesModal')
+@yield('paymentRulesModal')
 
-    @yield('paymentModal')
+@yield('paymentModal')

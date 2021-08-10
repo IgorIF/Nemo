@@ -1,4 +1,4 @@
-@extends('layouts.site.main')
+@extends('layouts.site.home')
 
 @section('offer')
     {!! $offer !!}
@@ -48,10 +48,6 @@
 
 @section('paymentRulesModal')
     {!! $paymentRulesModal !!}
-@endsection
-
-@section('vacanciesModal')
-    {!! $vacanciesModal !!}
 @endsection
 
 @section('paymentModal')
