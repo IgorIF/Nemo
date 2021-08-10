@@ -61,25 +61,25 @@ class IndexController extends BaseController
 
     protected function renderOutput(): string {
 
-        $this->vars = Arr::add($this->vars, 'header', $this->renderHeader());
-        $this->vars = Arr::add($this->vars, 'offer', $this->renderOffer());
-        $this->vars = Arr::add($this->vars, 'about', $this->renderAbout());
-        $this->vars = Arr::add($this->vars, 'gallery', $this->renderGallery());
-        $this->vars = Arr::add($this->vars, 'coaches', $this->renderCoaches());
-        $this->vars = Arr::add($this->vars, 'payment', $this->renderPayment());
-        $this->vars = Arr::add($this->vars, 'sale', $this->renderSale());
-        $this->vars = Arr::add($this->vars, 'what', $this->renderWhat());
-        $this->vars = Arr::add($this->vars, 'waterTreatment', $this->renderWaterTreatment());
-        $this->vars = Arr::add($this->vars, 'reviews', $this->renderReviews());
-        $this->vars = Arr::add($this->vars, 'questions', $this->renderQuestions());
-        $this->vars = Arr::add($this->vars, 'addresses', $this->renderAddresses());
-        $this->vars = Arr::add($this->vars, 'footer', $this->renderFooter());
-        $this->vars = Arr::add($this->vars, 'signUpModal', $this->renderSignUpModal());
-        $this->vars = Arr::add($this->vars, 'paymentRulesModal', $this->renderPaymentRulesModal());
-        $this->vars = Arr::add($this->vars, 'vacanciesModal', $this->renderVacanciesModal());
-        $this->vars = Arr::add($this->vars, 'paymentModal', $this->renderPaymentModal());
+        $this->baseVars = Arr::add($this->baseVars, 'header', $this->renderHeader());
+        $this->baseVars = Arr::add($this->baseVars, 'offer', $this->renderOffer());
+        $this->baseVars = Arr::add($this->baseVars, 'about', $this->renderAbout());
+        $this->baseVars = Arr::add($this->baseVars, 'gallery', $this->renderGallery());
+        $this->baseVars = Arr::add($this->baseVars, 'coaches', $this->renderCoaches());
+        $this->baseVars = Arr::add($this->baseVars, 'payment', $this->renderPayment());
+        $this->baseVars = Arr::add($this->baseVars, 'sale', $this->renderSale());
+        $this->baseVars = Arr::add($this->baseVars, 'what', $this->renderWhat());
+        $this->baseVars = Arr::add($this->baseVars, 'waterTreatment', $this->renderWaterTreatment());
+        $this->baseVars = Arr::add($this->baseVars, 'reviews', $this->renderReviews());
+        $this->baseVars = Arr::add($this->baseVars, 'questions', $this->renderQuestions());
+        $this->baseVars = Arr::add($this->baseVars, 'addresses', $this->renderAddresses());
+        $this->baseVars = Arr::add($this->baseVars, 'footer', $this->renderFooter());
+        $this->baseVars = Arr::add($this->baseVars, 'signUpModal', $this->renderSignUpModal());
+        $this->baseVars = Arr::add($this->baseVars, 'paymentRulesModal', $this->renderPaymentRulesModal());
+        $this->baseVars = Arr::add($this->baseVars, 'vacanciesModal', $this->renderVacanciesModal());
+        $this->baseVars = Arr::add($this->baseVars, 'paymentModal', $this->renderPaymentModal());
 
-        return view($this->template . '.index')->with($this->vars);
+        return view($this->template . '.index')->with($this->baseVars);
     }
 
     public function sendMail(Request $request){

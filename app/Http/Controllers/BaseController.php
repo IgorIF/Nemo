@@ -24,10 +24,10 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
     protected string $template;        //шаблон
-    protected array $vars = [];       //массив с данными которые передаюся в шаблон
+    protected array $baseVars = [];       //массив с данными которые передаюся в шаблон
 
     protected TextsRepository $textsRepository;
     protected TrainersRepository $trainersRepository;
@@ -147,11 +147,6 @@ class BaseController extends Controller
         $this->reviews = $this->reviewsRepository->getAll();
     }
 
-    protected function renderHeader(): string {
-        $texts = $this->getFromCollection($this->texts, [1 => 2]);
-        return view( $this->template . '.header')->with(['texts' => $texts, 'filials' => $this->filials])->render();
-    }
-
     protected function renderOffer(): string {
         $texts = $this->getFromCollection($this->texts, [3 => 4]);
         return view($this->template . '.offer')->with('texts', $texts)->render();
@@ -252,7 +247,7 @@ class BaseController extends Controller
     }
 
     protected function renderPaymentModal(): string {
-        return view($this->template . '.modal_payment')->render();
+        return view($this->template . '.modal_payment')->with('filials', $this->filials)->render();
     }
 
     protected function getFromCollection(Collection $collection, array $interval): Collection
@@ -273,4 +268,6 @@ class BaseController extends Controller
             return $item->$field = $value;
         })->first();
     }
+
+    protected abstract function renderOutput(): string;
 }

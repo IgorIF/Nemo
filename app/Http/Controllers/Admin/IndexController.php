@@ -58,8 +58,8 @@ class IndexController extends BaseController
 
     protected function renderOutput(): string {
 
-        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
-        $this->vars = Arr::add($this->vars, 'swimBeforeWalking', $this->swimBeforeWalkingView);
+        $this->baseVars = Arr::add($this->baseVars, 'header', $this->headerView);
+        $this->baseVars = Arr::add($this->baseVars, 'swimBeforeWalking', $this->swimBeforeWalkingView);
 
         /*$modalAddTrainer = view($this->template . '.modals.modal_add_trainer')->render();
         $modalAddPromotion = view($this->template . '.modals.modal_add_promotion')->render();
@@ -77,7 +77,7 @@ class IndexController extends BaseController
         $this->vars = Arr::add($this->vars, 'modalCropper', $modalCropper);
         $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNavView);*/
 
-        return view($this->template . '.index')->with($this->vars);
+        return view($this->template . '.index')->with($this->baseVars);
     }
 
 

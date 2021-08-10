@@ -49,13 +49,13 @@ class FilialController extends IndexController
         $this->renderHeader();
         $this->renderPayment();
         $this->renderSwimNeverNotEarly();
-        $this->vars = Arr::add($this->vars, 'header', $this->headerView);
-        $this->vars = Arr::add($this->vars, 'prices', $this->pricesView);
-        $this->vars = Arr::add($this->vars, 'adminNav', $this->adminNavView);
-        $this->vars = Arr::add($this->vars, 'swimNeverNotEarly', $this->swimNeverNotEarlyView);
+        $this->baseVars = Arr::add($this->baseVars, 'header', $this->headerView);
+        $this->baseVars = Arr::add($this->baseVars, 'prices', $this->pricesView);
+        $this->baseVars = Arr::add($this->baseVars, 'adminNav', $this->adminNavView);
+        $this->baseVars = Arr::add($this->baseVars, 'swimNeverNotEarly', $this->swimNeverNotEarlyView);
 
 
-        return view($this->template . '.index')->with($this->vars);
+        return view($this->template . '.index')->with($this->baseVars);
     }
 
     protected function getFilialBranchData($alias)

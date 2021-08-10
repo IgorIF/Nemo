@@ -106,11 +106,9 @@ function fillPopupForm() {
     let subscription = $(payment).find('input[name="subscription"]:checked');
     let price = $(payment).find('div[class="all-price"] span')
 
-    $(popup).find('input[name="filial-name"]').val(filial.text());
-    $(popup).find('input[name="filial"]').val(filial.val());
-    $(popup).find('input[name="pool-name"]').val($(pool).next('span').text());
+    $(popup).find('select[name="filial"]').find("option[value=" + $(filial).val() +"]").prop('selected', true)
+    $(popup).find('select[name="filial"]').siblings('div[class^="new-select"]:first').text($(filial).text())
     $(popup).find('input[name="pool"]').val($(pool).next('span').text());
-    $(popup).find('input[name="subscription-name"]').val($(subscription).next('span').text());
     $(popup).find('input[name="subscription"]').val($(subscription).next('span').text());
     $(popup).find('input[name="price"]').val($(price).text());
 }

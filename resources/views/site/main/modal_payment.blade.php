@@ -4,14 +4,16 @@
         {{ csrf_field() }}
 
 
-        <input class="input" type="text" name="filial-name" placeholder="Филиал" disabled>
-        <input type="hidden" name="filial">
-        <input class="input" type="text" name="pool-name" placeholder="Бассейн" disabled>
-        <input type="hidden" name="pool">
-        <input class="input" type="text" name="subscription-name" placeholder="Вид абонемента" disabled>
-        <input type="hidden" name="subscription">
+        <select name="filial" class="select" required>
+            <option value="1" >Выберите филиал</option>
+            @foreach($filials as $filial)
+                <option value="{{ $filial->alias }}">{{ $filial->address }} ({{ $filial->metro }})</option>
+            @endforeach
+        </select>
         <input class="input" type="text" name="name" placeholder="Ваше имя">
         <input class="input phone-input" name="phone" type="tel" placeholder="Номер телефона" required>
+        <input type="hidden" name="pool">
+        <input type="hidden" name="subscription">
         <input type="hidden" name="price">
         <button type="submit" class="btn-orange">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</button>
     </form>
