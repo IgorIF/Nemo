@@ -157,8 +157,7 @@ class HomeController extends SiteController
         $filial = $this->filialsRepository->getFilialByAlias($data['filial']);
         $data['filial'] = $filial->address;
 
-        //Mail::to($filial->email)->send(new TrialLesson($data));
-        Mail::to("igarif1992@gmail.com")->send(new TrialLesson($data));
+        Mail::to($filial->email)->send(new TrialLesson($data));
 
         if(Mail::failures()) {
             return redirect()->route('thanks')->with('status', false);
