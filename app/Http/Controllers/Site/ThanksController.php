@@ -2,24 +2,27 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\BaseController;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 class ThanksController extends SiteController
 {
 
-    public function __invoke() {
+    protected string $template = 'site.thanks';
 
+    public function __invoke(): string
+    {
+        return $this->renderOutput();
+    }
 
-
+    private function renderThanks(): string
+    {
+        return view( $this->template . '.thanks')->render();
     }
 
     protected function renderOutput(): string
     {
-        $this->baseVars = Arr::add($this->baseVars, 'header', $this->renderHeader());
-
-        return view('.index')->with($this->baseVars);
+        $this->siteVars = Arr::add($this->siteVars, 'thanks', $this->renderThanks());
+        return view($this->template . '.index')->with($this->siteVars);
     }
 }

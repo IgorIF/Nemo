@@ -6,7 +6,7 @@
 
 {{----------------------- Modals -----------------------}}
 
-@section('signUpModal')
+{{--@section('signUpModal')
     {!! $signUpModal !!}
 @endsection
 
@@ -20,4 +20,4 @@
 
 @section('paymentModal')
     {!! $paymentModal !!}
-@endsection
+@endsection--}}
