@@ -20,6 +20,10 @@
     {!! $payment !!}
 @endsection
 
+@section('schedule')
+    {!! $schedule !!}
+@endsection
+
 @section('sale')
     {!! $sale !!}
 @endsection

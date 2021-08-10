@@ -30,15 +30,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get( '/', HomeController::class)->name('site');
+Route::get( '/', HomeController::class)->name('home');
 Route::get('/thanks', ThanksController::class)->name('thanks');
-Route::get('/schedule', ScheduleController::class)->name('schedule');
 Route::get('/offer', OfferController::class)->name('offer');
-
-
-Route::any('/lc/{alias}', [LCController::class, 'index'])->name('lc');
-//Route::get('/filial/{alias}', [FilialController::class, 'index']);
-
 
 /*Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
@@ -61,7 +55,7 @@ Route::any('/lc/{alias}', [LCController::class, 'index'])->name('lc');
     Route::resource('promotions', PromotionController::class)->only(['store', 'update', 'destroy']);
 });*/
 
-Route::post('/sendmail', [SiteController::class, 'sendMail'])->name('sendmail');
+Route::post('/sendmail', [HomeController::class, 'sendMail'])->name('sendmail');
 
 
 Route::any('register', function(){

@@ -8,6 +8,8 @@
 
 @yield('payment')
 
+@yield('schedule')
+
 @yield('sale')
 
 @yield('what')

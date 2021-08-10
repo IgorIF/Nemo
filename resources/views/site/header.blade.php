@@ -2,13 +2,13 @@
     <div class="container header__flex">
         <a href="#" class="header__logo"><img src="{{ asset('images/dist/logo.svg') }}" alt=""></a>
         <nav class="main-menu header__menu">
-            <a href="#" class="main-menu__link">Главная</a>
-            <a href="#payment" class="main-menu__link">Стоимость</a>
-            <a href="#coaches" class="main-menu__link">Тренеры</a>
-            <a href="{{ route('schedule') }}" class="main-menu__link">Расписание</a>
-            <a href="#reviews" class="main-menu__link">Отзывы</a>
-            <a href="#sale" class="main-menu__link">Акции</a>
-            <a href="#addresses" class="main-menu__link">Контакты</a>
+            <a href="{{ route('home') }}#" class="main-menu__link">Главная</a>
+            <a href="{{ route('home') }}#payment" class="main-menu__link">Стоимость</a>
+            <a href="{{ route('home') }}#coaches" class="main-menu__link">Тренеры</a>
+            <a href="{{ route('home') }}#schedule" class="main-menu__link">Расписание</a>
+            <a href="{{ route('home') }}#reviews" class="main-menu__link">Отзывы</a>
+            <a href="{{ route('home') }}#sale" class="main-menu__link">Акции</a>
+            <a href="{{ route('home') }}#addresses" class="main-menu__link">Контакты</a>
         </nav>
         <div class="header__contacts">
             <a href="https://api.whatsapp.com/send?phone=74951206711" class="header__wa" target="_balnk"><img src="{{ asset('images/dist/icon/whatsApp.svg') }}" alt=""></a>
@@ -28,14 +28,14 @@
                 </div>
             </div>
             <nav class="mobil-menu__nav">
-                <a href="#" class="mobil-menu__link">Главная</a>
-                <a href="#" class="mobil-menu__link">Тренеры</a>
-                <a href="#" class="mobil-menu__link">Стоимость и оплата</a>
-                <a href="#" class="mobil-menu__link">Расписание</a>
-                <a href="#" class="mobil-menu__link">Первое занятие</a>
-                <a href="#" class="mobil-menu__link">Акции</a>
-                <a href="#" class="mobil-menu__link">Отзывы</a>
-                <a href="#" class="mobil-menu__link">Контакты</a>
+                <a href="{{ route('home') }}#" class="mobil-menu__link">Главная</a>
+                <a href="{{ route('home') }}#coaches" class="mobil-menu__link">Тренеры</a>
+                <a href="{{ route('home') }}#payment" class="mobil-menu__link">Стоимость и оплата</a>
+                <a href="{{ route('home') }}#schedule" class="mobil-menu__link">Расписание</a>
+                <a href="#{{ route('home') }}#what" class="mobil-menu__link">Первое занятие</a>
+                <a href="{{ route('home') }}#sale" class="mobil-menu__link">Акции</a>
+                <a href="{{ route('home') }}#reviews" class="mobil-menu__link">Отзывы</a>
+                <a href="{{ route('home') }}#addresses" class="mobil-menu__link">Контакты</a>
             </nav>
             <div class="mobil-menu-soc">
                 <div class="mobil-menu-soc__title">Мы в соц. сетях</div>

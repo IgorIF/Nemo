@@ -6,6 +6,7 @@ use App\Mail\TrialLesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
+use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends SiteController
 {
@@ -40,6 +41,7 @@ class HomeController extends SiteController
         $vars = Arr::add($vars, 'gallery', $this->renderGallery());
         $vars = Arr::add($vars, 'coaches', $this->renderCoaches());
         $vars = Arr::add($vars, 'payment', $this->renderPayment());
+        $vars = Arr::add($vars, 'schedule', $this->renderSchedule());
         $vars = Arr::add($vars, 'sale', $this->renderSale());
         $vars = Arr::add($vars, 'what', $this->renderWhat());
         $vars = Arr::add($vars, 'waterTreatment', $this->renderWaterTreatment());
@@ -113,6 +115,10 @@ class HomeController extends SiteController
             'filialsData' => json_encode($filialsData)])->render();
     }
 
+    private function renderSchedule(): string {
+        return view('site.home.schedule')->render();
+    }
+
     private function renderSale(): string {
         $texts = $this->getFromCollection($this->texts, [11 => 11]);
         return view('site.home.sale')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
@@ -151,7 +157,12 @@ class HomeController extends SiteController
         $filial = $this->filialsRepository->getFilialByAlias($data['filial']);
         $data['filial'] = $filial->address;
 
-        Mail::to($filial->email)->send(new TrialLesson($data));
-        return redirect('/');
+        //Mail::to($filial->email)->send(new TrialLesson($data));
+        Mail::to("igarif1992@gmail.com")->send(new TrialLesson($data));
+
+        if(Mail::failures()) {
+            return redirect()->route('thanks')->with('status', false);
+        }
+        return redirect()->route('thanks')->with('status', true);
     }
 }

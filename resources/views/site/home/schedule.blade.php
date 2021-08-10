@@ -1,4 +1,4 @@
-<div class="page">
+<div class="page" id="schedule">
     <div class="container">
         <div class="schedule">
             <div class="row">
