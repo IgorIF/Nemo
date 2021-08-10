@@ -76,24 +76,9 @@ function initCalculator(filialVal = null) {
         $(el).next().find('header span:first:not(".payment-option__sale")').text($(subscription).next('span').text() + ' на')
     })
 
-    $(cards).each(function (i, el) {
-        let del = $(el).parent().find('del');
 
-        if (del[0]) {
-            if (i === 0) {
-                let price = $(cards[1]).parent().find('.payment-option__pr').text().substr(0, $(cards[1]).parent().find('.payment-option__pr').text().length - 2);
-
-                $(del).text(price);
-            } else {
-                let price = $(el).next().find('div[class="payment-option__pr"]').text().substr(0, $(el).next().find('div[class="payment-option__pr"]').text().length - 2);
-                price = numberNotSpaces(price)
-                let numberOfLessons = $(el).parent().find('#numberOfLessons').text()
-                price = Math.round(price / numberOfLessons);
-                price = numberWithSpaces(price);
-                $(del).text(price + ' ₽/занятие')
-            }
-        }
-    })
+    let oldPrice = $(cards[1]).parent().find('.payment-option__pr').text().substr(0, $(cards[1]).parent().find('.payment-option__pr').text().length - 2);
+    $(cards).first().parent().find('del').text(oldPrice + ' ₽');
 
     let price =  $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().substr(0, $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().length - 2)
     $('div[class="all-price"]').find('span:first').html(price + ' <i>₽</i>')

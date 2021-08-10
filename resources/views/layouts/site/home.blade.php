@@ -24,6 +24,4 @@
 
 {{----------------------- Modals -----------------------}}
 
-@yield('paymentRulesModal')
-
 @yield('paymentModal')

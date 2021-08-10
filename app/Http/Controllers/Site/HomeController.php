@@ -48,7 +48,6 @@ class HomeController extends SiteController
         $vars = Arr::add($vars, 'reviews', $this->renderReviews());
         $vars = Arr::add($vars, 'questions', $this->renderQuestions());
         $vars = Arr::add($vars, 'addresses', $this->renderAddresses());
-        $vars = Arr::add($vars, 'paymentRulesModal', $this->renderPaymentRulesModal());
         $vars = Arr::add($vars, 'paymentModal', $this->renderPaymentModal());
 
         $content = $content->with($vars)->render();
@@ -142,10 +141,6 @@ class HomeController extends SiteController
 
     private function renderAddresses(): string {
         return view('site.home.addresses')->with('filials', $this->filials)->render();
-    }
-
-    private function renderPaymentRulesModal(): string {
-        return view('site.home.modal_payment_rules')->render();
     }
 
     private function renderPaymentModal(): string {

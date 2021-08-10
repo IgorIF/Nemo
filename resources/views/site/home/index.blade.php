@@ -50,10 +50,6 @@
 
 {{----------------------- Modals -----------------------}}
 
-@section('paymentRulesModal')
-    {!! $paymentRulesModal !!}
-@endsection
-
 @section('paymentModal')
     {!! $paymentModal !!}
 @endsection

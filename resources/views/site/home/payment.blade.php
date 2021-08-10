@@ -127,7 +127,6 @@
                                         </header>
                                         <div class="payment-option__price">
                                             <div class="payment-option__pr">9 900 <i>₽</i></div>
-                                            <del>1 100 ₽/занятие</del>
                                         </div>
                                         <footer class="payment-option__footer">
                                             <div class="payment-option__day">1 месяц 14 дней</div>
@@ -147,8 +146,7 @@
                 <div class="all-price">Стоимость: <span>980 <i>₽</i></span></div>
             </div>
             <div class="col-md-6">
-                <a href="#payment_popup" class="btn-orange payment__btn btn-popup" style="color: #FFFFFF; border-bottom: none">ЗАПИСАТЬСЯ</a>
-                <a href="#pay-popup" class="btn-popup">Процесс оплаты и возврата по картам</a>
+                <a href="#payment_popup" class="btn-orange payment__btn btn-popup">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>
             </div>
         </div>
     </div>
