@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-
 class ThanksController extends SiteController
 {
-    private string $template = 'site.thanks';
-
     public function __invoke(): string
     {
         $this->getTextsData();
@@ -25,6 +20,6 @@ class ThanksController extends SiteController
 
     private function renderThanks(): string
     {
-        return view( $this->template . '.index')->render();
+        return view('site.thanks.index')->render();
     }
 }

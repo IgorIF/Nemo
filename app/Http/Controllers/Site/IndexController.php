@@ -2,28 +2,9 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\BaseController;
 use App\Mail\TrialLesson;
-use App\Repositories\CalculatorDescriptionsRepository;
-use App\Repositories\FilialsRepository;
-use App\Repositories\ImagesRepository;
-use App\Repositories\MedicalCertificatesRepository;
-use App\Repositories\NumberOfLessonsRepository;
-use App\Repositories\PoolsRepository;
-use App\Repositories\PromotionsRepository;
-use App\Repositories\ReviewsRepository;
-use App\Repositories\RuleCategoriesRepository;
-use App\Repositories\RuleItemsRepository;
-use App\Repositories\SecurityCategoriesRepository;
-use App\Repositories\SecurityItemsRepository;
-use App\Repositories\SubscriptionsRepository;
-use App\Repositories\TextsRepository;
-use App\Repositories\TrainersRepository;
-use App\Repositories\VacanciesRepository;
-use App\Repositories\VideosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
 class IndexController extends SiteController
@@ -53,7 +34,7 @@ class IndexController extends SiteController
 
         $root = $this->rootView();
 
-        $content = view($this->template . '.index');
+        $content = view('site.main.index');
 
         $this->baseVars = Arr::add($this->baseVars, 'offer', $this->renderOffer());
         $this->baseVars = Arr::add($this->baseVars, 'about', $this->renderAbout());
@@ -66,7 +47,6 @@ class IndexController extends SiteController
         $this->baseVars = Arr::add($this->baseVars, 'reviews', $this->renderReviews());
         $this->baseVars = Arr::add($this->baseVars, 'questions', $this->renderQuestions());
         $this->baseVars = Arr::add($this->baseVars, 'addresses', $this->renderAddresses());
-        $this->baseVars = Arr::add($this->baseVars, 'signUpModal', $this->renderSignUpModal());
         $this->baseVars = Arr::add($this->baseVars, 'paymentRulesModal', $this->renderPaymentRulesModal());
         $this->baseVars = Arr::add($this->baseVars, 'vacanciesModal', $this->renderVacanciesModal());
         $this->baseVars = Arr::add($this->baseVars, 'paymentModal', $this->renderPaymentModal());

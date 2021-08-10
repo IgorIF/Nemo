@@ -20,8 +20,6 @@
 
 @yield('addresses')
 
-    @yield('signUpModal')
-
     @yield('paymentRulesModal')
 
     @yield('vacanciesModal')

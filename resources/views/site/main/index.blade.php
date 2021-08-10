@@ -46,10 +46,6 @@
 
 {{----------------------- Modals -----------------------}}
 
-@section('signUpModal')
-    {!! $signUpModal !!}
-@endsection
-
 @section('paymentRulesModal')
     {!! $paymentRulesModal !!}
 @endsection

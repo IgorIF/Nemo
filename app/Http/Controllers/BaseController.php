@@ -227,10 +227,6 @@ abstract class BaseController extends Controller
         return view($this->template . '.addresses')->with('filials', $this->filials)->render();
     }
 
-    protected function renderSignUpModal(): string {
-        return view($this->template . '.modal_sign_up')->with('filials', $this->filials)->render();
-    }
-
     protected function renderPaymentRulesModal(): string {
         return view($this->template . '.modal_payment_rules')->render();
     }

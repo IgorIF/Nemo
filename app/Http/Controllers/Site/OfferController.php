@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 class OfferController extends SiteController
 {
-    private string $template = 'site.offer';
-
     public function __invoke(): string
     {
         $this->getTextsData();
@@ -25,6 +20,6 @@ class OfferController extends SiteController
 
     protected function renderOffer(): string
     {
-        return view( $this->template . '.index')->render();
+        return view('site.offer.index')->render();
     }
 }
