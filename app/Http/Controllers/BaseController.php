@@ -26,7 +26,6 @@ use Illuminate\Support\Collection;
 
 abstract class BaseController extends Controller
 {
-    protected string $template;        //шаблон
     protected array $baseVars = [];       //массив с данными которые передаюся в шаблон
 
     protected TextsRepository $textsRepository;
@@ -228,10 +227,6 @@ abstract class BaseController extends Controller
 
     protected function renderAddresses(): string {
         return view($this->template . '.addresses')->with('filials', $this->filials)->render();
-    }
-
-    protected function renderFooter(): string {
-        return view($this->template . '.footer')->render();
     }
 
     protected function renderSignUpModal(): string {

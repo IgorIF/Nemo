@@ -3,18 +3,36 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\BaseController;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 abstract class SiteController extends BaseController
 {
-
+    private string $template = 'site';
     protected array $siteVars = [];
 
-    protected string $template = 'site';
+    protected function renderRoot()
+    {
+        $vars = [];
+        $vars = Arr::add($vars, 'header', $this->renderHeader());
+        $vars = Arr::add($vars, 'footer', $this->renderFooter());
+        return view('site' . '.index')->with($vars);
+    }
+
+    protected function renderOutput(): string
+    {
+        // TODO: Implement renderOutput() method.
+        return "";
+    }
 
     protected function renderHeader(): string {
         $texts = $this->getFromCollection($this->texts, [1 => 2]);
-        return view( $this->template . '.header')->with(['texts' => $texts, 'filials' => $this->filials])->render();
+        return view( 'site' . '.header')->with(['texts' => $texts, 'filials' => $this->filials])->render();
+    }
+
+    protected function renderFooter(): string {
+        return view($this->template . '.footer')->render();
     }
 
 }

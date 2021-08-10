@@ -24,6 +24,14 @@
     </div>
 </footer>
 
+@yield('signUpModal')
+
+@yield('paymentRulesModal')
+
+@yield('vacanciesModal')
+
+@yield('paymentModal')
+
 <a href="https://api.whatsapp.com/send?phone=74951206711" class="whats-app" target="_blank">whats-app</a>
 
 <script src="{{ asset('js/app.min.js?v3') }}"></script>
