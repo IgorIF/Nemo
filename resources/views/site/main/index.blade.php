@@ -1,9 +1,5 @@
 @extends('layouts.site.main')
 
-@section('header')
-    {!! $header !!}
-@endsection
-
 @section('offer')
     {!! $offer !!}
 @endsection
@@ -46,10 +42,6 @@
 
 @section('addresses')
     {!! $addresses !!}
-@endsection
-
-@section('footer')
-    {!! $footer !!}
 @endsection
 
 {{----------------------- Modals -----------------------}}

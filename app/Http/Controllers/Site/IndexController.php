@@ -26,19 +26,9 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 
-class IndexController extends BaseController
+class IndexController extends SiteController
 {
-    public function __construct(TextsRepository $textsRepository, TrainersRepository $trainersRepository, SecurityCategoriesRepository $securityCategoriesRepository,
-                                SecurityItemsRepository $securityItemsRepository, VideosRepository $videosRepository, RuleCategoriesRepository $ruleCategoriesRepository,
-                                RuleItemsRepository $ruleItemsRepository, MedicalCertificatesRepository $medicalCertificatesRepository, VacanciesRepository $vacanciesRepository,
-                                ImagesRepository $imagesRepository, FilialsRepository $filialBranchesRepository, PromotionsRepository $promotionsRepository, CalculatorDescriptionsRepository $calculatorDescriptionsRepository,
-                                PoolsRepository $poolsRepository, SubscriptionsRepository $subscriptionsRepository, NumberOfLessonsRepository $numberOfLessonsRepository, ReviewsRepository $reviewsRepository)
-    {
-        parent::__construct($textsRepository, $trainersRepository, $securityCategoriesRepository, $securityItemsRepository,  $videosRepository,
-                            $ruleCategoriesRepository, $ruleItemsRepository, $medicalCertificatesRepository, $vacanciesRepository, $imagesRepository,
-                            $filialBranchesRepository, $promotionsRepository, $calculatorDescriptionsRepository, $poolsRepository, $subscriptionsRepository, $numberOfLessonsRepository, $reviewsRepository);
-        $this->template = 'site.main';
-    }
+    protected string $template = 'site.main';
 
     public function __invoke(Request $request): string {
         $this->getTextsData();
@@ -61,7 +51,10 @@ class IndexController extends BaseController
 
     protected function renderOutput(): string {
 
-        $this->baseVars = Arr::add($this->baseVars, 'header', $this->renderHeader());
+        $root = $this->rootView();
+
+        $content = view($this->template . '.index');
+
         $this->baseVars = Arr::add($this->baseVars, 'offer', $this->renderOffer());
         $this->baseVars = Arr::add($this->baseVars, 'about', $this->renderAbout());
         $this->baseVars = Arr::add($this->baseVars, 'gallery', $this->renderGallery());
@@ -73,13 +66,14 @@ class IndexController extends BaseController
         $this->baseVars = Arr::add($this->baseVars, 'reviews', $this->renderReviews());
         $this->baseVars = Arr::add($this->baseVars, 'questions', $this->renderQuestions());
         $this->baseVars = Arr::add($this->baseVars, 'addresses', $this->renderAddresses());
-        $this->baseVars = Arr::add($this->baseVars, 'footer', $this->renderFooter());
         $this->baseVars = Arr::add($this->baseVars, 'signUpModal', $this->renderSignUpModal());
         $this->baseVars = Arr::add($this->baseVars, 'paymentRulesModal', $this->renderPaymentRulesModal());
         $this->baseVars = Arr::add($this->baseVars, 'vacanciesModal', $this->renderVacanciesModal());
         $this->baseVars = Arr::add($this->baseVars, 'paymentModal', $this->renderPaymentModal());
 
-        return view($this->template . '.index')->with($this->baseVars);
+        $content = $content->with($this->baseVars)->render();
+
+        return $root->with('content', $content)->render();
     }
 
     public function sendMail(Request $request){
