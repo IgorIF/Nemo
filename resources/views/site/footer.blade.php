@@ -44,6 +44,7 @@
         <div class="row">
             <div class="col-12 flex">
                 <div class="copir">ООО "Акваклуб". ИНН: 7726432268 ОГРН: 118774650808 Юридический адрес: г. Москва, ул. Кировоградская 36 пом.XVIII тел. +7(977)680-02-61</div>
+                <a href="{{ route('offer') }}" style="color: #FFFFFF">Публичная оферта</a>
                 <div class="vacans">Приглашаем на работу в наш дружный коллектив <a href="#vacancies-popup" class="btn-white btn-popup">ВАКАНСИИ</a></div>
             </div>
         </div>

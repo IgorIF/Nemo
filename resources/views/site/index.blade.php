@@ -1,7 +1,7 @@
 @extends('layouts.site.root')
 
 @section('header')
-    {!! $header !!}
+    {!! $header ?? '' !!}
 @endsection
 
 @section('content')
@@ -9,15 +9,15 @@
 @endsection
 
 @section('footer')
-    {!! $footer !!}
+    {!! $footer ?? '' !!}
 @endsection
 
 {{----------------------- Modals -----------------------}}
 
 @section('signUpModal')
-    {!! $signUpModal !!}
+    {!! $signUpModal ?? '' !!}
 @endsection
 
 @section('vacanciesModal')
-    {!! $vacanciesModal !!}
+    {!! $vacanciesModal ?? '' !!}
 @endsection

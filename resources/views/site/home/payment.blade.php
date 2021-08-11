@@ -1,6 +1,6 @@
 <section class="payment" id="payment">
     <div class="container">
-        <h2 class="title title_center payment__title" data-filials="{{ $filialsData }}">{{ $texts->get(10)->text }}</h2>
+        <h2 class="title title_center payment__title" data-filials="{{ $filialsData }}">Стоимость занятий</h2>
         <div class="row">
             <div class="col-lg-4">
                 <div class="payment__item">
@@ -83,7 +83,7 @@
             <div class="row">
                 @foreach($numbersOfLessons as $numberOfLessons)
                     @if($numberOfLessons->is_once)
-                        <div class="col-lg-4 col-6">
+                        <div class="col-lg-4">
                             <div class="payment__item">
                                 @if($loop->first) <div class="payment__label">Разовые занятия:</div> @endif
                                 <label class="payment-option">

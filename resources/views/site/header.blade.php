@@ -17,7 +17,7 @@
                 Единый номер
             </div>
         </div>
-        <button type="button" class="btn-orange header__btn btn-popup" data-mfp-src="#call_me">ПРОБНОЕ ЗАНЯТИЕ -30%</button>
+        <button type="button" class="btn-orange header__btn btn-popup" data-mfp-src="#call_me">ПРОБНОЕ ЗАНЯТИЕ -50%</button>
         <button type="button" class="burger"><span></span><span></span><span></span></button>
         <div class="mobil-menu">
             <div class="mobil-menu__contacts">
@@ -30,7 +30,7 @@
             <nav class="mobil-menu__nav">
                 <a href="{{ route('home') }}#" class="mobil-menu__link">Главная</a>
                 <a href="{{ route('home') }}#coaches" class="mobil-menu__link">Тренеры</a>
-                <a href="{{ route('home') }}#payment" class="mobil-menu__link">Стоимость и оплата</a>
+                <a href="{{ route('home') }}#payment" class="mobil-menu__link">Стоимость занятий</a>
                 <a href="{{ route('home') }}#schedule" class="mobil-menu__link">Расписание</a>
                 <a href="#{{ route('home') }}#what" class="mobil-menu__link">Первое занятие</a>
                 <a href="{{ route('home') }}#sale" class="mobil-menu__link">Акции</a>

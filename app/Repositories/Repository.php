@@ -36,7 +36,7 @@ class Repository
      * @return mixed
      */
     public function getAll() {
-        return $this->model->all();
+        return $this->model->all()->sortBy('number');
     }
 
     /**

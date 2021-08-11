@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SecurityCategoryController;
 use App\Http\Controllers\Admin\SecurityItemController;
 use App\Http\Controllers\Admin\TrainerController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Site\OfferAppController;
 use App\Http\Controllers\Site\OfferController;
 use App\Http\Controllers\Site\ScheduleController;
 use App\Http\Controllers\Site\ThanksController;
@@ -33,6 +34,7 @@ use Illuminate\Support\Facades\Route;
 Route::get( '/', HomeController::class)->name('home');
 Route::get('/thanks', ThanksController::class)->name('thanks');
 Route::get('/offer', OfferController::class)->name('offer');
+Route::get('/offerapp', OfferAppController::class)->name('offerapp');
 
 /*Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 

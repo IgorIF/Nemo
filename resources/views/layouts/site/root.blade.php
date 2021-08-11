@@ -24,7 +24,9 @@
 
 @yield('vacanciesModal')
 
-<a href="https://api.whatsapp.com/send?phone=74951206711" class="whats-app" target="_blank">whats-app</a>
+@if(!@isset($offWhatsApp))
+    <a href="https://api.whatsapp.com/send?phone=74951206711" class="whats-app" target="_blank">whats-app</a>
+@endif
 
 <script src="{{ asset('js/app.min.js?v3') }}"></script>
 <script src="{{ asset('js/vendor/jquery.maskedinput.js?v3') }}"></script>
