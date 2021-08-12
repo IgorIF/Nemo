@@ -20,9 +20,9 @@
     {!! $payment !!}
 @endsection
 
-{{--@section('schedule')
+@section('schedule')
     {!! $schedule !!}
-@endsection--}}
+@endsection
 
 @section('sale')
     {!! $sale !!}

@@ -6674,15 +6674,10 @@ h6 {
     width: 100%;
     height: 100%;
     z-index: 0;
-}
-.offer__img img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
+    background-image: url("../images/dist/offer-img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 .offer__img::before {
     content: "";
@@ -8931,7 +8926,7 @@ div.select {
     .schedule .mobil-block {
         display: block;
         margin: 40px auto 55px;
-        -webkit-filter: drop-shadow(
+        /*-webkit-filter: drop-shadow(
             99.6014px 89.6413px 127px rgba(0, 15, 74, 0.0409259)
         )
         drop-shadow(64.5565px 58.1008px 74.3773px rgba(0, 15, 74, 0.0667407))
@@ -8944,7 +8939,7 @@ div.select {
         drop-shadow(38.365px 34.5285px 40.4519px rgba(0, 15, 74, 0.085))
         drop-shadow(19.9203px 17.9283px 20.6375px rgba(0, 15, 74, 0.103259))
         drop-shadow(8.11567px 7.3041px 10.3481px rgba(0, 15, 74, 0.129074))
-        drop-shadow(1.84447px 1.66002px 4.99768px rgba(0, 15, 74, 0.17));
+        drop-shadow(1.84447px 1.66002px 4.99768px rgba(0, 15, 74, 0.17));*/
     }
     .thanks {
         text-align: left;
@@ -8972,6 +8967,13 @@ div.select {
         flex-direction: column-reverse;
     }
 }
+
+@media only screen and (max-width: 500px) {
+    .offer__img {
+        background-image: url("../images/dist/offer-img-mob.jpg");
+    }
+}
+
 @media only screen and (max-width: 360px) {
     .mobil-menu .application a:not(:last-child),
     .schedule .application a:not(:last-child) {

@@ -95,7 +95,6 @@
                                         </header>
                                         <div class="payment-option__price">
                                             <div class="payment-option__pr">980 <i>₽</i></div>
-                                            @if($numberOfLessons->id == 1) <del>1 500 ₽</del> @endif
                                         </div>
                                         <footer class="payment-option__footer">
                                             <div class="payment-option__day">1 день</div>
@@ -124,6 +123,7 @@
                                     <div class="payment-option__info">
                                         <header class="payment-option__header">
                                             <span>Стандарт на</span><span class="orange" style="color: #FF1F0D;" id="numberOfLessons">{{ $numberOfLessons->name }}</span> занятий
+                                            <span class="payment-option__sale" style="display: none">ПОПУЛЯРНЫЙ</span>
                                         </header>
                                         <div class="payment-option__price">
                                             <div class="payment-option__pr">9 900 <i>₽</i></div>

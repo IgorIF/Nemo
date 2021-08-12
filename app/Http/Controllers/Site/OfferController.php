@@ -14,7 +14,7 @@ class OfferController extends SiteController
 
     protected function renderOutput(): string
     {
-        $root = $this->rootView();
+        $root = $this->rootView('Публичная оферта');
         return $root->with('content', $this->renderOffer())->render();
     }
 

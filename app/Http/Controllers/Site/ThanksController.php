@@ -14,7 +14,7 @@ class ThanksController extends SiteController
 
     protected function renderOutput(): string
     {
-        $root = $this->rootView();
+        $root = $this->rootView('Записаться на занятие');
         return $root->with('content', $this->renderThanks())->render();
     }
 

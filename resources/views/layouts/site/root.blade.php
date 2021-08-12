@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Акваклуб Немо</title>
+    <title>{{ $title }}</title>
     <meta name="description" content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus commodi ipsam, cum, pariatur">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Акваклуб Nemo. Индивидуальные занятия плавания для деток от 1,5 месяцев до 7 лет">

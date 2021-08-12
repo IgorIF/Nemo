@@ -7,9 +7,10 @@ use Illuminate\Support\Arr;
 
 abstract class SiteController extends BaseController
 {
-    protected function rootView()
+    protected function rootView($title = 'Акваклуб Немо')
     {
         $vars = [];
+        $vars = Arr::add($vars, 'title', $title);
         $vars = Arr::add($vars, 'header', $this->renderHeader());
         $vars = Arr::add($vars, 'footer', $this->renderFooter());
         $vars = Arr::add($vars, 'signUpModal', $this->renderSignUpModal());

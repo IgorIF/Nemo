@@ -6,7 +6,6 @@ use App\Mail\TrialLesson;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
-use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends SiteController
 {

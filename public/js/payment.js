@@ -74,11 +74,15 @@ function initCalculator(filialVal = null) {
 
         $(el).next().find('div[class="payment-option__pr"]').html(price + ' <i>₽</i>')
         $(el).next().find('header span:first:not(".payment-option__sale")').text($(subscription).next('span').text() + ' на')
+
+        if (i === 3) {
+            if (parseInt(subscriptionVal) === 1) {
+                $(el).next('div').first('header').find('span:last').show();
+            } else {
+                $(el).next('div').first('header').find('span:last').hide();
+            }
+        }
     })
-
-
-    let oldPrice = $(cards[1]).parent().find('.payment-option__pr').text().substr(0, $(cards[1]).parent().find('.payment-option__pr').text().length - 2);
-    $(cards).first().parent().find('del').text(oldPrice + ' ₽');
 
     let price =  $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().substr(0, $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().length - 2)
     $('div[class="all-price"]').find('span:first').html(price + ' <i>₽</i>')
