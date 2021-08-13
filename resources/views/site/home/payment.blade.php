@@ -83,7 +83,7 @@
             <div class="row">
                 @foreach($numbersOfLessons as $numberOfLessons)
                     @if($numberOfLessons->is_once)
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-6">
                             <div class="payment__item">
                                 @if($loop->first) <div class="payment__label">Разовые занятия:</div> @endif
                                 <label class="payment-option">
@@ -94,7 +94,7 @@
                                             @if($numberOfLessons->discount != 0) <span class="payment-option__sale">СКИДКА -{{ $numberOfLessons->discount }}%</span> @endif
                                         </header>
                                         <div class="payment-option__price">
-                                            <div class="payment-option__pr">980 <i>₽</i></div>
+                                            <div class="payment-option__pr">980 ₽</div>
                                         </div>
                                         <footer class="payment-option__footer">
                                             <div class="payment-option__day">1 день</div>
@@ -126,7 +126,7 @@
                                             <span class="payment-option__sale" style="display: none">ПОПУЛЯРНЫЙ</span>
                                         </header>
                                         <div class="payment-option__price">
-                                            <div class="payment-option__pr">9 900 <i>₽</i></div>
+                                            <div class="payment-option__pr">9 900 ₽</div>
                                         </div>
                                         <footer class="payment-option__footer">
                                             <div class="payment-option__day">1 месяц 14 дней</div>
@@ -143,7 +143,7 @@
 
         <div class="row payment__bottom">
             <div class="col-md-6">
-                <div class="all-price">Стоимость: <span>980 <i>₽</i></span></div>
+                <div class="all-price">Стоимость: <span>980 ₽</span></div>
             </div>
             <div class="col-md-6">
                 <a href="#payment_popup" class="btn-orange payment__btn btn-popup">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</a>

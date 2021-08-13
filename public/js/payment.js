@@ -72,7 +72,7 @@ function initCalculator(filialVal = null) {
 
         price = numberWithSpaces(price);
 
-        $(el).next().find('div[class="payment-option__pr"]').html(price + ' <i>₽</i>')
+        $(el).next().find('div[class="payment-option__pr"]').html(price + ' ₽')
         $(el).next().find('header span:first:not(".payment-option__sale")').text($(subscription).next('span').text() + ' на')
 
         if (i === 3) {
@@ -85,7 +85,7 @@ function initCalculator(filialVal = null) {
     })
 
     let price =  $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().substr(0, $(payment).find('input[name="number-of-lessons"]:checked').parent().find('.payment-option__pr').text().length - 2)
-    $('div[class="all-price"]').find('span:first').html(price + ' <i>₽</i>')
+    $('div[class="all-price"]').find('span:first').html(price + ' ₽')
 }
 
 function fillPopupForm() {

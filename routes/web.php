@@ -35,6 +35,7 @@ Route::get( '/', HomeController::class)->name('home');
 Route::get('/thanks', ThanksController::class)->name('thanks');
 Route::get('/offer', OfferController::class)->name('offer');
 Route::get('/offerapp', OfferAppController::class)->name('offerapp');
+Route::get('/tariffs', [OfferAppController::class, 'tariffs'])->name('tariffs');
 
 /*Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->name('admin.')->group(function() {
 
