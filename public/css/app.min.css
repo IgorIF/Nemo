@@ -6669,16 +6669,31 @@ h6 {
 }
 .offer__img {
     position: absolute;
+    display: block;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-image: url("../images/dist/offer-img.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
 }
+.offer__img img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.offer__img-desk {
+    display: block;
+}
+
+.offer__img-mob {
+    display: none;
+}
+
 .offer__img::before {
     content: "";
     display: block;
@@ -8969,8 +8984,12 @@ div.select {
 }
 
 @media only screen and (max-width: 500px) {
-    .offer__img {
-        background-image: url("../images/dist/offer-img-mob.jpg");
+    .offer__img-desk {
+        display: none;
+    }
+
+    .offer__img-mob {
+        display: block;
     }
 }
 
