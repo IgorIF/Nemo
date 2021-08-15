@@ -45,7 +45,7 @@ class HomeController extends SiteController
         $vars = Arr::add($vars, 'what', $this->renderWhat());
         $vars = Arr::add($vars, 'waterTreatment', $this->renderWaterTreatment());
         $vars = Arr::add($vars, 'reviews', $this->renderReviews());
-        $vars = Arr::add($vars, 'questions', $this->renderQuestions());
+        //$vars = Arr::add($vars, 'questions', $this->renderQuestions());
         $vars = Arr::add($vars, 'addresses', $this->renderAddresses());
         $vars = Arr::add($vars, 'paymentModal', $this->renderPaymentModal());
 

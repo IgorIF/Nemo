@@ -1,11 +1,12 @@
 <header class="header">
     <div class="container header__flex">
-        <a href="#" class="header__logo"><img src="{{ asset('images/dist/logo.svg') }}" alt=""></a>
+        <a href="{{ route('home') }}" class="header__logo"><img src="{{ asset('images/dist/logo.svg') }}" alt=""></a>
         <nav class="main-menu header__menu">
             <a href="{{ route('home') }}#" class="main-menu__link">Главная</a>
             <a href="{{ route('home') }}#payment" class="main-menu__link">Стоимость</a>
             <a href="{{ route('home') }}#coaches" class="main-menu__link">Тренеры</a>
             <a href="{{ route('home') }}#schedule" class="main-menu__link">Расписание</a>
+            <a href="{{ route('home') }}#what" class="mobil-menu__link">Первое занятие</a>
             <a href="{{ route('home') }}#reviews" class="main-menu__link">Отзывы</a>
             <a href="{{ route('home') }}#sale" class="main-menu__link">Акции</a>
             <a href="{{ route('home') }}#addresses" class="main-menu__link">Контакты</a>
@@ -17,7 +18,7 @@
                 Единый номер
             </div>
         </div>
-        <button type="button" class="btn-orange header__btn btn-popup" data-mfp-src="#call_me">ПРОБНОЕ ЗАНЯТИЕ -50%</button>
+        <button type="button" class="btn-orange header__btn btn-popup" data-mfp-src="#call_me">ПРОБНОЕ ЗАНЯТИЕ -{{ $trialLesson->discount }}%</button>
         <button type="button" class="burger"><span></span><span></span><span></span></button>
         <div class="mobil-menu">
             <div class="mobil-menu__contacts">
@@ -32,7 +33,7 @@
                 <a href="{{ route('home') }}#coaches" class="mobil-menu__link">Тренеры</a>
                 <a href="{{ route('home') }}#payment" class="mobil-menu__link">Стоимость занятий</a>
                 <a href="{{ route('home') }}#schedule" class="mobil-menu__link">Расписание</a>
-                <a href="#{{ route('home') }}#what" class="mobil-menu__link">Первое занятие</a>
+                <a href="{{ route('home') }}#what" class="mobil-menu__link">Первое занятие</a>
                 <a href="{{ route('home') }}#sale" class="mobil-menu__link">Акции</a>
                 <a href="{{ route('home') }}#reviews" class="mobil-menu__link">Отзывы</a>
                 <a href="{{ route('home') }}#addresses" class="mobil-menu__link">Контакты</a>
@@ -47,7 +48,7 @@
             </div>
             <div class="application">
                 <div class="mobil-menu-soc__title">Наше приложение</div>
-                <a href="#" onclick="(function (e){e.preventDefault();})(event)" style="opacity: 0.1"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
+                <a href="#" onclick="(function (e){e.preventDefault();})(event)"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
                 <a href="https://apps.apple.com/ru/app/%D0%B0%D0%BA%D0%B2%D0%B0%D0%BA%D0%BB%D1%83%D0%B1-nemo/id1579157798"><img src="{{ asset('images/dist/icon/as.svg') }}" alt=""></a>
             </div>
         </div>

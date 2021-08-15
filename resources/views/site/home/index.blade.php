@@ -40,9 +40,9 @@
     {!! $reviews !!}
 @endsection
 
-@section('questions')
+{{--@section('questions')
     {!! $questions !!}
-@endsection
+@endsection--}}
 
 @section('addresses')
     {!! $addresses !!}

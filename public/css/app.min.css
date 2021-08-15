@@ -7915,7 +7915,7 @@ div.select {
 }
 .footer .container {
     padding-top: 30px;
-    padding-bottom: 35px;
+    padding-bottom: 16px;
 }
 .footer::after,
 .footer::before {
@@ -8296,6 +8296,14 @@ div.select {
 }
 .thanks .application a:not(:last-child) {
     margin-right: 24px;
+}
+
+.application a:first-of-type img {
+    opacity: 0.1;
+}
+
+.application a:first-of-type:hover{
+    cursor: default;
 }
 @media only screen and (max-width: 1200px) {
     .container {

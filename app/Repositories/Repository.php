@@ -32,6 +32,10 @@ class Repository
         return $result;
     }
 
+    public function getOneByPrimaryKey($primaryKey) {
+        return $this->model->find(1);
+    }
+
     /**
      * @return mixed
      */

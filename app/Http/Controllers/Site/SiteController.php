@@ -20,7 +20,8 @@ abstract class SiteController extends BaseController
 
     private function renderHeader(): string {
         $texts = $this->getFromCollection($this->texts, [1 => 2]);
-        return view( 'site.header')->with(['texts' => $texts, 'filials' => $this->filials])->render();
+        $trialLesson = $this->numberOfLessonsRepository->getOneByPrimaryKey(1);
+        return view( 'site.header')->with(['texts' => $texts, 'filials' => $this->filials, 'trialLesson' => $trialLesson])->render();
     }
 
     private function renderFooter(): string {

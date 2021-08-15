@@ -33,7 +33,7 @@
                 <div class="footer__item">
                     <div class="footer__title">Наше приложение</div>
                     <div class="application">
-                        <a href="#" onclick="(function (e){e.preventDefault();})(event)"><img src="{{ asset('images/dist/icon/gpw.svg') }}" alt="" style="opacity: 0.1"></a>
+                        <a href="#" onclick="(function (e){e.preventDefault();})(event)"><img src="{{ asset('images/dist/icon/gpw.svg') }}" alt=""></a>
                         <a href="https://apps.apple.com/ru/app/%D0%B0%D0%BA%D0%B2%D0%B0%D0%BA%D0%BB%D1%83%D0%B1-nemo/id1579157798"><img src="{{ asset('images/dist/icon/asw.svg') }}" alt=""></a>
                     </div>
                     <div class="footer__title">Есть что написать?</div>
@@ -45,7 +45,7 @@
             <div class="col-12 flex">
                 <div class="copir">ООО "Акваклуб". ИНН: 7726432268 ОГРН: 118774650808<br />
                     Юридический адрес: г. Москва, ул. Кировоградская 36 пом.XVIII тел. +7(495)120-67-11</div>
-                <a href="{{ route('offer') }}" style="color: #FFFFFF; text-decoration: underline; padding-bottom: 16px">Публичная оферта</a>
+                <a href="{{ route('offer') }}" style="color: #FFFFFF; text-decoration: underline">Публичная оферта</a>
                 <div class="vacans">Приглашаем на работу в наш дружный коллектив <a href="#vacancies-popup" class="btn-white btn-popup">ВАКАНСИИ</a></div>
             </div>
         </div>
