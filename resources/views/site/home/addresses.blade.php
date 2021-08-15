@@ -1,4 +1,4 @@
-<section class="addresses">
+<section class="addresses" id="addresses">
     <div class="container">
         <h2 class="title title_center addresses__title">Адреса филиалов</h2>
         <div class="tabs addresses__tabs">
