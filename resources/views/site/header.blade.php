@@ -47,8 +47,8 @@
             </div>
             <div class="application">
                 <div class="mobil-menu-soc__title">Наше приложение</div>
-                <a href="#"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
-                <a href="#"><img src="{{ asset('images/dist/icon/as.svg') }}" alt=""></a>
+                <a href="#" onclick="(function (e){e.preventDefault();})(event)" style="opacity: 0.1"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
+                <a href="https://apps.apple.com/ru/app/%D0%B0%D0%BA%D0%B2%D0%B0%D0%BA%D0%BB%D1%83%D0%B1-nemo/id1579157798"><img src="{{ asset('images/dist/icon/as.svg') }}" alt=""></a>
             </div>
         </div>
     </div>
