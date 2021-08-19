@@ -7593,7 +7593,6 @@ div.select {
     padding: 12px 8px;
     border-radius: 8px;
     cursor: pointer;
-    white-space: nowrap;
     overflow: hidden;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
@@ -8080,12 +8079,12 @@ div.select {
     margin-bottom: 16px;
 }
 .popup div.select {
-    margin-bottom: 16px;
+    margin-bottom: 30px;
 }
 .popup .btn-orange {
     padding: 16.5px 10px;
     border-radius: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 30px;
 }
 .popup .small {
     font-size: 10px;
@@ -8121,7 +8120,7 @@ div.select {
     padding: 5px 16px;
 }
 .input:not(:last-child) {
-    margin-bottom: 16px;
+    margin-bottom: 30px;
 }
 .input::hover {
     border: 1px solid #b0babf;
@@ -8298,13 +8297,6 @@ div.select {
     margin-right: 24px;
 }
 
-.application a:first-of-type img {
-    opacity: 0.1;
-}
-
-.application a:first-of-type:hover{
-    cursor: default;
-}
 @media only screen and (max-width: 1200px) {
     .container {
         padding-left: 15px;

@@ -1,26 +1,50 @@
-@yield('offer')
+<section class="offer">
+    @yield('offer')
+</section>
 
-@yield('about')
+<section class="about">
+    @yield('about')
+</section>
 
-@yield('gallery')
+<section class="gallery">
+    @yield('gallery')
+</section>
 
-@yield('coaches')
+<section class="coaches" id="coaches">
+    @yield('coaches')
+</section>
 
-@yield('payment')
+<section class="payment" id="payment">
+    @yield('payment')
+</section>
 
-@yield('schedule')
+<div class="page" id="schedule">
+    @yield('schedule')
+</div>
 
-@yield('sale')
+<section class="sale" id="sale">
+    @yield('sale')
+</section>
 
-@yield('what')
+<section class="what" id="what">
+    @yield('what')
+</section>
 
-@yield('waterTreatment')
+<section class="water-treatment">
+    @yield('waterTreatment')
+</section>
 
-@yield('reviews')
+<section class="reviews" id="reviews">
+    @yield('reviews')
+</section>
 
-@yield('questions')
+{{--<section class="questions">
+    @yield('questions')
+</section>--}}
 
-@yield('addresses')
+<section class="addresses" id="addresses">
+    @yield('addresses')
+</section>
 
 {{----------------------- Modals -----------------------}}
 

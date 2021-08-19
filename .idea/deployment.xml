@@ -30,8 +30,10 @@
             <excludedPath path="/.env.example" />
             <excludedPath path="/.editorconfig" />
             <excludedPath path="/tests" />
-            <excludedPath path="/bootstrap" />
             <excludedPath path="/public/storage" />
+            <excludedPath path="/database" />
+            <excludedPath path="/storage" />
+            <excludedPath path="/bootstrap" />
           </excludedPaths>
         </serverdata>
       </paths>

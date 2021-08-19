@@ -1,6 +1,6 @@
 <header class="header">
     <div class="container header__flex">
-        <a href="{{ route('home') }}" class="header__logo"><img src="{{ asset('images/dist/logo.svg') }}" alt=""></a>
+        <a href="{{ route('home') }}#" class="header__logo"><img src="{{ asset('images/dist/logo.svg') }}" alt=""></a>
         <nav class="main-menu header__menu">
             <a href="{{ route('home') }}#" class="main-menu__link">Главная</a>
             <a href="{{ route('home') }}#payment" class="main-menu__link">Стоимость</a>
@@ -14,7 +14,7 @@
         <div class="header__contacts">
             <a href="https://api.whatsapp.com/send?phone=74951206711" class="header__wa" target="_balnk"><img src="{{ asset('images/dist/icon/whatsApp.svg') }}" alt=""></a>
             <div class="header__phone">
-                <a href="tel:+74951206711">+7(495)120-67-11</a>
+                <a href="tel:+74951200252">+7 (495) 120-02-52</a>
                 Единый номер
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="mobil-menu__contacts">
                 <a href="https://api.whatsapp.com/send?phone=74951206711" class="header__wa" target="_balnk"><img src="{{ asset('images/dist/icon/whatsApp.svg') }}" alt=""></a>
                 <div class="header__phone">
-                    <a href="tel:+74951206711">+7(495)120-67-11</a>
+                    <a href="tel:+74951200252">+7 (495) 120-02-52</a>
                     Единый номер
                 </div>
             </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="application">
                 <div class="mobil-menu-soc__title">Наше приложение</div>
-                <a href="#" onclick="(function (e){e.preventDefault();})(event)"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
+                <a href="https://play.google.com/store/apps/details?id=com.itrack.akvaklubnemo823974"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
                 <a href="https://apps.apple.com/ru/app/%D0%B0%D0%BA%D0%B2%D0%B0%D0%BA%D0%BB%D1%83%D0%B1-nemo/id1579157798"><img src="{{ asset('images/dist/icon/as.svg') }}" alt=""></a>
             </div>
         </div>
