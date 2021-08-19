@@ -8252,6 +8252,7 @@ div.select {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    flex-wrap: wrap;
 }
 .schedule .application a:not(:last-child) {
     margin-right: 24px;
@@ -8347,6 +8348,15 @@ div.select {
     }
     .schedule p:not(:last-child) {
         margin-bottom: 16px;
+    }
+    .schedule .application a:last-child {
+        margin-top: 24px;
+    }
+    /*.schedule .application {
+        margin-bottom: 30px;
+    }*/
+    .schedule div.mobil-hidden img {
+        margin-top: 54px;
     }
 }
 @media only screen and (max-width: 992px) {
@@ -8981,6 +8991,9 @@ div.select {
         -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
     }
+    .schedule .application a:last-child {
+        margin-top: 0;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -8993,11 +9006,32 @@ div.select {
     }
 }
 
+@media only screen and (max-width: 513px) {
+    .schedule .application a:last-child {
+        margin-top: 24px;
+    }
+}
+
+@media only screen and (max-width: 378px) {
+
+
+    .schedule .application a {
+        width: 125px;
+        height: 36px;
+    }
+}
+
 @media only screen and (max-width: 360px) {
     .mobil-menu .application a:not(:last-child),
     .schedule .application a:not(:last-child) {
         margin-right: 4px;
     }
+
+    .mobil-menu .application a:last-child,
+    .schedule .application a:last-child {
+        margin-top: 4px;
+    }
+
     .thanks .application a:not(:last-child) {
         margin: 0 5px 10px;
     }
