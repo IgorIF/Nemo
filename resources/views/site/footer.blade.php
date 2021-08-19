@@ -35,6 +35,7 @@
                     <div class="application">
                         <a href="https://play.google.com/store/apps/details?id=com.itrack.akvaklubnemo823974"><img src="{{ asset('images/dist/icon/gpw.svg') }}" alt=""></a>
                         <a href="https://apps.apple.com/ru/app/%D0%B0%D0%BA%D0%B2%D0%B0%D0%BA%D0%BB%D1%83%D0%B1-nemo/id1579157798"><img src="{{ asset('images/dist/icon/asw.svg') }}" alt=""></a>
+                        <a href="https://appgallery.huawei.com/#/app/C104625539"><img src="{{ asset('images/dist/icon/haw.svg') }}" alt=""></a>
                     </div>
                     <div class="footer__title">Есть что написать?</div>
                     <a href="mailto:aquanemo@yandex.ru" class="footer__email">aquanemo@yandex.ru</a>
