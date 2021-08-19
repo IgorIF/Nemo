@@ -50,6 +50,7 @@
                 <div class="mobil-menu-soc__title">Наше приложение</div>
                 <a href="https://play.google.com/store/apps/details?id=com.itrack.akvaklubnemo823974"><img src="{{ asset('images/dist/icon/gp.svg') }}" alt=""></a>
                 <a href="https://apps.apple.com/ru/app/%D0%B0%D0%BA%D0%B2%D0%B0%D0%BA%D0%BB%D1%83%D0%B1-nemo/id1579157798"><img src="{{ asset('images/dist/icon/as.svg') }}" alt=""></a>
+                <a href="https://appgallery.huawei.com/#/app/C104625539"><img src="{{ asset('images/dist/icon/ha.svg') }}" alt=""></a>
             </div>
         </div>
     </div>

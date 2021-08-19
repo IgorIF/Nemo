@@ -9012,9 +9012,13 @@ div.select {
     }
 }
 
+@media only screen and (max-width: 485px) {
+    .mobil-menu .application a:last-child {
+        margin-top: 24px;
+    }
+}
+
 @media only screen and (max-width: 378px) {
-
-
     .schedule .application a {
         width: 125px;
         height: 36px;
