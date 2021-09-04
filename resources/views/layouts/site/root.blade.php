@@ -10,7 +10,7 @@
     <meta name="keywords" content="Акваклуб немо, акваклуб nemo, бассейн, грудничковое плавание, аква немо">
     <meta name="yandex-verification" content="d9eebb8346423a6c" />
     <link rel="icon" href="{{ asset('images/favicon.ico?vr=1') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.min.css?vr=3') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.min.css?vr=4') }}">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 @yield('vacanciesModal')
 
 {{--@if(!@isset($offWhatsApp))
-    <a href="https://api.whatsapp.com/send?phone=74951206711" class="whats-app" target="_blank">whats-app</a>
+    <a href="https://api.whatsapp.com/send?phone=74951206711" class="whats-app" target="_blank" onclick="ym(45529422,'reachGoal','Whatsapp'); return true;">whats-app</a>
 @endif--}}
 
 <script src="{{ asset('js/app.min.js?vr=1') }}"></script>

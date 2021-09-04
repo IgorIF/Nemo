@@ -90,7 +90,7 @@
                                 <div class="payment-option__info">
                                     <header class="payment-option__header">
                                         {{ $numberOfLessons->name }}
-                                        @if($numberOfLessons->discount != 0) <span class="payment-option__sale">СКИДКА -{{ $numberOfLessons->discount }}%</span> @endif
+                                        @if($numberOfLessons->discount != 0) <span class="payment-option__sale">СКИДКА более {{ $numberOfLessons->discount }}%</span> @endif
                                     </header>
                                     <div class="payment-option__price">
                                         <div class="payment-option__pr">980 ₽</div>

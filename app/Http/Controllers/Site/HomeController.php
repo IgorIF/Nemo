@@ -42,6 +42,7 @@ class HomeController extends SiteController
         $vars = Arr::add($vars, 'payment', $this->renderPayment());
         $vars = Arr::add($vars, 'schedule', $this->renderSchedule());
         $vars = Arr::add($vars, 'sale', $this->renderSale());
+        $vars = Arr::add($vars, 'additionally', $this->renderAdditionally());
         $vars = Arr::add($vars, 'what', $this->renderWhat());
         $vars = Arr::add($vars, 'waterTreatment', $this->renderWaterTreatment());
         $vars = Arr::add($vars, 'reviews', $this->renderReviews());
@@ -120,6 +121,10 @@ class HomeController extends SiteController
     private function renderSale(): string {
         $texts = $this->getFromCollection($this->texts, [11 => 11]);
         return view('site.home.sale')->with(['texts' => $texts, 'promotions' => $this->promotions])->render();
+    }
+
+    private function renderAdditionally(): string {
+        return view('site.home.additionally')->render();
     }
 
     private function renderWhat(): string {

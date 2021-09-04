@@ -26,6 +26,10 @@
     @yield('sale')
 </section>
 
+<section class="additionally">
+    @yield('additionally')
+</section>
+
 <section class="what" id="what">
     @yield('what')
 </section>

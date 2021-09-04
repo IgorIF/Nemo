@@ -28,6 +28,10 @@
     {!! $sale !!}
 @endsection
 
+@section('additionally')
+    {!! $additionally !!}
+@endsection
+
 @section('what')
     {!! $what !!}
 @endsection

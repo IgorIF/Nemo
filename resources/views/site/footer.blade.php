@@ -10,7 +10,7 @@
             <div class="col-md-4">
                 <div class="footer__item">
                     <div class="footer__phone">
-                        <a href="tel:+74951200252" class="phone">+7 (495) 120-02-52</a>
+                        <a href="tel:+74951200252" class="phone" onclick="ym(45529422,'reachGoal','number'); return true;">+7 (495) 120-02-52</a>
                         <span>Единый номер</span>
                     </div>
                     <button type="button" class="btn-orange footer__btn btn-popup" data-mfp-src="#call_me">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</button>

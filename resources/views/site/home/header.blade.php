@@ -18,7 +18,7 @@
                 Единый номер
             </div>
         </div>
-        <button type="button" class="btn-orange header__btn btn-popup" data-mfp-src="#call_me">ПРОБНОЕ ЗАНЯТИЕ -{{ $trialLesson->discount }}%</button>
+        <button type="button" class="btn-orange header__btn btn-popup" data-mfp-src="#call_me">ПРОБНОЕ ЗАНЯТИЕ более {{ $trialLesson->discount }}%</button>
         <button type="button" class="burger"><span></span><span></span><span></span></button>
         <div class="mobil-menu">
             <div class="mobil-menu__contacts">

@@ -23,6 +23,5 @@
             </script>--}}
             <button type="button" class="btn-orange addresses__btn addresses__btn_mobil btn-popup" data-mfp-src="#call_me">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</button>
         </div>
-
     </div>
 </div>

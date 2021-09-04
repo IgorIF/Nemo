@@ -15,7 +15,7 @@
         <input type="hidden" name="pool">
         <input type="hidden" name="subscription">
         <input type="hidden" name="price">
-        <button type="submit" class="btn-orange">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</button>
+        <button type="submit" class="btn-orange" onclick="ym(45529422,'reachGoal','zayvka'); return true;">ЗАПИСАТЬСЯ НА ЗАНЯТИЕ</button>
     </form>
     <div class="small">Нажимая на кнопку, вы даете согласие на обработку персональных данных и соглашаетесь c <a href="#politica" class="btn-popup">политикой конфиденциальности</a></div>
 </div>
